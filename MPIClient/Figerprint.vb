@@ -41,9 +41,20 @@ Public Class Figerprint
         If Not (fingerImage Is Nothing) Then
             pictureFingerprint.Image = fingerImage.img
             pictureFingerprint.Update()
+
+            Dim selectedFingerprint As PictureBox = getSelectedFingerprint()
+            selectedFingerprint.Image = fingerImage.img
+            selectedFingerprint.Update()
+
         End If
     End Sub
-
+    Private Function getSelectedFingerprint() As PictureBox
+        If pictureFringerprint1.BorderStyle = BorderStyle.FixedSingle Then
+            Return pictureFringerprint1
+        Else
+            Return pictureFringerprint2
+        End If
+    End Function
     Private Sub SearchButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SearchButton.Click
 
         If fingerImage Is Nothing Then
@@ -87,5 +98,19 @@ Public Class Figerprint
     Private Sub SynchronizationButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SynchronizationButton.Click
         Dim synChronization As New Synchronization
         synChronization.ShowDialog(Me)
+    End Sub
+
+    Private Sub pictureFringerprint2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pictureFringerprint2.Click
+        pictureFringerprint2.BorderStyle = BorderStyle.FixedSingle
+        pictureFringerprint1.BorderStyle = BorderStyle.None
+        pictureFingerprint.Image = pictureFringerprint2.Image
+        pictureFingerprint.Update()
+    End Sub
+
+    Private Sub pictureFringerprint1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pictureFringerprint1.Click
+        pictureFringerprint1.BorderStyle = BorderStyle.FixedSingle
+        pictureFringerprint2.BorderStyle = BorderStyle.None
+        pictureFingerprint.Image = pictureFringerprint1.Image
+        pictureFingerprint.Update()
     End Sub
 End Class

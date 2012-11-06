@@ -18,3 +18,24 @@ C:\Users\dane\Documents\Visual Studio 2008\Projects\MPIClient\MPIClient\obj\x86\
 C:\Users\dane\Documents\Visual Studio 2008\Projects\MPIClient\MPIClient\obj\x86\Release\MPIClient.pdb
 C:\Users\dane\Documents\Visual Studio 2008\Projects\MPIClient\MPIClient\obj\x86\Release\MPIClient.NewVisit.resources
 C:\Users\dane\Documents\Visual Studio 2008\Projects\MPIClient\MPIClient\obj\x86\Release\MPIClient.Synchronization.resources
+C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\bin\x86\Release\MPIClient.exe.config
+C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\obj\x86\Release\Interop.GrFingerXLib.dll
+C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\obj\x86\Release\AxInterop.GrFingerXLib.dll
+C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\obj\x86\Release\MPIClient.vbproj.ResolveComReference.cache
+C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\obj\x86\Release\MPIClient.exe
+C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\obj\x86\Release\MPIClient.xml
+C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\obj\x86\Release\MPIClient.pdb
+C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\bin\x86\Release\MPIClient.exe
+C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\bin\x86\Release\MPIClient.pdb
+C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\bin\x86\Release\MPIClient.xml
+C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\bin\x86\Release\Interop.GrFingerXLib.dll
+C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\bin\x86\Release\AxInterop.GrFingerXLib.dll
+C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\obj\x86\Release\ResolveAssemblyReference.cache
+C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\obj\x86\Release\MPIClient.Figerprint.resources
+C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\obj\x86\Release\MPIClient.ManualSyn.resources
+C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\obj\x86\Release\MPIClient.Resources.resources
+C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\obj\x86\Release\MPIClient.NewVisit.resources
+C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\obj\x86\Release\MPIClient.SearchResult.resources
+C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\obj\x86\Release\MPIClient.Synchronization.resources
+C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\obj\x86\Release\MPIClient.VisitHistory.resources
+C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\obj\x86\Release\MPIClient.vbproj.GenerateResource.Cache

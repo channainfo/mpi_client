@@ -29,8 +29,12 @@ Partial Class Figerprint
         Me.grFingerXCtrl = New AxGrFingerXLib.AxGrFingerXCtrl
         Me.closeButton = New System.Windows.Forms.Button
         Me.SynchronizationButton = New System.Windows.Forms.Button
+        Me.pictureFringerprint1 = New System.Windows.Forms.PictureBox
+        Me.pictureFringerprint2 = New System.Windows.Forms.PictureBox
         CType(Me.pictureFingerprint, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grFingerXCtrl, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pictureFringerprint1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pictureFringerprint2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'pictureFingerprint
@@ -41,7 +45,7 @@ Partial Class Figerprint
         Me.pictureFingerprint.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.pictureFingerprint.Location = New System.Drawing.Point(12, 12)
         Me.pictureFingerprint.Name = "pictureFingerprint"
-        Me.pictureFingerprint.Size = New System.Drawing.Size(363, 410)
+        Me.pictureFingerprint.Size = New System.Drawing.Size(340, 322)
         Me.pictureFingerprint.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pictureFingerprint.TabIndex = 0
         Me.pictureFingerprint.TabStop = False
@@ -49,7 +53,7 @@ Partial Class Figerprint
         'SearchButton
         '
         Me.SearchButton.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.SearchButton.Location = New System.Drawing.Point(397, 12)
+        Me.SearchButton.Location = New System.Drawing.Point(397, 22)
         Me.SearchButton.Name = "SearchButton"
         Me.SearchButton.Size = New System.Drawing.Size(109, 23)
         Me.SearchButton.TabIndex = 2
@@ -60,7 +64,7 @@ Partial Class Figerprint
         '
         Me.labelStatus.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.labelStatus.AutoSize = True
-        Me.labelStatus.Location = New System.Drawing.Point(143, 428)
+        Me.labelStatus.Location = New System.Drawing.Point(107, 337)
         Me.labelStatus.Name = "labelStatus"
         Me.labelStatus.Size = New System.Drawing.Size(40, 13)
         Me.labelStatus.TabIndex = 3
@@ -78,7 +82,7 @@ Partial Class Figerprint
         'closeButton
         '
         Me.closeButton.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.closeButton.Location = New System.Drawing.Point(397, 70)
+        Me.closeButton.Location = New System.Drawing.Point(397, 80)
         Me.closeButton.Name = "closeButton"
         Me.closeButton.Size = New System.Drawing.Size(109, 23)
         Me.closeButton.TabIndex = 2
@@ -87,18 +91,41 @@ Partial Class Figerprint
         '
         'SynchronizationButton
         '
-        Me.SynchronizationButton.Location = New System.Drawing.Point(397, 41)
+        Me.SynchronizationButton.Location = New System.Drawing.Point(397, 51)
         Me.SynchronizationButton.Name = "SynchronizationButton"
         Me.SynchronizationButton.Size = New System.Drawing.Size(109, 23)
         Me.SynchronizationButton.TabIndex = 5
         Me.SynchronizationButton.Text = "Synchronization"
         Me.SynchronizationButton.UseVisualStyleBackColor = True
         '
+        'pictureFringerprint1
+        '
+        Me.pictureFringerprint1.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.pictureFringerprint1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pictureFringerprint1.Location = New System.Drawing.Point(46, 353)
+        Me.pictureFringerprint1.Name = "pictureFringerprint1"
+        Me.pictureFringerprint1.Size = New System.Drawing.Size(121, 107)
+        Me.pictureFringerprint1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pictureFringerprint1.TabIndex = 6
+        Me.pictureFringerprint1.TabStop = False
+        '
+        'pictureFringerprint2
+        '
+        Me.pictureFringerprint2.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.pictureFringerprint2.Location = New System.Drawing.Point(193, 353)
+        Me.pictureFringerprint2.Name = "pictureFringerprint2"
+        Me.pictureFringerprint2.Size = New System.Drawing.Size(121, 107)
+        Me.pictureFringerprint2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pictureFringerprint2.TabIndex = 6
+        Me.pictureFringerprint2.TabStop = False
+        '
         'Figerprint
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(534, 463)
+        Me.ClientSize = New System.Drawing.Size(534, 483)
+        Me.Controls.Add(Me.pictureFringerprint2)
+        Me.Controls.Add(Me.pictureFringerprint1)
         Me.Controls.Add(Me.SynchronizationButton)
         Me.Controls.Add(Me.grFingerXCtrl)
         Me.Controls.Add(Me.labelStatus)
@@ -110,6 +137,8 @@ Partial Class Figerprint
         Me.Text = "Fingerprint"
         CType(Me.pictureFingerprint, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grFingerXCtrl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pictureFringerprint1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pictureFringerprint2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -120,5 +149,7 @@ Partial Class Figerprint
     Friend WithEvents grFingerXCtrl As AxGrFingerXLib.AxGrFingerXCtrl
     Friend WithEvents closeButton As System.Windows.Forms.Button
     Friend WithEvents SynchronizationButton As System.Windows.Forms.Button
+    Friend WithEvents pictureFringerprint1 As System.Windows.Forms.PictureBox
+    Friend WithEvents pictureFringerprint2 As System.Windows.Forms.PictureBox
 
 End Class
