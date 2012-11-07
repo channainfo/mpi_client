@@ -4,6 +4,7 @@
         Private _id As String
         Private _fingerprintImage As String
         Private _fingerprint As Array
+        Private _fingerprint2 As Array
         Private _gender As String
         Private _dateOfBirth As String
         Private _syn As Boolean
@@ -33,6 +34,14 @@
             End Get
             Set(ByVal value As Array)
                 _fingerprint = value
+            End Set
+        End Property
+        Public Property Fingerprint2() As Array
+            Get
+                Return _fingerprint2
+            End Get
+            Set(ByVal value As Array)
+                _fingerprint2 = value
             End Set
         End Property
         Public Property Gender() As String

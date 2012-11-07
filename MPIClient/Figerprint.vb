@@ -6,6 +6,7 @@ Public Class Figerprint
     Private Const STR_StatusUnplugged As String = "Status: Unplugged"
     Private Const STR_StatusReady As String = "Status: Ready"
     Dim fingerImage As FingerImage
+    Dim fingerImage2 As FingerImage
     Dim fingerprintUtil As FingerprintUtil
 
     Private Sub AxGrFingerXCtrl1_SensorPlug(ByVal sender As System.Object, ByVal e As AxGrFingerXLib._IGrFingerXCtrlEvents_SensorPlugEvent) Handles grFingerXCtrl.SensorPlug
@@ -16,6 +17,7 @@ Public Class Figerprint
     Private Sub Figerprint_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         fingerprintUtil = New FingerprintUtil(labelStatus, grFingerXCtrl)
         fingerprintUtil.initializeFigerprint()
+
     End Sub
 
     Private Sub Figerprint_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
@@ -37,7 +39,13 @@ Public Class Figerprint
     End Sub
 
     Private Sub grFingerXCtrl_ImageAcquired(ByVal sender As System.Object, ByVal e As AxGrFingerXLib._IGrFingerXCtrlEvents_ImageAcquiredEvent) Handles grFingerXCtrl.ImageAcquired
-        fingerImage = fingerprintUtil.captureImage(e)
+
+        If pictureFringerprint1.BorderStyle = BorderStyle.FixedSingle Then
+            fingerImage = fingerprintUtil.captureImage(e)
+        Else
+            fingerImage2 = fingerprintUtil.captureImage(e)
+        End If
+        
         If Not (fingerImage Is Nothing) Then
             pictureFingerprint.Image = fingerImage.img
             pictureFingerprint.Update()
@@ -48,6 +56,7 @@ Public Class Figerprint
 
         End If
     End Sub
+
     Private Function getSelectedFingerprint() As PictureBox
         If pictureFringerprint1.BorderStyle = BorderStyle.FixedSingle Then
             Return pictureFringerprint1
@@ -57,7 +66,7 @@ Public Class Figerprint
     End Function
     Private Sub SearchButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SearchButton.Click
 
-        If fingerImage Is Nothing Then
+        If fingerImage Is Nothing Or fingerImage2 Is Nothing Then
             Return
         End If
         'Dim jsSerializer As New JavaScriptSerializer()
@@ -81,6 +90,7 @@ Public Class Figerprint
     Private Sub showSearchResultForm(ByVal patient As Patient)
         Dim searchResultForm As New SearchResult
         searchResultForm.setFingerImage(fingerImage)
+        searchResultForm.SetFingerImage2(fingerImage2)
         searchResultForm.setPatient(Patient)
         searchResultForm.setFilgerprintUtil(fingerprintUtil)
         searchResultForm.ShowDialog(Me)
@@ -88,6 +98,7 @@ Public Class Figerprint
     Private Function preparePatient() As Patient
         Dim patient As New Patient
         patient.Fingerprint = fingerprintUtil.extractFingerprint(fingerImage)
+        patient.Fingerprint2 = fingerprintUtil.extractFingerprint(fingerImage2)
         Return patient
     End Function
 

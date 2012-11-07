@@ -8,6 +8,7 @@ Public Class SearchResult
     Dim patient As Patient
     Dim fingerprintUtil As FingerprintUtil
     Dim fingerImage As FingerImage
+    Dim fingerImage2 As FingerImage
     Dim searchThread As Thread
     Dim filterredPatients As New List(Of Patient)()
     Dim webRequest As New WebRequestClass
@@ -18,7 +19,7 @@ Public Class SearchResult
     End Enum
     Private Sub bindSearchPatientResult()
 
-        Dim jsonObject As Object = webRequest.indentify(fingerprintUtil.extractJSON(fingerImage))
+        Dim jsonObject As Object = webRequest.indentify(fingerprintUtil.extractJSON(fingerImage), fingerprintUtil.extractJSON(fingerImage2))
 
         If (jsonObject Is Nothing) Then
             updateConnectionStatus(Status.Offline)
@@ -120,6 +121,9 @@ Public Class SearchResult
     End Sub
     Public Sub setFilgerprintUtil(ByVal fingerprintUtilObject As FingerprintUtil)
         fingerprintUtil = fingerprintUtilObject
+    End Sub
+    Friend Sub SetFingerImage2(ByVal fingerImage2 As FingerImage)
+        Me.fingerImage2 = fingerImage2
     End Sub
     Public Sub setFingerImage(ByVal fingerImage As FingerImage)
         Me.fingerImage = fingerImage

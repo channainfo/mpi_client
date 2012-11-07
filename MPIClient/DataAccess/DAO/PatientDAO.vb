@@ -9,6 +9,7 @@ Namespace DataAccess.DAO
         End Enum
         Public Const FINGERPRINT_IMAGE As String = "fingerprint_image"
         Public Const FINGERPRINT As String = "fingerprint"
+        Public Const FINGERPRINT2 As String = "fingerprint2"
         Public Const OLD_PATIENT_ID As String = "old_patient_id"
         Public Const PATIENT_ID As String = "patient_id"
         Public Const NEW_PATIENT_ID As String = "new_patient_id"
@@ -30,6 +31,10 @@ Namespace DataAccess.DAO
 
                 parameter = Database.CreateParameter(Database.CreateParameterName(FINGERPRINT), DbType.Binary)
                 parameter.Value = patient.Fingerprint
+                command.Parameters.Add(parameter)
+
+                parameter = Database.CreateParameter(Database.CreateParameterName(FINGERPRINT2), DbType.Binary)
+                parameter.Value = patient.Fingerprint2
                 command.Parameters.Add(parameter)
 
                 patientID = Database.ExecuteScalar(command)
