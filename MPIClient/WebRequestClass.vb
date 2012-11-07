@@ -121,11 +121,13 @@ Public Class WebRequestClass
 
     End Function
 
-    Function enroll(ByVal jsonObject As Object) As Object
+    Function enroll(ByVal jsonFingerprint1 As Object, ByVal jsonFingerprint2 As Object) As Object
         Dim jsonResult As Object = Nothing
 
         Try
-            Dim queryString As String = "fingerprint=" + jsonObject("tpt")
+            Dim queryString As String = "fingerprint=" + jsonFingerprint1("tpt")
+            queryString = queryString + "&fingerprint2=" + jsonFingerprint2("tpt")
+
             Dim queryData As Byte() = UTF8Encoding.UTF8.GetBytes(queryString)
             Dim url As String = ConfigManager.GetConfiguarationValue("Server") + ConfigManager.GetConfiguarationValue("EnrollURL")
             Dim httpRequest = WebRequest.Create(url)

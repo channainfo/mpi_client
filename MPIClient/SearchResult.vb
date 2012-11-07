@@ -85,7 +85,7 @@ Public Class SearchResult
 
 
         Dim result As Boolean = False
-        Dim jsonObject As Object = webRequest.enroll(fingerprintUtil.extractJSON(fingerImage))
+        Dim jsonObject As Object = webRequest.enroll(fingerprintUtil.extractJSON(fingerImage), fingerprintUtil.extractJSON(fingerImage2))
 
         If (jsonObject Is Nothing) Then
             updateConnectionStatus(Status.Offline)
