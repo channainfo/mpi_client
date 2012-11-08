@@ -89,11 +89,13 @@ Public Class WebRequestClass
         End Try
         Return jsonResult
     End Function
-    Function indentify(ByVal jsonFingerprint As Object, ByVal jsonFingerprint2 As Object) As Object
+    Function indentify(ByVal jsonFingerprint As Object, ByVal jsonFingerprint2 As Object, ByVal patient As Patient) As Object
         Dim jsonResult As Object = Nothing
         Try
-            Dim queryString As String = "fingerprint=" + jsonFingerprint("tpt")
-            queryString = queryString + "&fingerprint2=" + jsonFingerprint2("tpt")
+            Dim queryString As String = "fingerprint=" + jsonFingerprint("tpt") _
+            + "&fingerprint2=" + jsonFingerprint2("tpt") _
+            + "&gender=" + patient.Gender
+
             Dim queryData As Byte() = UTF8Encoding.UTF8.GetBytes(queryString)
             Dim url As String = ConfigManager.GetConfiguarationValue("Server") + ConfigManager.GetConfiguarationValue("IdentifyURL")
             Dim httpRequest = WebRequest.Create(url)

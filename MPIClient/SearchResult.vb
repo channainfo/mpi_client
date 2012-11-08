@@ -19,7 +19,7 @@ Public Class SearchResult
     End Enum
     Private Sub bindSearchPatientResult()
 
-        Dim jsonObject As Object = webRequest.indentify(fingerprintUtil.extractJSON(fingerImage), fingerprintUtil.extractJSON(fingerImage2))
+        Dim jsonObject As Object = webRequest.indentify(fingerprintUtil.extractJSON(fingerImage), fingerprintUtil.extractJSON(fingerImage2), patient)
 
         If (jsonObject Is Nothing) Then
             updateConnectionStatus(Status.Offline)
@@ -35,15 +35,15 @@ Public Class SearchResult
 
     End Sub
     Private Sub fillPatientListWithAllLocalDBData()
-        filterredPatients.AddRange(patientDAO.getMatchedPatients(patient.Fingerprint, fingerprintUtil))
+        filterredPatients.AddRange(patientDAO.getMatchedPatients(patient.Fingerprint, fingerprintUtil, patient.Gender))
     End Sub
     Private Sub fillPatientListWhenOnline(ByVal jsonObject As Object)
         filterredPatients.AddRange(GeneralUtil.getPatientListFromJSONObject(jsonObject))
         fillPatientListWithNonSynLocalDBData()
     End Sub
-    
+
     Private Sub fillPatientListWithNonSynLocalDBData()
-        filterredPatients.AddRange(patientDAO.getMatchedPatients(patient.Fingerprint, fingerprintUtil, patientDAO.Synchronization.NonSyn))
+        filterredPatients.AddRange(patientDAO.getMatchedPatients(patient.Fingerprint, fingerprintUtil, patient.Gender, patientDAO.Synchronization.NonSyn))
     End Sub
     Private Sub updateGridView()
         'If Me.InvokeRequired Then

@@ -152,12 +152,12 @@ Namespace DataAccess.DAO
 
             Return patients
         End Function
-        Public Function getMatchedPatients(ByVal fingerPrint As Array, ByVal fingerprintUtil As FingerprintUtil, Optional ByVal synOption As Synchronization = Synchronization.All) As List(Of Patient)
+        Public Function getMatchedPatients(ByVal fingerPrint As Array, ByVal fingerprintUtil As FingerprintUtil, ByVal gender As Int16, Optional ByVal synOption As Synchronization = Synchronization.All) As List(Of Patient)
             Dim reader As DbDataReader = Nothing
             If synOption = Synchronization.All Then
-                reader = getDataReaderOfAllPatients()
+                reader = getDataReaderOfAllPatients(gender)
             ElseIf synOption = Synchronization.NonSyn Then
-                reader = getDataReaderOfAllNonSynPatients()
+                reader = getDataReaderOfAllNonSynPatients(gender)
             End If
 
             Dim patientList As New List(Of Patient)()
@@ -169,7 +169,7 @@ Namespace DataAccess.DAO
                     patient.PatientID = Convert.ToString(reader("id"))
                     patient.FingerprintImage = Convert.ToString(reader("fingerprint_image"))
                     patient.Fingerprint = reader("fingerprint")
-                    patient.Gender = Convert.ToString(reader("gender"))
+                    patient.Gender = Convert.ToInt16(reader("gender"))
                     patient.DateBirth = Convert.ToString(reader("date_of_birth"))
                     patient.Syn = Convert.ToBoolean(reader("syn"))
                     patient.NumVisit = Convert.ToInt32(reader("num_visit"))
@@ -199,10 +199,39 @@ Namespace DataAccess.DAO
             Dim reader As DbDataReader = Database.ExecuteReader(command)
             Return reader
         End Function
+        Private Function getDataReaderOfAllPatients(ByVal gender As Int16) As DbDataReader
+            Dim command As DbCommand
+            command = Database.CreateCommand(Constant.GeneralConstants.SP_GET_ALL_PATIENTS)
+            command.CommandType = CommandType.StoredProcedure
+
+            Dim parameter As DbParameter
+
+            parameter = Database.CreateParameter(Database.CreateParameterName(GENDER), DbType.Int16)
+            parameter.Value = gender
+            command.Parameters.Add(parameter)
+
+            Dim reader As DbDataReader = Database.ExecuteReader(command)
+            Return reader
+        End Function
         Private Function getDataReaderOfAllNonSynPatients() As DbDataReader
             Dim command As DbCommand
             command = Database.CreateCommand(Constant.GeneralConstants.SP_GET_ALL_NONSYN_PATIENTS)
             command.CommandType = CommandType.StoredProcedure
+
+            Dim reader As DbDataReader = Database.ExecuteReader(command)
+            Return reader
+        End Function
+
+        Private Function getDataReaderOfAllNonSynPatients(ByVal gender As Int16) As DbDataReader
+            Dim command As DbCommand
+            command = Database.CreateCommand(Constant.GeneralConstants.SP_GET_ALL_NONSYN_PATIENTS)
+            command.CommandType = CommandType.StoredProcedure
+
+            Dim parameter As DbParameter
+
+            parameter = Database.CreateParameter(Database.CreateParameterName(gender), DbType.Int16)
+            parameter.Value = gender
+            command.Parameters.Add(parameter)
 
             Dim reader As DbDataReader = Database.ExecuteReader(command)
             Return reader

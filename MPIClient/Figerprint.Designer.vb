@@ -31,6 +31,7 @@ Partial Class Figerprint
         Me.SynchronizationButton = New System.Windows.Forms.Button
         Me.pictureFringerprint1 = New System.Windows.Forms.PictureBox
         Me.pictureFringerprint2 = New System.Windows.Forms.PictureBox
+        Me.genderCombobox = New System.Windows.Forms.ComboBox
         CType(Me.pictureFingerprint, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grFingerXCtrl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pictureFringerprint1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -53,7 +54,7 @@ Partial Class Figerprint
         'SearchButton
         '
         Me.SearchButton.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.SearchButton.Location = New System.Drawing.Point(397, 22)
+        Me.SearchButton.Location = New System.Drawing.Point(397, 55)
         Me.SearchButton.Name = "SearchButton"
         Me.SearchButton.Size = New System.Drawing.Size(109, 23)
         Me.SearchButton.TabIndex = 2
@@ -73,7 +74,7 @@ Partial Class Figerprint
         'grFingerXCtrl
         '
         Me.grFingerXCtrl.Enabled = True
-        Me.grFingerXCtrl.Location = New System.Drawing.Point(397, 110)
+        Me.grFingerXCtrl.Location = New System.Drawing.Point(397, 164)
         Me.grFingerXCtrl.Name = "grFingerXCtrl"
         Me.grFingerXCtrl.OcxState = CType(resources.GetObject("grFingerXCtrl.OcxState"), System.Windows.Forms.AxHost.State)
         Me.grFingerXCtrl.Size = New System.Drawing.Size(32, 32)
@@ -82,7 +83,7 @@ Partial Class Figerprint
         'closeButton
         '
         Me.closeButton.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.closeButton.Location = New System.Drawing.Point(397, 80)
+        Me.closeButton.Location = New System.Drawing.Point(397, 113)
         Me.closeButton.Name = "closeButton"
         Me.closeButton.Size = New System.Drawing.Size(109, 23)
         Me.closeButton.TabIndex = 2
@@ -91,7 +92,7 @@ Partial Class Figerprint
         '
         'SynchronizationButton
         '
-        Me.SynchronizationButton.Location = New System.Drawing.Point(397, 51)
+        Me.SynchronizationButton.Location = New System.Drawing.Point(397, 84)
         Me.SynchronizationButton.Name = "SynchronizationButton"
         Me.SynchronizationButton.Size = New System.Drawing.Size(109, 23)
         Me.SynchronizationButton.TabIndex = 5
@@ -119,11 +120,20 @@ Partial Class Figerprint
         Me.pictureFringerprint2.TabIndex = 6
         Me.pictureFringerprint2.TabStop = False
         '
+        'genderCombobox
+        '
+        Me.genderCombobox.FormattingEnabled = True
+        Me.genderCombobox.Location = New System.Drawing.Point(397, 13)
+        Me.genderCombobox.Name = "genderCombobox"
+        Me.genderCombobox.Size = New System.Drawing.Size(109, 21)
+        Me.genderCombobox.TabIndex = 7
+        '
         'Figerprint
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(534, 483)
+        Me.Controls.Add(Me.genderCombobox)
         Me.Controls.Add(Me.pictureFringerprint2)
         Me.Controls.Add(Me.pictureFringerprint1)
         Me.Controls.Add(Me.SynchronizationButton)
@@ -151,5 +161,6 @@ Partial Class Figerprint
     Friend WithEvents SynchronizationButton As System.Windows.Forms.Button
     Friend WithEvents pictureFringerprint1 As System.Windows.Forms.PictureBox
     Friend WithEvents pictureFringerprint2 As System.Windows.Forms.PictureBox
+    Friend WithEvents genderCombobox As System.Windows.Forms.ComboBox
 
 End Class

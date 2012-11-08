@@ -1,11 +1,14 @@
 ﻿Namespace DataAccess.Model
     Public Class Patient
-
+        Public Enum GenderEnum
+            Male = 1
+            Female = 2
+        End Enum
         Private _id As String
         Private _fingerprintImage As String
         Private _fingerprint As Array
         Private _fingerprint2 As Array
-        Private _gender As String
+        Private _gender As Integer
         Private _dateOfBirth As String
         Private _syn As Boolean
         Private _createdate As String
@@ -44,13 +47,20 @@
                 _fingerprint2 = value
             End Set
         End Property
-        Public Property Gender() As String
+        Public Property Gender() As Integer
             Get
                 Return _gender
             End Get
-            Set(ByVal value As String)
+            Set(ByVal value As Integer)
                 _gender = value
             End Set
+        End Property
+        Public ReadOnly Property GenderText() As String
+            Get
+                Dim genderEnum As GenderEnum
+                genderEnum = _gender
+                Return genderEnum.ToString()
+            End Get
         End Property
         Public Property DateBirth() As String
             Get

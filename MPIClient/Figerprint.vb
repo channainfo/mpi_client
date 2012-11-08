@@ -18,10 +18,23 @@ Public Class Figerprint
         fingerprintUtil = New FingerprintUtil(labelStatus, grFingerXCtrl)
         fingerprintUtil.initializeFigerprint()
 
+        Dim genderComboItems As New List(Of GenderComboboxItem)
+        genderComboItems.Add(New GenderComboboxItem(0, ""))
+        genderComboItems.Add(New GenderComboboxItem(Patient.GenderEnum.Male, Patient.GenderEnum.Male.ToString()))
+        genderComboItems.Add(New GenderComboboxItem(Patient.GenderEnum.Female, Patient.GenderEnum.Female.ToString()))
+
+        genderCombobox.DisplayMember = "genderText"
+        genderCombobox.ValueMember = "gender"
+
+        genderCombobox.DataSource = genderComboItems
+
+
+
     End Sub
 
     Private Sub Figerprint_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
         fingerprintUtil.disposeFingerprint()
+
     End Sub
 
     Private Sub grFingerXCtrl_SensorUnplug(ByVal sender As System.Object, ByVal e As AxGrFingerXLib._IGrFingerXCtrlEvents_SensorUnplugEvent) Handles grFingerXCtrl.SensorUnplug
@@ -66,7 +79,7 @@ Public Class Figerprint
     End Function
     Private Sub SearchButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SearchButton.Click
 
-        If fingerImage Is Nothing Or fingerImage2 Is Nothing Then
+        If fingerImage Is Nothing Or fingerImage2 Is Nothing Or genderCombobox.SelectedText = "" Then
             Return
         End If
         'Dim jsSerializer As New JavaScriptSerializer()
@@ -99,6 +112,7 @@ Public Class Figerprint
         Dim patient As New Patient
         patient.Fingerprint = fingerprintUtil.extractFingerprint(fingerImage)
         patient.Fingerprint2 = fingerprintUtil.extractFingerprint(fingerImage2)
+        patient.Gender = genderCombobox.SelectedValue
         Return patient
     End Function
 

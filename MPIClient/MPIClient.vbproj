@@ -107,6 +107,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FingerPrintUtil.vb" />
+    <Compile Include="GenderComboboxItem.vb" />
     <Compile Include="GeneralUtil.vb" />
     <Compile Include="ManualSyn.Designer.vb">
       <DependentUpon>ManualSyn.vb</DependentUpon>
