@@ -94,7 +94,7 @@ Public Class WebRequestClass
         Try
             Dim queryString As String = "fingerprint=" + jsonFingerprint("tpt") _
             + "&fingerprint2=" + jsonFingerprint2("tpt") _
-            + "&gender=" + patient.Gender
+            + "&gender=" + patient.Gender.ToString
 
             Dim queryData As Byte() = UTF8Encoding.UTF8.GetBytes(queryString)
             Dim url As String = ConfigManager.GetConfiguarationValue("Server") + ConfigManager.GetConfiguarationValue("IdentifyURL")

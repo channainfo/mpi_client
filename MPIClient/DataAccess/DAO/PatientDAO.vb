@@ -13,7 +13,7 @@ Namespace DataAccess.DAO
         Public Const OLD_PATIENT_ID As String = "old_patient_id"
         Public Const PATIENT_ID As String = "patient_id"
         Public Const NEW_PATIENT_ID As String = "new_patient_id"
-        Public Const GENDER As String = "gender"
+        Public Const GENDER_COL As String = "gender"
         Public Const DATE_OF_BIRTH As String = "date_of_birth"
         Public Sub New()
             MyBase.New()
@@ -66,7 +66,7 @@ Namespace DataAccess.DAO
                 parameter.Value = patient.PatientID
                 command.Parameters.Add(parameter)
 
-                parameter = Database.CreateParameter(Database.CreateParameterName(GENDER), DbType.String)
+                parameter = Database.CreateParameter(Database.CreateParameterName(GENDER_COL), DbType.String)
                 parameter.Value = patient.Gender
                 command.Parameters.Add(parameter)
 
@@ -201,12 +201,12 @@ Namespace DataAccess.DAO
         End Function
         Private Function getDataReaderOfAllPatients(ByVal gender As Int16) As DbDataReader
             Dim command As DbCommand
-            command = Database.CreateCommand(Constant.GeneralConstants.SP_GET_ALL_PATIENTS)
+            command = Database.CreateCommand(Constant.GeneralConstants.SP_GET_ALL_PATIENTS_BY_GENDER)
             command.CommandType = CommandType.StoredProcedure
 
             Dim parameter As DbParameter
 
-            parameter = Database.CreateParameter(Database.CreateParameterName(GENDER), DbType.Int16)
+            parameter = Database.CreateParameter(Database.CreateParameterName(GENDER_COL), DbType.Int16)
             parameter.Value = gender
             command.Parameters.Add(parameter)
 
@@ -224,12 +224,12 @@ Namespace DataAccess.DAO
 
         Private Function getDataReaderOfAllNonSynPatients(ByVal gender As Int16) As DbDataReader
             Dim command As DbCommand
-            command = Database.CreateCommand(Constant.GeneralConstants.SP_GET_ALL_NONSYN_PATIENTS)
+            command = Database.CreateCommand(Constant.GeneralConstants.SP_GET_ALL_NONSYN_PATIENTS_BY_GENDER)
             command.CommandType = CommandType.StoredProcedure
 
             Dim parameter As DbParameter
 
-            parameter = Database.CreateParameter(Database.CreateParameterName(gender), DbType.Int16)
+            parameter = Database.CreateParameter(Database.CreateParameterName(GENDER_COL), DbType.Int16)
             parameter.Value = gender
             command.Parameters.Add(parameter)
 

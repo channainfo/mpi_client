@@ -54,20 +54,23 @@ Public Class Figerprint
     Private Sub grFingerXCtrl_ImageAcquired(ByVal sender As System.Object, ByVal e As AxGrFingerXLib._IGrFingerXCtrlEvents_ImageAcquiredEvent) Handles grFingerXCtrl.ImageAcquired
 
         If pictureFringerprint1.BorderStyle = BorderStyle.FixedSingle Then
+
             fingerImage = fingerprintUtil.captureImage(e)
-        Else
-            fingerImage2 = fingerprintUtil.captureImage(e)
-        End If
-        
-        If Not (fingerImage Is Nothing) Then
             pictureFingerprint.Image = fingerImage.img
             pictureFingerprint.Update()
 
-            Dim selectedFingerprint As PictureBox = getSelectedFingerprint()
-            selectedFingerprint.Image = fingerImage.img
-            selectedFingerprint.Update()
+            pictureFringerprint1.Image = fingerImage.img
+            pictureFringerprint1.Update()
 
+        Else
+            fingerImage2 = fingerprintUtil.captureImage(e)
+            pictureFingerprint.Image = fingerImage2.img
+            pictureFingerprint.Update()
+
+            pictureFringerprint2.Image = fingerImage2.img
+            pictureFringerprint2.Update()
         End If
+
     End Sub
 
     Private Function getSelectedFingerprint() As PictureBox
@@ -79,7 +82,7 @@ Public Class Figerprint
     End Function
     Private Sub SearchButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SearchButton.Click
 
-        If fingerImage Is Nothing Or fingerImage2 Is Nothing Or genderCombobox.SelectedText = "" Then
+        If fingerImage Is Nothing Or fingerImage2 Is Nothing Or genderCombobox.SelectedValue = 0 Then
             Return
         End If
         'Dim jsSerializer As New JavaScriptSerializer()

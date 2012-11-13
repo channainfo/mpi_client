@@ -24,14 +24,6 @@ Partial Class SearchResult
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Me.DataGridView1 = New System.Windows.Forms.DataGridView
-        Me.PatientIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.GenderDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DateBirthDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.SynDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn
-        Me.CreatedateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.UpdatedateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.NumVisit = New System.Windows.Forms.DataGridViewLinkColumn
-        Me.PatientBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.newPatientButton = New System.Windows.Forms.Button
         Me.closeButton = New System.Windows.Forms.Button
         Me.waitingProgress = New System.Windows.Forms.ProgressBar
@@ -39,6 +31,14 @@ Partial Class SearchResult
         Me.countLabel = New System.Windows.Forms.Label
         Me.infoLabel = New System.Windows.Forms.Label
         Me.newVisitButton = New System.Windows.Forms.Button
+        Me.PatientBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PatientIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.GenderText = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.DateBirthDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.SynDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn
+        Me.CreatedateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.UpdatedateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.NumVisit = New System.Windows.Forms.DataGridViewLinkColumn
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PatientBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -49,7 +49,7 @@ Partial Class SearchResult
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientIDDataGridViewTextBoxColumn, Me.GenderDataGridViewTextBoxColumn, Me.DateBirthDataGridViewTextBoxColumn, Me.SynDataGridViewCheckBoxColumn, Me.CreatedateDataGridViewTextBoxColumn, Me.UpdatedateDataGridViewTextBoxColumn, Me.NumVisit})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientIDDataGridViewTextBoxColumn, Me.GenderText, Me.DateBirthDataGridViewTextBoxColumn, Me.SynDataGridViewCheckBoxColumn, Me.CreatedateDataGridViewTextBoxColumn, Me.UpdatedateDataGridViewTextBoxColumn, Me.NumVisit})
         Me.DataGridView1.DataSource = Me.PatientBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(12, 12)
         Me.DataGridView1.MultiSelect = False
@@ -58,60 +58,6 @@ Partial Class SearchResult
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(735, 257)
         Me.DataGridView1.TabIndex = 0
-        '
-        'PatientIDDataGridViewTextBoxColumn
-        '
-        Me.PatientIDDataGridViewTextBoxColumn.DataPropertyName = "PatientID"
-        Me.PatientIDDataGridViewTextBoxColumn.HeaderText = "PatientID"
-        Me.PatientIDDataGridViewTextBoxColumn.Name = "PatientIDDataGridViewTextBoxColumn"
-        Me.PatientIDDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'GenderDataGridViewTextBoxColumn
-        '
-        Me.GenderDataGridViewTextBoxColumn.DataPropertyName = "Gender"
-        Me.GenderDataGridViewTextBoxColumn.HeaderText = "Gender"
-        Me.GenderDataGridViewTextBoxColumn.Name = "GenderDataGridViewTextBoxColumn"
-        Me.GenderDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'DateBirthDataGridViewTextBoxColumn
-        '
-        Me.DateBirthDataGridViewTextBoxColumn.DataPropertyName = "DateBirth"
-        Me.DateBirthDataGridViewTextBoxColumn.HeaderText = "DateBirth"
-        Me.DateBirthDataGridViewTextBoxColumn.Name = "DateBirthDataGridViewTextBoxColumn"
-        Me.DateBirthDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'SynDataGridViewCheckBoxColumn
-        '
-        Me.SynDataGridViewCheckBoxColumn.DataPropertyName = "Syn"
-        Me.SynDataGridViewCheckBoxColumn.HeaderText = "Syn"
-        Me.SynDataGridViewCheckBoxColumn.Name = "SynDataGridViewCheckBoxColumn"
-        Me.SynDataGridViewCheckBoxColumn.ReadOnly = True
-        '
-        'CreatedateDataGridViewTextBoxColumn
-        '
-        Me.CreatedateDataGridViewTextBoxColumn.DataPropertyName = "Createdate"
-        Me.CreatedateDataGridViewTextBoxColumn.HeaderText = "Createdate"
-        Me.CreatedateDataGridViewTextBoxColumn.Name = "CreatedateDataGridViewTextBoxColumn"
-        Me.CreatedateDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'UpdatedateDataGridViewTextBoxColumn
-        '
-        Me.UpdatedateDataGridViewTextBoxColumn.DataPropertyName = "Updatedate"
-        Me.UpdatedateDataGridViewTextBoxColumn.HeaderText = "Updatedate"
-        Me.UpdatedateDataGridViewTextBoxColumn.Name = "UpdatedateDataGridViewTextBoxColumn"
-        Me.UpdatedateDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'NumVisit
-        '
-        Me.NumVisit.DataPropertyName = "NumVisit"
-        Me.NumVisit.HeaderText = "Visit History"
-        Me.NumVisit.Name = "NumVisit"
-        Me.NumVisit.ReadOnly = True
-        '
-        'PatientBindingSource
-        '
-        Me.PatientBindingSource.AllowNew = True
-        Me.PatientBindingSource.DataSource = GetType(MPIClient.DataAccess.Model.Patient)
         '
         'newPatientButton
         '
@@ -169,6 +115,60 @@ Partial Class SearchResult
         Me.newVisitButton.Text = "Enroll New Visit"
         Me.newVisitButton.UseVisualStyleBackColor = True
         '
+        'PatientBindingSource
+        '
+        Me.PatientBindingSource.AllowNew = True
+        Me.PatientBindingSource.DataSource = GetType(MPIClient.DataAccess.Model.Patient)
+        '
+        'PatientIDDataGridViewTextBoxColumn
+        '
+        Me.PatientIDDataGridViewTextBoxColumn.DataPropertyName = "PatientID"
+        Me.PatientIDDataGridViewTextBoxColumn.HeaderText = "PatientID"
+        Me.PatientIDDataGridViewTextBoxColumn.Name = "PatientIDDataGridViewTextBoxColumn"
+        Me.PatientIDDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'GenderText
+        '
+        Me.GenderText.DataPropertyName = "GenderText"
+        Me.GenderText.HeaderText = "GenderText"
+        Me.GenderText.Name = "GenderText"
+        Me.GenderText.ReadOnly = True
+        '
+        'DateBirthDataGridViewTextBoxColumn
+        '
+        Me.DateBirthDataGridViewTextBoxColumn.DataPropertyName = "DateBirth"
+        Me.DateBirthDataGridViewTextBoxColumn.HeaderText = "DateBirth"
+        Me.DateBirthDataGridViewTextBoxColumn.Name = "DateBirthDataGridViewTextBoxColumn"
+        Me.DateBirthDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'SynDataGridViewCheckBoxColumn
+        '
+        Me.SynDataGridViewCheckBoxColumn.DataPropertyName = "Syn"
+        Me.SynDataGridViewCheckBoxColumn.HeaderText = "Syn"
+        Me.SynDataGridViewCheckBoxColumn.Name = "SynDataGridViewCheckBoxColumn"
+        Me.SynDataGridViewCheckBoxColumn.ReadOnly = True
+        '
+        'CreatedateDataGridViewTextBoxColumn
+        '
+        Me.CreatedateDataGridViewTextBoxColumn.DataPropertyName = "Createdate"
+        Me.CreatedateDataGridViewTextBoxColumn.HeaderText = "Createdate"
+        Me.CreatedateDataGridViewTextBoxColumn.Name = "CreatedateDataGridViewTextBoxColumn"
+        Me.CreatedateDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'UpdatedateDataGridViewTextBoxColumn
+        '
+        Me.UpdatedateDataGridViewTextBoxColumn.DataPropertyName = "Updatedate"
+        Me.UpdatedateDataGridViewTextBoxColumn.HeaderText = "Updatedate"
+        Me.UpdatedateDataGridViewTextBoxColumn.Name = "UpdatedateDataGridViewTextBoxColumn"
+        Me.UpdatedateDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'NumVisit
+        '
+        Me.NumVisit.DataPropertyName = "NumVisit"
+        Me.NumVisit.HeaderText = "Visit History"
+        Me.NumVisit.Name = "NumVisit"
+        Me.NumVisit.ReadOnly = True
+        '
         'SearchResult
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -200,12 +200,12 @@ Partial Class SearchResult
     Friend WithEvents countTimer As System.Windows.Forms.Timer
     Friend WithEvents countLabel As System.Windows.Forms.Label
     Friend WithEvents infoLabel As System.Windows.Forms.Label
+    Friend WithEvents newVisitButton As System.Windows.Forms.Button
     Friend WithEvents PatientIDDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents GenderDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents GenderText As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DateBirthDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents SynDataGridViewCheckBoxColumn As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents CreatedateDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents UpdatedateDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents NumVisit As System.Windows.Forms.DataGridViewLinkColumn
-    Friend WithEvents newVisitButton As System.Windows.Forms.Button
 End Class

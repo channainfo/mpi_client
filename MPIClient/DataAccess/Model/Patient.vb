@@ -8,7 +8,7 @@
         Private _fingerprintImage As String
         Private _fingerprint As Array
         Private _fingerprint2 As Array
-        Private _gender As Integer
+        Private _gender As Integer?
         Private _dateOfBirth As String
         Private _syn As Boolean
         Private _createdate As String
@@ -47,17 +47,20 @@
                 _fingerprint2 = value
             End Set
         End Property
-        Public Property Gender() As Integer
+        Public Property Gender() As Integer?
             Get
                 Return _gender
             End Get
-            Set(ByVal value As Integer)
+            Set(ByVal value As Integer?)
                 _gender = value
             End Set
         End Property
         Public ReadOnly Property GenderText() As String
             Get
                 Dim genderEnum As GenderEnum
+                If _gender Is Nothing Then
+                    Return ""
+                End If
                 genderEnum = _gender
                 Return genderEnum.ToString()
             End Get
