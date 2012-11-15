@@ -23,6 +23,7 @@ Partial Class Synchronization
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Synchronization))
         Me.synchronizationButton = New System.Windows.Forms.Button
         Me.DataGridView1 = New System.Windows.Forms.DataGridView
         Me.PatientIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
@@ -33,8 +34,10 @@ Partial Class Synchronization
         Me.Status = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.PatientBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.synchronizationWorker = New System.ComponentModel.BackgroundWorker
+        Me.grFingerXCtrl = New AxGrFingerXLib.AxGrFingerXCtrl
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PatientBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grFingerXCtrl, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'synchronizationButton
@@ -111,17 +114,28 @@ Partial Class Synchronization
         'synchronizationWorker
         '
         '
+        'grFingerXCtrl
+        '
+        Me.grFingerXCtrl.Enabled = True
+        Me.grFingerXCtrl.Location = New System.Drawing.Point(826, 117)
+        Me.grFingerXCtrl.Name = "grFingerXCtrl"
+        Me.grFingerXCtrl.OcxState = CType(resources.GetObject("grFingerXCtrl.OcxState"), System.Windows.Forms.AxHost.State)
+        Me.grFingerXCtrl.Size = New System.Drawing.Size(32, 32)
+        Me.grFingerXCtrl.TabIndex = 5
+        '
         'Synchronization
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(890, 319)
+        Me.Controls.Add(Me.grFingerXCtrl)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.synchronizationButton)
         Me.Name = "Synchronization"
         Me.Text = "Synchronization"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PatientBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grFingerXCtrl, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -135,4 +149,5 @@ Partial Class Synchronization
     Friend WithEvents UpdatedateDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Status As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents synchronizationWorker As System.ComponentModel.BackgroundWorker
+    Friend WithEvents grFingerXCtrl As AxGrFingerXLib.AxGrFingerXCtrl
 End Class

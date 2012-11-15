@@ -9,20 +9,20 @@ Imports System.Collections.Specialized
 
 Public Class WebRequestClass
 
-    Sub synPatient(ByVal patient As Patient, ByVal uploadValuesCompleted As UploadValuesCompletedEventHandler, ByVal index As Integer)
+    Sub synPatient(ByVal patient As PatientSyn, ByVal uploadValuesCompleted As UploadValuesCompletedEventHandler, ByVal index As Integer)
 
         Using webClient As New WebClient()
-            Dim enrollService As UploadValuesCompletedEventHandler = Nothing
+            'Dim enrollService As UploadValuesCompletedEventHandler = Nothing
             AddHandler webClient.UploadValuesCompleted, uploadValuesCompleted
 
-            uploadValuesCompleted.Invoke(webClient, Nothing)
+            'uploadValuesCompleted.Invoke(webClient, Nothing)
             Dim jsSerializer As New JavaScriptSerializer()
             Dim jsonResult As Object = Nothing
             Try
                 Dim formData As New NameValueCollection()
                 formData.Add("patient", jsSerializer.Serialize(patient))
                 Dim url As String = ConfigManager.GetConfiguarationValue("Server") + ConfigManager.GetConfiguarationValue("SynURL")
-                'webClient.UploadValuesAsync(New Uri(url), "post", formData, index)
+                webClient.UploadValuesAsync(New Uri(url), "post", formData, index)
             Catch ex As Exception
                 'Throw ex
             End Try

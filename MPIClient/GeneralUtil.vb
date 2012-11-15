@@ -16,6 +16,9 @@ Public Class GeneralUtil
 
     Public Shared Function getPatientFromJSONObject(ByVal jsonObject As Object) As Patient
         Dim patient As Patient = Nothing
+        If jsonObject Is Nothing Then
+            Return patient
+        End If
         Dim jsonPatient As Object = jsonObject("patient")
         If Not jsonPatient Is Nothing Then
             Dim jsSerializer As New JavaScriptSerializer()

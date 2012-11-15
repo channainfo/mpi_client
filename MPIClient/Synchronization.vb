@@ -9,6 +9,7 @@ Public Class Synchronization
     Dim numberOfSyn As Integer
     Dim numberOfSynLeft As Integer
     Dim patientDAO As New PatientDAO
+    Dim visitDAO As New VisitDAO
     Dim nonSynPatients As New List(Of Patient)()
     Dim workerThread As Thread
     Dim matchedPatients As New List(Of Patient)
@@ -49,11 +50,25 @@ Public Class Synchronization
             Else
                 workerThread.Suspend()
             End If
-            webRequestClass.synPatient(nonSynPatients(index), AddressOf uploadLoadValuesCompleted, index)
+            Dim currentPatient As Patient = nonSynPatients(index)
+            webRequestClass.synPatient(preparePatientSynObject(currentPatient), AddressOf uploadLoadValuesCompleted, index)
         Next
 
     End Sub
 
+    Private Function preparePatientSynObject(ByVal currentPatient As Patient) As PatientSyn
+        Dim patientSyn As New PatientSyn
+        Dim fingerprintUtil As New FingerprintUtil(grFingerXCtrl)
+        patientSyn.PatientID = currentPatient.PatientID
+        patientSyn.Fingerprint = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint)
+        patientSyn.Fingerprint2 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint2)
+        patientSyn.Gender = currentPatient.Gender
+        patientSyn.DateBirth = currentPatient.DateBirth
+        patientSyn.Createdate = currentPatient.Createdate
+        patientSyn.Updatedate = currentPatient.Updatedate
+        currentPatient.Visits = visitDAO.getAll(currentPatient.PatientID)
+        Return patientSyn
+    End Function
     Private Sub synchronizationWorker_RunWorkerCompleted(ByVal sender As System.Object, ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles synchronizationWorker.RunWorkerCompleted
 
         MessageBox.Show("Finish.")
@@ -85,14 +100,17 @@ Public Class Synchronization
         Dim jsonResult As Object = Nothing
         Dim jsSerializer As New JavaScriptSerializer()
 
-        If e.Error Is Nothing Then
+        If Not e.Error Is Nothing Then
             updateProgressStatus(ProgressStatus.ContainError, itemIndex)
             Return
         End If
 
         jsonResult = jsSerializer.DeserializeObject(jsonString)
+        Dim patient As Patient = GeneralUtil.getPatientFromJSONObject(jsonResult)
+        If Not patient Is Nothing Then
+            matchedPatients.AddRange(patient)
+        End If
 
-        matchedPatients.AddRange(GeneralUtil.getPatientFromJSONObject(jsonResult))
 
         If matchedPatients.Count = 1 Then
             Dim status = patientDAO.Update(currentPatient.PatientID, matchedPatients(0))
