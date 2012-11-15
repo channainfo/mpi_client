@@ -6,6 +6,7 @@ Imports System.Web.Script.Serialization
 Imports MPIClient.DataAccess.Model
 Imports MPIClient.DataAccess.DAO
 Imports System.Collections.Specialized
+Imports System.Web
 
 Public Class WebRequestClass
 
@@ -92,8 +93,9 @@ Public Class WebRequestClass
     Function indentify(ByVal jsonFingerprint As Object, ByVal jsonFingerprint2 As Object, ByVal patient As Patient) As Object
         Dim jsonResult As Object = Nothing
         Try
-            Dim queryString As String = "fingerprint=" + jsonFingerprint("tpt") _
-            + "&fingerprint2=" + jsonFingerprint2("tpt") _
+
+            Dim queryString As String = "fingerprint=" + HttpUtility.UrlEncode(jsonFingerprint("tpt")) _
+            + "&fingerprint2=" + HttpUtility.UrlEncode(jsonFingerprint2("tpt")) _
             + "&gender=" + patient.Gender.ToString
 
             Dim queryData As Byte() = UTF8Encoding.UTF8.GetBytes(queryString)
@@ -127,8 +129,8 @@ Public Class WebRequestClass
         Dim jsonResult As Object = Nothing
 
         Try
-            Dim queryString As String = "fingerprint=" + jsonFingerprint1("tpt")
-            queryString = queryString + "&fingerprint2=" + jsonFingerprint2("tpt")
+            Dim queryString As String = "fingerprint=" + HttpUtility.UrlEncode(jsonFingerprint1("tpt"))
+            queryString = queryString + "&fingerprint2=" + HttpUtility.UrlEncode(jsonFingerprint2("tpt"))
 
             Dim queryData As Byte() = UTF8Encoding.UTF8.GetBytes(queryString)
             Dim url As String = ConfigManager.GetConfiguarationValue("Server") + ConfigManager.GetConfiguarationValue("EnrollURL")
