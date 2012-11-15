@@ -39,4 +39,3 @@ C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\obj\x86\Release\MPIClient.Search
 C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\obj\x86\Release\MPIClient.Synchronization.resources
 C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\obj\x86\Release\MPIClient.VisitHistory.resources
 C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\obj\x86\Release\MPIClient.vbproj.GenerateResource.Cache
-C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\obj\x86\Release\MPIClient.NewPatient.resources
