@@ -97,6 +97,7 @@
     <Compile Include="DataAccess\Database.vb" />
     <Compile Include="DataAccess\GeneralConstants.vb" />
     <Compile Include="DataAccess\Model\Patient.vb" />
+    <Compile Include="DataAccess\Model\PatientSyn.vb" />
     <Compile Include="DataAccess\Model\Visit.vb" />
     <Compile Include="DataAccess\SqlServerDatabase.vb" />
     <Compile Include="Figerprint.vb">
@@ -129,6 +130,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="NewPatient.Designer.vb">
+      <DependentUpon>NewPatient.vb</DependentUpon>
+    </Compile>
+    <Compile Include="NewPatient.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="NewVisit.Designer.vb">
       <DependentUpon>NewVisit.vb</DependentUpon>
@@ -168,6 +175,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewPatient.resx">
+      <DependentUpon>NewPatient.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewVisit.resx">
       <DependentUpon>NewVisit.vb</DependentUpon>

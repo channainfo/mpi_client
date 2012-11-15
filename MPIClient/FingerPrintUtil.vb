@@ -1,4 +1,5 @@
 ﻿Imports System.Web.Script.Serialization
+Imports GrFingerXLib
 
 ' Raw image data type.
 Public Class FingerImage
@@ -14,12 +15,10 @@ Public Class FingerImage
 End Class
 Public Class FingerprintUtil
     Private Declare Function GetDC Lib "user32" (ByVal hwnd As Int32) As Int32
-    Dim labelStatus As Label
     Dim grFingerX As AxGrFingerXLib.AxGrFingerXCtrl
 
     ' Raw image data type.
-    Public Sub New(ByVal labelStatus As Label, ByVal grFingerX As AxGrFingerXLib.AxGrFingerXCtrl)
-        Me.labelStatus = labelStatus
+    Public Sub New(ByVal grFingerX As AxGrFingerXLib.AxGrFingerXCtrl)
         Me.grFingerX = grFingerX
     End Sub
 
@@ -46,10 +45,11 @@ Public Class FingerprintUtil
         grFingerX.CapFinalize()
     End Sub
     Public Function extractFingerprint(ByVal fingerImage As FingerImage) As Array
+        Dim templateSize As Integer = GRConstants.GR_MAX_SIZE_TEMPLATE
+        Dim fingerprint(templateSize) As Byte
+        Dim status As Integer = grFingerX.Extract(fingerImage.rawImage, fingerImage.width, fingerImage.height, fingerImage.res, fingerprint, templateSize, GrFingerXLib.GRConstants.GR_DEFAULT_CONTEXT)
 
-        Dim fingerprint As Array = Array.CreateInstance(GetType(Byte), 5000)
-        Dim status As Integer = grFingerX.Extract(fingerImage.rawImage, fingerImage.width, fingerImage.height, fingerImage.res, fingerprint, fingerprint.Length, GrFingerXLib.GRConstants.GR_DEFAULT_CONTEXT)
-
+        Array.Resize(fingerprint, templateSize)
         If status < 0 Then
             Return Nothing
         Else
@@ -94,6 +94,25 @@ Public Class FingerprintUtil
         Dim jsSerializer As New JavaScriptSerializer()
         Dim jsonObject As Object = jsSerializer.DeserializeObject(jsonString)
         Return jsonObject
+    End Function
+
+    Function getTemplateBase64(ByVal fingerprint As Array) As String
+
+        If fingerprint Is Nothing Then
+            Return ""
+        End If
+        Dim temSize As Integer = fingerprint.Length
+        'Dim tempTpt As Array = Array.CreateInstance(GetType(Byte), fingerprint.Length)
+        Dim tt As Integer = GRConstants.GR_MAX_SIZE_TEMPLATE
+        Dim encodedBuffer(tt) As Byte
+        Try
+            Dim retVal As Integer = grFingerX.EncodeBase64(fingerprint, temSize, encodedBuffer, tt)
+        Catch e As Exception
+            MessageBox.Show(e.Message)
+        End Try
+        Array.Resize(encodedBuffer, tt)
+        Dim template64 As String = System.Text.Encoding.UTF8.GetString(encodedBuffer)
+        Return template64
     End Function
 
 End Class

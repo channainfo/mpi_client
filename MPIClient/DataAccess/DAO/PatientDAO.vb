@@ -37,6 +37,10 @@ Namespace DataAccess.DAO
                 parameter.Value = patient.Fingerprint2
                 command.Parameters.Add(parameter)
 
+                parameter = Database.CreateParameter(Database.CreateParameterName(GENDER_COL), DbType.Int16)
+                parameter.Value = patient.Gender
+                command.Parameters.Add(parameter)
+
                 patientID = Database.ExecuteScalar(command)
                 result = 1
             Catch ex As Exception
@@ -245,6 +249,7 @@ Namespace DataAccess.DAO
                     patient.PatientID = Convert.ToString(reader("id"))
                     patient.FingerprintImage = Convert.ToString(reader("fingerprint_image"))
                     patient.Fingerprint = reader("fingerprint")
+                    patient.Fingerprint2 = reader("fingerprint2")
                     patient.Gender = Convert.ToString(reader("gender"))
                     patient.DateBirth = Convert.ToString(reader("date_of_birth"))
                     patient.Syn = Convert.ToBoolean(reader("syn"))

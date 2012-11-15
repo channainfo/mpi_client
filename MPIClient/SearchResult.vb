@@ -70,39 +70,17 @@ Public Class SearchResult
             Return
         End If
 
-        If (MessageBox.Show("Are you sure you want to enroll new patient?", "Enrollment Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) = Windows.Forms.DialogResult.OK) Then
-            Dim patientID As String = Nothing
-            If patientDAO.Add(patient, patientID) > 0 Then
-                updatePatientIDFromWebServiceCall(patientID)
-                MessageBox.Show("Successfully save with PatientID = " + patientID)
-            Else
-                MessageBox.Show("Error while saving!!!")
-            End If
-        End If
+        showNewPatientForm()
 
     End Sub
-    Private Function updatePatientIDFromWebServiceCall(ByRef patientID As String) As Boolean
 
-
-        Dim result As Boolean = False
-        Dim jsonObject As Object = webRequest.enroll(fingerprintUtil.extractJSON(fingerImage), fingerprintUtil.extractJSON(fingerImage2))
-
-        If (jsonObject Is Nothing) Then
-            updateConnectionStatus(Status.Offline)
-        ElseIf jsonObject("error") = "" Then
-            result = True
-            updateConnectionStatus(Status.Online)
-            Dim newPatientID As String
-            newPatientID = jsonObject("patientid")
-            If patientDAO.updatePatientID(patientID, newPatientID) > 0 Then
-                patientID = newPatientID
-            End If
-        Else
-            updateConnectionStatus(Status.OnlineButServerError, jsonObject("error"))
-        End If
-
-        Return result
-    End Function
+    Private Sub showNewPatientForm()
+        Dim newPatientForm As New NewPatient
+        newPatientForm.SetPatient(patient)
+        newPatientForm.SetFingerImage(fingerImage)
+        newPatientForm.SetFingerImage2(fingerImage2)
+        newPatientForm.ShowDialog(Me)
+    End Sub
     Private Sub SearchResult_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Control.CheckForIllegalCrossThreadCalls = False
         If patient Is Nothing Then

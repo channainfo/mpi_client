@@ -15,7 +15,7 @@ Public Class Figerprint
     End Sub
 
     Private Sub Figerprint_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        fingerprintUtil = New FingerprintUtil(labelStatus, grFingerXCtrl)
+        fingerprintUtil = New FingerprintUtil(grFingerXCtrl)
         fingerprintUtil.initializeFigerprint()
 
         Dim genderComboItems As New List(Of GenderComboboxItem)
