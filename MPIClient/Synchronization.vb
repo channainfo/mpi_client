@@ -64,8 +64,10 @@ Public Class Synchronization
         patientSyn.Fingerprint2 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint2)
         patientSyn.Gender = currentPatient.Gender
         patientSyn.DateBirth = currentPatient.DateBirth
-        patientSyn.Createdate = currentPatient.Createdate
-        patientSyn.Updatedate = currentPatient.Updatedate
+
+
+        patientSyn.Createdate = DateTime.Parse(currentPatient.Createdate).ToString("yyyy/MM/dd HH.mm.ss")
+        patientSyn.Updatedate = DateTime.Parse(currentPatient.Updatedate).ToString("yyyy/MM/dd HH.mm.ss")
         currentPatient.Visits = visitDAO.getAll(currentPatient.PatientID)
         Return patientSyn
     End Function
