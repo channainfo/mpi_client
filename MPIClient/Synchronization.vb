@@ -36,7 +36,6 @@ Public Class Synchronization
 
     Private Sub synchronizationButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles synchronizationButton.Click
         synchronizationWorker.RunWorkerAsync()
-
     End Sub
 
     Private Sub synchronizationWorker_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles synchronizationWorker.DoWork
@@ -51,7 +50,7 @@ Public Class Synchronization
                 workerThread.Suspend()
             End If
             Dim currentPatient As Patient = nonSynPatients(index)
-            webRequestClass.synPatient(preparePatientSynObject(currentPatient), AddressOf uploadLoadValuesCompleted, index)
+            webRequestClass.synPatient(preparePatientSynObject(currentPatient), AddressOf uploadProgressChange, AddressOf uploadLoadValuesCompleted, index)
         Next
 
     End Sub
@@ -73,13 +72,20 @@ Public Class Synchronization
     End Function
     Private Sub synchronizationWorker_RunWorkerCompleted(ByVal sender As System.Object, ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles synchronizationWorker.RunWorkerCompleted
 
-        MessageBox.Show("Finish.")
+        'MessageBox.Show("Finish.")
 
     End Sub
+    Private Sub uploadProgressChange(ByVal sender As Object, ByVal e As System.Net.UploadProgressChangedEventArgs)
+        Dim itemIndex As Integer = e.UserState
 
+        updateProgressStatus(ProgressStatus.Processing, itemIndex)
+
+    End Sub
     Private Sub updateProgressStatus(ByVal status As ProgressStatus, ByVal index As Integer, Optional ByVal numOfRecords As Int16 = 0)
         If status = ProgressStatus.Starting Then
             DataGridView1.Rows(index).Cells(5).Value = "Synchronizing."
+            'DataGridView1.Rows(index).Cells(5) = New DataGridViewImageCell()
+            'DataGridView1.Rows(index).Cells(5).Value = My.Resources.loading_icon
         ElseIf status = ProgressStatus.Processing Then
             DataGridView1.Rows(index).Cells(5).Value += "."
         ElseIf status = ProgressStatus.Completed Then
@@ -94,18 +100,18 @@ Public Class Synchronization
 
     Private Sub uploadLoadValuesCompleted(ByVal sender As Object, ByVal e As System.Net.UploadValuesCompletedEventArgs)
         numberOfSynLeft = numberOfSynLeft + 1
-
         Dim itemIndex As Integer = e.UserState
-        Dim currentPatient As Patient = DataGridView1.Rows(itemIndex).DataBoundItem
-
-        Dim jsonString As String = Encoding.UTF8.GetString(e.Result)
-        Dim jsonResult As Object = Nothing
-        Dim jsSerializer As New JavaScriptSerializer()
 
         If Not e.Error Is Nothing Then
             updateProgressStatus(ProgressStatus.ContainError, itemIndex)
             Return
         End If
+
+        Dim currentPatient As Patient = DataGridView1.Rows(itemIndex).DataBoundItem
+
+        Dim jsonString As String = Encoding.UTF8.GetString(e.Result)
+        Dim jsonResult As Object = Nothing
+        Dim jsSerializer As New JavaScriptSerializer()
 
         jsonResult = jsSerializer.DeserializeObject(jsonString)
         Dim patient As Patient = GeneralUtil.getPatientFromJSONObject(jsonResult)
@@ -145,5 +151,9 @@ Public Class Synchronization
         manualSyn.SetCurrentPatient(currentPatient)
         manualSyn.SetMatchedPatients(matchedPatients)
         manualSyn.ShowDialog(Me)
+    End Sub
+
+    Private Sub DataGridView1_CellPainting(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellPaintingEventArgs) Handles DataGridView1.CellPainting
+
     End Sub
 End Class

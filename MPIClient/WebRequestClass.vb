@@ -10,12 +10,12 @@ Imports System.Web
 
 Public Class WebRequestClass
 
-    Sub synPatient(ByVal patient As PatientSyn, ByVal uploadValuesCompleted As UploadValuesCompletedEventHandler, ByVal index As Integer)
+    Sub synPatient(ByVal patient As PatientSyn, ByVal uploadProgressChange As UploadProgressChangedEventHandler, ByVal uploadValuesCompleted As UploadValuesCompletedEventHandler, ByVal index As Integer)
 
         Using webClient As New WebClient()
             'Dim enrollService As UploadValuesCompletedEventHandler = Nothing
             AddHandler webClient.UploadValuesCompleted, uploadValuesCompleted
-
+            AddHandler webClient.UploadProgressChanged, uploadProgressChange
             'uploadValuesCompleted.Invoke(webClient, Nothing)
             Dim jsSerializer As New JavaScriptSerializer()
             Dim jsonResult As Object = Nothing
