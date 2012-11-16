@@ -32,6 +32,8 @@ Partial Class Figerprint
         Me.pictureFringerprint1 = New System.Windows.Forms.PictureBox
         Me.pictureFringerprint2 = New System.Windows.Forms.PictureBox
         Me.genderCombobox = New System.Windows.Forms.ComboBox
+        Me.fingerprintQuality1 = New System.Windows.Forms.Label
+        Me.fingerprintQuality2 = New System.Windows.Forms.Label
         CType(Me.pictureFingerprint, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grFingerXCtrl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pictureFringerprint1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -128,11 +130,31 @@ Partial Class Figerprint
         Me.genderCombobox.Size = New System.Drawing.Size(109, 21)
         Me.genderCombobox.TabIndex = 7
         '
+        'fingerprintQuality1
+        '
+        Me.fingerprintQuality1.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.fingerprintQuality1.Location = New System.Drawing.Point(46, 463)
+        Me.fingerprintQuality1.Name = "fingerprintQuality1"
+        Me.fingerprintQuality1.Size = New System.Drawing.Size(121, 13)
+        Me.fingerprintQuality1.TabIndex = 8
+        Me.fingerprintQuality1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'fingerprintQuality2
+        '
+        Me.fingerprintQuality2.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.fingerprintQuality2.Location = New System.Drawing.Point(193, 463)
+        Me.fingerprintQuality2.Name = "fingerprintQuality2"
+        Me.fingerprintQuality2.Size = New System.Drawing.Size(121, 13)
+        Me.fingerprintQuality2.TabIndex = 8
+        Me.fingerprintQuality2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'Figerprint
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(534, 483)
+        Me.Controls.Add(Me.fingerprintQuality2)
+        Me.Controls.Add(Me.fingerprintQuality1)
         Me.Controls.Add(Me.genderCombobox)
         Me.Controls.Add(Me.pictureFringerprint2)
         Me.Controls.Add(Me.pictureFringerprint1)
@@ -162,5 +184,7 @@ Partial Class Figerprint
     Friend WithEvents pictureFringerprint1 As System.Windows.Forms.PictureBox
     Friend WithEvents pictureFringerprint2 As System.Windows.Forms.PictureBox
     Friend WithEvents genderCombobox As System.Windows.Forms.ComboBox
+    Friend WithEvents fingerprintQuality1 As System.Windows.Forms.Label
+    Friend WithEvents fingerprintQuality2 As System.Windows.Forms.Label
 
 End Class

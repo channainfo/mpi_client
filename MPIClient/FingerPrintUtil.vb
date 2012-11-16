@@ -29,14 +29,14 @@ Public Class FingerprintUtil
         End If
         Return grFingerX.CapInitialize
     End Function
-    Public Function captureImage(ByVal e As AxGrFingerXLib._IGrFingerXCtrlEvents_ImageAcquiredEvent) As FingerImage
+    Public Function captureImage(ByVal e As AxGrFingerXLib._IGrFingerXCtrlEvents_ImageAcquiredEvent, Optional ByRef status As Integer = -1) As FingerImage
         Dim hdc As Integer = GetDC(0)
         Dim fingerImage As New FingerImage
         fingerImage.rawImage = e.rawImage
         fingerImage.width = e.width
         fingerImage.height = e.height
         fingerImage.res = e.res
-        grFingerX.BiometricDisplay(extractFingerprint(fingerImage), fingerImage.rawImage, e.width, e.height, e.res, hdc, fingerImage.img, GrFingerXLib.GRConstants.GR_NO_CONTEXT)
+        grFingerX.BiometricDisplay(extractFingerprint(fingerImage, status), fingerImage.rawImage, e.width, e.height, e.res, hdc, fingerImage.img, GrFingerXLib.GRConstants.GR_NO_CONTEXT)
         'grFingerX.CapRawImageToHandle(fingerImage.rawImage, e.width, e.height, hdc, fingerImage.img)
         Return fingerImage
     End Function
@@ -44,10 +44,10 @@ Public Class FingerprintUtil
         grFingerX.Finalize()
         grFingerX.CapFinalize()
     End Sub
-    Public Function extractFingerprint(ByVal fingerImage As FingerImage) As Array
+    Public Function extractFingerprint(ByVal fingerImage As FingerImage, Optional ByRef status As Integer = -1) As Array
         Dim templateSize As Integer = GRConstants.GR_MAX_SIZE_TEMPLATE
         Dim fingerprint(templateSize) As Byte
-        Dim status As Integer = grFingerX.Extract(fingerImage.rawImage, fingerImage.width, fingerImage.height, fingerImage.res, fingerprint, templateSize, GrFingerXLib.GRConstants.GR_DEFAULT_CONTEXT)
+        status = grFingerX.Extract(fingerImage.rawImage, fingerImage.width, fingerImage.height, fingerImage.res, fingerprint, templateSize, GrFingerXLib.GRConstants.GR_DEFAULT_CONTEXT)
 
         Array.Resize(fingerprint, templateSize)
         If status < 0 Then

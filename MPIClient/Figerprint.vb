@@ -5,6 +5,9 @@ Public Class Figerprint
     Private Const STR_StatusFingerPlaced As String = "Status: scaning finger"
     Private Const STR_StatusUnplugged As String = "Status: Unplugged"
     Private Const STR_StatusReady As String = "Status: Ready"
+    Public Const STR_IMAGE_BAD_QUALITY = "Bad Quality"
+    Public Const STR_IMAGE_MEDIUM_QUALITY = "Medium Quality"
+    Public Const STR_IMAGE_HIGHT_QUALITY = "Hight Quality"
     Dim fingerImage As FingerImage
     Dim fingerImage2 As FingerImage
     Dim fingerprintUtil As FingerprintUtil
@@ -31,7 +34,17 @@ Public Class Figerprint
 
 
     End Sub
-
+    Private Function getImageQaulity(ByVal status As Integer) As String
+        If status = GrFingerXLib.GRConstants.GR_BAD_QUALITY Then
+            Return STR_IMAGE_BAD_QUALITY
+        ElseIf status = GrFingerXLib.GRConstants.GR_MEDIUM_QUALITY Then
+            Return STR_IMAGE_MEDIUM_QUALITY
+        ElseIf status = GrFingerXLib.GRConstants.GR_HIGH_QUALITY Then
+            Return STR_IMAGE_HIGHT_QUALITY
+        Else
+            Return ""
+        End If
+    End Function
     Private Sub Figerprint_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
         fingerprintUtil.disposeFingerprint()
 
@@ -52,10 +65,12 @@ Public Class Figerprint
     End Sub
 
     Private Sub grFingerXCtrl_ImageAcquired(ByVal sender As System.Object, ByVal e As AxGrFingerXLib._IGrFingerXCtrlEvents_ImageAcquiredEvent) Handles grFingerXCtrl.ImageAcquired
+        Dim status As Integer
 
         If pictureFringerprint1.BorderStyle = BorderStyle.FixedSingle Then
 
-            fingerImage = fingerprintUtil.captureImage(e)
+            fingerImage = fingerprintUtil.captureImage(e, status)
+            fingerprintQuality1.Text = getImageQaulity(status)
             pictureFingerprint.Image = fingerImage.img
             pictureFingerprint.Update()
 
@@ -63,7 +78,8 @@ Public Class Figerprint
             pictureFringerprint1.Update()
 
         Else
-            fingerImage2 = fingerprintUtil.captureImage(e)
+            fingerImage2 = fingerprintUtil.captureImage(e, status)
+            fingerprintQuality2.Text = getImageQaulity(status)
             pictureFingerprint.Image = fingerImage2.img
             pictureFingerprint.Update()
 
@@ -82,7 +98,7 @@ Public Class Figerprint
     End Function
     Private Sub SearchButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SearchButton.Click
 
-        If fingerImage Is Nothing Or fingerImage2 Is Nothing Or genderCombobox.SelectedValue = 0 Then
+        If fingerImage Is Nothing Or fingerImage2 Is Nothing Or genderCombobox.SelectedValue = 0 Or fingerprintQuality1.Text = STR_IMAGE_BAD_QUALITY Or fingerprintQuality2.Text = STR_IMAGE_BAD_QUALITY Then
             Return
         End If
         'Dim jsSerializer As New JavaScriptSerializer()
