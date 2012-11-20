@@ -12,7 +12,7 @@
         Private _createdate As String
         Private _updatedate As String
         Private _visits As List(Of VisitSyn)
-        Public Property PatientID() As String
+        Public Property patientid() As String
             Get
                 Return _id
             End Get
@@ -21,7 +21,7 @@
             End Set
         End Property
 
-        Public Property Fingerprint() As String
+        Public Property fingerprint() As String
             Get
                 Return _fingerprint
             End Get
@@ -29,7 +29,7 @@
                 _fingerprint = value
             End Set
         End Property
-        Public Property Fingerprint2() As String
+        Public Property fingerprint2() As String
             Get
                 Return _fingerprint2
             End Get
@@ -37,7 +37,7 @@
                 _fingerprint2 = value
             End Set
         End Property
-        Public Property Gender() As Integer
+        Public Property gender() As Integer
             Get
                 Return _gender
             End Get
@@ -46,7 +46,7 @@
             End Set
         End Property
         
-        Public Property DateBirth() As String
+        Public Property datebirth() As String
             Get
                 Return _dateOfBirth
             End Get
@@ -55,7 +55,7 @@
             End Set
         End Property
 
-        Public Property Createdate() As String
+        Public Property createdate() As String
             Get
                 Return _createdate
             End Get
@@ -63,7 +63,7 @@
                 _createdate = value
             End Set
         End Property
-        Public Property Updatedate() As String
+        Public Property updatedate() As String
             Get
                 Return _updatedate
             End Get
@@ -72,7 +72,7 @@
             End Set
         End Property
 
-        Public Property Visits() As List(Of VisitSyn)
+        Public Property visits() As List(Of VisitSyn)
             Get
                 Return _visits
             End Get

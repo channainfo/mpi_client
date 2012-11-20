@@ -58,15 +58,15 @@ Public Class Synchronization
     Private Function preparePatientSynObject(ByVal currentPatient As Patient) As PatientSyn
         Dim patientSyn As New PatientSyn
         Dim fingerprintUtil As New FingerprintUtil(grFingerXCtrl)
-        patientSyn.PatientID = currentPatient.PatientID
-        patientSyn.Fingerprint = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint)
-        patientSyn.Fingerprint2 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint2)
-        patientSyn.Gender = currentPatient.Gender
-        patientSyn.DateBirth = currentPatient.DateBirth
+        patientSyn.patientid = currentPatient.PatientID
+        patientSyn.fingerprint = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint)
+        patientSyn.fingerprint2 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint2)
+        patientSyn.gender = currentPatient.Gender
+        patientSyn.datebirth = currentPatient.DateBirth
 
 
-        patientSyn.Createdate = DateTime.Parse(currentPatient.Createdate).ToString("yyyy/MM/dd HH.mm.ss")
-        patientSyn.Updatedate = DateTime.Parse(currentPatient.Updatedate).ToString("yyyy/MM/dd HH.mm.ss")
+        patientSyn.createdate = DateTime.Parse(currentPatient.Createdate).ToString("yyyy/MM/dd HH.mm.ss")
+        patientSyn.updatedate = DateTime.Parse(currentPatient.Updatedate).ToString("yyyy/MM/dd HH.mm.ss")
         currentPatient.Visits = visitDAO.getAll(currentPatient.PatientID)
         patientSyn.addVisits(currentPatient.Visits)
         Return patientSyn
