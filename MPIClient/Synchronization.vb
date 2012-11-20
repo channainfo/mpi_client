@@ -68,6 +68,7 @@ Public Class Synchronization
         patientSyn.Createdate = DateTime.Parse(currentPatient.Createdate).ToString("yyyy/MM/dd HH.mm.ss")
         patientSyn.Updatedate = DateTime.Parse(currentPatient.Updatedate).ToString("yyyy/MM/dd HH.mm.ss")
         currentPatient.Visits = visitDAO.getAll(currentPatient.PatientID)
+        patientSyn.addVisits(currentPatient.Visits)
         Return patientSyn
     End Function
     Private Sub synchronizationWorker_RunWorkerCompleted(ByVal sender As System.Object, ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles synchronizationWorker.RunWorkerCompleted

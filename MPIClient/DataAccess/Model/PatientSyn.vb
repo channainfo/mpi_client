@@ -11,7 +11,7 @@
         Private _dateOfBirth As String
         Private _createdate As String
         Private _updatedate As String
-        Private _visits As List(Of Visit)
+        Private _visits As List(Of VisitSyn)
         Public Property PatientID() As String
             Get
                 Return _id
@@ -72,14 +72,31 @@
             End Set
         End Property
 
-        Public Property Visits() As List(Of Visit)
+        Public Property Visits() As List(Of VisitSyn)
             Get
                 Return _visits
             End Get
-            Set(ByVal value As List(Of Visit))
+            Set(ByVal value As List(Of VisitSyn))
                 _visits = value
             End Set
         End Property
 
+        Public Sub addVisits(ByVal visitsData As List(Of Visit))
+            Dim visitSynObject As New VisitSyn
+            For Each visitObject As Visit In visitsData
+                visitSynObject.visitid = visitObject.VisitID
+                visitSynObject.visitdate = visitObject.VisitDate
+                visitSynObject.updatedate = visitObject.Updatedate
+                visitSynObject.syn = visitObject.Syn
+                visitSynObject.sitecode = visitObject.SiteCode
+                visitSynObject.serviceid = visitObject.ServiceID
+                visitSynObject.patientid = visitObject.PatientID
+                visitSynObject.info = visitObject.Info
+                visitSynObject.externalcode = visitObject.ExternalCode
+                visitSynObject.createdate = visitObject.Createdate
+                _visits.Add(visitSynObject)
+            Next
+
+        End Sub
     End Class
 End Namespace

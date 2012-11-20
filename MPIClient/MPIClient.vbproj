@@ -99,6 +99,7 @@
     <Compile Include="DataAccess\Model\Patient.vb" />
     <Compile Include="DataAccess\Model\PatientSyn.vb" />
     <Compile Include="DataAccess\Model\Visit.vb" />
+    <Compile Include="DataAccess\Model\VisitSyn.vb" />
     <Compile Include="DataAccess\SqlServerDatabase.vb" />
     <Compile Include="Figerprint.vb">
       <SubType>Form</SubType>
@@ -215,10 +216,6 @@
       <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
     </COMReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="loading_icon.gif" />
-    <None Include="Resources\loading_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
