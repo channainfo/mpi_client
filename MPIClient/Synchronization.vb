@@ -82,7 +82,7 @@ Public Class Synchronization
         updateProgressStatus(ProgressStatus.Processing, itemIndex)
 
     End Sub
-    Private Sub updateProgressStatus(ByVal status As ProgressStatus, ByVal index As Integer, Optional ByVal numOfRecords As Int16 = 0)
+    Private Sub updateProgressStatus(ByVal status As ProgressStatus, ByVal index As Integer, Optional ByVal errorMessage As String = "", Optional ByVal numOfRecords As Int16 = 0)
         If status = ProgressStatus.Starting Then
             DataGridView1.Rows(index).Cells(5).Value = "Synchronizing."
             'DataGridView1.Rows(index).Cells(5) = New DataGridViewImageCell()
@@ -92,10 +92,16 @@ Public Class Synchronization
         ElseIf status = ProgressStatus.Completed Then
             DataGridView1.Rows(index).Cells(5).Value = "Completed."
         ElseIf status = ProgressStatus.ContainError Then
-            DataGridView1.Rows(index).Cells(5).Value = "Error."
+            Dim cell As DataGridViewLinkCell = New DataGridViewLinkCell()
+            cell.Value = "Error."
+            cell.ErrorText = errorMessage
+            DataGridView1.Rows(index).Cells(5) = cell
+            'DataGridView1.Rows(index).Cells(5).Value = "Error."
+            'DataGridView1.Rows(index).Cells(5).ErrorText = errorMessage
         ElseIf status = ProgressStatus.ManualSyn Then
-            DataGridView1.Rows(index).Cells(5) = New DataGridViewLinkCell()
-            DataGridView1.Rows(index).Cells(5).Value = numOfRecords + " records found"
+            Dim cell As DataGridViewLinkCell = New DataGridViewLinkCell()
+            cell.Value = numOfRecords + " records found"
+            DataGridView1.Rows(index).Cells(5) = cell
         End If
     End Sub
 
@@ -104,22 +110,15 @@ Public Class Synchronization
         Dim itemIndex As Integer = e.UserState
 
         If Not e.Error Is Nothing Then
-            updateProgressStatus(ProgressStatus.ContainError, itemIndex)
+            updateProgressStatus(ProgressStatus.ContainError, itemIndex, e.Error.Message)
             Return
         End If
 
         Dim currentPatient As Patient = DataGridView1.Rows(itemIndex).DataBoundItem
 
-        Dim jsonString As String = Encoding.UTF8.GetString(e.Result)
-        Dim jsonResult As Object = Nothing
-        Dim jsSerializer As New JavaScriptSerializer()
+        Dim jsonResult As Object = serializeToJSONObject(e.Result)
 
-        jsonResult = jsSerializer.DeserializeObject(jsonString)
-        Dim patient As Patient = GeneralUtil.getPatientFromJSONObject(jsonResult)
-        If Not patient Is Nothing Then
-            matchedPatients.AddRange(patient)
-        End If
-
+        matchedPatients.AddRange(GeneralUtil.getPatientListFromJSONObject(jsonResult))
 
         If matchedPatients.Count = 1 Then
             Dim status = patientDAO.Update(currentPatient.PatientID, matchedPatients(0))
@@ -131,7 +130,7 @@ Public Class Synchronization
         ElseIf matchedPatients.Count > 1 Then
             updateProgressStatus(ProgressStatus.ManualSyn, itemIndex, matchedPatients.Count)
         Else
-            updateProgressStatus(ProgressStatus.ContainError, itemIndex)
+            updateProgressStatus(ProgressStatus.ContainError, itemIndex, jsonResult("error"))
         End If
 
 
@@ -141,10 +140,29 @@ Public Class Synchronization
         End If
     End Sub
 
+    Private Shared Function serializeToJSONObject(ByVal result As Byte()) As Object
+        Dim jsonString As String = Encoding.UTF8.GetString(result)
+        Dim jsonResult As Object = Nothing
+        Dim jsSerializer As New JavaScriptSerializer()
+
+        Try
+            jsonResult = jsSerializer.DeserializeObject(jsonString)
+        Catch ex As Exception
+            
+        End Try
+        Return jsonResult
+    End Function
     Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-        Dim currentPatient As Patient = DataGridView1.Rows(e.RowIndex).DataBoundItem
-        If TypeOf sender Is DataGridViewLinkCell Then
+        Dim dataGridItem As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
+        Dim currentPatient As Patient = dataGridItem.DataBoundItem
+        Dim cell As DataGridViewCell = dataGridItem.Cells(5)
+        If Not TypeOf cell Is DataGridViewLinkCell Then
+            Return
+        End If
+        If cell.ErrorText.Equals("") Then
             showManualSynForm(currentPatient)
+        Else
+            MessageBox.Show(cell.ErrorText)
         End If
     End Sub
     Private Sub showManualSynForm(ByVal currentPatient As Patient)

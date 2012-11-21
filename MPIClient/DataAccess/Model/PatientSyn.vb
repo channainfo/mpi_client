@@ -82,6 +82,11 @@
         End Property
 
         Public Sub addVisits(ByVal visitsData As List(Of Visit))
+
+            If _visits Is Nothing Then
+                _visits = New List(Of VisitSyn)
+            End If
+
             Dim visitSynObject As New VisitSyn
             For Each visitObject As Visit In visitsData
                 visitSynObject.visitid = visitObject.VisitID
