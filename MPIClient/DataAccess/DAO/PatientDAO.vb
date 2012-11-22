@@ -15,6 +15,7 @@ Namespace DataAccess.DAO
         Public Const NEW_PATIENT_ID As String = "new_patient_id"
         Public Const GENDER_COL As String = "gender"
         Public Const DATE_OF_BIRTH As String = "date_of_birth"
+        Public Const SYN As String = "syn"
         Public Sub New()
             MyBase.New()
         End Sub
@@ -78,6 +79,9 @@ Namespace DataAccess.DAO
                 parameter.Value = patient.DateBirth
                 command.Parameters.Add(parameter)
 
+                parameter = Database.CreateParameter(Database.CreateParameterName(SYN), DbType.Boolean)
+                parameter.Value = patient.Syn
+                command.Parameters.Add(parameter)
 
                 result = Database.ExecuteNonQuery(command, transaction)
 

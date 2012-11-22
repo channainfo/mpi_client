@@ -12,7 +12,8 @@ Public Class Synchronization
     Dim visitDAO As New VisitDAO
     Dim nonSynPatients As New List(Of Patient)()
     Dim workerThread As Thread
-    Dim matchedPatients As New List(Of Patient)
+    Dim patients As New List(Of Patient)
+    Public Const PATIENT_ID_COL_IDEX As Integer = 0
     Enum ProgressStatus
         Starting
         ContainError
@@ -65,8 +66,8 @@ Public Class Synchronization
         patientSyn.datebirth = currentPatient.DateBirth
 
 
-        patientSyn.createdate = DateTime.Parse(currentPatient.Createdate).ToString("yyyy/MM/dd HH.mm.ss")
-        patientSyn.updatedate = DateTime.Parse(currentPatient.Updatedate).ToString("yyyy/MM/dd HH.mm.ss")
+        patientSyn.createdate = DateTime.Parse(currentPatient.Createdate).ToString("yyyy-MM-dd HH:mm:ss")
+        patientSyn.updatedate = DateTime.Parse(currentPatient.Updatedate).ToString("yyyy-MM-dd HH:mm:ss")
         currentPatient.Visits = visitDAO.getAll(currentPatient.PatientID)
         patientSyn.addVisits(currentPatient.Visits)
         Return patientSyn
@@ -100,7 +101,7 @@ Public Class Synchronization
             'DataGridView1.Rows(index).Cells(5).ErrorText = errorMessage
         ElseIf status = ProgressStatus.ManualSyn Then
             Dim cell As DataGridViewLinkCell = New DataGridViewLinkCell()
-            cell.Value = numOfRecords + " records found"
+            cell.Value = numOfRecords.ToString() + " records found"
             DataGridView1.Rows(index).Cells(5) = cell
         End If
     End Sub
@@ -108,7 +109,7 @@ Public Class Synchronization
     Private Sub uploadLoadValuesCompleted(ByVal sender As Object, ByVal e As System.Net.UploadValuesCompletedEventArgs)
         numberOfSynLeft = numberOfSynLeft + 1
         Dim itemIndex As Integer = e.UserState
-
+        Dim patients As New List(Of Patient)
         If Not e.Error Is Nothing Then
             updateProgressStatus(ProgressStatus.ContainError, itemIndex, e.Error.Message)
             Return
@@ -118,17 +119,21 @@ Public Class Synchronization
 
         Dim jsonResult As Object = serializeToJSONObject(e.Result)
 
-        matchedPatients.AddRange(GeneralUtil.getPatientListFromJSONObject(jsonResult))
+        patients.AddRange(GeneralUtil.getPatientListFromJSONObject(jsonResult))
 
-        If matchedPatients.Count = 1 Then
-            Dim status = patientDAO.Update(currentPatient.PatientID, matchedPatients(0))
-            If status > 0 Then
+        If patients.Count = 1 Then
+            Dim patient As Patient = patients(0)
+            patient.Syn = True
+            Dim status = patientDAO.Update(currentPatient.PatientID, patient)
+            If status >= 0 Then
                 updateProgressStatus(ProgressStatus.Completed, itemIndex)
+                DataGridView1.Rows(itemIndex).Cells(PATIENT_ID_COL_IDEX).Value = patient.PatientID
             Else
-                updateProgressStatus(ProgressStatus.ContainError, itemIndex)
+                updateProgressStatus(ProgressStatus.ContainError, itemIndex, "Fail in synchronizing data in local database.")
             End If
-        ElseIf matchedPatients.Count > 1 Then
-            updateProgressStatus(ProgressStatus.ManualSyn, itemIndex, matchedPatients.Count)
+        ElseIf patients.Count > 1 Then
+            DataGridView1.Rows(itemIndex).Cells(5).Tag = patients
+            updateProgressStatus(ProgressStatus.ManualSyn, itemIndex, patients.Count)
         Else
             updateProgressStatus(ProgressStatus.ContainError, itemIndex, jsonResult("error"))
         End If
@@ -160,15 +165,15 @@ Public Class Synchronization
             Return
         End If
         If cell.ErrorText.Equals("") Then
-            showManualSynForm(currentPatient)
+            showManualSynForm(currentPatient, cell.Tag)
         Else
             MessageBox.Show(cell.ErrorText)
         End If
     End Sub
-    Private Sub showManualSynForm(ByVal currentPatient As Patient)
+    Private Sub showManualSynForm(ByVal currentPatient As Patient, ByVal patients As List(Of Patient))
         Dim manualSyn As New ManualSyn
         manualSyn.SetCurrentPatient(currentPatient)
-        manualSyn.SetMatchedPatients(matchedPatients)
+        manualSyn.SetMatchedPatients(patients)
         manualSyn.ShowDialog(Me)
     End Sub
 
