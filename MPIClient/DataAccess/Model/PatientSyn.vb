@@ -90,15 +90,15 @@
             Dim visitSynObject As New VisitSyn
             For Each visitObject As Visit In visitsData
                 visitSynObject.visitid = visitObject.VisitID
-                visitSynObject.visitdate = visitObject.VisitDate
-                visitSynObject.updatedate = visitObject.Updatedate
+                visitSynObject.visitdate = DateTime.Parse(visitObject.VisitDate).ToString("yyyy-MM-dd HH:mm:ss")
+                visitSynObject.updatedate = DateTime.Parse(visitObject.Updatedate).ToString("yyyy-MM-dd HH:mm:ss")
                 visitSynObject.syn = visitObject.Syn
                 visitSynObject.sitecode = visitObject.SiteCode
                 visitSynObject.serviceid = visitObject.ServiceID
                 visitSynObject.patientid = visitObject.PatientID
                 visitSynObject.info = visitObject.Info
                 visitSynObject.externalcode = visitObject.ExternalCode
-                visitSynObject.createdate = visitObject.Createdate
+                visitSynObject.createdate = DateTime.Parse(visitObject.Createdate).ToString("yyyy-MM-dd HH:mm:ss")
                 _visits.Add(visitSynObject)
             Next
 
