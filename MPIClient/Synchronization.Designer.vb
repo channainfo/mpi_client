@@ -113,6 +113,7 @@ Partial Class Synchronization
         '
         'synchronizationWorker
         '
+        Me.synchronizationWorker.WorkerSupportsCancellation = True
         '
         'grFingerXCtrl
         '

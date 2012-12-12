@@ -27,6 +27,7 @@ Public Class Synchronization
     End Enum
 
     Private Sub Synchronization_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Control.CheckForIllegalCrossThreadCalls = False
         synButtonCaption = synchronizationButton.Text
         numberOfSyn = Convert.ToInt16(ConfigManager.GetConfiguarationValue("NumberOfSyn"))
         numberOfSynLeft = numberOfSyn
@@ -75,11 +76,14 @@ Public Class Synchronization
             If numberOfSynLeft > 0 Then
                 updateProgressStatus(ProgressStatus.Starting, index)
                 numberOfSynLeft = numberOfSynLeft - 1
-            Else
+                Dim currentPatient As Patient = nonSynPatients(index)
+                webRequestClass.synPatient(preparePatientSynObject(currentPatient), AddressOf uploadProgressChange, AddressOf uploadLoadValuesCompleted, index)
+            End If
+
+            If numberOfSynLeft <= 0 Then
                 workerThread.Suspend()
             End If
-            Dim currentPatient As Patient = nonSynPatients(index)
-            webRequestClass.synPatient(preparePatientSynObject(currentPatient), AddressOf uploadProgressChange, AddressOf uploadLoadValuesCompleted, index)
+
         Next
         If numberOfSynLeft = numberOfSyn Then
             updateSynCaptionButtonBackToSyn()
@@ -87,8 +91,10 @@ Public Class Synchronization
     End Sub
     Private Sub uploadLoadValuesCompleted(ByVal senders As Object, ByVal e As System.Net.UploadValuesCompletedEventArgs)
 
+
+
         numberOfSynLeft = numberOfSynLeft + 1
-        If Not workerThread.IsAlive Then
+        If workerThread.ThreadState = 68 Or workerThread.ThreadState = ThreadState.Suspended Then
             workerThread.Resume()
         End If
 
@@ -111,18 +117,22 @@ Public Class Synchronization
             Dim status = patientDAO.Update(currentPatient.PatientID, patient)
             If status >= 0 Then
                 updateProgressStatus(ProgressStatus.Completed, itemIndex)
+                DataGridView1.Visible = False
                 DataGridView1.Rows(itemIndex).Cells(PATIENT_ID_COL_IDEX).Value = patient.PatientID
+                DataGridView1.Visible = True
             Else
                 updateProgressStatus(ProgressStatus.ContainError, itemIndex, "Fail in synchronizing data in local database.")
             End If
         ElseIf patients.Count > 1 Then
+            DataGridView1.Visible = False
             DataGridView1.Rows(itemIndex).Cells(STATUS_COL_IDEX).Tag = patients
-            updateProgressStatus(ProgressStatus.ManualSyn, itemIndex, patients.Count)
+            DataGridView1.Visible = True
+            updateProgressStatus(ProgressStatus.ManualSyn, itemIndex, "", patients.Count)
         Else
             updateProgressStatus(ProgressStatus.ContainError, itemIndex, jsonResult("error"))
         End If
 
-
+        DataGridView1.Visible = True
         'updateProgressStatus(ProgressStatus.Completed, 0)
 
     End Sub
@@ -171,6 +181,8 @@ Public Class Synchronization
             'DataGridView1.Rows(index).Cells(STATUS_COL_IDEX).ErrorText = errorMessage
         ElseIf status = ProgressStatus.ManualSyn Then
             Dim cell As DataGridViewLinkCell = New DataGridViewLinkCell()
+            Dim currentCell = DataGridView1.Rows(index).Cells(STATUS_COL_IDEX)
+            cell.Tag = currentCell.Tag
             cell.Value = numOfRecords.ToString() + " records found"
             DataGridView1.Rows(index).Cells(STATUS_COL_IDEX) = cell
         End If
