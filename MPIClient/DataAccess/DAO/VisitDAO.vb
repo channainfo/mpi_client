@@ -185,6 +185,27 @@ Namespace DataAccess.DAO
             Return result
 
         End Function
+        Public Function deletePatientVisits(ByVal patientID As String) As Integer
+            Dim result As Integer
+
+            Dim command As DbCommand
+            Try
+                command = Database.CreateCommand(Constant.GeneralConstants.SP_DELETE_PATIENT_VISITS)
+                command.CommandType = CommandType.StoredProcedure
+
+                Dim parameter As DbParameter
+
+                parameter = Database.CreateParameter(Database.CreateParameterName(PATIENT_ID), DbType.String)
+                parameter.Value = patientID
+                command.Parameters.Add(parameter)
+
+                result = Database.ExecuteNonQuery(command)
+
+            Catch ex As Exception
+                result = -1
+            End Try
+
+        End Function
 
     End Class
 End Namespace

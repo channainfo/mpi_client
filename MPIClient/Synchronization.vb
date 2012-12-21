@@ -140,8 +140,8 @@ Public Class Synchronization
         Dim patientSyn As New PatientSyn
         Dim fingerprintUtil As New FingerprintUtil(grFingerXCtrl)
         patientSyn.patientid = currentPatient.PatientID
-        patientSyn.fingerprint = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint)
-        patientSyn.fingerprint2 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint2)
+        patientSyn.fingerprint = fingerprintUtil.getTemplateBase64(currentPatient.Finger1Right)
+        patientSyn.fingerprint2 = fingerprintUtil.getTemplateBase64(currentPatient.Finger2Right)
         patientSyn.gender = currentPatient.Gender
         patientSyn.datebirth = currentPatient.DateBirth
 

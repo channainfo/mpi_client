@@ -19,3 +19,5 @@ C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\obj\x86\Release\MPIClient.vbproj
 C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\obj\x86\Release\MPIClient.exe
 C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\obj\x86\Release\MPIClient.xml
 C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\obj\x86\Release\MPIClient.pdb
+C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\obj\x86\Release\MPIClient.Fingerprint2.resources
+C:\projects\HiPPP-MPIClient\MPIClient\MPIClient\obj\x86\Release\MPIClient.SearchResult2.resources

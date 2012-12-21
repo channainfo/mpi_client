@@ -11,5 +11,6 @@
         Public Const SP_INSERT_NEW_VISIT As String = "dbo.sp_insert_new_visit"
         Public Const SP_UPDATE_VISIT_ID As String = "dbo.sp_update_visit_id"
         Public Const SP_UPDATE_PATIENT_STATUS_TO_SYN As String = "dbo.sp_update_patient_status_to_syn"
+        Public Const SP_DELETE_PATIENT_VISITS As String = "dbo.sp_delete_patient_visits"
     End Class
 End Namespace

@@ -2,16 +2,14 @@
 Imports MPIClient.DataAccess.DAO
 Imports System.Threading
 Imports System.Web.Script.Serialization
-
-Public Class SearchResult
+Public Class SearchResult2
     Dim patientDAO As New PatientDAO
     Dim patient As Patient
     Dim fingerprintUtil As FingerprintUtil
-    Dim fingerImage As FingerImage
-    Dim fingerImage2 As FingerImage
     Dim searchThread As Thread
     Dim filterredPatients As New List(Of Patient)()
     Dim webRequest As New WebRequestClass
+    Dim grFingerX As AxGrFingerXLib.AxGrFingerXCtrl
     Enum Status
         Online
         Offline
@@ -19,17 +17,17 @@ Public Class SearchResult
     End Enum
     Private Sub bindSearchPatientResult()
 
-        Dim jsonObject As Object = webRequest.indentify(fingerprintUtil.extractJSON(fingerImage), fingerprintUtil.extractJSON(fingerImage2), patient)
+        Dim jsonObject As Object = webRequest.indentify(patient, grFingerX)
 
         If (jsonObject Is Nothing) Then
             updateConnectionStatus(Status.Offline)
-            fillPatientListWithAllLocalDBData()
+            'fillPatientListWithAllLocalDBData()
         ElseIf jsonObject("error") = "" Then
             updateConnectionStatus(Status.Online)
-            fillPatientListWhenOnline(jsonObject)
+            'fillPatientListWhenOnline(jsonObject)
         Else
             updateConnectionStatus(Status.OnlineButServerError, jsonObject("error"))
-            fillPatientListWithAllLocalDBData()
+            'fillPatientListWithAllLocalDBData()
         End If
         updateGridView()
 
@@ -87,7 +85,7 @@ Public Class SearchResult
         Dim result As Boolean = False
         Dim webRequest As New WebRequestClass
 
-        Dim jsonObject As Object = webRequest.enroll(patient, fingerprintUtil.extractJSON(fingerImage), fingerprintUtil.extractJSON(fingerImage2))
+        Dim jsonObject As Object = webRequest.enroll(patient, grFingerX)
 
         If (jsonObject Is Nothing) Then
             updateConnectionStatus(Status.Offline)
@@ -105,8 +103,7 @@ Public Class SearchResult
 
         Return result
     End Function
-
-    Private Sub SearchResult_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub SearchResult2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Control.CheckForIllegalCrossThreadCalls = False
         If patient Is Nothing Then
             Return
@@ -116,20 +113,15 @@ Public Class SearchResult
         'searchThread.Priority = ThreadPriority.Highest
         searchThread.Start()
         countTimer.Enabled = True
-
     End Sub
-
     Public Sub setPatient(ByVal patientObject As Patient)
         patient = patientObject
     End Sub
     Public Sub setFilgerprintUtil(ByVal fingerprintUtilObject As FingerprintUtil)
         fingerprintUtil = fingerprintUtilObject
     End Sub
-    Friend Sub SetFingerImage2(ByVal fingerImage2 As FingerImage)
-        Me.fingerImage2 = fingerImage2
-    End Sub
-    Public Sub setFingerImage(ByVal fingerImage As FingerImage)
-        Me.fingerImage = fingerImage
+    Friend Sub SetGrFingerX(ByVal grFingerX As AxGrFingerXLib.AxGrFingerXCtrl)
+        Me.grFingerX = grFingerX
     End Sub
     Private Sub buttonClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles closeButton.Click
         Me.Close()
@@ -177,8 +169,7 @@ Public Class SearchResult
 
     End Sub
 
-    Private Sub SearchResult_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
+    Private Sub SearchResult2_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
         Me.Owner.Show()
     End Sub
-
 End Class

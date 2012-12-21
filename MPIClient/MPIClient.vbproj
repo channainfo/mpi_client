@@ -108,6 +108,12 @@
       <DependentUpon>Figerprint.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Fingerprint2.Designer.vb">
+      <DependentUpon>Fingerprint2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Fingerprint2.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FingerPrintUtil.vb" />
     <Compile Include="GenderComboboxItem.vb" />
     <Compile Include="GeneralUtil.vb" />
@@ -144,6 +150,12 @@
     <Compile Include="SearchResult.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SearchResult2.Designer.vb">
+      <DependentUpon>SearchResult2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SearchResult2.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Synchronization.Designer.vb">
       <DependentUpon>Synchronization.vb</DependentUpon>
     </Compile>
@@ -162,6 +174,9 @@
     <EmbeddedResource Include="Figerprint.resx">
       <DependentUpon>Figerprint.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Fingerprint2.resx">
+      <DependentUpon>Fingerprint2.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ManualSyn.resx">
       <DependentUpon>ManualSyn.vb</DependentUpon>
     </EmbeddedResource>
@@ -176,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SearchResult.resx">
       <DependentUpon>SearchResult.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchResult2.resx">
+      <DependentUpon>SearchResult2.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Synchronization.resx">
       <DependentUpon>Synchronization.vb</DependentUpon>
@@ -216,6 +234,33 @@
       <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\euro-10_37122_lg.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Log-Out-icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search-green-neon-icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Synchronize-icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\left.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\right.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\right1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-contact-new-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folder-History-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

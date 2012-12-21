@@ -31,11 +31,11 @@ Namespace DataAccess.DAO
                 Dim parameter As DbParameter
 
                 parameter = Database.CreateParameter(Database.CreateParameterName(FINGERPRINT), DbType.Binary)
-                parameter.Value = patient.Fingerprint
+                parameter.Value = patient.Finger1Right
                 command.Parameters.Add(parameter)
 
                 parameter = Database.CreateParameter(Database.CreateParameterName(FINGERPRINT2), DbType.Binary)
-                parameter.Value = patient.Fingerprint2
+                parameter.Value = patient.Finger2Right
                 command.Parameters.Add(parameter)
 
                 parameter = Database.CreateParameter(Database.CreateParameterName(GENDER_COL), DbType.Int16)
@@ -50,7 +50,7 @@ Namespace DataAccess.DAO
 
             Return result
         End Function
-        Public Function Update(ByVal oldPatientID As String, ByVal patient As Patient)
+        Public Function Update(ByVal oldPatientID As String, ByVal patient As Patient, Optional ByVal isDeleteVisits As Boolean = True)
             Dim result As String = 0
 
             Dim command As DbCommand
@@ -84,9 +84,12 @@ Namespace DataAccess.DAO
                 command.Parameters.Add(parameter)
 
                 result = Database.ExecuteNonQuery(command, transaction)
+                Dim visitDao As New VisitDAO
+                If isDeleteVisits Then
+                    visitDao.deletePatientVisits(oldPatientID)
+                End If
 
                 If patient.Visits.Count > 0 Then
-                    Dim visitDao As New VisitDAO
                     visitDao.Add(patient.Visits, transaction)
                 End If
 
@@ -176,14 +179,14 @@ Namespace DataAccess.DAO
                     Dim patient As New Patient()
                     patient.PatientID = Convert.ToString(reader("id"))
                     patient.FingerprintImage = Convert.ToString(reader("fingerprint_image"))
-                    patient.Fingerprint = reader("fingerprint")
+                    patient.Finger1Right = reader("fingerprint")
                     patient.Gender = Convert.ToInt16(reader("gender"))
                     patient.DateBirth = Convert.ToString(reader("date_of_birth"))
                     patient.Syn = Convert.ToBoolean(reader("syn"))
                     patient.NumVisit = Convert.ToInt32(reader("num_visit"))
                     patient.Createdate = Convert.ToString(reader("createdate"))
                     patient.Updatedate = Convert.ToString(reader("updatedate"))
-                    If (fingerprintUtil.indentifyFingerprint(patient.Fingerprint, score)) Then
+                    If (fingerprintUtil.indentifyFingerprint(patient.Finger1Right, score)) Then
                         patientList.Add(patient)
                     End If
                 End While
@@ -252,8 +255,8 @@ Namespace DataAccess.DAO
                     Dim patient As New Patient()
                     patient.PatientID = Convert.ToString(reader("id"))
                     patient.FingerprintImage = Convert.ToString(reader("fingerprint_image"))
-                    patient.Fingerprint = reader("fingerprint")
-                    patient.Fingerprint2 = reader("fingerprint2")
+                    patient.Finger1Right = reader("fingerprint")
+                    patient.Finger2Right = reader("fingerprint2")
                     patient.Gender = Convert.ToString(reader("gender"))
                     patient.DateBirth = Convert.ToString(reader("date_of_birth"))
                     patient.Syn = Convert.ToBoolean(reader("syn"))
