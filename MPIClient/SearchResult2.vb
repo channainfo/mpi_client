@@ -21,19 +21,19 @@ Public Class SearchResult2
 
         If (jsonObject Is Nothing) Then
             updateConnectionStatus(Status.Offline)
-            'fillPatientListWithAllLocalDBData()
+            fillPatientListWithAllLocalDBData()
         ElseIf jsonObject("error") = "" Then
             updateConnectionStatus(Status.Online)
-            'fillPatientListWhenOnline(jsonObject)
+            fillPatientListWhenOnline(jsonObject)
         Else
             updateConnectionStatus(Status.OnlineButServerError, jsonObject("error"))
-            'fillPatientListWithAllLocalDBData()
+            fillPatientListWithAllLocalDBData()
         End If
         updateGridView()
 
     End Sub
     Private Sub fillPatientListWithAllLocalDBData()
-        filterredPatients.AddRange(patientDAO.getMatchedPatients(patient.Finger1Right, fingerprintUtil, patient.Gender))
+        filterredPatients.AddRange(patientDAO.getMatchedPatients(patient, fingerprintUtil, patient.Gender))
     End Sub
     Private Sub fillPatientListWhenOnline(ByVal jsonObject As Object)
         filterredPatients.AddRange(GeneralUtil.getPatientListFromJSONObject(jsonObject))
@@ -41,7 +41,7 @@ Public Class SearchResult2
     End Sub
 
     Private Sub fillPatientListWithNonSynLocalDBData()
-        filterredPatients.AddRange(patientDAO.getMatchedPatients(patient.Finger1Right, fingerprintUtil, patient.Gender, patientDAO.Synchronization.NonSyn))
+        filterredPatients.AddRange(patientDAO.getMatchedPatients(patient, fingerprintUtil, patient.Gender, patientDAO.Synchronization.NonSyn))
     End Sub
     Private Sub updateGridView()
         'If Me.InvokeRequired Then
@@ -67,7 +67,10 @@ Public Class SearchResult2
         If patient Is Nothing Then
             Return
         End If
-
+        If patient.getFingerprintsInPriority().Count < 2 Then
+            MessageBox.Show("Two fingerprints are required for the enrollment.")
+            Return
+        End If
         If (MessageBox.Show("Are you sure you want to enroll new patient?", "Enrollment Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) = Windows.Forms.DialogResult.OK) Then
             Dim patientID As String = Nothing
             If patientDAO.Add(patient, patientID) > 0 Then

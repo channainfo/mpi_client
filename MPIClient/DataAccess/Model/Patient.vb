@@ -1,4 +1,6 @@
-﻿Namespace DataAccess.Model
+﻿Imports System.Reflection
+
+Namespace DataAccess.Model
     Public Class Patient
         Public Enum GenderEnum
             Male = 1
@@ -6,16 +8,16 @@
         End Enum
         Private _id As String
         Private _fingerprintImage As String
-        Private _finger1Right As Array
-        Private _finger2Right As Array
-        Private _finger3Right As Array
-        Private _finger4Right As Array
-        Private _finger5Right As Array
-        Private _finger1Left As Array
-        Private _finger2Left As Array
-        Private _finger3Left As Array
-        Private _finger4Left As Array
-        Private _finger5Left As Array
+        Private _fingerprint_r1 As Array
+        Private _fingerprint_r2 As Array
+        Private _fingerprint_r3 As Array
+        Private _fingerprint_r4 As Array
+        Private _fingerprint_r5 As Array
+        Private _fingerprint_l1 As Array
+        Private _fingerprint_l2 As Array
+        Private _fingerprint_l3 As Array
+        Private _fingerprint_l4 As Array
+        Private _fingerprint_l5 As Array
         Private _gender As Integer?
         Private _dateOfBirth As String
         Private _syn As Boolean
@@ -39,84 +41,84 @@
                 _fingerprintImage = value
             End Set
         End Property
-        Public Property Finger1Right() As Array
+        Public Property Fingerprint_r1() As Array
             Get
-                Return _finger1Right
+                Return _fingerprint_r1
             End Get
             Set(ByVal value As Array)
-                _finger1Right = value
+                _fingerprint_r1 = value
             End Set
         End Property
-        Public Property Finger2Right() As Array
+        Public Property Fingerprint_r2() As Array
             Get
-                Return _finger2Right
+                Return _fingerprint_r2
             End Get
             Set(ByVal value As Array)
-                _finger2Right = value
+                _fingerprint_r2 = value
             End Set
         End Property
-        Public Property Finger3Right() As Array
+        Public Property Fingerprint_r3() As Array
             Get
-                Return _finger3Right
+                Return _fingerprint_r3
             End Get
             Set(ByVal value As Array)
-                _finger3Right = value
+                _fingerprint_r3 = value
             End Set
         End Property
-        Public Property Finger4Right() As Array
+        Public Property Fingerprint_r4() As Array
             Get
-                Return _finger4Right
+                Return _fingerprint_r4
             End Get
             Set(ByVal value As Array)
-                _finger4Right = value
+                _fingerprint_r4 = value
             End Set
         End Property
-        Public Property Finger5Right() As Array
+        Public Property Fingerprint_r5() As Array
             Get
-                Return _finger5Right
+                Return _fingerprint_r5
             End Get
             Set(ByVal value As Array)
-                _finger5Right = value
+                _fingerprint_r5 = value
             End Set
         End Property
-        Public Property Finger1Left() As Array
+        Public Property Fingerprint_l1() As Array
             Get
-                Return _finger1Left
+                Return _fingerprint_l1
             End Get
             Set(ByVal value As Array)
-                _finger1Left = value
+                _fingerprint_l1 = value
             End Set
         End Property
-        Public Property Finger2Left() As Array
+        Public Property Fingerprint_l2() As Array
             Get
-                Return _finger2Left
+                Return _fingerprint_l2
             End Get
             Set(ByVal value As Array)
-                _finger2Left = value
+                _fingerprint_l2 = value
             End Set
         End Property
-        Public Property Finger3Left() As Array
+        Public Property Fingerprint_l3() As Array
             Get
-                Return _finger3Left
+                Return _fingerprint_l3
             End Get
             Set(ByVal value As Array)
-                _finger3Left = value
+                _fingerprint_l3 = value
             End Set
         End Property
-        Public Property Finger4Left() As Array
+        Public Property Fingerprint_l4() As Array
             Get
-                Return _finger4Left
+                Return _fingerprint_l4
             End Get
             Set(ByVal value As Array)
-                _finger4Left = value
+                _fingerprint_l4 = value
             End Set
         End Property
-        Public Property Finger5Left() As Array
+        Public Property Fingerprint_l5() As Array
             Get
-                Return _finger5Left
+                Return _fingerprint_l5
             End Get
             Set(ByVal value As Array)
-                _finger5Left = value
+                _fingerprint_l5 = value
             End Set
         End Property
         Public Property Gender() As Integer?
@@ -186,6 +188,39 @@
                 NumVisit = value.Count
             End Set
         End Property
-
+        Public Function getFingerprintsInPriority() As List(Of Array)
+            Dim result As New List(Of Array)
+            If Not Fingerprint_r1 Is Nothing Then
+                result.Add(Fingerprint_r1)
+            End If
+            If Not Fingerprint_l1 Is Nothing Then
+                result.Add(Fingerprint_l1)
+            End If
+            If Not Fingerprint_r2 Is Nothing Then
+                result.Add(Fingerprint_r2)
+            End If
+            If Not Fingerprint_l2 Is Nothing Then
+                result.Add(Fingerprint_l2)
+            End If
+            If Not Fingerprint_r3 Is Nothing Then
+                result.Add(Fingerprint_r3)
+            End If
+            If Not Fingerprint_l3 Is Nothing Then
+                result.Add(Fingerprint_l3)
+            End If
+            If Not Fingerprint_r4 Is Nothing Then
+                result.Add(Fingerprint_r4)
+            End If
+            If Not Fingerprint_l4 Is Nothing Then
+                result.Add(Fingerprint_l4)
+            End If
+            If Not Fingerprint_r5 Is Nothing Then
+                result.Add(Fingerprint_r5)
+            End If
+            If Not Fingerprint_l5 Is Nothing Then
+                result.Add(Fingerprint_l5)
+            End If
+            Return result
+        End Function
     End Class
 End Namespace

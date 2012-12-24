@@ -1,5 +1,6 @@
 ﻿Imports System.Web.Script.Serialization
 Imports GrFingerXLib
+Imports MPIClient.DataAccess.Model
 
 ' Raw image data type.
 Public Class FingerImage
@@ -87,7 +88,40 @@ Public Class FingerprintUtil
         Dim result As Integer = grFingerX.IdentifyPrepare(soureFingerprint, GrFingerXLib.GRConstants.GR_DEFAULT_CONTEXT)
         Return result
     End Function
-
+    Public Function getQueryFingerprintInPriority(ByVal sourcePatient As Patient, ByVal QueryPatient As Patient) As List(Of Array)
+        Dim result As New List(Of Array)
+        If Not sourcePatient.Fingerprint_r1 Is Nothing Then
+            result.Add(QueryPatient.Fingerprint_r1)
+        End If
+        If Not sourcePatient.Fingerprint_l1 Is Nothing Then
+            result.Add(QueryPatient.Fingerprint_l1)
+        End If
+        If Not sourcePatient.Fingerprint_r2 Is Nothing Then
+            result.Add(QueryPatient.Fingerprint_r2)
+        End If
+        If Not sourcePatient.Fingerprint_l2 Is Nothing Then
+            result.Add(QueryPatient.Fingerprint_l2)
+        End If
+        If Not sourcePatient.Fingerprint_r3 Is Nothing Then
+            result.Add(QueryPatient.Fingerprint_r3)
+        End If
+        If Not sourcePatient.Fingerprint_l3 Is Nothing Then
+            result.Add(QueryPatient.Fingerprint_l3)
+        End If
+        If Not sourcePatient.Fingerprint_r4 Is Nothing Then
+            result.Add(QueryPatient.Fingerprint_r4)
+        End If
+        If Not sourcePatient.Fingerprint_l4 Is Nothing Then
+            result.Add(QueryPatient.Fingerprint_l4)
+        End If
+        If Not sourcePatient.Fingerprint_r5 Is Nothing Then
+            result.Add(QueryPatient.Fingerprint_r5)
+        End If
+        If Not sourcePatient.Fingerprint_l5 Is Nothing Then
+            result.Add(QueryPatient.Fingerprint_l5)
+        End If
+        Return result
+    End Function
     Public Function extractJSON(ByVal fingerImage As FingerImage) As Object
         Dim jsonString As String = grFingerX.ExtractJSON(fingerImage.rawImage, fingerImage.width, fingerImage.height, fingerImage.res, GrFingerXLib.GRConstants.GR_DEFAULT_CONTEXT, GrFingerXLib.GRConstants.GR_DEFAULT_CONTEXT)
 

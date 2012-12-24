@@ -8,8 +8,17 @@ Namespace DataAccess.DAO
             NonSyn
         End Enum
         Public Const FINGERPRINT_IMAGE As String = "fingerprint_image"
-        Public Const FINGERPRINT As String = "fingerprint"
-        Public Const FINGERPRINT2 As String = "fingerprint2"
+        Public Const FINGERPRINT_R1 As String = "fingerprint_r1"
+        Public Const FINGERPRINT_R2 As String = "fingerprint_r2"
+        Public Const FINGERPRINT_R3 As String = "fingerprint_r3"
+        Public Const FINGERPRINT_R4 As String = "fingerprint_r4"
+        Public Const FINGERPRINT_R5 As String = "fingerprint_r5"
+        Public Const FINGERPRINT_L1 As String = "fingerprint_l1"
+        Public Const FINGERPRINT_L2 As String = "fingerprint_l2"
+        Public Const FINGERPRINT_L3 As String = "fingerprint_l3"
+        Public Const FINGERPRINT_L4 As String = "fingerprint_l4"
+        Public Const FINGERPRINT_L5 As String = "fingerprint_l5"
+
         Public Const OLD_PATIENT_ID As String = "old_patient_id"
         Public Const PATIENT_ID As String = "patient_id"
         Public Const NEW_PATIENT_ID As String = "new_patient_id"
@@ -30,12 +39,41 @@ Namespace DataAccess.DAO
 
                 Dim parameter As DbParameter
 
-                parameter = Database.CreateParameter(Database.CreateParameterName(FINGERPRINT), DbType.Binary)
-                parameter.Value = patient.Finger1Right
+                parameter = Database.CreateParameter(Database.CreateParameterName(FINGERPRINT_R1), DbType.Binary)
+                parameter.Value = patient.Fingerprint_r1
                 command.Parameters.Add(parameter)
 
-                parameter = Database.CreateParameter(Database.CreateParameterName(FINGERPRINT2), DbType.Binary)
-                parameter.Value = patient.Finger2Right
+                parameter = Database.CreateParameter(Database.CreateParameterName(FINGERPRINT_R2), DbType.Binary)
+                parameter.Value = patient.Fingerprint_r2
+                command.Parameters.Add(parameter)
+
+                parameter = Database.CreateParameter(Database.CreateParameterName(FINGERPRINT_R3), DbType.Binary)
+                parameter.Value = patient.Fingerprint_r3
+                command.Parameters.Add(parameter)
+
+                parameter = Database.CreateParameter(Database.CreateParameterName(FINGERPRINT_R4), DbType.Binary)
+                parameter.Value = patient.Fingerprint_r4
+                command.Parameters.Add(parameter)
+                parameter = Database.CreateParameter(Database.CreateParameterName(FINGERPRINT_R5), DbType.Binary)
+                parameter.Value = patient.Fingerprint_r5
+                command.Parameters.Add(parameter)
+
+                parameter = Database.CreateParameter(Database.CreateParameterName(FINGERPRINT_L1), DbType.Binary)
+                parameter.Value = patient.Fingerprint_l1
+                command.Parameters.Add(parameter)
+                parameter = Database.CreateParameter(Database.CreateParameterName(FINGERPRINT_L2), DbType.Binary)
+                parameter.Value = patient.Fingerprint_l2
+                command.Parameters.Add(parameter)
+
+                parameter = Database.CreateParameter(Database.CreateParameterName(FINGERPRINT_L3), DbType.Binary)
+                parameter.Value = patient.Fingerprint_l3
+                command.Parameters.Add(parameter)
+                parameter = Database.CreateParameter(Database.CreateParameterName(FINGERPRINT_L4), DbType.Binary)
+                parameter.Value = patient.Fingerprint_l4
+                command.Parameters.Add(parameter)
+
+                parameter = Database.CreateParameter(Database.CreateParameterName(FINGERPRINT_L5), DbType.Binary)
+                parameter.Value = patient.Fingerprint_l5
                 command.Parameters.Add(parameter)
 
                 parameter = Database.CreateParameter(Database.CreateParameterName(GENDER_COL), DbType.Int16)
@@ -176,17 +214,51 @@ Namespace DataAccess.DAO
             fingerprintUtil.setSourceFingerprint(fingerPrint)
             Try
                 While reader.Read()
-                    Dim patient As New Patient()
-                    patient.PatientID = Convert.ToString(reader("id"))
-                    patient.FingerprintImage = Convert.ToString(reader("fingerprint_image"))
-                    patient.Finger1Right = reader("fingerprint")
-                    patient.Gender = Convert.ToInt16(reader("gender"))
-                    patient.DateBirth = Convert.ToString(reader("date_of_birth"))
-                    patient.Syn = Convert.ToBoolean(reader("syn"))
-                    patient.NumVisit = Convert.ToInt32(reader("num_visit"))
-                    patient.Createdate = Convert.ToString(reader("createdate"))
-                    patient.Updatedate = Convert.ToString(reader("updatedate"))
-                    If (fingerprintUtil.indentifyFingerprint(patient.Finger1Right, score)) Then
+                    Dim patient As Patient
+                    patient = buildPatient(reader)
+                    'patient.PatientID = Convert.ToString(reader("id"))
+                    'patient.FingerprintImage = Convert.ToString(reader("fingerprint_image"))
+                    ''patient.Fingerprint_r1 = reader(FINGERPRINT_R1)
+                    'patient.Gender = Convert.ToInt16(reader("gender"))
+                    'patient.DateBirth = Convert.ToString(reader("date_of_birth"))
+                    'patient.Syn = Convert.ToBoolean(reader("syn"))
+                    'patient.NumVisit = Convert.ToInt32(reader("num_visit"))
+                    'patient.Createdate = Convert.ToString(reader("createdate"))
+                    'patient.Updatedate = Convert.ToString(reader("updatedate"))
+
+                    If (fingerprintUtil.indentifyFingerprint(patient.Fingerprint_r1, score)) Then
+                        patientList.Add(patient)
+                    End If
+                End While
+            Catch ex As Exception
+                Throw ex
+            Finally
+                If reader IsNot Nothing Then
+                    If Not reader.IsClosed Then
+                        reader.Close()
+                    End If
+                    reader.Dispose()
+                End If
+            End Try
+            Return patientList
+        End Function
+        Public Function getMatchedPatients(ByVal sourePatient As Patient, ByVal fingerprintUtil As FingerprintUtil, ByVal gender As Int16, Optional ByVal synOption As Synchronization = Synchronization.All) As List(Of Patient)
+            Dim reader As DbDataReader = Nothing
+            If synOption = Synchronization.All Then
+                reader = getDataReaderOfAllPatients(gender)
+            ElseIf synOption = Synchronization.NonSyn Then
+                reader = getDataReaderOfAllNonSynPatients(gender)
+            End If
+
+            Dim patientList As New List(Of Patient)()
+            Dim score As Integer
+            fingerprintUtil.setSourceFingerprint(sourePatient.getFingerprintsInPriority(0))
+            Try
+                While reader.Read()
+                    Dim patient As Patient
+                    patient = buildPatient(reader)
+                    Dim queryFingerprint As Array = fingerprintUtil.getQueryFingerprintInPriority(sourePatient, patient)(0)
+                    If (fingerprintUtil.indentifyFingerprint(queryFingerprint, score)) Then
                         patientList.Add(patient)
                     End If
                 End While
@@ -247,21 +319,34 @@ Namespace DataAccess.DAO
             Dim reader As DbDataReader = Database.ExecuteReader(command)
             Return reader
         End Function
+        Private Shared Function buildPatient(ByVal reader As DbDataReader) As Patient
+            Dim patient As New Patient()
+            patient.PatientID = Convert.ToString(reader("id"))
+            patient.FingerprintImage = Convert.ToString(reader("fingerprint_image"))
+            patient.Fingerprint_r1 = IIf(IsDBNull(reader(FINGERPRINT_R1)), Nothing, reader(FINGERPRINT_R1))
+            patient.Fingerprint_r2 = IIf(IsDBNull(reader(FINGERPRINT_R2)), Nothing, reader(FINGERPRINT_R2))
+            patient.Fingerprint_r3 = IIf(IsDBNull(reader(FINGERPRINT_R3)), Nothing, reader(FINGERPRINT_R3))
+            patient.Fingerprint_r4 = IIf(IsDBNull(reader(FINGERPRINT_R4)), Nothing, reader(FINGERPRINT_R4))
+            patient.Fingerprint_r5 = IIf(IsDBNull(reader(FINGERPRINT_R5)), Nothing, reader(FINGERPRINT_R5))
+            patient.Fingerprint_l1 = IIf(IsDBNull(reader(FINGERPRINT_L1)), Nothing, reader(FINGERPRINT_L1))
+            patient.Fingerprint_l2 = IIf(IsDBNull(reader(FINGERPRINT_L2)), Nothing, reader(FINGERPRINT_L2))
+            patient.Fingerprint_l3 = IIf(IsDBNull(reader(FINGERPRINT_L3)), Nothing, reader(FINGERPRINT_L3))
+            patient.Fingerprint_l4 = IIf(IsDBNull(reader(FINGERPRINT_L4)), Nothing, reader(FINGERPRINT_L4))
+            patient.Fingerprint_l5 = IIf(IsDBNull(reader(FINGERPRINT_L5)), Nothing, reader(FINGERPRINT_L5))
+            patient.Gender = Convert.ToString(reader("gender"))
+            patient.DateBirth = Convert.ToString(reader("date_of_birth"))
+            patient.Syn = Convert.ToBoolean(reader("syn"))
+            patient.NumVisit = Convert.ToInt32(reader("num_visit"))
+            patient.Createdate = Convert.ToString(reader("createdate"))
+            patient.Updatedate = Convert.ToString(reader("updatedate"))
+            Return patient
+        End Function
         Public Function BuildPatients(ByVal reader As DbDataReader) As List(Of Patient)
             Dim patientList As New List(Of Patient)()
 
             Try
                 While reader.Read()
-                    Dim patient As New Patient()
-                    patient.PatientID = Convert.ToString(reader("id"))
-                    patient.FingerprintImage = Convert.ToString(reader("fingerprint_image"))
-                    patient.Finger1Right = reader("fingerprint")
-                    patient.Finger2Right = reader("fingerprint2")
-                    patient.Gender = Convert.ToString(reader("gender"))
-                    patient.DateBirth = Convert.ToString(reader("date_of_birth"))
-                    patient.Syn = Convert.ToBoolean(reader("syn"))
-                    patient.Createdate = Convert.ToString(reader("createdate"))
-                    patient.Updatedate = Convert.ToString(reader("updatedate"))
+                    Dim patient As Patient = buildPatient(reader)
 
                     patientList.Add(patient)
                 End While

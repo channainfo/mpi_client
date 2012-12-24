@@ -35,7 +35,7 @@ Public Class SearchResult
 
     End Sub
     Private Sub fillPatientListWithAllLocalDBData()
-        filterredPatients.AddRange(patientDAO.getMatchedPatients(patient.Finger1Right, fingerprintUtil, patient.Gender))
+        filterredPatients.AddRange(patientDAO.getMatchedPatients(patient.Fingerprint_r1, fingerprintUtil, patient.Gender))
     End Sub
     Private Sub fillPatientListWhenOnline(ByVal jsonObject As Object)
         filterredPatients.AddRange(GeneralUtil.getPatientListFromJSONObject(jsonObject))
@@ -43,7 +43,7 @@ Public Class SearchResult
     End Sub
 
     Private Sub fillPatientListWithNonSynLocalDBData()
-        filterredPatients.AddRange(patientDAO.getMatchedPatients(patient.Finger1Right, fingerprintUtil, patient.Gender, patientDAO.Synchronization.NonSyn))
+        filterredPatients.AddRange(patientDAO.getMatchedPatients(patient.Fingerprint_r1, fingerprintUtil, patient.Gender, patientDAO.Synchronization.NonSyn))
     End Sub
     Private Sub updateGridView()
         'If Me.InvokeRequired Then

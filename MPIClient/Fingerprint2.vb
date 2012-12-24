@@ -123,7 +123,7 @@ Public Class Fingerprint2
         Select Case lastSelectedFinger.Name
 
             Case finger1right.Name
-                patient.Finger1Right = fingerPrint
+                patient.Fingerprint_r1 = fingerPrint
                 previousQuality = quality1right.Text
                 'If quality1right.Text = STR_IMAGE_BAD_QUALITY And imageQuality = "" Then
                 '    numberOfBadQuality = numberOfBadQuality - 1
@@ -131,63 +131,63 @@ Public Class Fingerprint2
                 quality1right.Text = imageQuality
             Case finger2right.Name
                 previousQuality = quality2right.Text
-                patient.Finger2Right = fingerPrint
+                patient.Fingerprint_r2 = fingerPrint
                 'If quality2right.Text = STR_IMAGE_BAD_QUALITY And imageQuality = "" Then
                 '    numberOfBadQuality = numberOfBadQuality - 1
                 'End If
                 quality2right.Text = imageQuality
             Case finger3right.Name
                 previousQuality = quality3right.Text
-                patient.Finger3Right = fingerPrint
+                patient.Fingerprint_r3 = fingerPrint
                 'If quality3right.Text = STR_IMAGE_BAD_QUALITY And imageQuality = "" Then
                 '    numberOfBadQuality = numberOfBadQuality - 1
                 'End If
                 quality3right.Text = imageQuality
             Case finger4right.Name
                 previousQuality = quality4right.Text
-                patient.Finger4Right = fingerPrint
+                patient.Fingerprint_r4 = fingerPrint
                 'If quality4right.Text = STR_IMAGE_BAD_QUALITY And imageQuality = "" Then
                 '    numberOfBadQuality = numberOfBadQuality - 1
                 'End If
                 quality4right.Text = imageQuality
             Case finger5right.Name
                 previousQuality = quality5right.Text
-                patient.Finger5Right = fingerPrint
+                patient.Fingerprint_r5 = fingerPrint
                 'If quality5right.Text = STR_IMAGE_BAD_QUALITY And imageQuality = "" Then
                 '    numberOfBadQuality = numberOfBadQuality - 1
                 'End If
                 quality5right.Text = imageQuality
             Case finger1Left.Name
                 previousQuality = quality1Left.Text
-                patient.Finger1Left = fingerPrint
+                patient.Fingerprint_l1 = fingerPrint
                 'If quality1Left.Text = STR_IMAGE_BAD_QUALITY And imageQuality = "" Then
                 '    numberOfBadQuality = numberOfBadQuality - 1
                 'End If
                 quality1Left.Text = imageQuality
             Case finger2left.Name
                 previousQuality = quality2left.Text
-                patient.Finger2Left = fingerPrint
+                patient.Fingerprint_l2 = fingerPrint
                 'If quality2left.Text = STR_IMAGE_BAD_QUALITY And imageQuality = "" Then
                 '    numberOfBadQuality = numberOfBadQuality - 1
                 'End If
                 quality2left.Text = imageQuality
             Case finger3left.Name
                 previousQuality = quality3left.Text
-                patient.Finger3Left = fingerPrint
+                patient.Fingerprint_l3 = fingerPrint
                 'If quality3left.Text = STR_IMAGE_BAD_QUALITY And imageQuality = "" Then
                 '    numberOfBadQuality = numberOfBadQuality - 1
                 'End If
                 quality3left.Text = imageQuality
             Case finger4left.Name
                 previousQuality = quality4left.Text
-                patient.Finger4Left = fingerPrint
+                patient.Fingerprint_l4 = fingerPrint
                 'If quality4left.Text = STR_IMAGE_BAD_QUALITY And imageQuality = "" Then
                 '    numberOfBadQuality = numberOfBadQuality - 1
                 'End If
                 quality4left.Text = imageQuality
             Case finger5left.Name
                 previousQuality = quality4left.Text
-                patient.Finger5Left = fingerPrint
+                patient.Fingerprint_l5 = fingerPrint
                 'If quality5left.Text = STR_IMAGE_BAD_QUALITY And imageQuality = "" Then
                 '    numberOfBadQuality = numberOfBadQuality - 1
                 'End If
@@ -233,7 +233,7 @@ Public Class Fingerprint2
         If genderCombobox.SelectedValue = 0 Then
             validationErrMessage = validationErrMessage + "- Gender must be selected." + vbCrLf
         End If
-
+        patient.Gender = genderCombobox.SelectedValue
         If validationErrMessage = "" Then
             Me.Hide()
             showSearchResultForm(patient)

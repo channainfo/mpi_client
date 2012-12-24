@@ -112,7 +112,7 @@ Public Class Figerprint
     Private Sub indentifyPatient()
         Dim patient As Patient = preparePatient()
 
-        If Not patient.Finger1Right Is Nothing Then
+        If Not patient.Fingerprint_r1 Is Nothing Then
             Me.Hide()
             showSearchResultForm(patient)
         Else
@@ -129,8 +129,8 @@ Public Class Figerprint
     End Sub
     Private Function preparePatient() As Patient
         Dim patient As New Patient
-        patient.Finger1Right = fingerprintUtil.extractFingerprint(fingerImage)
-        patient.Finger2Right = fingerprintUtil.extractFingerprint(fingerImage2)
+        patient.Fingerprint_r1 = fingerprintUtil.extractFingerprint(fingerImage)
+        patient.Fingerprint_r2 = fingerprintUtil.extractFingerprint(fingerImage2)
         patient.Gender = genderCombobox.SelectedValue
         Return patient
     End Function

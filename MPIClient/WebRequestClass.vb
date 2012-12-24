@@ -129,17 +129,17 @@ Public Class WebRequestClass
         Dim fingerprintUtil As New FingerprintUtil(grFingerX)
         Try
 
-            Dim queryString As String = "finger1right=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Finger1Right)) _
-            + "&finger2right=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Finger2Right)) _
-            + "&finger3right=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Finger3Right)) _
-            + "&finger4right=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Finger4Right)) _
-            + "&finger5right=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Finger5Right)) _
-            + "&finger1left=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Finger1Left)) _
-            + "&finger2left=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Finger2Left)) _
-            + "&finger3left=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Finger3Left)) _
-            + "&finger4left=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Finger4Left)) _
-            + "&finger5left=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Finger5Left)) _
-            + "&gender=" + patient.Gender.ToString
+            Dim queryString As String = "fingerprint_r1=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_r1)) _
+            + "&fingerprint_r2=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_r2)) _
+            + "&fingerprint_r3=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_r3)) _
+            + "&fingerprint_r4=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_r4)) _
+            + "&fingerprint_r5=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_r5)) _
+            + "&fingerprint_l1=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_l1)) _
+            + "&fingerprint_l2=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_l2)) _
+            + "&fingerprint_l3=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_l3)) _
+            + "&fingerprint_l4=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_l4)) _
+            + "&fingerprint_l5=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_l5)) _
+            + "&gender=" + patient.Gender.ToString()
 
             Dim queryData As Byte() = UTF8Encoding.UTF8.GetBytes(queryString)
             Dim url As String = ConfigManager.GetConfiguarationValue("Server") + ConfigManager.GetConfiguarationValue("IdentifyURL")
@@ -203,16 +203,16 @@ Public Class WebRequestClass
         Dim jsonResult As Object = Nothing
         Dim fingerprintUtil As New FingerprintUtil(grFingerX)
         Try
-            Dim queryString As String = "finger1right=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Finger1Right)) _
-            + "&finger2right=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Finger2Right)) _
-            + "&finger3right=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Finger3Right)) _
-            + "&finger4right=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Finger4Right)) _
-            + "&finger5right=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Finger5Right)) _
-            + "&finger1left=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Finger1Left)) _
-            + "&finger2left=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Finger2Left)) _
-            + "&finger3left=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Finger3Left)) _
-            + "&finger4left=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Finger4Left)) _
-            + "&finger5left=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Finger5Left)) _
+            Dim queryString As String = "fingerprint_r1=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_r1)) _
+            + "&fingerprint_r2=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_r2)) _
+            + "&fingerprint_r3=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_r3)) _
+            + "&fingerprint_r4=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_r4)) _
+            + "&fingerprint_r5=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_r5)) _
+            + "&fingerprint_l1=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_l1)) _
+            + "&fingerprint_l2=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_l2)) _
+            + "&fingerprint_l3=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_l3)) _
+            + "&fingerprint_l4=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_l4)) _
+            + "&fingerprint_l5=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_l5)) _
             + "&gender=" + patient.Gender.ToString()
 
             Dim queryData As Byte() = UTF8Encoding.UTF8.GetBytes(queryString)
