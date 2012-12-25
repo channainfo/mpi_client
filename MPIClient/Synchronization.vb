@@ -140,8 +140,17 @@ Public Class Synchronization
         Dim patientSyn As New PatientSyn
         Dim fingerprintUtil As New FingerprintUtil(grFingerXCtrl)
         patientSyn.patientid = currentPatient.PatientID
-        patientSyn.fingerprint = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_r1)
-        patientSyn.fingerprint2 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_r2)
+        patientSyn.Fingerprint_r1 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_r1)
+        patientSyn.Fingerprint_r2 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_r2)
+        patientSyn.Fingerprint_r3 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_r3)
+        patientSyn.Fingerprint_r4 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_r4)
+        patientSyn.Fingerprint_r5 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_r5)
+        patientSyn.Fingerprint_l1 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_l1)
+        patientSyn.Fingerprint_l2 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_l2)
+        patientSyn.Fingerprint_l3 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_l3)
+        patientSyn.Fingerprint_l4 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_l4)
+        patientSyn.Fingerprint_l5 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_l5)
+
         patientSyn.gender = currentPatient.Gender
         patientSyn.datebirth = currentPatient.DateBirth
 
@@ -222,5 +231,9 @@ Public Class Synchronization
 
     Private Sub DataGridView1_CellPainting(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellPaintingEventArgs) Handles DataGridView1.CellPainting
 
+    End Sub
+
+    Private Sub CloseButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CloseButton.Click
+        Me.Close()
     End Sub
 End Class

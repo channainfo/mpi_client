@@ -24,30 +24,24 @@ Partial Class Synchronization
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Synchronization))
-        Me.synchronizationButton = New System.Windows.Forms.Button
         Me.DataGridView1 = New System.Windows.Forms.DataGridView
+        Me.Status = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.synchronizationWorker = New System.ComponentModel.BackgroundWorker
+        Me.grFingerXCtrl = New AxGrFingerXLib.AxGrFingerXCtrl
+        Me.ActionToolStrip = New System.Windows.Forms.ToolStrip
+        Me.synchronizationButton = New System.Windows.Forms.ToolStripButton
+        Me.CloseButton = New System.Windows.Forms.ToolStripButton
         Me.PatientIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.GenderDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.DateBirthDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.CreatedateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.UpdatedateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Status = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.PatientBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.synchronizationWorker = New System.ComponentModel.BackgroundWorker
-        Me.grFingerXCtrl = New AxGrFingerXLib.AxGrFingerXCtrl
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PatientBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grFingerXCtrl, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ActionToolStrip.SuspendLayout()
+        CType(Me.PatientBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'synchronizationButton
-        '
-        Me.synchronizationButton.Location = New System.Drawing.Point(769, 12)
-        Me.synchronizationButton.Name = "synchronizationButton"
-        Me.synchronizationButton.Size = New System.Drawing.Size(109, 23)
-        Me.synchronizationButton.TabIndex = 2
-        Me.synchronizationButton.Text = "Synchronization"
-        Me.synchronizationButton.UseVisualStyleBackColor = True
         '
         'DataGridView1
         '
@@ -57,13 +51,59 @@ Partial Class Synchronization
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientIDDataGridViewTextBoxColumn, Me.GenderDataGridViewTextBoxColumn, Me.DateBirthDataGridViewTextBoxColumn, Me.CreatedateDataGridViewTextBoxColumn, Me.UpdatedateDataGridViewTextBoxColumn, Me.Status})
         Me.DataGridView1.DataSource = Me.PatientBindingSource
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 12)
+        Me.DataGridView1.Location = New System.Drawing.Point(12, 48)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(735, 257)
         Me.DataGridView1.TabIndex = 3
+        '
+        'Status
+        '
+        Me.Status.HeaderText = "Status"
+        Me.Status.Name = "Status"
+        Me.Status.ReadOnly = True
+        '
+        'synchronizationWorker
+        '
+        Me.synchronizationWorker.WorkerSupportsCancellation = True
+        '
+        'grFingerXCtrl
+        '
+        Me.grFingerXCtrl.Enabled = True
+        Me.grFingerXCtrl.Location = New System.Drawing.Point(826, 117)
+        Me.grFingerXCtrl.Name = "grFingerXCtrl"
+        Me.grFingerXCtrl.OcxState = CType(resources.GetObject("grFingerXCtrl.OcxState"), System.Windows.Forms.AxHost.State)
+        Me.grFingerXCtrl.Size = New System.Drawing.Size(32, 32)
+        Me.grFingerXCtrl.TabIndex = 5
+        '
+        'ActionToolStrip
+        '
+        Me.ActionToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.synchronizationButton, Me.CloseButton})
+        Me.ActionToolStrip.Location = New System.Drawing.Point(0, 0)
+        Me.ActionToolStrip.Name = "ActionToolStrip"
+        Me.ActionToolStrip.Size = New System.Drawing.Size(890, 39)
+        Me.ActionToolStrip.TabIndex = 6
+        Me.ActionToolStrip.Text = "ToolStrip1"
+        '
+        'synchronizationButton
+        '
+        Me.synchronizationButton.Image = Global.MPIClient.My.Resources.Resources.Synchronize_icon__1_
+        Me.synchronizationButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.synchronizationButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.synchronizationButton.Name = "synchronizationButton"
+        Me.synchronizationButton.Size = New System.Drawing.Size(107, 36)
+        Me.synchronizationButton.Text = "Synchronize"
+        '
+        'CloseButton
+        '
+        Me.CloseButton.Image = Global.MPIClient.My.Resources.Resources.Log_Out_icon__1_
+        Me.CloseButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.CloseButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.CloseButton.Name = "CloseButton"
+        Me.CloseButton.Size = New System.Drawing.Size(72, 36)
+        Me.CloseButton.Text = "Close"
         '
         'PatientIDDataGridViewTextBoxColumn
         '
@@ -100,47 +140,30 @@ Partial Class Synchronization
         Me.UpdatedateDataGridViewTextBoxColumn.Name = "UpdatedateDataGridViewTextBoxColumn"
         Me.UpdatedateDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'Status
-        '
-        Me.Status.HeaderText = "Status"
-        Me.Status.Name = "Status"
-        Me.Status.ReadOnly = True
-        '
         'PatientBindingSource
         '
         Me.PatientBindingSource.AllowNew = True
         Me.PatientBindingSource.DataSource = GetType(MPIClient.DataAccess.Model.Patient)
-        '
-        'synchronizationWorker
-        '
-        Me.synchronizationWorker.WorkerSupportsCancellation = True
-        '
-        'grFingerXCtrl
-        '
-        Me.grFingerXCtrl.Enabled = True
-        Me.grFingerXCtrl.Location = New System.Drawing.Point(826, 117)
-        Me.grFingerXCtrl.Name = "grFingerXCtrl"
-        Me.grFingerXCtrl.OcxState = CType(resources.GetObject("grFingerXCtrl.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.grFingerXCtrl.Size = New System.Drawing.Size(32, 32)
-        Me.grFingerXCtrl.TabIndex = 5
         '
         'Synchronization
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(890, 319)
+        Me.Controls.Add(Me.ActionToolStrip)
         Me.Controls.Add(Me.grFingerXCtrl)
         Me.Controls.Add(Me.DataGridView1)
-        Me.Controls.Add(Me.synchronizationButton)
         Me.Name = "Synchronization"
         Me.Text = "Synchronization"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PatientBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grFingerXCtrl, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ActionToolStrip.ResumeLayout(False)
+        Me.ActionToolStrip.PerformLayout()
+        CType(Me.PatientBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
-    Friend WithEvents synchronizationButton As System.Windows.Forms.Button
     Friend WithEvents PatientBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents PatientIDDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -151,4 +174,7 @@ Partial Class Synchronization
     Friend WithEvents Status As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents synchronizationWorker As System.ComponentModel.BackgroundWorker
     Friend WithEvents grFingerXCtrl As AxGrFingerXLib.AxGrFingerXCtrl
+    Friend WithEvents ActionToolStrip As System.Windows.Forms.ToolStrip
+    Friend WithEvents synchronizationButton As System.Windows.Forms.ToolStripButton
+    Friend WithEvents CloseButton As System.Windows.Forms.ToolStripButton
 End Class

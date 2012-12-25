@@ -251,4 +251,12 @@ Public Class Fingerprint2
     End Sub
 
 
+    Private Sub SynchronizationButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SynchronizationButton.Click
+        Dim synChronization As New Synchronization
+        synChronization.ShowDialog(Me)
+    End Sub
+
+    Private Sub CloseButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CloseButton.Click
+        Me.Close()
+    End Sub
 End Class

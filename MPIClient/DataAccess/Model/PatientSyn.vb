@@ -5,8 +5,16 @@
             Female = 2
         End Enum
         Private _id As String
-        Private _fingerprint As String
-        Private _fingerprint2 As String
+        Private _fingerprint_r1 As String
+        Private _fingerprint_r2 As String
+        Private _fingerprint_r3 As String
+        Private _fingerprint_r4 As String
+        Private _fingerprint_r5 As String
+        Private _fingerprint_l1 As String
+        Private _fingerprint_l2 As String
+        Private _fingerprint_l3 As String
+        Private _fingerprint_l4 As String
+        Private _fingerprint_l5 As String
         Private _gender As Integer
         Private _dateOfBirth As String
         Private _createdate As String
@@ -21,20 +29,84 @@
             End Set
         End Property
 
-        Public Property fingerprint() As String
+        Public Property Fingerprint_r1() As String
             Get
-                Return _fingerprint
+                Return _fingerprint_r1
             End Get
             Set(ByVal value As String)
-                _fingerprint = value
+                _fingerprint_r1 = value
             End Set
         End Property
-        Public Property fingerprint2() As String
+        Public Property Fingerprint_r2() As String
             Get
-                Return _fingerprint2
+                Return _fingerprint_r2
             End Get
             Set(ByVal value As String)
-                _fingerprint2 = value
+                _fingerprint_r2 = value
+            End Set
+        End Property
+        Public Property Fingerprint_r3() As String
+            Get
+                Return _fingerprint_r3
+            End Get
+            Set(ByVal value As String)
+                _fingerprint_r3 = value
+            End Set
+        End Property
+        Public Property Fingerprint_r4() As String
+            Get
+                Return _fingerprint_r4
+            End Get
+            Set(ByVal value As String)
+                _fingerprint_r4 = value
+            End Set
+        End Property
+        Public Property Fingerprint_r5() As String
+            Get
+                Return _fingerprint_r5
+            End Get
+            Set(ByVal value As String)
+                _fingerprint_r5 = value
+            End Set
+        End Property
+        Public Property Fingerprint_l1() As String
+            Get
+                Return _fingerprint_l1
+            End Get
+            Set(ByVal value As String)
+                _fingerprint_l1 = value
+            End Set
+        End Property
+        Public Property Fingerprint_l2() As String
+            Get
+                Return _fingerprint_l2
+            End Get
+            Set(ByVal value As String)
+                _fingerprint_l2 = value
+            End Set
+        End Property
+        Public Property Fingerprint_l3() As String
+            Get
+                Return _fingerprint_l3
+            End Get
+            Set(ByVal value As String)
+                _fingerprint_l3 = value
+            End Set
+        End Property
+        Public Property Fingerprint_l4() As String
+            Get
+                Return _fingerprint_l4
+            End Get
+            Set(ByVal value As String)
+                _fingerprint_l4 = value
+            End Set
+        End Property
+        Public Property Fingerprint_l5() As String
+            Get
+                Return _fingerprint_l5
+            End Get
+            Set(ByVal value As String)
+                _fingerprint_l5 = value
             End Set
         End Property
         Public Property gender() As Integer
