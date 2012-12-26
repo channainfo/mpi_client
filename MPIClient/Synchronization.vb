@@ -108,8 +108,15 @@ Public Class Synchronization
         Dim currentPatient As Patient = DataGridView1.Rows(itemIndex).DataBoundItem
 
         Dim jsonResult As Object = serializeToJSONObject(e.Result)
-
-        patients.AddRange(GeneralUtil.getPatientListFromJSONObject(jsonResult))
+        If jsonResult Is Nothing Then
+            updateProgressStatus(ProgressStatus.ContainError, itemIndex, "Webserver: Internal server error.")
+            Return
+        End If
+        Try
+            patients.AddRange(GeneralUtil.getPatientListFromJSONObject(jsonResult))
+        Catch ex As Exception
+            updateProgressStatus(ProgressStatus.ContainError, itemIndex, "Error while serializing JSON object.")
+        End Try
 
         If patients.Count = 1 Then
             Dim patient As Patient = patients(0)
@@ -140,16 +147,16 @@ Public Class Synchronization
         Dim patientSyn As New PatientSyn
         Dim fingerprintUtil As New FingerprintUtil(grFingerXCtrl)
         patientSyn.patientid = currentPatient.PatientID
-        patientSyn.Fingerprint_r1 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_r1)
-        patientSyn.Fingerprint_r2 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_r2)
-        patientSyn.Fingerprint_r3 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_r3)
-        patientSyn.Fingerprint_r4 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_r4)
-        patientSyn.Fingerprint_r5 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_r5)
-        patientSyn.Fingerprint_l1 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_l1)
-        patientSyn.Fingerprint_l2 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_l2)
-        patientSyn.Fingerprint_l3 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_l3)
-        patientSyn.Fingerprint_l4 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_l4)
-        patientSyn.Fingerprint_l5 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_l5)
+        patientSyn.fingerprint_r1 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_r1)
+        patientSyn.fingerprint_r2 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_r2)
+        patientSyn.fingerprint_r3 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_r3)
+        patientSyn.fingerprint_r4 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_r4)
+        patientSyn.fingerprint_r5 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_r5)
+        patientSyn.fingerprint_l1 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_l1)
+        patientSyn.fingerprint_l2 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_l2)
+        patientSyn.fingerprint_l3 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_l3)
+        patientSyn.fingerprint_l4 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_l4)
+        patientSyn.fingerprint_l5 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_l5)
 
         patientSyn.gender = currentPatient.Gender
         patientSyn.datebirth = currentPatient.DateBirth
