@@ -159,7 +159,7 @@ Public Class Synchronization
         patientSyn.fingerprint_l5 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_l5)
 
         patientSyn.gender = currentPatient.Gender
-        patientSyn.datebirth = currentPatient.DateBirth
+        patientSyn.datebirth = DateTime.Parse(currentPatient.DateBirth).ToString("yyyy-MM-dd HH:mm:ss")
 
 
         patientSyn.createdate = DateTime.Parse(currentPatient.Createdate).ToString("yyyy-MM-dd HH:mm:ss")
