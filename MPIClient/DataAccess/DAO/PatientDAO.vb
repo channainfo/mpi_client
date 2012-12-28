@@ -124,11 +124,14 @@ Namespace DataAccess.DAO
                 result = Database.ExecuteNonQuery(command, transaction)
                 Dim visitDao As New VisitDAO
                 If isDeleteVisits Then
-                    visitDao.deletePatientVisits(oldPatientID)
+                    visitDao.deletePatientVisits(oldPatientID, transaction)
                 End If
 
                 If patient.Visits.Count > 0 Then
-                    visitDao.Add(patient.Visits, transaction)
+                    If visitDao.Add(patient.Visits, transaction) <= 0 Then
+                        transaction.Rollback()
+                        Return -1
+                    End If
                 End If
 
                 transaction.Commit()

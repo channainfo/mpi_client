@@ -214,6 +214,7 @@ Partial Class Fingerprint2
         'genderCombobox
         '
         Me.genderCombobox.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.genderCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.genderCombobox.FormattingEnabled = True
         Me.genderCombobox.Location = New System.Drawing.Point(420, 392)
         Me.genderCombobox.Name = "genderCombobox"

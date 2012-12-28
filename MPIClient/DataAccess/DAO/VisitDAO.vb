@@ -4,6 +4,7 @@ Imports MPIClient.DataAccess.Model
 Namespace DataAccess.DAO
     Public Class VisitDAO
         Inherits DatabaseAccess
+        Public Const ID As String = "id"
         Public Const PATIENT_ID As String = "patient_id"
         Public Const SERVICE_ID As String = "service_id"
         Public Const SITE_CODE As String = "site_code"
@@ -61,6 +62,7 @@ Namespace DataAccess.DAO
         Public Function Add(ByVal visits As List(Of Visit), ByVal transaction As DbTransaction) As Integer
 
             Dim datatable As New DataTable("visit")
+            datatable.Columns.Add(ID)
             datatable.Columns.Add(PATIENT_ID)
             datatable.Columns.Add(SERVICE_ID)
             datatable.Columns.Add(SITE_CODE)
@@ -71,6 +73,7 @@ Namespace DataAccess.DAO
             Dim row As DataRow
             For Each visit As Visit In visits
                 row = datatable.NewRow
+                row(ID) = visit.VisitID
                 row(PATIENT_ID) = visit.PatientID
                 row(SERVICE_ID) = visit.ServiceID
                 row(SITE_CODE) = visit.SiteCode
@@ -78,31 +81,43 @@ Namespace DataAccess.DAO
                 row(EXTERNAL_CODE) = visit.ExternalCode
                 row(INFO) = visit.Info
                 row(SYN) = 1
+                datatable.Rows.Add(row)
             Next
-            Dim command As DbCommand = Database.CreateCommand(Constant.GeneralConstants.SP_INSERT_NEW_VISIT)
+            Dim command As DbCommand = Database.CreateCommand(Constant.GeneralConstants.SP_INSERT_NEW_VISIT_WITH_GIVEN_ID)
             command.CommandType = CommandType.StoredProcedure
 
             Dim parameter As DbParameter
 
+            parameter = Database.CreateParameter(ID, DbType.String)
+            parameter.SourceColumn = ID
+            command.Parameters.Add(parameter)
+
             parameter = Database.CreateParameter(Database.CreateParameterName(PATIENT_ID), DbType.String)
+            parameter.SourceColumn = PATIENT_ID
             command.Parameters.Add(parameter)
 
             parameter = Database.CreateParameter(Database.CreateParameterName(SERVICE_ID), DbType.String)
+            parameter.SourceColumn = SERVICE_ID
             command.Parameters.Add(parameter)
 
             parameter = Database.CreateParameter(Database.CreateParameterName(SITE_CODE), DbType.String)
+            parameter.SourceColumn = SITE_CODE
             command.Parameters.Add(parameter)
 
             parameter = Database.CreateParameter(Database.CreateParameterName(VISIT_DATE), DbType.String)
+            parameter.SourceColumn = VISIT_DATE
             command.Parameters.Add(parameter)
 
             parameter = Database.CreateParameter(Database.CreateParameterName(EXTERNAL_CODE), DbType.String)
+            parameter.SourceColumn = EXTERNAL_CODE
             command.Parameters.Add(parameter)
 
             parameter = Database.CreateParameter(Database.CreateParameterName(INFO), DbType.String)
+            parameter.SourceColumn = INFO
             command.Parameters.Add(parameter)
 
             parameter = Database.CreateParameter(Database.CreateParameterName(SYN), DbType.Int16)
+            parameter.SourceColumn = SYN
             command.Parameters.Add(parameter)
 
             Return Database.UpdateSource(datatable, command, Nothing, Nothing, transaction)
@@ -185,7 +200,7 @@ Namespace DataAccess.DAO
             Return result
 
         End Function
-        Public Function deletePatientVisits(ByVal patientID As String) As Integer
+        Public Function deletePatientVisits(ByVal patientID As String, ByVal transaction As DbTransaction) As Integer
             Dim result As Integer
 
             Dim command As DbCommand
@@ -199,7 +214,7 @@ Namespace DataAccess.DAO
                 parameter.Value = patientID
                 command.Parameters.Add(parameter)
 
-                result = Database.ExecuteNonQuery(command)
+                result = Database.ExecuteNonQuery(command, transaction)
 
             Catch ex As Exception
                 result = -1

@@ -10,7 +10,7 @@
         Private _serviceID As Integer
         Private _siteCode As Integer
         Private _visitDate As String
-        Private _externalCode As Integer
+        Private _externalCode As String
         Private _info As String
         Private _syn As Boolean
         Private _createdate As String
@@ -55,11 +55,11 @@
                 _visitDate = value
             End Set
         End Property
-        Public Property externalcode() As Integer
+        Public Property externalcode() As String
             Get
                 Return _externalCode
             End Get
-            Set(ByVal value As Integer)
+            Set(ByVal value As String)
                 _externalCode = value
             End Set
         End Property

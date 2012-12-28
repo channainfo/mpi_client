@@ -249,6 +249,7 @@ Namespace DataAccess
             Using DataAdapter As DbDataAdapter = _factory.CreateDataAdapter()
                 If cmdInsert IsNot Nothing Then
                     cmdInsert.Connection = Conn
+                    cmdInsert.Transaction = transaction
                     DataAdapter.InsertCommand = cmdInsert
                 End If
                 If cmdUpdate IsNot Nothing Then
@@ -259,7 +260,8 @@ Namespace DataAccess
                     cmdDelete.Connection = Conn
                     DataAdapter.DeleteCommand = cmdDelete
                 End If
-                Return DataAdapter.Update(dt)
+                Dim result As Integer = DataAdapter.Update(dt)
+                Return result
             End Using
         End Function
         Public Shared Function CreateInstance(ByVal dataBaseTypeName As String, ByVal connectionString As String) As Database
