@@ -66,6 +66,7 @@ Public Class NewVisit
         visit.SiteCode = siteCodeTextBox.Text
         visit.VisitDate = visitDateTextBox.Text
         visit.ExternalCode = externalCodeTextBox.Text
+        visit.ExternalCode2 = externalCode2TextBox.Text
         visit.Info = infoTextBox.Text
         Return visit
     End Function

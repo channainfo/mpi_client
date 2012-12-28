@@ -233,6 +233,12 @@ Public Class Fingerprint2
         If genderCombobox.SelectedValue = 0 Then
             validationErrMessage = validationErrMessage + "- Gender must be selected." + vbCrLf
         End If
+
+        If isDuplicateFingerprints() Then
+            validationErrMessage = validationErrMessage + "- Some fingerprints are the same." + vbCrLf
+        End If
+
+        isDuplicateFingerprints()
         patient.Gender = genderCombobox.SelectedValue
         If validationErrMessage = "" Then
             Me.Hide()
@@ -242,6 +248,20 @@ Public Class Fingerprint2
         End If
 
     End Sub
+    Private Function isDuplicateFingerprints() As Boolean
+        Dim fingerprintsInPriority As List(Of Array) = patient.getFingerprintsInPriority()
+        If fingerprintsInPriority.Count > 1 Then
+            fingerprintUtil.setSourceFingerprint(fingerprintsInPriority(0))
+
+            For index As Integer = 1 To fingerprintsInPriority.Count - 1
+                If fingerprintUtil.indentifyFingerprint(fingerprintsInPriority(index), Nothing) Then
+                    Return True
+                End If
+            Next
+
+        End If
+        Return False
+    End Function
     Private Sub showSearchResultForm(ByVal patient As Patient)
         Dim searchResultForm As New SearchResult2
         searchResultForm.setPatient(Patient)

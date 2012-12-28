@@ -10,6 +10,7 @@ Namespace DataAccess.DAO
         Public Const SITE_CODE As String = "site_code"
         Public Const VISIT_DATE As String = "visit_date"
         Public Const EXTERNAL_CODE As String = "external_code"
+        Public Const EXTERNAL_CODE2 As String = "external_code2"
         Public Const INFO As String = "info"
         Public Const SYN As String = "syn"
         Private Const OLD_VISIT_ID As String = "old_visit_id"
@@ -47,6 +48,10 @@ Namespace DataAccess.DAO
                 parameter.Value = visit.ExternalCode
                 command.Parameters.Add(parameter)
 
+                parameter = Database.CreateParameter(Database.CreateParameterName(EXTERNAL_CODE2), DbType.String)
+                parameter.Value = visit.ExternalCode2
+                command.Parameters.Add(parameter)
+
                 parameter = Database.CreateParameter(Database.CreateParameterName(INFO), DbType.String)
                 parameter.Value = visit.Info
                 command.Parameters.Add(parameter)
@@ -68,6 +73,7 @@ Namespace DataAccess.DAO
             datatable.Columns.Add(SITE_CODE)
             datatable.Columns.Add(VISIT_DATE)
             datatable.Columns.Add(EXTERNAL_CODE)
+            datatable.Columns.Add(EXTERNAL_CODE2)
             datatable.Columns.Add(INFO)
             datatable.Columns.Add(SYN)
             Dim row As DataRow
@@ -79,6 +85,7 @@ Namespace DataAccess.DAO
                 row(SITE_CODE) = visit.SiteCode
                 row(VISIT_DATE) = visit.VisitDate
                 row(EXTERNAL_CODE) = visit.ExternalCode
+                row(EXTERNAL_CODE2) = visit.ExternalCode2
                 row(INFO) = visit.Info
                 row(SYN) = 1
                 datatable.Rows.Add(row)
@@ -110,6 +117,10 @@ Namespace DataAccess.DAO
 
             parameter = Database.CreateParameter(Database.CreateParameterName(EXTERNAL_CODE), DbType.String)
             parameter.SourceColumn = EXTERNAL_CODE
+            command.Parameters.Add(parameter)
+
+            parameter = Database.CreateParameter(Database.CreateParameterName(EXTERNAL_CODE2), DbType.String)
+            parameter.SourceColumn = EXTERNAL_CODE2
             command.Parameters.Add(parameter)
 
             parameter = Database.CreateParameter(Database.CreateParameterName(INFO), DbType.String)
@@ -152,7 +163,8 @@ Namespace DataAccess.DAO
                     visit.ServiceID = Convert.ToInt32(reader(SERVICE_ID))
                     visit.SiteCode = Convert.ToInt32(reader(SITE_CODE))
                     visit.VisitDate = Convert.ToString(reader(VISIT_DATE))
-                    visit.ExternalCode = Convert.ToInt32(reader(EXTERNAL_CODE))
+                    visit.ExternalCode = Convert.ToString(reader(EXTERNAL_CODE))
+                    visit.ExternalCode2 = Convert.ToString(reader(EXTERNAL_CODE2))
                     visit.Info = Convert.ToString(reader(INFO))
                     visit.Syn = Convert.ToBoolean(reader("syn"))
                     visit.Createdate = Convert.ToString(reader("createdate"))

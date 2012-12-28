@@ -27,6 +27,7 @@ Partial Class VisitHistory
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
         Me.visitDataGrid = New System.Windows.Forms.DataGridView
+        Me.VisitBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.closeButton = New System.Windows.Forms.Button
         Me.patientIDLabel = New System.Windows.Forms.Label
         Me.dateOfBirthLabel = New System.Windows.Forms.Label
@@ -35,8 +36,8 @@ Partial Class VisitHistory
         Me.SiteCodeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.VisitDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.ExternalCodeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.ExternalCode2 = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.InfoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.VisitBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.visitDataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VisitBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -75,13 +76,17 @@ Partial Class VisitHistory
         Me.visitDataGrid.AllowUserToOrderColumns = True
         Me.visitDataGrid.AutoGenerateColumns = False
         Me.visitDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.visitDataGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ServiceNameDataGridViewTextBoxColumn, Me.SiteCodeDataGridViewTextBoxColumn, Me.VisitDateDataGridViewTextBoxColumn, Me.ExternalCodeDataGridViewTextBoxColumn, Me.InfoDataGridViewTextBoxColumn})
+        Me.visitDataGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ServiceNameDataGridViewTextBoxColumn, Me.SiteCodeDataGridViewTextBoxColumn, Me.VisitDateDataGridViewTextBoxColumn, Me.ExternalCodeDataGridViewTextBoxColumn, Me.ExternalCode2, Me.InfoDataGridViewTextBoxColumn})
         Me.visitDataGrid.DataSource = Me.VisitBindingSource
         Me.visitDataGrid.Location = New System.Drawing.Point(15, 95)
         Me.visitDataGrid.Name = "visitDataGrid"
         Me.visitDataGrid.ReadOnly = True
-        Me.visitDataGrid.Size = New System.Drawing.Size(549, 180)
+        Me.visitDataGrid.Size = New System.Drawing.Size(643, 180)
         Me.visitDataGrid.TabIndex = 1
+        '
+        'VisitBindingSource
+        '
+        Me.VisitBindingSource.DataSource = GetType(MPIClient.DataAccess.Model.Visit)
         '
         'closeButton
         '
@@ -147,6 +152,13 @@ Partial Class VisitHistory
         Me.ExternalCodeDataGridViewTextBoxColumn.Name = "ExternalCodeDataGridViewTextBoxColumn"
         Me.ExternalCodeDataGridViewTextBoxColumn.ReadOnly = True
         '
+        'ExternalCode2
+        '
+        Me.ExternalCode2.DataPropertyName = "ExternalCode2"
+        Me.ExternalCode2.HeaderText = "ExternalCode2"
+        Me.ExternalCode2.Name = "ExternalCode2"
+        Me.ExternalCode2.ReadOnly = True
+        '
         'InfoDataGridViewTextBoxColumn
         '
         Me.InfoDataGridViewTextBoxColumn.DataPropertyName = "Info"
@@ -154,15 +166,11 @@ Partial Class VisitHistory
         Me.InfoDataGridViewTextBoxColumn.Name = "InfoDataGridViewTextBoxColumn"
         Me.InfoDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'VisitBindingSource
-        '
-        Me.VisitBindingSource.DataSource = GetType(MPIClient.DataAccess.Model.Visit)
-        '
         'VisitHistory
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(575, 291)
+        Me.ClientSize = New System.Drawing.Size(670, 291)
         Me.Controls.Add(Me.genderLabel)
         Me.Controls.Add(Me.dateOfBirthLabel)
         Me.Controls.Add(Me.patientIDLabel)
@@ -189,10 +197,11 @@ Partial Class VisitHistory
     Friend WithEvents dateOfBirthLabel As System.Windows.Forms.Label
     Friend WithEvents genderLabel As System.Windows.Forms.Label
     Friend WithEvents ExternalIDDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents VisitBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents ServiceNameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents SiteCodeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents VisitDateDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ExternalCodeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ExternalCode2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents InfoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents VisitBindingSource As System.Windows.Forms.BindingSource
 End Class

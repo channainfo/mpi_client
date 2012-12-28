@@ -11,6 +11,7 @@
         Private _siteCode As Integer
         Private _visitDate As String
         Private _externalCode As String
+        Private _externalCode2 As String
         Private _info As String
         Private _syn As Boolean
         Private _createdate As String
@@ -61,6 +62,14 @@
             End Get
             Set(ByVal value As String)
                 _externalCode = value
+            End Set
+        End Property
+        Public Property ExternalCode2() As String
+            Get
+                Return _externalCode2
+            End Get
+            Set(ByVal value As String)
+                _externalCode2 = value
             End Set
         End Property
         Public Property info() As String

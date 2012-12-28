@@ -36,6 +36,8 @@ Partial Class NewVisit
         Me.infoTextBox = New System.Windows.Forms.TextBox
         Me.saveButton = New System.Windows.Forms.Button
         Me.infoLabel = New System.Windows.Forms.Label
+        Me.externalCode2TextBox = New System.Windows.Forms.TextBox
+        Me.Label2 = New System.Windows.Forms.Label
         Me.SuspendLayout()
         '
         'patientIDLabel
@@ -123,7 +125,7 @@ Partial Class NewVisit
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(12, 141)
+        Me.Label8.Location = New System.Drawing.Point(12, 167)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(28, 13)
         Me.Label8.TabIndex = 6
@@ -131,17 +133,17 @@ Partial Class NewVisit
         '
         'infoTextBox
         '
-        Me.infoTextBox.Location = New System.Drawing.Point(103, 138)
+        Me.infoTextBox.Location = New System.Drawing.Point(103, 164)
         Me.infoTextBox.Name = "infoTextBox"
         Me.infoTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.infoTextBox.TabIndex = 4
+        Me.infoTextBox.TabIndex = 5
         '
         'saveButton
         '
-        Me.saveButton.Location = New System.Drawing.Point(103, 178)
+        Me.saveButton.Location = New System.Drawing.Point(103, 190)
         Me.saveButton.Name = "saveButton"
         Me.saveButton.Size = New System.Drawing.Size(75, 23)
-        Me.saveButton.TabIndex = 5
+        Me.saveButton.TabIndex = 6
         Me.saveButton.Text = "Save"
         Me.saveButton.UseVisualStyleBackColor = True
         '
@@ -154,11 +156,29 @@ Partial Class NewVisit
         Me.infoLabel.TabIndex = 9
         Me.infoLabel.Text = "status"
         '
+        'externalCode2TextBox
+        '
+        Me.externalCode2TextBox.Location = New System.Drawing.Point(103, 138)
+        Me.externalCode2TextBox.Name = "externalCode2TextBox"
+        Me.externalCode2TextBox.Size = New System.Drawing.Size(100, 20)
+        Me.externalCode2TextBox.TabIndex = 4
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(12, 141)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(82, 13)
+        Me.Label2.TabIndex = 11
+        Me.Label2.Text = "External Code2:"
+        '
         'NewVisit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(225, 253)
+        Me.Controls.Add(Me.externalCode2TextBox)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.saveButton)
         Me.Controls.Add(Me.infoTextBox)
         Me.Controls.Add(Me.externalCodeTextBox)
@@ -194,4 +214,6 @@ Partial Class NewVisit
     Friend WithEvents infoTextBox As System.Windows.Forms.TextBox
     Friend WithEvents saveButton As System.Windows.Forms.Button
     Friend WithEvents infoLabel As System.Windows.Forms.Label
+    Friend WithEvents externalCode2TextBox As System.Windows.Forms.TextBox
+    Friend WithEvents Label2 As System.Windows.Forms.Label
 End Class
