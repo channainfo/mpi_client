@@ -8,7 +8,7 @@
         Private _id As String
         Private _patientID As String
         Private _serviceID As Integer
-        Private _siteCode As Integer
+        Private _siteCode As String
         Private _visitDate As String
         Private _externalCode As String
         Private _externalCode2 As String
@@ -40,11 +40,11 @@
                 _serviceID = value
             End Set
         End Property
-        Public Property SiteCode() As Integer
+        Public Property SiteCode() As String
             Get
                 Return _siteCode
             End Get
-            Set(ByVal value As Integer)
+            Set(ByVal value As String)
                 _siteCode = value
             End Set
         End Property

@@ -161,7 +161,7 @@ Namespace DataAccess.DAO
                     visit.VisitID = Convert.ToString(reader("id"))
                     visit.PatientID = Convert.ToString(reader(PATIENT_ID))
                     visit.ServiceID = Convert.ToInt32(reader(SERVICE_ID))
-                    visit.SiteCode = Convert.ToInt32(reader(SITE_CODE))
+                    visit.SiteCode = Convert.ToString(reader(SITE_CODE))
                     visit.VisitDate = Convert.ToString(reader(VISIT_DATE))
                     visit.ExternalCode = Convert.ToString(reader(EXTERNAL_CODE))
                     visit.ExternalCode2 = Convert.ToString(reader(EXTERNAL_CODE2))
