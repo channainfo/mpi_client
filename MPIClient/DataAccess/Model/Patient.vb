@@ -19,6 +19,7 @@ Namespace DataAccess.Model
         Private _fingerprint_l4 As Array
         Private _fingerprint_l5 As Array
         Private _gender As Integer?
+        Private _siteCode As String = ""
         Private _dateOfBirth As String
         Private _syn As Boolean
         Private _createdate As String
@@ -138,6 +139,14 @@ Namespace DataAccess.Model
                 genderEnum = _gender
                 Return genderEnum.ToString()
             End Get
+        End Property
+        Public Property SiteCode() As String
+            Get
+                Return _siteCode
+            End Get
+            Set(ByVal value As String)
+                _siteCode = value
+            End Set
         End Property
         Public Property DateBirth() As String
             Get

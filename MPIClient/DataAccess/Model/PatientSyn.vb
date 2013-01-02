@@ -16,6 +16,7 @@
         Private _fingerprint_l4 As String
         Private _fingerprint_l5 As String
         Private _gender As Integer
+        Private _siteCode As String
         Private _dateOfBirth As String
         Private _createdate As String
         Private _updatedate As String
@@ -118,6 +119,14 @@
             End Set
         End Property
         
+        Public Property sitecode() As String
+            Get
+                Return _siteCode
+            End Get
+            Set(ByVal value As String)
+                _siteCode = value
+            End Set
+        End Property
         Public Property datebirth() As String
             Get
                 Return _dateOfBirth

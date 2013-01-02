@@ -38,7 +38,6 @@ Partial Class SearchResult2
         Me.PatientBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PatientIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.GenderText = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DateBirthDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.CreatedateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.UpdatedateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.NumVisit = New System.Windows.Forms.DataGridViewLinkColumn
@@ -107,7 +106,7 @@ Partial Class SearchResult2
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientIDDataGridViewTextBoxColumn, Me.GenderText, Me.DateBirthDataGridViewTextBoxColumn, Me.CreatedateDataGridViewTextBoxColumn, Me.UpdatedateDataGridViewTextBoxColumn, Me.NumVisit})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientIDDataGridViewTextBoxColumn, Me.GenderText, Me.CreatedateDataGridViewTextBoxColumn, Me.UpdatedateDataGridViewTextBoxColumn, Me.NumVisit})
         Me.DataGridView1.DataSource = Me.PatientBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(12, 52)
         Me.DataGridView1.MultiSelect = False
@@ -156,16 +155,9 @@ Partial Class SearchResult2
         'GenderText
         '
         Me.GenderText.DataPropertyName = "GenderText"
-        Me.GenderText.HeaderText = "GenderText"
+        Me.GenderText.HeaderText = "Gender"
         Me.GenderText.Name = "GenderText"
         Me.GenderText.ReadOnly = True
-        '
-        'DateBirthDataGridViewTextBoxColumn
-        '
-        Me.DateBirthDataGridViewTextBoxColumn.DataPropertyName = "DateBirth"
-        Me.DateBirthDataGridViewTextBoxColumn.HeaderText = "DateBirth"
-        Me.DateBirthDataGridViewTextBoxColumn.Name = "DateBirthDataGridViewTextBoxColumn"
-        Me.DateBirthDataGridViewTextBoxColumn.ReadOnly = True
         '
         'CreatedateDataGridViewTextBoxColumn
         '
@@ -223,7 +215,6 @@ Partial Class SearchResult2
     Friend WithEvents infoLabel As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents PatientIDDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents GenderText As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DateBirthDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CreatedateDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents UpdatedateDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents NumVisit As System.Windows.Forms.DataGridViewLinkColumn

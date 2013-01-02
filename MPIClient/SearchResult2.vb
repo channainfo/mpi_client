@@ -69,6 +69,8 @@ Public Class SearchResult2
         End If
         If patient.getFingerprintsInPriority().Count < 2 Then
             MessageBox.Show("Two fingerprints are required for the enrollment.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Me.Close()
+            Owner.Show()
             Return
         End If
         If (MessageBox.Show("Are you sure you want to enroll new patient?", "Enrollment Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) = Windows.Forms.DialogResult.OK) Then

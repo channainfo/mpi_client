@@ -23,6 +23,7 @@ Namespace DataAccess.DAO
         Public Const PATIENT_ID As String = "patient_id"
         Public Const NEW_PATIENT_ID As String = "new_patient_id"
         Public Const GENDER_COL As String = "gender"
+        Public Const SITE_CODE As String = "site_code"
         Public Const DATE_OF_BIRTH As String = "date_of_birth"
         Public Const SYN As String = "syn"
         Public Sub New()
@@ -80,6 +81,10 @@ Namespace DataAccess.DAO
                 parameter.Value = patient.Gender
                 command.Parameters.Add(parameter)
 
+                parameter = Database.CreateParameter(Database.CreateParameterName(SITE_CODE), DbType.String)
+                parameter.Value = patient.SiteCode
+                command.Parameters.Add(parameter)
+
                 patientID = Database.ExecuteScalar(command)
                 result = 1
             Catch ex As Exception
@@ -111,6 +116,10 @@ Namespace DataAccess.DAO
 
                 parameter = Database.CreateParameter(Database.CreateParameterName(GENDER_COL), DbType.String)
                 parameter.Value = patient.Gender
+                command.Parameters.Add(parameter)
+
+                parameter = Database.CreateParameter(Database.CreateParameterName(SITE_CODE), DbType.String)
+                parameter.Value = patient.SiteCode
                 command.Parameters.Add(parameter)
 
                 parameter = Database.CreateParameter(Database.CreateParameterName(DATE_OF_BIRTH), DbType.String)

@@ -213,7 +213,8 @@ Public Class WebRequestClass
             + "&fingerprint_l3=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_l3)) _
             + "&fingerprint_l4=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_l4)) _
             + "&fingerprint_l5=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_l5)) _
-            + "&gender=" + patient.Gender.ToString()
+            + "&gender=" + patient.Gender.ToString() _
+            + "&sitecode=" + patient.SiteCode
 
             Dim queryData As Byte() = UTF8Encoding.UTF8.GetBytes(queryString)
             Dim url As String = ConfigManager.GetConfiguarationValue("Server") + ConfigManager.GetConfiguarationValue("EnrollURL")

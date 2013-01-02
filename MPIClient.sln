@@ -25,7 +25,6 @@ Global
 		{989A2413-1241-4141-80FF-E152D425A885}.Debug|x86.ActiveCfg = Release
 		{989A2413-1241-4141-80FF-E152D425A885}.Release|Any CPU.ActiveCfg = Release
 		{989A2413-1241-4141-80FF-E152D425A885}.Release|x86.ActiveCfg = Release
-		{989A2413-1241-4141-80FF-E152D425A885}.Release|x86.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -159,6 +159,7 @@ Public Class Synchronization
         patientSyn.fingerprint_l5 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_l5)
 
         patientSyn.gender = currentPatient.Gender
+        patientSyn.sitecode = currentPatient.SiteCode
         If currentPatient.DateBirth.Trim().Equals("") Then
             patientSyn.datebirth = ""
         Else
