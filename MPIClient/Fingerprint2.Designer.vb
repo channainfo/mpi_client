@@ -412,7 +412,7 @@ Partial Class Fingerprint2
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.ActionToolStrip)
         Me.Name = "Fingerprint2"
-        Me.Text = "Fingerprint2"
+        Me.Text = "Fingerprint"
         Me.ActionToolStrip.ResumeLayout(False)
         Me.ActionToolStrip.PerformLayout()
         CType(Me.grFingerXCtrl, System.ComponentModel.ISupportInitialize).EndInit()

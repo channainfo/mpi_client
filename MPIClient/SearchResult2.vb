@@ -68,16 +68,16 @@ Public Class SearchResult2
             Return
         End If
         If patient.getFingerprintsInPriority().Count < 2 Then
-            MessageBox.Show("Two fingerprints are required for the enrollment.")
+            MessageBox.Show("Two fingerprints are required for the enrollment.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
         If (MessageBox.Show("Are you sure you want to enroll new patient?", "Enrollment Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) = Windows.Forms.DialogResult.OK) Then
             Dim patientID As String = Nothing
             If patientDAO.Add(patient, patientID) > 0 Then
                 updatePatientIDFromWebServiceCall(patientID)
-                MessageBox.Show("Successfully save with PatientID = " + patientID)
+                MessageBox.Show("Successfully save with PatientID = " + patientID, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
-                MessageBox.Show("Error while saving!!!")
+                MessageBox.Show("Error while saving!!!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         End If
 

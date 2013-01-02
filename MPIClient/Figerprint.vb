@@ -116,7 +116,7 @@ Public Class Figerprint
             Me.Hide()
             showSearchResultForm(patient)
         Else
-            MessageBox.Show("Invalid Format")
+            MessageBox.Show("Fingerprint is invalid Format.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
     Private Sub showSearchResultForm(ByVal patient As Patient)

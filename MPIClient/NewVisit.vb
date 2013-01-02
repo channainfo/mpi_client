@@ -31,9 +31,9 @@ Public Class NewVisit
         Dim visit As Visit = prepareVisit()
         If visitDAO.Add(visit, visit.VisitID) > 0 Then
             updateVisIDFromWebServiceCall(visit)
-            MessageBox.Show("Successfully save with VistiID = " + visit.VisitID)
+            MessageBox.Show("Successfully save with VistiID = " + visit.VisitID, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
-            MessageBox.Show("Error while saving!!!")
+            MessageBox.Show("Error while saving!!!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
 
     End Sub

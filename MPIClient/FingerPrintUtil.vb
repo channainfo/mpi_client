@@ -142,7 +142,7 @@ Public Class FingerprintUtil
         Try
             Dim retVal As Integer = grFingerX.EncodeBase64(fingerprint, temSize, encodedBuffer, tt)
         Catch e As Exception
-            MessageBox.Show(e.Message)
+            MessageBox.Show(e.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
         Array.Resize(encodedBuffer, tt)
         Dim template64 As String = System.Text.Encoding.UTF8.GetString(encodedBuffer)

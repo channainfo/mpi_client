@@ -35,9 +35,9 @@ Public Class ManualSyn
         If patients.Count > 0 Then
             Dim status = patientDAO.Update(currentPatient.PatientID, patients(0))
             If status > 0 Then
-                MessageBox.Show("Successful.")
+                MessageBox.Show("Successful.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
-                MessageBox.Show("Fail.")
+                MessageBox.Show("Fail.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         End If
     End Sub

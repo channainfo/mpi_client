@@ -27,7 +27,7 @@ Partial Class VisitHistory
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
         Me.visitDataGrid = New System.Windows.Forms.DataGridView
-        Me.VisitBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ExternalCode2 = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.closeButton = New System.Windows.Forms.Button
         Me.patientIDLabel = New System.Windows.Forms.Label
         Me.dateOfBirthLabel = New System.Windows.Forms.Label
@@ -36,8 +36,8 @@ Partial Class VisitHistory
         Me.SiteCodeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.VisitDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.ExternalCodeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ExternalCode2 = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.InfoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.VisitBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.visitDataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VisitBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -74,6 +74,8 @@ Partial Class VisitHistory
         Me.visitDataGrid.AllowUserToAddRows = False
         Me.visitDataGrid.AllowUserToDeleteRows = False
         Me.visitDataGrid.AllowUserToOrderColumns = True
+        Me.visitDataGrid.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.visitDataGrid.AutoGenerateColumns = False
         Me.visitDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.visitDataGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ServiceNameDataGridViewTextBoxColumn, Me.SiteCodeDataGridViewTextBoxColumn, Me.VisitDateDataGridViewTextBoxColumn, Me.ExternalCodeDataGridViewTextBoxColumn, Me.ExternalCode2, Me.InfoDataGridViewTextBoxColumn})
@@ -81,16 +83,19 @@ Partial Class VisitHistory
         Me.visitDataGrid.Location = New System.Drawing.Point(15, 95)
         Me.visitDataGrid.Name = "visitDataGrid"
         Me.visitDataGrid.ReadOnly = True
-        Me.visitDataGrid.Size = New System.Drawing.Size(643, 180)
+        Me.visitDataGrid.Size = New System.Drawing.Size(672, 180)
         Me.visitDataGrid.TabIndex = 1
         '
-        'VisitBindingSource
+        'ExternalCode2
         '
-        Me.VisitBindingSource.DataSource = GetType(MPIClient.DataAccess.Model.Visit)
+        Me.ExternalCode2.DataPropertyName = "ExternalCode2"
+        Me.ExternalCode2.HeaderText = "ExternalCode2"
+        Me.ExternalCode2.Name = "ExternalCode2"
+        Me.ExternalCode2.ReadOnly = True
         '
         'closeButton
         '
-        Me.closeButton.Location = New System.Drawing.Point(489, 9)
+        Me.closeButton.Location = New System.Drawing.Point(612, 9)
         Me.closeButton.Name = "closeButton"
         Me.closeButton.Size = New System.Drawing.Size(75, 23)
         Me.closeButton.TabIndex = 2
@@ -152,13 +157,6 @@ Partial Class VisitHistory
         Me.ExternalCodeDataGridViewTextBoxColumn.Name = "ExternalCodeDataGridViewTextBoxColumn"
         Me.ExternalCodeDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'ExternalCode2
-        '
-        Me.ExternalCode2.DataPropertyName = "ExternalCode2"
-        Me.ExternalCode2.HeaderText = "ExternalCode2"
-        Me.ExternalCode2.Name = "ExternalCode2"
-        Me.ExternalCode2.ReadOnly = True
-        '
         'InfoDataGridViewTextBoxColumn
         '
         Me.InfoDataGridViewTextBoxColumn.DataPropertyName = "Info"
@@ -166,11 +164,15 @@ Partial Class VisitHistory
         Me.InfoDataGridViewTextBoxColumn.Name = "InfoDataGridViewTextBoxColumn"
         Me.InfoDataGridViewTextBoxColumn.ReadOnly = True
         '
+        'VisitBindingSource
+        '
+        Me.VisitBindingSource.DataSource = GetType(MPIClient.DataAccess.Model.Visit)
+        '
         'VisitHistory
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(670, 291)
+        Me.ClientSize = New System.Drawing.Size(699, 291)
         Me.Controls.Add(Me.genderLabel)
         Me.Controls.Add(Me.dateOfBirthLabel)
         Me.Controls.Add(Me.patientIDLabel)

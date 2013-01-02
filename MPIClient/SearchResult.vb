@@ -74,9 +74,9 @@ Public Class SearchResult
             Dim patientID As String = Nothing
             If patientDAO.Add(patient, patientID) > 0 Then
                 updatePatientIDFromWebServiceCall(patientID)
-                MessageBox.Show("Successfully save with PatientID = " + patientID)
+                MessageBox.Show("Successfully save with PatientID = " + patientID, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
-                MessageBox.Show("Error while saving!!!")
+                MessageBox.Show("Error while saving!!!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         End If
 

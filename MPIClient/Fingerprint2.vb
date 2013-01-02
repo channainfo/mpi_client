@@ -244,7 +244,7 @@ Public Class Fingerprint2
             Me.Hide()
             showSearchResultForm(patient)
         Else
-            MessageBox.Show(validationErrMessage, "Validation Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show(validationErrMessage, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
 
     End Sub

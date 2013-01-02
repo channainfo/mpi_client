@@ -231,7 +231,7 @@ Public Class Synchronization
         If cell.ErrorText.Equals("") Then
             showManualSynForm(currentPatient, cell.Tag)
         Else
-            MessageBox.Show(cell.ErrorText)
+            MessageBox.Show(cell.ErrorText, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
     Private Sub showManualSynForm(ByVal currentPatient As Patient, ByVal patients As List(Of Patient))
