@@ -9,6 +9,7 @@
         Private _patientID As String
         Private _serviceID As Integer
         Private _siteCode As String
+        Private _siteName As String
         Private _visitDate As String
         Private _externalCode As String
         Private _externalCode2 As String
@@ -46,6 +47,14 @@
             End Get
             Set(ByVal value As String)
                 _siteCode = value
+            End Set
+        End Property
+        Public Property SiteName() As String
+            Get
+                Return _siteName
+            End Get
+            Set(ByVal value As String)
+                _siteName = value
             End Set
         End Property
         Public Property VisitDate() As String

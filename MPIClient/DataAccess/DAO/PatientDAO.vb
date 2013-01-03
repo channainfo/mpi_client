@@ -93,7 +93,7 @@ Namespace DataAccess.DAO
 
             Return result
         End Function
-        Public Function Update(ByVal oldPatientID As String, ByVal patient As Patient, Optional ByVal isDeleteVisits As Boolean = True)
+        Public Function Update(ByVal oldPatientID As String, ByVal patient As Patient, Optional ByVal isDeleteVisits As Boolean = True) As Integer
             Dim result As String = 0
 
             Dim command As DbCommand

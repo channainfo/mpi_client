@@ -227,7 +227,7 @@ Public Class Fingerprint2
         End If
 
         If numberOfBadQuality > 0 Then
-            validationErrMessage = validationErrMessage + "- Some fingerprints are in bad quality." + vbCrLf
+            validationErrMessage = validationErrMessage + "- Some fingerprints are in bad quality (Medium to hight quality is required)." + vbCrLf
         End If
 
         If genderCombobox.SelectedValue = 0 Then
@@ -278,5 +278,11 @@ Public Class Fingerprint2
 
     Private Sub CloseButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CloseButton.Click
         Me.Close()
+    End Sub
+
+    Private Sub genderCombobox_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles genderCombobox.KeyDown
+        If e.KeyValue = 46 Then
+            clearLastSelectedFinger()
+        End If
     End Sub
 End Class

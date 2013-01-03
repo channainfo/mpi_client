@@ -143,7 +143,7 @@ Public Class Synchronization
         'updateProgressStatus(ProgressStatus.Completed, 0)
 
     End Sub
-    Private Function preparePatientSynObject(ByVal currentPatient As Patient) As PatientSyn
+    Public Function preparePatientSynObject(ByVal currentPatient As Patient) As PatientSyn
         Dim patientSyn As New PatientSyn
         Dim fingerprintUtil As New FingerprintUtil(grFingerXCtrl)
         patientSyn.patientid = currentPatient.PatientID
@@ -165,7 +165,7 @@ Public Class Synchronization
         Else
             patientSyn.datebirth = DateTime.Parse(currentPatient.DateBirth).ToString("yyyy-MM-dd HH:mm:ss")
         End If
-        
+
 
 
         patientSyn.createdate = DateTime.Parse(currentPatient.Createdate).ToString("yyyy-MM-dd HH:mm:ss")

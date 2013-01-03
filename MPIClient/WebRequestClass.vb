@@ -30,7 +30,7 @@ Public Class WebRequestClass
         End Using
 
     End Sub
-    Sub synPatientWithPatientID(ByVal patient As Patient, ByVal patientID As String, ByVal uploadValuesCompleted As UploadValuesCompletedEventHandler)
+    Sub synPatientWithPatientID(ByVal patient As PatientSyn, ByVal patientID As String, ByVal uploadValuesCompleted As UploadValuesCompletedEventHandler)
         Using webClient As New WebClient()
             'Dim enrollService As UploadValuesCompletedEventHandler = Nothing
             AddHandler webClient.UploadValuesCompleted, uploadValuesCompleted
@@ -41,8 +41,9 @@ Public Class WebRequestClass
             Try
                 Dim formData As New NameValueCollection()
                 formData.Add("patient", jsSerializer.Serialize(patient))
-                Dim url As String = ConfigManager.GetConfiguarationValue("Server") + ConfigManager.GetConfiguarationValue("SynURL")
                 formData.Add("patientid", patientID)
+                Dim url As String = ConfigManager.GetConfiguarationValue("Server") + ConfigManager.GetConfiguarationValue("SynUpdateURL")
+                webClient.UploadValuesAsync(New Uri(url), "post", formData)
             Catch ex As Exception
                 'Throw ex
             End Try

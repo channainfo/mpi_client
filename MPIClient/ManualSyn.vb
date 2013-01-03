@@ -28,17 +28,20 @@ Public Class ManualSyn
         Dim jsSerializer As New JavaScriptSerializer()
 
         jsonResult = jsSerializer.DeserializeObject(jsonString)
-        Dim patients As New List(Of Patient)
-        Dim patientDAO As New PatientDAO
-        patients.AddRange(GeneralUtil.getPatientFromJSONObject(jsonResult))
 
-        If patients.Count > 0 Then
-            Dim status = patientDAO.Update(currentPatient.PatientID, patients(0))
-            If status > 0 Then
-                MessageBox.Show("Successful.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Else
-                MessageBox.Show("Fail.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            End If
+        Dim patientDAO As New PatientDAO
+        Dim patient As Patient = GeneralUtil.getPatientFromJSONObject(jsonResult)
+
+        If patient Is Nothing Then
+            MessageBox.Show("Webserver: Internal server error.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Return
+        End If
+        patient.Syn = True
+        Dim status = patientDAO.Update(currentPatient.PatientID, patient)
+        If status > 0 Then
+            MessageBox.Show("Successful update.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            MessageBox.Show("Fail in updating patient.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
 
@@ -50,9 +53,17 @@ Public Class ManualSyn
 
     Private Sub synchronizationButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles synchronizationButton.Click
         Dim webRequestClass = New WebRequestClass
-        Dim patientID As String
         Dim selectedPatientToSyn As Patient = DataGridView1.SelectedRows(0).DataBoundItem
-        patientID = selectedPatientToSyn.PatientID
-        webRequestClass.synPatientWithPatientID(currentPatient, patientID, AddressOf uploadLoadValuesCompleted)
+        selectedPatientToSyn.Syn = True
+        Dim patientID As String = selectedPatientToSyn.PatientID
+        webRequestClass.synPatientWithPatientID(Synchronization.preparePatientSynObject(currentPatient), patientID, AddressOf uploadLoadValuesCompleted)
+        'Dim patientDAO As New PatientDAO
+        'Dim result = patientDAO.Update(currentPatient.PatientID, selectedPatientToSyn)
+
+        'If result > 0 Then
+        '    MessageBox.Show("Successful update.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        'Else
+        '    MessageBox.Show("Fail in updating patient.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        'End If
     End Sub
 End Class
