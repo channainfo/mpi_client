@@ -102,8 +102,8 @@ Partial Class Synchronization
         Me.CloseButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.CloseButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.CloseButton.Name = "CloseButton"
-        Me.CloseButton.Size = New System.Drawing.Size(72, 36)
-        Me.CloseButton.Text = "Close"
+        Me.CloseButton.Size = New System.Drawing.Size(61, 36)
+        Me.CloseButton.Text = "Exit"
         '
         'PatientIDDataGridViewTextBoxColumn
         '
@@ -154,6 +154,7 @@ Partial Class Synchronization
         Me.Controls.Add(Me.grFingerXCtrl)
         Me.Controls.Add(Me.DataGridView1)
         Me.Name = "Synchronization"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Synchronization"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grFingerXCtrl, System.ComponentModel.ISupportInitialize).EndInit()

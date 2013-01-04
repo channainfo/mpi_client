@@ -194,7 +194,7 @@ Partial Class NewVisit
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label1)
         Me.Name = "NewVisit"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "NewVisit"
         Me.ResumeLayout(False)
         Me.PerformLayout()

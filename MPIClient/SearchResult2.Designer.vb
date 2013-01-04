@@ -31,20 +31,20 @@ Partial Class SearchResult2
         Me.waitingProgress = New System.Windows.Forms.ToolStripProgressBar
         Me.ProgressStatus = New System.Windows.Forms.ToolStripLabel
         Me.DataGridView1 = New System.Windows.Forms.DataGridView
-        Me.countTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip
-        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel
-        Me.infoLabel = New System.Windows.Forms.ToolStripStatusLabel
-        Me.PatientBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PatientIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.GenderText = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.CreatedateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.UpdatedateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.NumVisit = New System.Windows.Forms.DataGridViewLinkColumn
+        Me.PatientBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.countTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel
+        Me.infoLabel = New System.Windows.Forms.ToolStripStatusLabel
         Me.ActionToolStrip.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.StatusStrip1.SuspendLayout()
         CType(Me.PatientBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'ActionToolStrip
@@ -116,35 +116,6 @@ Partial Class SearchResult2
         Me.DataGridView1.Size = New System.Drawing.Size(926, 379)
         Me.DataGridView1.TabIndex = 2
         '
-        'countTimer
-        '
-        Me.countTimer.Interval = 1000
-        '
-        'StatusStrip1
-        '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.infoLabel})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 454)
-        Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(950, 22)
-        Me.StatusStrip1.TabIndex = 3
-        Me.StatusStrip1.Text = "StatusStrip1"
-        '
-        'ToolStripStatusLabel1
-        '
-        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(42, 17)
-        Me.ToolStripStatusLabel1.Text = "Status:"
-        '
-        'infoLabel
-        '
-        Me.infoLabel.Name = "infoLabel"
-        Me.infoLabel.Size = New System.Drawing.Size(0, 17)
-        '
-        'PatientBindingSource
-        '
-        Me.PatientBindingSource.AllowNew = True
-        Me.PatientBindingSource.DataSource = GetType(MPIClient.DataAccess.Model.Patient)
-        '
         'PatientIDDataGridViewTextBoxColumn
         '
         Me.PatientIDDataGridViewTextBoxColumn.DataPropertyName = "PatientID"
@@ -180,6 +151,35 @@ Partial Class SearchResult2
         Me.NumVisit.Name = "NumVisit"
         Me.NumVisit.ReadOnly = True
         '
+        'PatientBindingSource
+        '
+        Me.PatientBindingSource.AllowNew = True
+        Me.PatientBindingSource.DataSource = GetType(MPIClient.DataAccess.Model.Patient)
+        '
+        'countTimer
+        '
+        Me.countTimer.Interval = 1000
+        '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.infoLabel})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 454)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(950, 22)
+        Me.StatusStrip1.TabIndex = 3
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'ToolStripStatusLabel1
+        '
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(42, 17)
+        Me.ToolStripStatusLabel1.Text = "Status:"
+        '
+        'infoLabel
+        '
+        Me.infoLabel.Name = "infoLabel"
+        Me.infoLabel.Size = New System.Drawing.Size(0, 17)
+        '
         'SearchResult2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -189,13 +189,14 @@ Partial Class SearchResult2
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.ActionToolStrip)
         Me.Name = "SearchResult2"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Search Result"
         Me.ActionToolStrip.ResumeLayout(False)
         Me.ActionToolStrip.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PatientBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
-        CType(Me.PatientBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

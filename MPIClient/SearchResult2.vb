@@ -56,9 +56,9 @@ Public Class SearchResult2
     Private Sub updateConnectionStatus(ByVal status As Status, Optional ByVal errorMessage As String = "")
         If status = status.Offline Then
             'Error connecting to WebServer. 
-            infoLabel.Text = errorMessage + " Status: Offline"
+            infoLabel.Text = errorMessage + "Offline"
         ElseIf status = SearchResult.Status.Online Then
-            infoLabel.Text = "Status: Online"
+            infoLabel.Text = "Online"
         ElseIf status = SearchResult.Status.OnlineButServerError Then
             infoLabel.Text = String.Format("The WebServer encounter problem: {0} Status: Server Error", errorMessage)
         End If
