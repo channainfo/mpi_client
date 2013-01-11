@@ -27,12 +27,12 @@ Partial Class VisitHistory
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
         Me.visitDataGrid = New System.Windows.Forms.DataGridView
+        Me.SiteName = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.ExternalCode2 = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.closeButton = New System.Windows.Forms.Button
         Me.patientIDLabel = New System.Windows.Forms.Label
         Me.dateOfBirthLabel = New System.Windows.Forms.Label
         Me.genderLabel = New System.Windows.Forms.Label
-        Me.SiteName = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ExternalCode2 = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.ServiceNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.SiteCodeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.VisitDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
@@ -75,7 +75,8 @@ Partial Class VisitHistory
         Me.visitDataGrid.AllowUserToAddRows = False
         Me.visitDataGrid.AllowUserToDeleteRows = False
         Me.visitDataGrid.AllowUserToOrderColumns = True
-        Me.visitDataGrid.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.visitDataGrid.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.visitDataGrid.AutoGenerateColumns = False
         Me.visitDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -87,9 +88,23 @@ Partial Class VisitHistory
         Me.visitDataGrid.Size = New System.Drawing.Size(825, 180)
         Me.visitDataGrid.TabIndex = 1
         '
+        'SiteName
+        '
+        Me.SiteName.DataPropertyName = "SiteName"
+        Me.SiteName.HeaderText = "SiteName"
+        Me.SiteName.Name = "SiteName"
+        Me.SiteName.ReadOnly = True
+        '
+        'ExternalCode2
+        '
+        Me.ExternalCode2.DataPropertyName = "ExternalCode2"
+        Me.ExternalCode2.HeaderText = "ExternalCode2"
+        Me.ExternalCode2.Name = "ExternalCode2"
+        Me.ExternalCode2.ReadOnly = True
+        '
         'closeButton
         '
-        Me.closeButton.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.closeButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.closeButton.Location = New System.Drawing.Point(765, 9)
         Me.closeButton.Name = "closeButton"
         Me.closeButton.Size = New System.Drawing.Size(75, 23)
@@ -123,20 +138,6 @@ Partial Class VisitHistory
         Me.genderLabel.Size = New System.Drawing.Size(39, 13)
         Me.genderLabel.TabIndex = 3
         Me.genderLabel.Text = "Label4"
-        '
-        'SiteName
-        '
-        Me.SiteName.DataPropertyName = "SiteName"
-        Me.SiteName.HeaderText = "SiteName"
-        Me.SiteName.Name = "SiteName"
-        Me.SiteName.ReadOnly = True
-        '
-        'ExternalCode2
-        '
-        Me.ExternalCode2.DataPropertyName = "ExternalCode2"
-        Me.ExternalCode2.HeaderText = "ExternalCode2"
-        Me.ExternalCode2.Name = "ExternalCode2"
-        Me.ExternalCode2.ReadOnly = True
         '
         'ServiceNameDataGridViewTextBoxColumn
         '

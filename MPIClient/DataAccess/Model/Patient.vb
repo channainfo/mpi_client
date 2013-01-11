@@ -19,6 +19,7 @@ Namespace DataAccess.Model
         Private _fingerprint_l4 As Array
         Private _fingerprint_l5 As Array
         Private _gender As Integer?
+        Private _age As Integer?
         Private _siteCode As String = ""
         Private _dateOfBirth As String
         Private _syn As Boolean
@@ -128,6 +129,14 @@ Namespace DataAccess.Model
             End Get
             Set(ByVal value As Integer?)
                 _gender = value
+            End Set
+        End Property
+        Public Property Age() As Integer?
+            Get
+                Return _age
+            End Get
+            Set(ByVal value As Integer?)
+                _age = value
             End Set
         End Property
         Public ReadOnly Property GenderText() As String

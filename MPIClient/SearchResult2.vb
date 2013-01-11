@@ -73,7 +73,7 @@ Public Class SearchResult2
             Owner.Show()
             Return
         End If
-        If (MessageBox.Show("Are you sure you want to enroll new patient?", "Enrollment Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) = Windows.Forms.DialogResult.OK) Then
+        If (MessageBox.Show("Are you sure you want to enroll new patient?", "Enrollment Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = Windows.Forms.DialogResult.OK) Then
             Dim patientID As String = Nothing
             If patientDAO.Add(patient, patientID) > 0 Then
                 updatePatientIDFromWebServiceCall(patientID)
@@ -129,7 +129,10 @@ Public Class SearchResult2
         Me.grFingerX = grFingerX
     End Sub
     Private Sub buttonClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles closeButton.Click
-        Me.Close()
+        If (MessageBox.Show("Are you sure you want to exit?", "Action Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = Windows.Forms.DialogResult.OK) Then
+            Me.Close()
+        End If
+
     End Sub
 
     Private Sub countTimer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles countTimer.Tick

@@ -1,5 +1,6 @@
 ﻿Imports System.Web.Script.Serialization
 Imports MPIClient.DataAccess.Model
+Imports System.Text
 
 Public Class GeneralUtil
 
@@ -26,5 +27,16 @@ Public Class GeneralUtil
         End If
         Return patient
     End Function
+    Public Shared Function serializeToJSONObject(ByVal result As Byte()) As Object
+        Dim jsonString As String = Encoding.UTF8.GetString(result)
+        Dim jsonResult As Object = Nothing
+        Dim jsSerializer As New JavaScriptSerializer()
 
+        Try
+            jsonResult = jsSerializer.DeserializeObject(jsonString)
+        Catch ex As Exception
+
+        End Try
+        Return jsonResult
+    End Function
 End Class

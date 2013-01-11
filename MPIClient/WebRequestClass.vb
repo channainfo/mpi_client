@@ -57,10 +57,12 @@ Public Class WebRequestClass
 
             Dim formData As New NameValueCollection
             formData.Add("patientid", visit.PatientID)
+            formData.Add("age", visit.Age)
             formData.Add("serviceid", visit.ServiceID)
             formData.Add("sitecode", visit.SiteCode)
             formData.Add("visitdate", visit.VisitDate)
             formData.Add("externalcode", visit.ExternalCode)
+            formData.Add("externalcode2", visit.ExternalCode2)
             formData.Add("info", visit.Info)
             Dim url As String = ConfigManager.GetConfiguarationValue("Server") + ConfigManager.GetConfiguarationValue("EnrollServiceURL")
             Dim jsonString As String = Encoding.UTF8.GetString(webClient.UploadValues(url, "post", formData))

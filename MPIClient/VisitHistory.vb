@@ -23,7 +23,7 @@ Public Class VisitHistory
     Private Sub updatePatientProfile()
         patientIDLabel.Text = patient.PatientID
         dateOfBirthLabel.Text = patient.DateBirth
-        genderLabel.Text = patient.Gender
+        genderLabel.Text = patient.GenderText
     End Sub
     Private Sub updateVisitDataGrid()
         visitDataGrid.DataSource = patient.Visits

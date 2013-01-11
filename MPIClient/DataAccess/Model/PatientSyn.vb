@@ -5,21 +5,22 @@
             Female = 2
         End Enum
         Private _id As String
-        Private _fingerprint_r1 As String
-        Private _fingerprint_r2 As String
-        Private _fingerprint_r3 As String
-        Private _fingerprint_r4 As String
-        Private _fingerprint_r5 As String
-        Private _fingerprint_l1 As String
-        Private _fingerprint_l2 As String
-        Private _fingerprint_l3 As String
-        Private _fingerprint_l4 As String
-        Private _fingerprint_l5 As String
+        Private _fingerprint_r1 As String = ""
+        Private _fingerprint_r2 As String = ""
+        Private _fingerprint_r3 As String = ""
+        Private _fingerprint_r4 As String = ""
+        Private _fingerprint_r5 As String = ""
+        Private _fingerprint_l1 As String = ""
+        Private _fingerprint_l2 As String = ""
+        Private _fingerprint_l3 As String = ""
+        Private _fingerprint_l4 As String = ""
+        Private _fingerprint_l5 As String = ""
         Private _gender As Integer
+        Private _age As Integer?
         Private _siteCode As String
-        Private _dateOfBirth As String
-        Private _createdate As String
-        Private _updatedate As String
+        Private _dateOfBirth As String = ""
+        Private _createdate As String = ""
+        Private _updatedate As String = ""
         Private _visits As List(Of VisitSyn)
         Public Property patientid() As String
             Get
@@ -119,6 +120,14 @@
             End Set
         End Property
         
+        Public Property age() As Integer?
+            Get
+                Return _age
+            End Get
+            Set(ByVal value As Integer?)
+                _age = value
+            End Set
+        End Property
         Public Property sitecode() As String
             Get
                 Return _siteCode
@@ -170,6 +179,7 @@
 
             For Each visitObject As Visit In visitsData
                 Dim visitSynObject As New VisitSyn
+                visitSynObject.age = visitObject.Age
                 visitSynObject.visitid = visitObject.VisitID
                 visitSynObject.visitdate = DateTime.Parse(visitObject.VisitDate).ToString("yyyy-MM-dd HH:mm:ss")
                 visitSynObject.updatedate = DateTime.Parse(visitObject.Updatedate).ToString("yyyy-MM-dd HH:mm:ss")

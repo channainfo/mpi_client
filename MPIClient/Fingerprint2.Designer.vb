@@ -24,6 +24,9 @@ Partial Class Fingerprint2
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Fingerprint2))
         Me.ActionToolStrip = New System.Windows.Forms.ToolStrip
+        Me.SearchButton = New System.Windows.Forms.ToolStripButton
+        Me.SynchronizationButton = New System.Windows.Forms.ToolStripButton
+        Me.CloseButton = New System.Windows.Forms.ToolStripButton
         Me.quality1Left = New System.Windows.Forms.Label
         Me.quality2left = New System.Windows.Forms.Label
         Me.quality3left = New System.Windows.Forms.Label
@@ -51,9 +54,6 @@ Partial Class Fingerprint2
         Me.pictureFingerprint = New System.Windows.Forms.PictureBox
         Me.PictureBox2 = New System.Windows.Forms.PictureBox
         Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.SearchButton = New System.Windows.Forms.ToolStripButton
-        Me.SynchronizationButton = New System.Windows.Forms.ToolStripButton
-        Me.CloseButton = New System.Windows.Forms.ToolStripButton
         Me.PictureBox3 = New System.Windows.Forms.PictureBox
         Me.PictureBox4 = New System.Windows.Forms.PictureBox
         Me.ActionToolStrip.SuspendLayout()
@@ -83,6 +83,33 @@ Partial Class Fingerprint2
         Me.ActionToolStrip.Size = New System.Drawing.Size(950, 39)
         Me.ActionToolStrip.TabIndex = 0
         Me.ActionToolStrip.Text = "ToolStrip1"
+        '
+        'SearchButton
+        '
+        Me.SearchButton.Image = Global.MPIClient.My.Resources.Resources.search_green_neon_icon__1_
+        Me.SearchButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.SearchButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.SearchButton.Name = "SearchButton"
+        Me.SearchButton.Size = New System.Drawing.Size(78, 36)
+        Me.SearchButton.Text = "Search"
+        '
+        'SynchronizationButton
+        '
+        Me.SynchronizationButton.Image = Global.MPIClient.My.Resources.Resources.Synchronize_icon__1_
+        Me.SynchronizationButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.SynchronizationButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.SynchronizationButton.Name = "SynchronizationButton"
+        Me.SynchronizationButton.Size = New System.Drawing.Size(128, 36)
+        Me.SynchronizationButton.Text = "Synchronization"
+        '
+        'CloseButton
+        '
+        Me.CloseButton.Image = Global.MPIClient.My.Resources.Resources.Log_Out_icon__1_
+        Me.CloseButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.CloseButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.CloseButton.Name = "CloseButton"
+        Me.CloseButton.Size = New System.Drawing.Size(61, 36)
+        Me.CloseButton.Text = "Exit"
         '
         'quality1Left
         '
@@ -354,33 +381,6 @@ Partial Class Fingerprint2
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
         '
-        'SearchButton
-        '
-        Me.SearchButton.Image = Global.MPIClient.My.Resources.Resources.search_green_neon_icon__1_
-        Me.SearchButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.SearchButton.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.SearchButton.Name = "SearchButton"
-        Me.SearchButton.Size = New System.Drawing.Size(78, 36)
-        Me.SearchButton.Text = "Search"
-        '
-        'SynchronizationButton
-        '
-        Me.SynchronizationButton.Image = Global.MPIClient.My.Resources.Resources.Synchronize_icon__1_
-        Me.SynchronizationButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.SynchronizationButton.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.SynchronizationButton.Name = "SynchronizationButton"
-        Me.SynchronizationButton.Size = New System.Drawing.Size(128, 36)
-        Me.SynchronizationButton.Text = "Synchronization"
-        '
-        'CloseButton
-        '
-        Me.CloseButton.Image = Global.MPIClient.My.Resources.Resources.Log_Out_icon__1_
-        Me.CloseButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.CloseButton.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.CloseButton.Name = "CloseButton"
-        Me.CloseButton.Size = New System.Drawing.Size(61, 36)
-        Me.CloseButton.Text = "Exit"
-        '
         'PictureBox3
         '
         Me.PictureBox3.Image = Global.MPIClient.My.Resources.Resources.Left1
@@ -393,6 +393,7 @@ Partial Class Fingerprint2
         '
         'PictureBox4
         '
+        Me.PictureBox4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PictureBox4.Image = Global.MPIClient.My.Resources.Resources.Right2
         Me.PictureBox4.Location = New System.Drawing.Point(742, 296)
         Me.PictureBox4.Name = "PictureBox4"

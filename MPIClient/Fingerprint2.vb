@@ -277,7 +277,9 @@ Public Class Fingerprint2
     End Sub
 
     Private Sub CloseButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CloseButton.Click
-        Me.Close()
+        If (MessageBox.Show("Are you sure you want to exit?", "Action Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = Windows.Forms.DialogResult.OK) Then
+            Me.Close()
+        End If
     End Sub
 
     Private Sub genderCombobox_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles genderCombobox.KeyDown

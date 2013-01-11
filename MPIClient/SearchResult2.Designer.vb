@@ -31,20 +31,21 @@ Partial Class SearchResult2
         Me.waitingProgress = New System.Windows.Forms.ToolStripProgressBar
         Me.ProgressStatus = New System.Windows.Forms.ToolStripLabel
         Me.DataGridView1 = New System.Windows.Forms.DataGridView
-        Me.PatientIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.GenderText = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.CreatedateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.UpdatedateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.Age = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.NumVisit = New System.Windows.Forms.DataGridViewLinkColumn
-        Me.PatientBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.countTimer = New System.Windows.Forms.Timer(Me.components)
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel
         Me.infoLabel = New System.Windows.Forms.ToolStripStatusLabel
+        Me.PatientIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.CreatedateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.UpdatedateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.PatientBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ActionToolStrip.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PatientBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
+        CType(Me.PatientBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ActionToolStrip
@@ -80,8 +81,8 @@ Partial Class SearchResult2
         Me.closeButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.closeButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.closeButton.Name = "closeButton"
-        Me.closeButton.Size = New System.Drawing.Size(72, 36)
-        Me.closeButton.Text = "Close"
+        Me.closeButton.Size = New System.Drawing.Size(61, 36)
+        Me.closeButton.Text = "Exit"
         '
         'countLabel
         '
@@ -106,7 +107,7 @@ Partial Class SearchResult2
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientIDDataGridViewTextBoxColumn, Me.GenderText, Me.CreatedateDataGridViewTextBoxColumn, Me.UpdatedateDataGridViewTextBoxColumn, Me.NumVisit})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientIDDataGridViewTextBoxColumn, Me.GenderText, Me.Age, Me.CreatedateDataGridViewTextBoxColumn, Me.UpdatedateDataGridViewTextBoxColumn, Me.NumVisit})
         Me.DataGridView1.DataSource = Me.PatientBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(12, 52)
         Me.DataGridView1.MultiSelect = False
@@ -116,13 +117,6 @@ Partial Class SearchResult2
         Me.DataGridView1.Size = New System.Drawing.Size(926, 379)
         Me.DataGridView1.TabIndex = 2
         '
-        'PatientIDDataGridViewTextBoxColumn
-        '
-        Me.PatientIDDataGridViewTextBoxColumn.DataPropertyName = "PatientID"
-        Me.PatientIDDataGridViewTextBoxColumn.HeaderText = "PatientID"
-        Me.PatientIDDataGridViewTextBoxColumn.Name = "PatientIDDataGridViewTextBoxColumn"
-        Me.PatientIDDataGridViewTextBoxColumn.ReadOnly = True
-        '
         'GenderText
         '
         Me.GenderText.DataPropertyName = "GenderText"
@@ -130,19 +124,12 @@ Partial Class SearchResult2
         Me.GenderText.Name = "GenderText"
         Me.GenderText.ReadOnly = True
         '
-        'CreatedateDataGridViewTextBoxColumn
+        'Age
         '
-        Me.CreatedateDataGridViewTextBoxColumn.DataPropertyName = "Createdate"
-        Me.CreatedateDataGridViewTextBoxColumn.HeaderText = "Createdate"
-        Me.CreatedateDataGridViewTextBoxColumn.Name = "CreatedateDataGridViewTextBoxColumn"
-        Me.CreatedateDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'UpdatedateDataGridViewTextBoxColumn
-        '
-        Me.UpdatedateDataGridViewTextBoxColumn.DataPropertyName = "Updatedate"
-        Me.UpdatedateDataGridViewTextBoxColumn.HeaderText = "Updatedate"
-        Me.UpdatedateDataGridViewTextBoxColumn.Name = "UpdatedateDataGridViewTextBoxColumn"
-        Me.UpdatedateDataGridViewTextBoxColumn.ReadOnly = True
+        Me.Age.DataPropertyName = "Age"
+        Me.Age.HeaderText = "Age"
+        Me.Age.Name = "Age"
+        Me.Age.ReadOnly = True
         '
         'NumVisit
         '
@@ -150,11 +137,6 @@ Partial Class SearchResult2
         Me.NumVisit.HeaderText = "Visit History"
         Me.NumVisit.Name = "NumVisit"
         Me.NumVisit.ReadOnly = True
-        '
-        'PatientBindingSource
-        '
-        Me.PatientBindingSource.AllowNew = True
-        Me.PatientBindingSource.DataSource = GetType(MPIClient.DataAccess.Model.Patient)
         '
         'countTimer
         '
@@ -180,6 +162,32 @@ Partial Class SearchResult2
         Me.infoLabel.Name = "infoLabel"
         Me.infoLabel.Size = New System.Drawing.Size(0, 17)
         '
+        'PatientIDDataGridViewTextBoxColumn
+        '
+        Me.PatientIDDataGridViewTextBoxColumn.DataPropertyName = "PatientID"
+        Me.PatientIDDataGridViewTextBoxColumn.HeaderText = "PatientID"
+        Me.PatientIDDataGridViewTextBoxColumn.Name = "PatientIDDataGridViewTextBoxColumn"
+        Me.PatientIDDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CreatedateDataGridViewTextBoxColumn
+        '
+        Me.CreatedateDataGridViewTextBoxColumn.DataPropertyName = "Createdate"
+        Me.CreatedateDataGridViewTextBoxColumn.HeaderText = "Createdate"
+        Me.CreatedateDataGridViewTextBoxColumn.Name = "CreatedateDataGridViewTextBoxColumn"
+        Me.CreatedateDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'UpdatedateDataGridViewTextBoxColumn
+        '
+        Me.UpdatedateDataGridViewTextBoxColumn.DataPropertyName = "Updatedate"
+        Me.UpdatedateDataGridViewTextBoxColumn.HeaderText = "Updatedate"
+        Me.UpdatedateDataGridViewTextBoxColumn.Name = "UpdatedateDataGridViewTextBoxColumn"
+        Me.UpdatedateDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'PatientBindingSource
+        '
+        Me.PatientBindingSource.AllowNew = True
+        Me.PatientBindingSource.DataSource = GetType(MPIClient.DataAccess.Model.Patient)
+        '
         'SearchResult2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -194,9 +202,9 @@ Partial Class SearchResult2
         Me.ActionToolStrip.ResumeLayout(False)
         Me.ActionToolStrip.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PatientBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
+        CType(Me.PatientBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -216,6 +224,7 @@ Partial Class SearchResult2
     Friend WithEvents infoLabel As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents PatientIDDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents GenderText As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Age As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CreatedateDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents UpdatedateDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents NumVisit As System.Windows.Forms.DataGridViewLinkColumn

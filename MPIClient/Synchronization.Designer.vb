@@ -25,12 +25,12 @@ Partial Class Synchronization
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Synchronization))
         Me.DataGridView1 = New System.Windows.Forms.DataGridView
-        Me.Status = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.synchronizationWorker = New System.ComponentModel.BackgroundWorker
         Me.grFingerXCtrl = New AxGrFingerXLib.AxGrFingerXCtrl
         Me.ActionToolStrip = New System.Windows.Forms.ToolStrip
         Me.synchronizationButton = New System.Windows.Forms.ToolStripButton
         Me.CloseButton = New System.Windows.Forms.ToolStripButton
+        Me.Status = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.PatientIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.GenderDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.DateBirthDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
@@ -47,6 +47,9 @@ Partial Class Synchronization
         '
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientIDDataGridViewTextBoxColumn, Me.GenderDataGridViewTextBoxColumn, Me.DateBirthDataGridViewTextBoxColumn, Me.CreatedateDataGridViewTextBoxColumn, Me.UpdatedateDataGridViewTextBoxColumn, Me.Status})
@@ -56,14 +59,8 @@ Partial Class Synchronization
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(735, 257)
+        Me.DataGridView1.Size = New System.Drawing.Size(866, 257)
         Me.DataGridView1.TabIndex = 3
-        '
-        'Status
-        '
-        Me.Status.HeaderText = "Status"
-        Me.Status.Name = "Status"
-        Me.Status.ReadOnly = True
         '
         'synchronizationWorker
         '
@@ -105,6 +102,12 @@ Partial Class Synchronization
         Me.CloseButton.Size = New System.Drawing.Size(61, 36)
         Me.CloseButton.Text = "Exit"
         '
+        'Status
+        '
+        Me.Status.HeaderText = "Status"
+        Me.Status.Name = "Status"
+        Me.Status.ReadOnly = True
+        '
         'PatientIDDataGridViewTextBoxColumn
         '
         Me.PatientIDDataGridViewTextBoxColumn.DataPropertyName = "PatientID"
@@ -114,7 +117,7 @@ Partial Class Synchronization
         '
         'GenderDataGridViewTextBoxColumn
         '
-        Me.GenderDataGridViewTextBoxColumn.DataPropertyName = "Gender"
+        Me.GenderDataGridViewTextBoxColumn.DataPropertyName = "GenderText"
         Me.GenderDataGridViewTextBoxColumn.HeaderText = "Gender"
         Me.GenderDataGridViewTextBoxColumn.Name = "GenderDataGridViewTextBoxColumn"
         Me.GenderDataGridViewTextBoxColumn.ReadOnly = True
@@ -167,15 +170,15 @@ Partial Class Synchronization
     End Sub
     Friend WithEvents PatientBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents synchronizationWorker As System.ComponentModel.BackgroundWorker
+    Friend WithEvents grFingerXCtrl As AxGrFingerXLib.AxGrFingerXCtrl
+    Friend WithEvents ActionToolStrip As System.Windows.Forms.ToolStrip
+    Friend WithEvents synchronizationButton As System.Windows.Forms.ToolStripButton
+    Friend WithEvents CloseButton As System.Windows.Forms.ToolStripButton
     Friend WithEvents PatientIDDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents GenderDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DateBirthDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CreatedateDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents UpdatedateDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Status As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents synchronizationWorker As System.ComponentModel.BackgroundWorker
-    Friend WithEvents grFingerXCtrl As AxGrFingerXLib.AxGrFingerXCtrl
-    Friend WithEvents ActionToolStrip As System.Windows.Forms.ToolStrip
-    Friend WithEvents synchronizationButton As System.Windows.Forms.ToolStripButton
-    Friend WithEvents CloseButton As System.Windows.Forms.ToolStripButton
 End Class

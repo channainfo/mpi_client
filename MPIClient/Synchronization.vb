@@ -29,7 +29,7 @@ Public Class Synchronization
     Private Sub Synchronization_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Control.CheckForIllegalCrossThreadCalls = False
         synButtonCaption = synchronizationButton.Text
-        numberOfSyn = Convert.ToInt16(ConfigManager.GetConfiguarationValue("NumberOfSyn"))
+        numberOfSyn = Convert.ToInt32(ConfigManager.GetConfiguarationValue("NumberOfSyn"))
         numberOfSynLeft = numberOfSyn
         fillPatientListWithNonSynData()
         updateGridView()
@@ -91,8 +91,6 @@ Public Class Synchronization
     End Sub
     Private Sub uploadLoadValuesCompleted(ByVal senders As Object, ByVal e As System.Net.UploadValuesCompletedEventArgs)
 
-
-
         numberOfSynLeft = numberOfSynLeft + 1
         If workerThread.ThreadState = 68 Or workerThread.ThreadState = ThreadState.Suspended Then
             workerThread.Resume()
@@ -107,7 +105,7 @@ Public Class Synchronization
 
         Dim currentPatient As Patient = DataGridView1.Rows(itemIndex).DataBoundItem
 
-        Dim jsonResult As Object = serializeToJSONObject(e.Result)
+        Dim jsonResult As Object = GeneralUtil.serializeToJSONObject(e.Result)
         If jsonResult Is Nothing Then
             updateProgressStatus(ProgressStatus.ContainError, itemIndex, "Webserver: Internal server error.")
             Return
@@ -159,6 +157,7 @@ Public Class Synchronization
         patientSyn.fingerprint_l5 = fingerprintUtil.getTemplateBase64(currentPatient.Fingerprint_l5)
 
         patientSyn.gender = currentPatient.Gender
+        patientSyn.age = currentPatient.Age
         patientSyn.sitecode = currentPatient.SiteCode
         If currentPatient.DateBirth.Trim().Equals("") Then
             patientSyn.datebirth = ""
@@ -185,7 +184,7 @@ Public Class Synchronization
         updateProgressStatus(ProgressStatus.Processing, itemIndex)
 
     End Sub
-    Private Sub updateProgressStatus(ByVal status As ProgressStatus, ByVal index As Integer, Optional ByVal errorMessage As String = "", Optional ByVal numOfRecords As Int16 = 0)
+    Private Sub updateProgressStatus(ByVal status As ProgressStatus, ByVal index As Integer, Optional ByVal errorMessage As String = "", Optional ByVal numOfRecords As Int32 = 0)
         If status = ProgressStatus.Starting Then
             DataGridView1.Rows(index).Cells(STATUS_COL_IDEX).Value = "Synchronizing."
             'DataGridView1.Rows(index).Cells(STATUS_COL_IDEX) = New DataGridViewImageCell()
@@ -210,18 +209,6 @@ Public Class Synchronization
         End If
     End Sub
 
-    Private Shared Function serializeToJSONObject(ByVal result As Byte()) As Object
-        Dim jsonString As String = Encoding.UTF8.GetString(result)
-        Dim jsonResult As Object = Nothing
-        Dim jsSerializer As New JavaScriptSerializer()
-
-        Try
-            jsonResult = jsSerializer.DeserializeObject(jsonString)
-        Catch ex As Exception
-
-        End Try
-        Return jsonResult
-    End Function
     Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
         Dim dataGridItem As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
         Dim currentPatient As Patient = dataGridItem.DataBoundItem

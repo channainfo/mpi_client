@@ -23,6 +23,7 @@ Namespace DataAccess.DAO
         Public Const PATIENT_ID As String = "patient_id"
         Public Const NEW_PATIENT_ID As String = "new_patient_id"
         Public Const GENDER_COL As String = "gender"
+        Public Const AGE_COL As String = "age"
         Public Const SITE_CODE As String = "site_code"
         Public Const DATE_OF_BIRTH As String = "date_of_birth"
         Public Const SYN As String = "syn"
@@ -77,7 +78,7 @@ Namespace DataAccess.DAO
                 parameter.Value = patient.Fingerprint_l5
                 command.Parameters.Add(parameter)
 
-                parameter = Database.CreateParameter(Database.CreateParameterName(GENDER_COL), DbType.Int16)
+                parameter = Database.CreateParameter(Database.CreateParameterName(GENDER_COL), DbType.Int32)
                 parameter.Value = patient.Gender
                 command.Parameters.Add(parameter)
 
@@ -116,6 +117,10 @@ Namespace DataAccess.DAO
 
                 parameter = Database.CreateParameter(Database.CreateParameterName(GENDER_COL), DbType.String)
                 parameter.Value = patient.Gender
+                command.Parameters.Add(parameter)
+
+                parameter = Database.CreateParameter(Database.CreateParameterName(AGE_COL), DbType.Int32)
+                parameter.Value = patient.Age
                 command.Parameters.Add(parameter)
 
                 parameter = Database.CreateParameter(Database.CreateParameterName(SITE_CODE), DbType.String)
@@ -202,6 +207,32 @@ Namespace DataAccess.DAO
             Return result
 
         End Function
+        Public Function updatePatientAge(ByVal patientID As String, ByVal age As Integer) As Integer
+            Dim result As String = 0
+
+            Dim command As DbCommand
+            Try
+                command = Database.CreateCommand(Constant.GeneralConstants.SP_UPDATE_PATIENT_AGE)
+                command.CommandType = CommandType.StoredProcedure
+
+                Dim parameter As DbParameter
+
+                parameter = Database.CreateParameter(Database.CreateParameterName(PATIENT_ID), DbType.String)
+                parameter.Value = patientID
+                command.Parameters.Add(parameter)
+
+                parameter = Database.CreateParameter(Database.CreateParameterName(AGE_COL), DbType.Int32)
+                parameter.Value = age
+                command.Parameters.Add(parameter)
+
+                result = Database.ExecuteNonQuery(command)
+
+            Catch ex As Exception
+                result = -1
+            End Try
+
+            Return result
+        End Function
         Public Function getAll(Optional ByVal synOption As Synchronization = Synchronization.All) As List(Of Patient)
             Dim reader As DbDataReader = Nothing
             If synOption = Synchronization.All Then
@@ -213,7 +244,7 @@ Namespace DataAccess.DAO
 
             Return patients
         End Function
-        Public Function getMatchedPatients(ByVal fingerPrint As Array, ByVal fingerprintUtil As FingerprintUtil, ByVal gender As Int16, Optional ByVal synOption As Synchronization = Synchronization.All) As List(Of Patient)
+        Public Function getMatchedPatients(ByVal fingerPrint As Array, ByVal fingerprintUtil As FingerprintUtil, ByVal gender As Int32, Optional ByVal synOption As Synchronization = Synchronization.All) As List(Of Patient)
             Dim reader As DbDataReader = Nothing
             If synOption = Synchronization.All Then
                 reader = getDataReaderOfAllPatients(gender)
@@ -231,7 +262,7 @@ Namespace DataAccess.DAO
                     'patient.PatientID = Convert.ToString(reader("id"))
                     'patient.FingerprintImage = Convert.ToString(reader("fingerprint_image"))
                     ''patient.Fingerprint_r1 = reader(FINGERPRINT_R1)
-                    'patient.Gender = Convert.ToInt16(reader("gender"))
+                    'patient.Gender = Convert.ToInt32(reader("gender"))
                     'patient.DateBirth = Convert.ToString(reader("date_of_birth"))
                     'patient.Syn = Convert.ToBoolean(reader("syn"))
                     'patient.NumVisit = Convert.ToInt32(reader("num_visit"))
@@ -254,7 +285,7 @@ Namespace DataAccess.DAO
             End Try
             Return patientList
         End Function
-        Public Function getMatchedPatients(ByVal sourePatient As Patient, ByVal fingerprintUtil As FingerprintUtil, ByVal gender As Int16, Optional ByVal synOption As Synchronization = Synchronization.All) As List(Of Patient)
+        Public Function getMatchedPatients(ByVal sourePatient As Patient, ByVal fingerprintUtil As FingerprintUtil, ByVal gender As Int32, Optional ByVal synOption As Synchronization = Synchronization.All) As List(Of Patient)
             Dim reader As DbDataReader = Nothing
             If synOption = Synchronization.All Then
                 reader = getDataReaderOfAllPatients(gender)
@@ -294,14 +325,14 @@ Namespace DataAccess.DAO
             Dim reader As DbDataReader = Database.ExecuteReader(command)
             Return reader
         End Function
-        Private Function getDataReaderOfAllPatients(ByVal gender As Int16) As DbDataReader
+        Private Function getDataReaderOfAllPatients(ByVal gender As Int32) As DbDataReader
             Dim command As DbCommand
             command = Database.CreateCommand(Constant.GeneralConstants.SP_GET_ALL_PATIENTS_BY_GENDER)
             command.CommandType = CommandType.StoredProcedure
 
             Dim parameter As DbParameter
 
-            parameter = Database.CreateParameter(Database.CreateParameterName(GENDER_COL), DbType.Int16)
+            parameter = Database.CreateParameter(Database.CreateParameterName(GENDER_COL), DbType.Int32)
             parameter.Value = gender
             command.Parameters.Add(parameter)
 
@@ -317,14 +348,14 @@ Namespace DataAccess.DAO
             Return reader
         End Function
 
-        Private Function getDataReaderOfAllNonSynPatients(ByVal gender As Int16) As DbDataReader
+        Private Function getDataReaderOfAllNonSynPatients(ByVal gender As Int32) As DbDataReader
             Dim command As DbCommand
             command = Database.CreateCommand(Constant.GeneralConstants.SP_GET_ALL_NONSYN_PATIENTS_BY_GENDER)
             command.CommandType = CommandType.StoredProcedure
 
             Dim parameter As DbParameter
 
-            parameter = Database.CreateParameter(Database.CreateParameterName(GENDER_COL), DbType.Int16)
+            parameter = Database.CreateParameter(Database.CreateParameterName(GENDER_COL), DbType.Int32)
             parameter.Value = gender
             command.Parameters.Add(parameter)
 
@@ -346,6 +377,7 @@ Namespace DataAccess.DAO
             patient.Fingerprint_l4 = IIf(IsDBNull(reader(FINGERPRINT_L4)), Nothing, reader(FINGERPRINT_L4))
             patient.Fingerprint_l5 = IIf(IsDBNull(reader(FINGERPRINT_L5)), Nothing, reader(FINGERPRINT_L5))
             patient.Gender = Convert.ToString(reader("gender"))
+            patient.Age = IIf(IsDBNull(reader(AGE_COL)), Nothing, reader(AGE_COL))
             patient.DateBirth = Convert.ToString(reader("date_of_birth"))
             patient.Syn = Convert.ToBoolean(reader("syn"))
             patient.NumVisit = Convert.ToInt32(reader("num_visit"))

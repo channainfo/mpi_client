@@ -6,6 +6,7 @@ Namespace DataAccess.DAO
         Inherits DatabaseAccess
         Public Const ID As String = "id"
         Public Const PATIENT_ID As String = "patient_id"
+        Public Const AGE As String = "age"
         Public Const SERVICE_ID As String = "service_id"
         Public Const SITE_CODE As String = "site_code"
         Public Const VISIT_DATE As String = "visit_date"
@@ -30,6 +31,10 @@ Namespace DataAccess.DAO
 
                 parameter = Database.CreateParameter(Database.CreateParameterName(PATIENT_ID), DbType.String)
                 parameter.Value = visit.PatientID
+                command.Parameters.Add(parameter)
+
+                parameter = Database.CreateParameter(Database.CreateParameterName(AGE), DbType.Int32)
+                parameter.Value = visit.Age
                 command.Parameters.Add(parameter)
 
                 parameter = Database.CreateParameter(Database.CreateParameterName(SERVICE_ID), DbType.String)
@@ -69,6 +74,7 @@ Namespace DataAccess.DAO
             Dim datatable As New DataTable("visit")
             datatable.Columns.Add(ID)
             datatable.Columns.Add(PATIENT_ID)
+            datatable.Columns.Add(AGE)
             datatable.Columns.Add(SERVICE_ID)
             datatable.Columns.Add(SITE_CODE)
             datatable.Columns.Add(VISIT_DATE)
@@ -81,6 +87,7 @@ Namespace DataAccess.DAO
                 row = datatable.NewRow
                 row(ID) = visit.VisitID
                 row(PATIENT_ID) = visit.PatientID
+                row(AGE) = visit.Age
                 row(SERVICE_ID) = visit.ServiceID
                 row(SITE_CODE) = visit.SiteCode
                 row(VISIT_DATE) = visit.VisitDate
@@ -101,6 +108,10 @@ Namespace DataAccess.DAO
 
             parameter = Database.CreateParameter(Database.CreateParameterName(PATIENT_ID), DbType.String)
             parameter.SourceColumn = PATIENT_ID
+            command.Parameters.Add(parameter)
+
+            parameter = Database.CreateParameter(Database.CreateParameterName(AGE), DbType.Int32)
+            parameter.SourceColumn = AGE
             command.Parameters.Add(parameter)
 
             parameter = Database.CreateParameter(Database.CreateParameterName(SERVICE_ID), DbType.String)
@@ -127,7 +138,7 @@ Namespace DataAccess.DAO
             parameter.SourceColumn = INFO
             command.Parameters.Add(parameter)
 
-            parameter = Database.CreateParameter(Database.CreateParameterName(SYN), DbType.Int16)
+            parameter = Database.CreateParameter(Database.CreateParameterName(SYN), DbType.Int32)
             parameter.SourceColumn = SYN
             command.Parameters.Add(parameter)
 
@@ -159,6 +170,7 @@ Namespace DataAccess.DAO
                 While reader.Read()
                     Dim visit As New Visit()
                     visit.VisitID = Convert.ToString(reader("id"))
+                    visit.Age = IIf(IsDBNull(reader(AGE)), Nothing, reader(AGE))
                     visit.PatientID = Convert.ToString(reader(PATIENT_ID))
                     visit.ServiceID = Convert.ToInt32(reader(SERVICE_ID))
                     visit.SiteCode = Convert.ToString(reader(SITE_CODE))

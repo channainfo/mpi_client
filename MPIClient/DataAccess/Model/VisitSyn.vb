@@ -7,6 +7,7 @@
         End Enum
         Private _id As String
         Private _patientID As String
+        Private _age As Integer?
         Private _serviceID As Integer
         Private _siteCode As String
         Private _visitDate As String
@@ -30,6 +31,14 @@
             End Get
             Set(ByVal value As String)
                 _patientID = value
+            End Set
+        End Property
+        Public Property age() As Integer?
+            Get
+                Return _age
+            End Get
+            Set(ByVal value As Integer?)
+                _age = value
             End Set
         End Property
         Public Property serviceid() As Integer
