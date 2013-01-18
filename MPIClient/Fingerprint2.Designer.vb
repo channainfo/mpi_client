@@ -24,9 +24,6 @@ Partial Class Fingerprint2
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Fingerprint2))
         Me.ActionToolStrip = New System.Windows.Forms.ToolStrip
-        Me.SearchButton = New System.Windows.Forms.ToolStripButton
-        Me.SynchronizationButton = New System.Windows.Forms.ToolStripButton
-        Me.CloseButton = New System.Windows.Forms.ToolStripButton
         Me.quality1Left = New System.Windows.Forms.Label
         Me.quality2left = New System.Windows.Forms.Label
         Me.quality3left = New System.Windows.Forms.Label
@@ -41,6 +38,10 @@ Partial Class Fingerprint2
         Me.grFingerXCtrl = New AxGrFingerXLib.AxGrFingerXCtrl
         Me.genderCombobox = New System.Windows.Forms.ComboBox
         Me.Label1 = New System.Windows.Forms.Label
+        Me.clearAllButton = New System.Windows.Forms.Button
+        Me.removeButton = New System.Windows.Forms.Button
+        Me.PictureBox4 = New System.Windows.Forms.PictureBox
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox
         Me.finger5left = New System.Windows.Forms.PictureBox
         Me.finger4left = New System.Windows.Forms.PictureBox
         Me.finger3left = New System.Windows.Forms.PictureBox
@@ -54,10 +55,14 @@ Partial Class Fingerprint2
         Me.pictureFingerprint = New System.Windows.Forms.PictureBox
         Me.PictureBox2 = New System.Windows.Forms.PictureBox
         Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox
-        Me.PictureBox4 = New System.Windows.Forms.PictureBox
+        Me.SearchButton = New System.Windows.Forms.ToolStripButton
+        Me.SynchronizationButton = New System.Windows.Forms.ToolStripButton
+        Me.initializeButton = New System.Windows.Forms.ToolStripButton
+        Me.CloseButton = New System.Windows.Forms.ToolStripButton
         Me.ActionToolStrip.SuspendLayout()
         CType(Me.grFingerXCtrl, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.finger5left, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.finger4left, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.finger3left, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -71,45 +76,16 @@ Partial Class Fingerprint2
         CType(Me.pictureFingerprint, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ActionToolStrip
         '
-        Me.ActionToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SearchButton, Me.SynchronizationButton, Me.CloseButton})
+        Me.ActionToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SearchButton, Me.SynchronizationButton, Me.initializeButton, Me.CloseButton})
         Me.ActionToolStrip.Location = New System.Drawing.Point(0, 0)
         Me.ActionToolStrip.Name = "ActionToolStrip"
         Me.ActionToolStrip.Size = New System.Drawing.Size(950, 39)
         Me.ActionToolStrip.TabIndex = 0
         Me.ActionToolStrip.Text = "ToolStrip1"
-        '
-        'SearchButton
-        '
-        Me.SearchButton.Image = Global.MPIClient.My.Resources.Resources.search_green_neon_icon__1_
-        Me.SearchButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.SearchButton.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.SearchButton.Name = "SearchButton"
-        Me.SearchButton.Size = New System.Drawing.Size(78, 36)
-        Me.SearchButton.Text = "Search"
-        '
-        'SynchronizationButton
-        '
-        Me.SynchronizationButton.Image = Global.MPIClient.My.Resources.Resources.Synchronize_icon__1_
-        Me.SynchronizationButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.SynchronizationButton.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.SynchronizationButton.Name = "SynchronizationButton"
-        Me.SynchronizationButton.Size = New System.Drawing.Size(128, 36)
-        Me.SynchronizationButton.Text = "Synchronization"
-        '
-        'CloseButton
-        '
-        Me.CloseButton.Image = Global.MPIClient.My.Resources.Resources.Log_Out_icon__1_
-        Me.CloseButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.CloseButton.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.CloseButton.Name = "CloseButton"
-        Me.CloseButton.Size = New System.Drawing.Size(61, 36)
-        Me.CloseButton.Text = "Exit"
         '
         'quality1Left
         '
@@ -220,7 +196,7 @@ Partial Class Fingerprint2
         Me.genderCombobox.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.genderCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.genderCombobox.FormattingEnabled = True
-        Me.genderCombobox.Location = New System.Drawing.Point(420, 392)
+        Me.genderCombobox.Location = New System.Drawing.Point(424, 432)
         Me.genderCombobox.Name = "genderCombobox"
         Me.genderCombobox.Size = New System.Drawing.Size(109, 21)
         Me.genderCombobox.TabIndex = 20
@@ -230,11 +206,50 @@ Partial Class Fingerprint2
         '
         Me.Label1.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(417, 376)
+        Me.Label1.Location = New System.Drawing.Point(421, 416)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(45, 13)
         Me.Label1.TabIndex = 21
         Me.Label1.Text = "Gender:"
+        '
+        'clearAllButton
+        '
+        Me.clearAllButton.Location = New System.Drawing.Point(389, 357)
+        Me.clearAllButton.Name = "clearAllButton"
+        Me.clearAllButton.Size = New System.Drawing.Size(75, 23)
+        Me.clearAllButton.TabIndex = 23
+        Me.clearAllButton.Text = "Clear All"
+        Me.clearAllButton.UseVisualStyleBackColor = True
+        '
+        'removeButton
+        '
+        Me.removeButton.Location = New System.Drawing.Point(487, 357)
+        Me.removeButton.Name = "removeButton"
+        Me.removeButton.Size = New System.Drawing.Size(75, 23)
+        Me.removeButton.TabIndex = 23
+        Me.removeButton.Text = "Remove"
+        Me.removeButton.UseVisualStyleBackColor = True
+        '
+        'PictureBox4
+        '
+        Me.PictureBox4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox4.Image = Global.MPIClient.My.Resources.Resources.Right2
+        Me.PictureBox4.Location = New System.Drawing.Point(742, 296)
+        Me.PictureBox4.Name = "PictureBox4"
+        Me.PictureBox4.Size = New System.Drawing.Size(100, 63)
+        Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox4.TabIndex = 22
+        Me.PictureBox4.TabStop = False
+        '
+        'PictureBox3
+        '
+        Me.PictureBox3.Image = Global.MPIClient.My.Resources.Resources.Left1
+        Me.PictureBox3.Location = New System.Drawing.Point(114, 296)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(100, 63)
+        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox3.TabIndex = 22
+        Me.PictureBox3.TabStop = False
         '
         'finger5left
         '
@@ -381,26 +396,42 @@ Partial Class Fingerprint2
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
         '
-        'PictureBox3
+        'SearchButton
         '
-        Me.PictureBox3.Image = Global.MPIClient.My.Resources.Resources.Left1
-        Me.PictureBox3.Location = New System.Drawing.Point(114, 296)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(100, 63)
-        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox3.TabIndex = 22
-        Me.PictureBox3.TabStop = False
+        Me.SearchButton.Enabled = False
+        Me.SearchButton.Image = Global.MPIClient.My.Resources.Resources.search_green_neon_icon__1_
+        Me.SearchButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.SearchButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.SearchButton.Name = "SearchButton"
+        Me.SearchButton.Size = New System.Drawing.Size(78, 36)
+        Me.SearchButton.Text = "Search"
         '
-        'PictureBox4
+        'SynchronizationButton
         '
-        Me.PictureBox4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PictureBox4.Image = Global.MPIClient.My.Resources.Resources.Right2
-        Me.PictureBox4.Location = New System.Drawing.Point(742, 296)
-        Me.PictureBox4.Name = "PictureBox4"
-        Me.PictureBox4.Size = New System.Drawing.Size(100, 63)
-        Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox4.TabIndex = 22
-        Me.PictureBox4.TabStop = False
+        Me.SynchronizationButton.Image = Global.MPIClient.My.Resources.Resources.Synchronize_icon__1_
+        Me.SynchronizationButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.SynchronizationButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.SynchronizationButton.Name = "SynchronizationButton"
+        Me.SynchronizationButton.Size = New System.Drawing.Size(128, 36)
+        Me.SynchronizationButton.Text = "Synchronization"
+        '
+        'initializeButton
+        '
+        Me.initializeButton.Image = Global.MPIClient.My.Resources.Resources.Other_Power_Restart_Metro_icon
+        Me.initializeButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.initializeButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.initializeButton.Name = "initializeButton"
+        Me.initializeButton.Size = New System.Drawing.Size(198, 36)
+        Me.initializeButton.Text = "Reinitialize Fingerprint Device"
+        '
+        'CloseButton
+        '
+        Me.CloseButton.Image = Global.MPIClient.My.Resources.Resources.Log_Out_icon__1_
+        Me.CloseButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.CloseButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.CloseButton.Name = "CloseButton"
+        Me.CloseButton.Size = New System.Drawing.Size(61, 36)
+        Me.CloseButton.Text = "Exit"
         '
         'Fingerprint2
         '
@@ -408,6 +439,8 @@ Partial Class Fingerprint2
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.ClientSize = New System.Drawing.Size(950, 476)
+        Me.Controls.Add(Me.removeButton)
+        Me.Controls.Add(Me.clearAllButton)
         Me.Controls.Add(Me.PictureBox4)
         Me.Controls.Add(Me.PictureBox3)
         Me.Controls.Add(Me.Label1)
@@ -444,6 +477,8 @@ Partial Class Fingerprint2
         Me.ActionToolStrip.ResumeLayout(False)
         Me.ActionToolStrip.PerformLayout()
         CType(Me.grFingerXCtrl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.finger5left, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.finger4left, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.finger3left, System.ComponentModel.ISupportInitialize).EndInit()
@@ -457,8 +492,6 @@ Partial Class Fingerprint2
         CType(Me.pictureFingerprint, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -496,4 +529,7 @@ Partial Class Fingerprint2
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
     Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
+    Friend WithEvents clearAllButton As System.Windows.Forms.Button
+    Friend WithEvents removeButton As System.Windows.Forms.Button
+    Friend WithEvents initializeButton As System.Windows.Forms.ToolStripButton
 End Class

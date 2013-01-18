@@ -56,9 +56,9 @@ Partial Class NewVisit
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(12, 9)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(57, 13)
+        Me.Label1.Size = New System.Drawing.Size(56, 13)
         Me.Label1.TabIndex = 6
-        Me.Label1.Text = "Patient ID:"
+        Me.Label1.Text = "Master ID:"
         '
         'Label4
         '

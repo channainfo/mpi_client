@@ -73,7 +73,7 @@
                 _externalCode = value
             End Set
         End Property
-        Public Property ExternalCode2() As String
+        Public Property externalcode2() As String
             Get
                 Return _externalCode2
             End Get

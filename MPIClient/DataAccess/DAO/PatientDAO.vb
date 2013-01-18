@@ -233,6 +233,37 @@ Namespace DataAccess.DAO
 
             Return result
         End Function
+        Public Function getPatient(ByVal patientID As String) As Patient
+            Dim reader As DbDataReader
+            Dim patient As Patient = Nothing
+            Dim command As DbCommand
+            Try
+                command = Database.CreateCommand(Constant.GeneralConstants.SP_GET_PATIENT_BY_ID)
+                command.CommandType = CommandType.StoredProcedure
+
+                Dim parameter As DbParameter
+
+                parameter = Database.CreateParameter(Database.CreateParameterName(PATIENT_ID), DbType.String)
+                parameter.Value = patientID
+                command.Parameters.Add(parameter)
+
+                reader = Database.ExecuteReader(command)
+                If reader.Read Then
+                    patient = buildPatient(reader)
+                End If
+
+            Catch ex As Exception
+            Finally
+                If reader IsNot Nothing Then
+                    If Not reader.IsClosed Then
+                        reader.Close()
+                    End If
+                    reader.Dispose()
+                End If
+            End Try
+            Return patient
+        End Function
+
         Public Function getAll(Optional ByVal synOption As Synchronization = Synchronization.All) As List(Of Patient)
             Dim reader As DbDataReader = Nothing
             If synOption = Synchronization.All Then
@@ -270,6 +301,38 @@ Namespace DataAccess.DAO
                     'patient.Updatedate = Convert.ToString(reader("updatedate"))
 
                     If (fingerprintUtil.indentifyFingerprint(patient.Fingerprint_r1, score)) Then
+                        patientList.Add(patient)
+                    End If
+                End While
+            Catch ex As Exception
+                Throw ex
+            Finally
+                If reader IsNot Nothing Then
+                    If Not reader.IsClosed Then
+                        reader.Close()
+                    End If
+                    reader.Dispose()
+                End If
+            End Try
+            Return patientList
+        End Function
+        Public Function getMatchedPatients(ByVal sourePatient As Patient, ByVal fingerprintUtil As FingerprintUtil, Optional ByVal synOption As Synchronization = Synchronization.All) As List(Of Patient)
+            Dim reader As DbDataReader = Nothing
+            If synOption = Synchronization.All Then
+                reader = getDataReaderOfAllPatients()
+            ElseIf synOption = Synchronization.NonSyn Then
+                reader = getDataReaderOfAllNonSynPatients()
+            End If
+
+            Dim patientList As New List(Of Patient)()
+            Dim score As Integer
+            fingerprintUtil.setSourceFingerprint(sourePatient.getFingerprintsInPriority(0))
+            Try
+                While reader.Read()
+                    Dim patient As Patient
+                    patient = buildPatient(reader)
+                    Dim queryFingerprint As Array = fingerprintUtil.getQueryFingerprintInPriority(sourePatient, patient)(0)
+                    If (fingerprintUtil.indentifyFingerprint(queryFingerprint, score)) Then
                         patientList.Add(patient)
                     End If
                 End While

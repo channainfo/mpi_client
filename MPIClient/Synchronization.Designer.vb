@@ -25,22 +25,26 @@ Partial Class Synchronization
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Synchronization))
         Me.DataGridView1 = New System.Windows.Forms.DataGridView
-        Me.synchronizationWorker = New System.ComponentModel.BackgroundWorker
-        Me.grFingerXCtrl = New AxGrFingerXLib.AxGrFingerXCtrl
-        Me.ActionToolStrip = New System.Windows.Forms.ToolStrip
-        Me.synchronizationButton = New System.Windows.Forms.ToolStripButton
-        Me.CloseButton = New System.Windows.Forms.ToolStripButton
-        Me.Status = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.PatientIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.GenderDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.DateBirthDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.CreatedateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.UpdatedateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.Status = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.PatientBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.synchronizationWorker = New System.ComponentModel.BackgroundWorker
+        Me.grFingerXCtrl = New AxGrFingerXLib.AxGrFingerXCtrl
+        Me.ActionToolStrip = New System.Windows.Forms.ToolStrip
+        Me.synchronizationButton = New System.Windows.Forms.ToolStripButton
+        Me.CloseButton = New System.Windows.Forms.ToolStripButton
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel
+        Me.patientFoundLabel = New System.Windows.Forms.ToolStripStatusLabel
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PatientBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grFingerXCtrl, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ActionToolStrip.SuspendLayout()
-        CType(Me.PatientBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'DataGridView1
@@ -61,6 +65,50 @@ Partial Class Synchronization
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(866, 257)
         Me.DataGridView1.TabIndex = 3
+        '
+        'PatientIDDataGridViewTextBoxColumn
+        '
+        Me.PatientIDDataGridViewTextBoxColumn.DataPropertyName = "PatientID"
+        Me.PatientIDDataGridViewTextBoxColumn.HeaderText = "MasterID"
+        Me.PatientIDDataGridViewTextBoxColumn.Name = "PatientIDDataGridViewTextBoxColumn"
+        Me.PatientIDDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'GenderDataGridViewTextBoxColumn
+        '
+        Me.GenderDataGridViewTextBoxColumn.DataPropertyName = "GenderText"
+        Me.GenderDataGridViewTextBoxColumn.HeaderText = "Gender"
+        Me.GenderDataGridViewTextBoxColumn.Name = "GenderDataGridViewTextBoxColumn"
+        Me.GenderDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'DateBirthDataGridViewTextBoxColumn
+        '
+        Me.DateBirthDataGridViewTextBoxColumn.DataPropertyName = "DateBirth"
+        Me.DateBirthDataGridViewTextBoxColumn.HeaderText = "DateBirth"
+        Me.DateBirthDataGridViewTextBoxColumn.Name = "DateBirthDataGridViewTextBoxColumn"
+        Me.DateBirthDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CreatedateDataGridViewTextBoxColumn
+        '
+        Me.CreatedateDataGridViewTextBoxColumn.HeaderText = "Createdate"
+        Me.CreatedateDataGridViewTextBoxColumn.Name = "CreatedateDataGridViewTextBoxColumn"
+        Me.CreatedateDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'UpdatedateDataGridViewTextBoxColumn
+        '
+        Me.UpdatedateDataGridViewTextBoxColumn.HeaderText = "Updatedate"
+        Me.UpdatedateDataGridViewTextBoxColumn.Name = "UpdatedateDataGridViewTextBoxColumn"
+        Me.UpdatedateDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'Status
+        '
+        Me.Status.HeaderText = "Status"
+        Me.Status.Name = "Status"
+        Me.Status.ReadOnly = True
+        '
+        'PatientBindingSource
+        '
+        Me.PatientBindingSource.AllowNew = True
+        Me.PatientBindingSource.DataSource = GetType(MPIClient.DataAccess.Model.Patient)
         '
         'synchronizationWorker
         '
@@ -99,60 +147,36 @@ Partial Class Synchronization
         Me.CloseButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.CloseButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.CloseButton.Name = "CloseButton"
-        Me.CloseButton.Size = New System.Drawing.Size(61, 36)
-        Me.CloseButton.Text = "Exit"
+        Me.CloseButton.Size = New System.Drawing.Size(72, 36)
+        Me.CloseButton.Text = "Close"
         '
-        'Status
+        'StatusStrip1
         '
-        Me.Status.HeaderText = "Status"
-        Me.Status.Name = "Status"
-        Me.Status.ReadOnly = True
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.patientFoundLabel})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 297)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(890, 22)
+        Me.StatusStrip1.TabIndex = 7
+        Me.StatusStrip1.Text = "StatusStrip1"
         '
-        'PatientIDDataGridViewTextBoxColumn
+        'ToolStripStatusLabel1
         '
-        Me.PatientIDDataGridViewTextBoxColumn.DataPropertyName = "PatientID"
-        Me.PatientIDDataGridViewTextBoxColumn.HeaderText = "PatientID"
-        Me.PatientIDDataGridViewTextBoxColumn.Name = "PatientIDDataGridViewTextBoxColumn"
-        Me.PatientIDDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(108, 17)
+        Me.ToolStripStatusLabel1.Text = "Number of Patient:"
         '
-        'GenderDataGridViewTextBoxColumn
+        'patientFoundLabel
         '
-        Me.GenderDataGridViewTextBoxColumn.DataPropertyName = "GenderText"
-        Me.GenderDataGridViewTextBoxColumn.HeaderText = "Gender"
-        Me.GenderDataGridViewTextBoxColumn.Name = "GenderDataGridViewTextBoxColumn"
-        Me.GenderDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'DateBirthDataGridViewTextBoxColumn
-        '
-        Me.DateBirthDataGridViewTextBoxColumn.DataPropertyName = "DateBirth"
-        Me.DateBirthDataGridViewTextBoxColumn.HeaderText = "DateBirth"
-        Me.DateBirthDataGridViewTextBoxColumn.Name = "DateBirthDataGridViewTextBoxColumn"
-        Me.DateBirthDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CreatedateDataGridViewTextBoxColumn
-        '
-        Me.CreatedateDataGridViewTextBoxColumn.DataPropertyName = "Createdate"
-        Me.CreatedateDataGridViewTextBoxColumn.HeaderText = "Createdate"
-        Me.CreatedateDataGridViewTextBoxColumn.Name = "CreatedateDataGridViewTextBoxColumn"
-        Me.CreatedateDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'UpdatedateDataGridViewTextBoxColumn
-        '
-        Me.UpdatedateDataGridViewTextBoxColumn.DataPropertyName = "Updatedate"
-        Me.UpdatedateDataGridViewTextBoxColumn.HeaderText = "Updatedate"
-        Me.UpdatedateDataGridViewTextBoxColumn.Name = "UpdatedateDataGridViewTextBoxColumn"
-        Me.UpdatedateDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'PatientBindingSource
-        '
-        Me.PatientBindingSource.AllowNew = True
-        Me.PatientBindingSource.DataSource = GetType(MPIClient.DataAccess.Model.Patient)
+        Me.patientFoundLabel.Name = "patientFoundLabel"
+        Me.patientFoundLabel.Size = New System.Drawing.Size(55, 17)
+        Me.patientFoundLabel.Text = "................"
         '
         'Synchronization
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(890, 319)
+        Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.ActionToolStrip)
         Me.Controls.Add(Me.grFingerXCtrl)
         Me.Controls.Add(Me.DataGridView1)
@@ -160,10 +184,12 @@ Partial Class Synchronization
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Synchronization"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PatientBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grFingerXCtrl, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ActionToolStrip.ResumeLayout(False)
         Me.ActionToolStrip.PerformLayout()
-        CType(Me.PatientBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -181,4 +207,7 @@ Partial Class Synchronization
     Friend WithEvents CreatedateDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents UpdatedateDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Status As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
+    Friend WithEvents ToolStripStatusLabel1 As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents patientFoundLabel As System.Windows.Forms.ToolStripStatusLabel
 End Class

@@ -18,7 +18,12 @@ Public Class VisitHistory
         End If
         updatePatientProfile()
         updateVisitDataGrid()
-
+        scanGridRowAndDoHightlight()
+    End Sub
+    Private Sub scanGridRowAndDoHightlight()
+        For Each row As DataGridViewRow In visitDataGrid.Rows
+            highlightIfResultIsInPositive(row)
+        Next
     End Sub
     Private Sub updatePatientProfile()
         patientIDLabel.Text = patient.PatientID
@@ -36,4 +41,16 @@ Public Class VisitHistory
     Private Sub VisitHistory_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
         Me.Owner.Show()
     End Sub
+
+    Private Sub visitDataGrid_RowsAdded(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewRowsAddedEventArgs) Handles visitDataGrid.RowsAdded
+        Dim row As DataGridViewRow = visitDataGrid.Rows(e.RowIndex)
+        GeneralUtil.formatDateOfDataGridRow(row, "dd/MM/yyyy hh:mm:ss tt", 3)
+    End Sub
+    Private Shared Sub highlightIfResultIsInPositive(ByRef row As DataGridViewRow)
+        Dim visit As Visit = row.DataBoundItem
+        If visit.Info.Equals("positive", StringComparison.InvariantCultureIgnoreCase) And visit.ServiceID = visit.Service.VCCT Then
+            row.DefaultCellStyle.BackColor = Color.Red
+        End If
+    End Sub
+
 End Class

@@ -39,4 +39,15 @@ Public Class GeneralUtil
         End Try
         Return jsonResult
     End Function
+    Public Shared Sub formatDateOfDataGridRow(ByVal row As DataGridViewRow, ByVal format As String, ByVal ParamArray indexs() As Integer)
+        Dim dateValue As DateTime
+
+        For i As Integer = 0 To indexs.Count - 1
+            If DateTime.TryParse(row.Cells(indexs(i)).Value, dateValue) Then
+                row.Cells(indexs(i)).Value = dateValue.ToString(format)
+            End If
+        Next
+
+    End Sub
+
 End Class

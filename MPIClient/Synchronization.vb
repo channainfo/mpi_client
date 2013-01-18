@@ -36,6 +36,10 @@ Public Class Synchronization
         If DataGridView1.Rows.Count = 0 Then
             synchronizationButton.Enabled = False
         End If
+        updatePatientFoundLabel()
+    End Sub
+    Private Sub updatePatientFoundLabel()
+        patientFoundLabel.Text = nonSynPatients.Count.ToString() + " patients found."
     End Sub
     Private Sub fillPatientListWithNonSynData()
         nonSynPatients.AddRange(patientDAO.getAll(DataAccess.DAO.PatientDAO.Synchronization.NonSyn))
@@ -99,7 +103,11 @@ Public Class Synchronization
         Dim itemIndex As Integer = e.UserState
         Dim patients As New List(Of Patient)
         If Not e.Error Is Nothing Then
-            updateProgressStatus(ProgressStatus.ContainError, itemIndex, e.Error.Message)
+            If e.Error.Message.Contains("The request was aborted: The request was canceled") Then
+                updateProgressStatus(ProgressStatus.ContainError, itemIndex, "Can't connect to the server. You're offline.")
+            Else
+                updateProgressStatus(ProgressStatus.ContainError, itemIndex, e.Error.Message)
+            End If
             Return
         End If
 
@@ -169,7 +177,7 @@ Public Class Synchronization
 
         patientSyn.createdate = DateTime.Parse(currentPatient.Createdate).ToString("yyyy-MM-dd HH:mm:ss")
         patientSyn.updatedate = DateTime.Parse(currentPatient.Updatedate).ToString("yyyy-MM-dd HH:mm:ss")
-        currentPatient.Visits = visitDAO.getAll(currentPatient.PatientID)
+        currentPatient.Visits = visitDAO.getAll(currentPatient.PatientID, DAO.VisitDAO.Synchronization.NonSyn)
         patientSyn.addVisits(currentPatient.Visits)
         Return patientSyn
     End Function
@@ -210,6 +218,9 @@ Public Class Synchronization
     End Sub
 
     Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+        If e.RowIndex < 0 Then
+            Return
+        End If
         Dim dataGridItem As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
         Dim currentPatient As Patient = dataGridItem.DataBoundItem
         Dim cell As DataGridViewCell = dataGridItem.Cells(STATUS_COL_IDEX)
@@ -235,5 +246,13 @@ Public Class Synchronization
 
     Private Sub CloseButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CloseButton.Click
         Me.Close()
+    End Sub
+
+    Private Sub DataGridView1_RowsAdded(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewRowsAddedEventArgs) Handles DataGridView1.RowsAdded
+        Dim row As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
+        row.Cells(3).Value = nonSynPatients(e.RowIndex).Createdate
+        row.Cells(4).Value = nonSynPatients(e.RowIndex).Updatedate
+        GeneralUtil.formatDateOfDataGridRow(row, "dd/MM/yyyy hh:mm:ss tt", 3, 4)
+
     End Sub
 End Class

@@ -15,8 +15,23 @@ Public Class SearchResult2
         Offline
         OnlineButServerError
     End Enum
-    Private Sub bindSearchPatientResult()
+    Private Sub SearchResult2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Control.CheckForIllegalCrossThreadCalls = False
+        If patient Is Nothing Then
+            Return
+        End If
+        refreshLoadingPatient()
+    End Sub
+    Private Sub refreshLoadingPatient()
+        waitingProgress.Visible = True
+        countTimer.Enabled = True
+        searchThread = New Thread(AddressOf Me.bindSearchPatientResult)
+        'searchThread.Priority = ThreadPriority.Highest
+        searchThread.Start()
 
+    End Sub
+    Private Sub bindSearchPatientResult()
+        clearDataSourceGrid()
         Dim jsonObject As Object = webRequest.indentify(patient, grFingerX)
 
         If (jsonObject Is Nothing) Then
@@ -30,10 +45,21 @@ Public Class SearchResult2
             fillPatientListWithAllLocalDBData()
         End If
         updateGridView()
+        updatePatientFoundLabel()
 
     End Sub
+    Private Sub updatePatientFoundLabel()
+        patientFoundLabel.Text = filterredPatients.Count.ToString() + " patients found."
+    End Sub
+    Private Sub clearDataSourceGrid()
+        DataGridView1.Visible = False
+        DataGridView1.DataSource = Nothing
+        DataGridView1.Refresh()
+        filterredPatients.Clear()
+        DataGridView1.Visible = True
+    End Sub
     Private Sub fillPatientListWithAllLocalDBData()
-        filterredPatients.AddRange(patientDAO.getMatchedPatients(patient, fingerprintUtil, patient.Gender))
+        filterredPatients.AddRange(patientDAO.getMatchedPatients(patient, fingerprintUtil))
     End Sub
     Private Sub fillPatientListWhenOnline(ByVal jsonObject As Object)
         filterredPatients.AddRange(GeneralUtil.getPatientListFromJSONObject(jsonObject))
@@ -41,15 +67,21 @@ Public Class SearchResult2
     End Sub
 
     Private Sub fillPatientListWithNonSynLocalDBData()
-        filterredPatients.AddRange(patientDAO.getMatchedPatients(patient, fingerprintUtil, patient.Gender, patientDAO.Synchronization.NonSyn))
+        filterredPatients.AddRange(patientDAO.getMatchedPatients(patient, fingerprintUtil, patientDAO.Synchronization.NonSyn))
     End Sub
     Private Sub updateGridView()
         'If Me.InvokeRequired Then
         '    Me.Invoke(New MethodInvoker(AddressOf updateGridView))
         'Else
+        DataGridView1.Visible = False
+        DataGridView1.DataSource = Nothing
+        DataGridView1.DataSource = PatientBindingSource
+        PatientBindingSource.DataSource = filterredPatients
+        DataGridView1.Refresh()
+
         waitingProgress.Visible = False
         countTimer.Enabled = False
-        PatientBindingSource.DataSource = filterredPatients
+        DataGridView1.Visible = True
         'End If
 
     End Sub
@@ -68,7 +100,7 @@ Public Class SearchResult2
             Return
         End If
         If patient.getFingerprintsInPriority().Count < 2 Then
-            MessageBox.Show("Two fingerprints are required for the enrollment.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            MessageBox.Show("At least two fingerprints are required for the enrollment.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Me.Close()
             Owner.Show()
             Return
@@ -77,12 +109,19 @@ Public Class SearchResult2
             Dim patientID As String = Nothing
             If patientDAO.Add(patient, patientID) > 0 Then
                 updatePatientIDFromWebServiceCall(patientID)
+                addNewPatientToGrid(patientID)
                 MessageBox.Show("Successfully save with PatientID = " + patientID, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                'refreshLoadingPatient()
             Else
                 MessageBox.Show("Error while saving!!!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
+
         End If
 
+    End Sub
+    Private Sub addNewPatientToGrid(ByRef patientID As String)
+        filterredPatients.Add(patientDAO.getPatient(patientID))
+        updateGridView()
     End Sub
     Private Function updatePatientIDFromWebServiceCall(ByRef patientID As String) As Boolean
 
@@ -108,17 +147,6 @@ Public Class SearchResult2
 
         Return result
     End Function
-    Private Sub SearchResult2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Control.CheckForIllegalCrossThreadCalls = False
-        If patient Is Nothing Then
-            Return
-        End If
-
-        searchThread = New Thread(AddressOf Me.bindSearchPatientResult)
-        'searchThread.Priority = ThreadPriority.Highest
-        searchThread.Start()
-        countTimer.Enabled = True
-    End Sub
     Public Sub setPatient(ByVal patientObject As Patient)
         patient = patientObject
     End Sub
@@ -129,10 +157,7 @@ Public Class SearchResult2
         Me.grFingerX = grFingerX
     End Sub
     Private Sub buttonClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles closeButton.Click
-        If (MessageBox.Show("Are you sure you want to exit?", "Action Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = Windows.Forms.DialogResult.OK) Then
-            Me.Close()
-        End If
-
+        Me.Close()
     End Sub
 
     Private Sub countTimer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles countTimer.Tick
@@ -141,10 +166,13 @@ Public Class SearchResult2
 
     Private Sub DataGridView1_RowsAdded(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewRowsAddedEventArgs) Handles DataGridView1.RowsAdded
         Dim row As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
-
+        GeneralUtil.formatDateOfDataGridRow(row, "dd/MM/yyyy hh:mm:ss tt", 3, 4)
     End Sub
 
     Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+        If e.RowIndex < 0 Then
+            Return
+        End If
         If TypeOf DataGridView1.Columns(e.ColumnIndex) Is DataGridViewLinkColumn Then
             showVisitHistoryForm(e)
         End If
@@ -157,15 +185,29 @@ Public Class SearchResult2
     End Sub
 
     Private Sub DataGridView1_RowHeaderMouseDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles DataGridView1.RowHeaderMouseDoubleClick
+        If e.RowIndex < 0 Then
+            Return
+        End If
         showNewVisitForm(e.RowIndex)
     End Sub
 
     Private Sub showNewVisitForm(ByVal rowIndex As Integer)
         Dim newVisit As New NewVisit
         newVisit.setPatientID(filterredPatients(rowIndex).PatientID)
+        newVisit.Owner = Me
+        newVisit.setRowIndex(rowIndex)
         newVisit.ShowDialog()
     End Sub
+    Public Sub updateVisit(ByVal rowIndex As Integer, ByVal visit As Visit)
+        Dim patient As Patient = filterredPatients(rowIndex)
+        patient.Visits.Add(visit)
+        patient.NumVisit = patient.Visits.Count
+        updateGridView()
+    End Sub
     Private Sub DataGridView1_CellDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellDoubleClick
+        If e.RowIndex < 0 Then
+            Return
+        End If
         showNewVisitForm(e.RowIndex)
     End Sub
 

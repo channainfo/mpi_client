@@ -48,7 +48,7 @@ Public Class ManualSyn
     Private Sub updatePatientProfile()
         patientIDLabel.Text = currentPatient.PatientID
         dateOfBirthLabel.Text = currentPatient.DateBirth
-        genderLabel.Text = currentPatient.Gender
+        genderLabel.Text = currentPatient.GenderText
     End Sub
 
     Private Sub synchronizationButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles synchronizationButton.Click

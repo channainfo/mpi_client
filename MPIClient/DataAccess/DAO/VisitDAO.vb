@@ -4,6 +4,10 @@ Imports MPIClient.DataAccess.Model
 Namespace DataAccess.DAO
     Public Class VisitDAO
         Inherits DatabaseAccess
+        Enum Synchronization
+            All
+            NonSyn
+        End Enum
         Public Const ID As String = "id"
         Public Const PATIENT_ID As String = "patient_id"
         Public Const AGE As String = "age"
@@ -146,14 +150,31 @@ Namespace DataAccess.DAO
 
         End Function
 
-        Public Function getAll(ByVal patientID As String) As List(Of Visit)
-            Dim reader As DbDataReader = getDataReaderOfAllVisitsByPatientID(patientID)
+        Public Function getAll(ByVal patientID As String, Optional ByVal synOption As Synchronization = Synchronization.All) As List(Of Visit)
+
+            Dim reader As DbDataReader = Nothing
+            If synOption = Synchronization.All Then
+                reader = getDataReaderOfAllVisits(patientID)
+            ElseIf synOption = Synchronization.NonSyn Then
+                reader = getDataReaderOfAllNonSynVisits(patientID)
+            End If
             Dim visits As List(Of Visit) = buildVisits(reader)
 
             Return visits
         End Function
-        Private Function getDataReaderOfAllVisitsByPatientID(ByVal patientID As String) As DbDataReader
+        Private Function getDataReaderOfAllVisits(ByVal patientID As String) As DbDataReader
             Dim command As DbCommand = Database.CreateCommand(Constant.GeneralConstants.SP_GET_ALL_VISITS)
+            command.CommandType = CommandType.StoredProcedure
+
+            Dim parameter As DbParameter = Database.CreateParameter(Database.CreateParameterName(PATIENT_ID), DbType.String)
+            parameter.Value = patientID
+            command.Parameters.Add(parameter)
+
+            Dim reader As DbDataReader = Database.ExecuteReader(command)
+            Return reader
+        End Function
+        Private Function getDataReaderOfAllNonSynVisits(ByVal patientID As String) As DbDataReader
+            Dim command As DbCommand = Database.CreateCommand(Constant.GeneralConstants.SP_GET_ALL_NON_SYN_VISITS)
             command.CommandType = CommandType.StoredProcedure
 
             Dim parameter As DbParameter = Database.CreateParameter(Database.CreateParameterName(PATIENT_ID), DbType.String)

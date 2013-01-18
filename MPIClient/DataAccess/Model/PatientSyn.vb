@@ -189,7 +189,7 @@
                 visitSynObject.patientid = visitObject.PatientID
                 visitSynObject.info = visitObject.Info
                 visitSynObject.externalcode = visitObject.ExternalCode
-                visitSynObject.ExternalCode2 = visitObject.ExternalCode2
+                visitSynObject.externalcode2 = visitObject.ExternalCode2
                 visitSynObject.createdate = DateTime.Parse(visitObject.Createdate).ToString("yyyy-MM-dd HH:mm:ss")
                 _visits.Add(visitSynObject)
             Next

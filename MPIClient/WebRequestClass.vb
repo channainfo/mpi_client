@@ -108,7 +108,7 @@ Public Class WebRequestClass
             httpRequest.Method = "POST"
             httpRequest.ContentType = "application/x-www-form-urlencoded"
             httpRequest.ContentLength = queryData.Length
-            'httpRequest.Timeout = 5000
+            httpRequest.Timeout = ConfigManager.GetConfiguarationValue("RequestTimeOut")
 
             Dim requestStream = httpRequest.GetRequestStream()
 
@@ -151,7 +151,7 @@ Public Class WebRequestClass
             httpRequest.Method = "POST"
             httpRequest.ContentType = "application/x-www-form-urlencoded"
             httpRequest.ContentLength = queryData.Length
-            'httpRequest.Timeout = 5000
+            httpRequest.Timeout = ConfigManager.GetConfiguarationValue("RequestTimeOut")
 
             Dim requestStream = httpRequest.GetRequestStream()
 
@@ -185,6 +185,7 @@ Public Class WebRequestClass
             httpRequest.Method = "POST"
             httpRequest.ContentType = "application/x-www-form-urlencoded"
             httpRequest.ContentLength = queryData.Length
+            httpRequest.Timeout = ConfigManager.GetConfiguarationValue("RequestTimeOut")
 
             Dim requestStream = httpRequest.GetRequestStream()
 
@@ -226,6 +227,7 @@ Public Class WebRequestClass
             httpRequest.Method = "POST"
             httpRequest.ContentType = "application/x-www-form-urlencoded"
             httpRequest.ContentLength = queryData.Length
+            httpRequest.Timeout = ConfigManager.GetConfiguarationValue("RequestTimeOut")
 
             Dim requestStream = httpRequest.GetRequestStream()
 

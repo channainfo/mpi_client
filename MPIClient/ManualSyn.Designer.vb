@@ -24,6 +24,7 @@ Partial Class ManualSyn
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Me.DataGridView1 = New System.Windows.Forms.DataGridView
+        Me.PatientBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.genderLabel = New System.Windows.Forms.Label
         Me.dateOfBirthLabel = New System.Windows.Forms.Label
         Me.patientIDLabel = New System.Windows.Forms.Label
@@ -36,7 +37,6 @@ Partial Class ManualSyn
         Me.DateBirthDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.CreatedateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.UpdatedateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.PatientBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PatientBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -56,6 +56,11 @@ Partial Class ManualSyn
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(569, 257)
         Me.DataGridView1.TabIndex = 4
+        '
+        'PatientBindingSource
+        '
+        Me.PatientBindingSource.AllowNew = True
+        Me.PatientBindingSource.DataSource = GetType(MPIClient.DataAccess.Model.Patient)
         '
         'genderLabel
         '
@@ -107,9 +112,9 @@ Partial Class ManualSyn
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(12, 9)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(57, 13)
+        Me.Label1.Size = New System.Drawing.Size(56, 13)
         Me.Label1.TabIndex = 7
-        Me.Label1.Text = "Patient ID:"
+        Me.Label1.Text = "Master ID:"
         '
         'synchronizationButton
         '
@@ -123,13 +128,13 @@ Partial Class ManualSyn
         'PatientIDDataGridViewTextBoxColumn
         '
         Me.PatientIDDataGridViewTextBoxColumn.DataPropertyName = "PatientID"
-        Me.PatientIDDataGridViewTextBoxColumn.HeaderText = "PatientID"
+        Me.PatientIDDataGridViewTextBoxColumn.HeaderText = "MasterID"
         Me.PatientIDDataGridViewTextBoxColumn.Name = "PatientIDDataGridViewTextBoxColumn"
         Me.PatientIDDataGridViewTextBoxColumn.ReadOnly = True
         '
         'GenderDataGridViewTextBoxColumn
         '
-        Me.GenderDataGridViewTextBoxColumn.DataPropertyName = "Gender"
+        Me.GenderDataGridViewTextBoxColumn.DataPropertyName = "GenderText"
         Me.GenderDataGridViewTextBoxColumn.HeaderText = "Gender"
         Me.GenderDataGridViewTextBoxColumn.Name = "GenderDataGridViewTextBoxColumn"
         Me.GenderDataGridViewTextBoxColumn.ReadOnly = True
@@ -155,11 +160,6 @@ Partial Class ManualSyn
         Me.UpdatedateDataGridViewTextBoxColumn.Name = "UpdatedateDataGridViewTextBoxColumn"
         Me.UpdatedateDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'PatientBindingSource
-        '
-        Me.PatientBindingSource.AllowNew = True
-        Me.PatientBindingSource.DataSource = GetType(MPIClient.DataAccess.Model.Patient)
-        '
         'ManualSyn
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -183,11 +183,6 @@ Partial Class ManualSyn
 
     End Sub
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
-    Friend WithEvents PatientIDDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents GenderDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DateBirthDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents CreatedateDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents UpdatedateDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents PatientBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents genderLabel As System.Windows.Forms.Label
     Friend WithEvents dateOfBirthLabel As System.Windows.Forms.Label
@@ -196,4 +191,9 @@ Partial Class ManualSyn
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents synchronizationButton As System.Windows.Forms.Button
+    Friend WithEvents PatientIDDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents GenderDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DateBirthDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CreatedateDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents UpdatedateDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

@@ -265,6 +265,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="fingerprint-hi.ico" />
+    <None Include="Resources\Other-Power-Restart-Metro-icon.png" />
     <None Include="Resources\Right.png" />
     <None Include="Resources\Left.png" />
   </ItemGroup>

@@ -18,12 +18,15 @@ Public Class Fingerprint2
         fingerprintUtil = New FingerprintUtil(grFingerXCtrl)
         fingerprintUtil.initializeFigerprint()
         patient = New Patient
-        DEFAULT_FINGER = finger2right
-        DEFAULT_FINGER.BorderStyle = BorderStyle.FixedSingle
 
-        lastSelectedFinger = DEFAULT_FINGER
+        setDefaultSelectedFinger()
 
         fillGenderComboItems()
+    End Sub
+    Private Sub setDefaultSelectedFinger()
+        DEFAULT_FINGER = finger2right
+        DEFAULT_FINGER.BorderStyle = BorderStyle.FixedSingle
+        lastSelectedFinger = DEFAULT_FINGER
     End Sub
     Private Sub fillGenderComboItems()
         Dim genderComboItems As New List(Of GenderComboboxItem)
@@ -101,6 +104,9 @@ Public Class Fingerprint2
         Dim fingerPrint As Array = fingerprintUtil.extractFingerprint(fingerImage, status)
         Dim imageQuality As String = getImageQaulity(status)
         setPatientFingerPrint(fingerPrint, imageQuality, fingerImage.img)
+
+        checkToEnableSearchButton()
+
     End Sub
 
     Private Sub setPatientFingerPrint(ByVal fingerPrint As Array, ByVal imageQuality As String, Optional ByVal image As Image = Nothing)
@@ -217,28 +223,14 @@ Public Class Fingerprint2
     Private Sub clearLastSelectedFinger()
         pictureFingerprint.Image = Nothing
         setPatientFingerPrint(Nothing, "")
+        checkToEnablesearchbutton()
     End Sub
     Private Sub SearchButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SearchButton.Click
 
         Dim validationErrMessage As String = ""
 
-        If numberOfFingerScan < 1 Then
-            validationErrMessage = validationErrMessage + "- One fingerprint is required." + vbCrLf
-        End If
+        isValidated(validationErrMessage)
 
-        If numberOfBadQuality > 0 Then
-            validationErrMessage = validationErrMessage + "- Some fingerprints are in bad quality (Medium to hight quality is required)." + vbCrLf
-        End If
-
-        If genderCombobox.SelectedValue = 0 Then
-            validationErrMessage = validationErrMessage + "- Gender must be selected." + vbCrLf
-        End If
-
-        If isDuplicateFingerprints() Then
-            validationErrMessage = validationErrMessage + "- Some fingerprints are the same." + vbCrLf
-        End If
-
-        isDuplicateFingerprints()
         patient.Gender = genderCombobox.SelectedValue
         If validationErrMessage = "" Then
             Me.Hide()
@@ -248,6 +240,29 @@ Public Class Fingerprint2
         End If
 
     End Sub
+    Private Function isValidated(Optional ByRef validationErrMessage As String = "")
+        Dim result As Boolean = True
+        If numberOfFingerScan < 1 Then
+            validationErrMessage = validationErrMessage + "- One fingerprint is required." + vbCrLf
+            result = False
+        End If
+
+        If numberOfBadQuality > 0 Then
+            validationErrMessage = validationErrMessage + "- Some fingerprints are in bad quality (Medium to hight quality is required)." + vbCrLf
+            result = False
+        End If
+
+        If genderCombobox.SelectedValue = 0 Then
+            validationErrMessage = validationErrMessage + "- Gender must be selected." + vbCrLf
+            result = False
+        End If
+
+        If isDuplicateFingerprints() Then
+            validationErrMessage = validationErrMessage + "- Some fingerprints are the same." + vbCrLf
+            result = False
+        End If
+        Return result
+    End Function
     Private Function isDuplicateFingerprints() As Boolean
         Dim fingerprintsInPriority As List(Of Array) = patient.getFingerprintsInPriority()
         If fingerprintsInPriority.Count > 1 Then
@@ -285,6 +300,60 @@ Public Class Fingerprint2
     Private Sub genderCombobox_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles genderCombobox.KeyDown
         If e.KeyValue = 46 Then
             clearLastSelectedFinger()
+        End If
+    End Sub
+
+    Private Sub removeButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles removeButton.Click
+        clearLastSelectedFinger()
+    End Sub
+
+    Private Sub clearAllButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles clearAllButton.Click
+
+        numberOfBadQuality = 0
+        numberOfFingerScan = 0
+
+        patient.Fingerprint_l1 = Nothing
+        patient.Fingerprint_l2 = Nothing
+        patient.Fingerprint_l3 = Nothing
+        patient.Fingerprint_l4 = Nothing
+        patient.Fingerprint_l5 = Nothing
+
+        patient.Fingerprint_r1 = Nothing
+        patient.Fingerprint_r2 = Nothing
+        patient.Fingerprint_r3 = Nothing
+        patient.Fingerprint_r4 = Nothing
+        patient.Fingerprint_r5 = Nothing
+
+        For Each ctl As Control In Me.Controls
+            If ctl.Name.Contains("finger") And TypeOf (ctl) Is PictureBox Then
+                Dim pic As PictureBox = CType(ctl, PictureBox)
+                pic.Image = Nothing
+                pic.BorderStyle = BorderStyle.None
+            ElseIf ctl.Name.Contains("quality") And TypeOf (ctl) Is Label Then
+                CType(ctl, Label).Text = ""
+            ElseIf ctl.Name = pictureFingerprint.Name Then
+                pictureFingerprint.Image = Nothing
+            End If
+        Next
+
+        setDefaultSelectedFinger()
+
+    End Sub
+
+    Private Sub initializeButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles initializeButton.Click
+        fingerprintUtil.disposeFingerprint()
+        fingerprintUtil.initializeFigerprint()
+        MessageBox.Show("Done!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Private Sub genderCombobox_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles genderCombobox.SelectedIndexChanged
+        checkToEnableSearchButton()
+    End Sub
+    Private Sub checkToEnablesearchbutton()
+        If isValidated() Then
+            SearchButton.Enabled = True
+        Else
+            SearchButton.Enabled = False
         End If
     End Sub
 End Class

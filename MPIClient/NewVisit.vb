@@ -3,6 +3,7 @@ Imports MPIClient.DataAccess.DAO
 
 Public Class NewVisit
     Private patientID As String
+    Private rowIndex As Integer
     Private visitDAO As VisitDAO
     Dim webRequest As New WebRequestClass
     Enum Status
@@ -27,13 +28,16 @@ Public Class NewVisit
     Public Sub setPatientID(ByVal patientID As String)
         Me.patientID = patientID
     End Sub
-
+    Public Sub setRowIndex(ByVal rowIndex As Int32)
+        Me.rowIndex = rowIndex
+    End Sub
     Private Sub saveButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles saveButton.Click
         Dim visit As Visit = prepareVisit()
         If visitDAO.Add(visit, visit.VisitID) > 0 Then
             Dim patientDAO As New PatientDAO
             patientDAO.updatePatientAge(patientIDLabel.Text, visit.Age)
             updateVisIDFromWebServiceCall(visit)
+            CType(Me.Owner, SearchResult2).updateVisit(rowIndex, visit)
             MessageBox.Show("Successfully save with VistiID = " + visit.VisitID, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
             MessageBox.Show("Error while saving!!!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)

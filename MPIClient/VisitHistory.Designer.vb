@@ -27,18 +27,18 @@ Partial Class VisitHistory
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
         Me.visitDataGrid = New System.Windows.Forms.DataGridView
+        Me.ServiceNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.SiteCodeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.SiteName = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.VisitDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.ExternalCodeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.ExternalCode2 = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.InfoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.VisitBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.closeButton = New System.Windows.Forms.Button
         Me.patientIDLabel = New System.Windows.Forms.Label
         Me.dateOfBirthLabel = New System.Windows.Forms.Label
         Me.genderLabel = New System.Windows.Forms.Label
-        Me.ServiceNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.SiteCodeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.VisitDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ExternalCodeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.InfoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.VisitBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.visitDataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VisitBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -48,9 +48,9 @@ Partial Class VisitHistory
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(12, 9)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(57, 13)
+        Me.Label1.Size = New System.Drawing.Size(56, 13)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Patient ID:"
+        Me.Label1.Text = "Master ID:"
         '
         'Label2
         '
@@ -88,6 +88,20 @@ Partial Class VisitHistory
         Me.visitDataGrid.Size = New System.Drawing.Size(825, 180)
         Me.visitDataGrid.TabIndex = 1
         '
+        'ServiceNameDataGridViewTextBoxColumn
+        '
+        Me.ServiceNameDataGridViewTextBoxColumn.DataPropertyName = "ServiceName"
+        Me.ServiceNameDataGridViewTextBoxColumn.HeaderText = "ServiceName"
+        Me.ServiceNameDataGridViewTextBoxColumn.Name = "ServiceNameDataGridViewTextBoxColumn"
+        Me.ServiceNameDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'SiteCodeDataGridViewTextBoxColumn
+        '
+        Me.SiteCodeDataGridViewTextBoxColumn.DataPropertyName = "SiteCode"
+        Me.SiteCodeDataGridViewTextBoxColumn.HeaderText = "SiteCode"
+        Me.SiteCodeDataGridViewTextBoxColumn.Name = "SiteCodeDataGridViewTextBoxColumn"
+        Me.SiteCodeDataGridViewTextBoxColumn.ReadOnly = True
+        '
         'SiteName
         '
         Me.SiteName.DataPropertyName = "SiteName"
@@ -95,12 +109,37 @@ Partial Class VisitHistory
         Me.SiteName.Name = "SiteName"
         Me.SiteName.ReadOnly = True
         '
+        'VisitDateDataGridViewTextBoxColumn
+        '
+        Me.VisitDateDataGridViewTextBoxColumn.DataPropertyName = "VisitDate"
+        Me.VisitDateDataGridViewTextBoxColumn.HeaderText = "VisitDate"
+        Me.VisitDateDataGridViewTextBoxColumn.Name = "VisitDateDataGridViewTextBoxColumn"
+        Me.VisitDateDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ExternalCodeDataGridViewTextBoxColumn
+        '
+        Me.ExternalCodeDataGridViewTextBoxColumn.DataPropertyName = "ExternalCode"
+        Me.ExternalCodeDataGridViewTextBoxColumn.HeaderText = "ExternalCode"
+        Me.ExternalCodeDataGridViewTextBoxColumn.Name = "ExternalCodeDataGridViewTextBoxColumn"
+        Me.ExternalCodeDataGridViewTextBoxColumn.ReadOnly = True
+        '
         'ExternalCode2
         '
         Me.ExternalCode2.DataPropertyName = "ExternalCode2"
         Me.ExternalCode2.HeaderText = "ExternalCode2"
         Me.ExternalCode2.Name = "ExternalCode2"
         Me.ExternalCode2.ReadOnly = True
+        '
+        'InfoDataGridViewTextBoxColumn
+        '
+        Me.InfoDataGridViewTextBoxColumn.DataPropertyName = "Info"
+        Me.InfoDataGridViewTextBoxColumn.HeaderText = "Info"
+        Me.InfoDataGridViewTextBoxColumn.Name = "InfoDataGridViewTextBoxColumn"
+        Me.InfoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'VisitBindingSource
+        '
+        Me.VisitBindingSource.DataSource = GetType(MPIClient.DataAccess.Model.Visit)
         '
         'closeButton
         '
@@ -138,45 +177,6 @@ Partial Class VisitHistory
         Me.genderLabel.Size = New System.Drawing.Size(39, 13)
         Me.genderLabel.TabIndex = 3
         Me.genderLabel.Text = "Label4"
-        '
-        'ServiceNameDataGridViewTextBoxColumn
-        '
-        Me.ServiceNameDataGridViewTextBoxColumn.DataPropertyName = "ServiceName"
-        Me.ServiceNameDataGridViewTextBoxColumn.HeaderText = "ServiceName"
-        Me.ServiceNameDataGridViewTextBoxColumn.Name = "ServiceNameDataGridViewTextBoxColumn"
-        Me.ServiceNameDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'SiteCodeDataGridViewTextBoxColumn
-        '
-        Me.SiteCodeDataGridViewTextBoxColumn.DataPropertyName = "SiteCode"
-        Me.SiteCodeDataGridViewTextBoxColumn.HeaderText = "SiteCode"
-        Me.SiteCodeDataGridViewTextBoxColumn.Name = "SiteCodeDataGridViewTextBoxColumn"
-        Me.SiteCodeDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'VisitDateDataGridViewTextBoxColumn
-        '
-        Me.VisitDateDataGridViewTextBoxColumn.DataPropertyName = "VisitDate"
-        Me.VisitDateDataGridViewTextBoxColumn.HeaderText = "VisitDate"
-        Me.VisitDateDataGridViewTextBoxColumn.Name = "VisitDateDataGridViewTextBoxColumn"
-        Me.VisitDateDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ExternalCodeDataGridViewTextBoxColumn
-        '
-        Me.ExternalCodeDataGridViewTextBoxColumn.DataPropertyName = "ExternalCode"
-        Me.ExternalCodeDataGridViewTextBoxColumn.HeaderText = "ExternalCode"
-        Me.ExternalCodeDataGridViewTextBoxColumn.Name = "ExternalCodeDataGridViewTextBoxColumn"
-        Me.ExternalCodeDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'InfoDataGridViewTextBoxColumn
-        '
-        Me.InfoDataGridViewTextBoxColumn.DataPropertyName = "Info"
-        Me.InfoDataGridViewTextBoxColumn.HeaderText = "Info"
-        Me.InfoDataGridViewTextBoxColumn.Name = "InfoDataGridViewTextBoxColumn"
-        Me.InfoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'VisitBindingSource
-        '
-        Me.VisitBindingSource.DataSource = GetType(MPIClient.DataAccess.Model.Visit)
         '
         'VisitHistory
         '
