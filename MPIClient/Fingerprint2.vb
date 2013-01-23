@@ -14,6 +14,7 @@ Public Class Fingerprint2
     Dim lastSelectedFinger As PictureBox
     Dim fingerprintUtil As FingerprintUtil
     Dim patient As Patient
+    Dim idSensor As String = "File"
     Private Sub Fingerprint2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         fingerprintUtil = New FingerprintUtil(grFingerXCtrl)
         fingerprintUtil.initializeFigerprint()
@@ -49,12 +50,16 @@ Public Class Fingerprint2
 
     Private Sub grFingerXCtrl_SensorPlug(ByVal sender As System.Object, ByVal e As AxGrFingerXLib._IGrFingerXCtrlEvents_SensorPlugEvent) Handles grFingerXCtrl.SensorPlug
         Dim status As Integer = grFingerXCtrl.CapStartCapture(e.idSensor)
-        labelStatus.Text = STR_StatusReady
+        If Not e.idSensor.Equals("File") Then
+            labelStatus.Text = STR_StatusReady
+        End If
+        idSensor = e.idSensor
     End Sub
 
     Private Sub grFingerXCtrl_SensorUnplug(ByVal sender As Object, ByVal e As AxGrFingerXLib._IGrFingerXCtrlEvents_SensorUnplugEvent) Handles grFingerXCtrl.SensorUnplug
         Dim status As Integer = grFingerXCtrl.CapStopCapture(e.idSensor)
         labelStatus.Text = STR_StatusUnplugged
+        idSensor = "File"
     End Sub
 
     Private Sub finger_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles finger2right.Click, finger1right.Click, finger5right.Click, finger5left.Click, finger4right.Click, finger4left.Click, finger3right.Click, finger3left.Click, finger2left.Click, finger1Left.Click
@@ -288,6 +293,8 @@ Public Class Fingerprint2
 
     Private Sub SynchronizationButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SynchronizationButton.Click
         Dim synChronization As New Synchronization
+        synChronization.SetGrFingerX(grFingerXCtrl)
+        synChronization.setFilgerprintUtil(fingerprintUtil)
         synChronization.ShowDialog(Me)
     End Sub
 
@@ -342,8 +349,19 @@ Public Class Fingerprint2
 
     Private Sub initializeButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles initializeButton.Click
         fingerprintUtil.disposeFingerprint()
-        fingerprintUtil.initializeFigerprint()
-        MessageBox.Show("Done!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Dim errorCode = fingerprintUtil.initializeFigerprint()
+        If (Not idSensor.Equals("File")) Then
+            If errorCode >= 0 Then
+                MessageBox.Show("Fingerprint scanner initialized Successfull.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                MessageBox.Show(fingerprintUtil.getErrorMessage(errorCode), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        Else
+            MessageBox.Show("Fingerprint scanner is unplugged.")
+            labelStatus.Text = STR_StatusUnplugged
+        End If
+        
+
     End Sub
 
     Private Sub genderCombobox_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles genderCombobox.SelectedIndexChanged
@@ -355,5 +373,9 @@ Public Class Fingerprint2
         Else
             SearchButton.Enabled = False
         End If
+    End Sub
+
+    Private Sub Fingerprint2_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
+        fingerprintUtil.disposeFingerprint()
     End Sub
 End Class

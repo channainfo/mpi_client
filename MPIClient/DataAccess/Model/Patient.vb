@@ -27,6 +27,13 @@ Namespace DataAccess.Model
         Private _updatedate As String
         Private _numVisit As Integer = 0
         Private _visits As List(Of Visit)
+        Private _tag As Object
+        Friend Sub setTag(ByVal tag As Object)
+            _tag = tag
+        End Sub
+        Friend Function getTag() As Object
+            Return _tag
+        End Function
         Public Property PatientID() As String
             Get
                 Return _id

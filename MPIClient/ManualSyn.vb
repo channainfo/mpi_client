@@ -6,8 +6,7 @@ Imports System.Text
 Public Class ManualSyn
     Dim currentPatient As Patient
     Dim matchedPatients As List(Of Patient)
-
-
+    Dim synchronization As Synchronization 
     Friend Sub SetCurrentPatient(ByVal currentPatient As Patient)
         Me.currentPatient = currentPatient
     End Sub
@@ -16,7 +15,7 @@ Public Class ManualSyn
     End Sub
     Private Sub ManualSyn_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         DataGridView1.DataSource = matchedPatients
-
+        synchronization = CType(Me.Owner, Synchronization)
         updatePatientProfile()
 
     End Sub
@@ -40,6 +39,8 @@ Public Class ManualSyn
         Dim status = patientDAO.Update(currentPatient.PatientID, patient)
         If status > 0 Then
             MessageBox.Show("Successful update.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            synchronization.updateSelectedRowToCompleted()
+            Me.Close()
         Else
             MessageBox.Show("Fail in updating patient.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
@@ -56,7 +57,7 @@ Public Class ManualSyn
         Dim selectedPatientToSyn As Patient = DataGridView1.SelectedRows(0).DataBoundItem
         selectedPatientToSyn.Syn = True
         Dim patientID As String = selectedPatientToSyn.PatientID
-        webRequestClass.synPatientWithPatientID(Synchronization.preparePatientSynObject(currentPatient), patientID, AddressOf uploadLoadValuesCompleted)
+        webRequestClass.synPatientWithPatientID(synchronization.preparePatientSynObject(currentPatient), patientID, AddressOf uploadLoadValuesCompleted)
         'Dim patientDAO As New PatientDAO
         'Dim result = patientDAO.Update(currentPatient.PatientID, selectedPatientToSyn)
 
