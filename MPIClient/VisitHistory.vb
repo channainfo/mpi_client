@@ -34,8 +34,8 @@ Public Class VisitHistory
         visitDataGrid.DataSource = patient.Visits
     End Sub
 
-    Private Sub closeButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles closeButton.Click
-        Me.Close()
+    Private Sub closeButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
     End Sub
 
     Private Sub VisitHistory_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
@@ -53,4 +53,7 @@ Public Class VisitHistory
         End If
     End Sub
 
+    Private Sub ToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton1.Click
+        Me.Close()
+    End Sub
 End Class

@@ -23,8 +23,10 @@ Partial Class SearchResult2
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SearchResult2))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
         Me.ActionToolStrip = New System.Windows.Forms.ToolStrip
         Me.newPatientButton = New System.Windows.Forms.ToolStripButton
         Me.newVisitButton = New System.Windows.Forms.ToolStripButton
@@ -54,123 +56,141 @@ Partial Class SearchResult2
         '
         'ActionToolStrip
         '
+        Me.ActionToolStrip.AccessibleDescription = Nothing
+        Me.ActionToolStrip.AccessibleName = Nothing
+        resources.ApplyResources(Me.ActionToolStrip, "ActionToolStrip")
+        Me.ActionToolStrip.BackgroundImage = Nothing
+        Me.ActionToolStrip.Font = Nothing
         Me.ActionToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.newPatientButton, Me.newVisitButton, Me.closeButton, Me.countLabel, Me.waitingProgress, Me.ProgressStatus})
-        Me.ActionToolStrip.Location = New System.Drawing.Point(0, 0)
         Me.ActionToolStrip.Name = "ActionToolStrip"
-        Me.ActionToolStrip.Size = New System.Drawing.Size(950, 39)
-        Me.ActionToolStrip.TabIndex = 1
-        Me.ActionToolStrip.Text = "ToolStrip1"
         '
         'newPatientButton
         '
+        Me.newPatientButton.AccessibleDescription = Nothing
+        Me.newPatientButton.AccessibleName = Nothing
+        resources.ApplyResources(Me.newPatientButton, "newPatientButton")
+        Me.newPatientButton.BackgroundImage = Nothing
         Me.newPatientButton.Image = Global.MPIClient.My.Resources.Resources.Actions_contact_new_icon
-        Me.newPatientButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.newPatientButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.newPatientButton.Name = "newPatientButton"
-        Me.newPatientButton.Size = New System.Drawing.Size(107, 36)
-        Me.newPatientButton.Text = "New Patient"
         '
         'newVisitButton
         '
+        Me.newVisitButton.AccessibleDescription = Nothing
+        Me.newVisitButton.AccessibleName = Nothing
+        resources.ApplyResources(Me.newVisitButton, "newVisitButton")
+        Me.newVisitButton.BackgroundImage = Nothing
         Me.newVisitButton.Image = Global.MPIClient.My.Resources.Resources.Folder_History_icon
-        Me.newVisitButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.newVisitButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.newVisitButton.Name = "newVisitButton"
-        Me.newVisitButton.Size = New System.Drawing.Size(92, 36)
-        Me.newVisitButton.Text = "New Visit"
         '
         'closeButton
         '
+        Me.closeButton.AccessibleDescription = Nothing
+        Me.closeButton.AccessibleName = Nothing
+        resources.ApplyResources(Me.closeButton, "closeButton")
+        Me.closeButton.BackgroundImage = Nothing
         Me.closeButton.Image = Global.MPIClient.My.Resources.Resources.Log_Out_icon__1_
-        Me.closeButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.closeButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.closeButton.Name = "closeButton"
-        Me.closeButton.Size = New System.Drawing.Size(72, 36)
-        Me.closeButton.Text = "Close"
         '
         'countLabel
         '
+        Me.countLabel.AccessibleDescription = Nothing
+        Me.countLabel.AccessibleName = Nothing
+        resources.ApplyResources(Me.countLabel, "countLabel")
+        Me.countLabel.BackgroundImage = Nothing
         Me.countLabel.Name = "countLabel"
-        Me.countLabel.Size = New System.Drawing.Size(13, 36)
-        Me.countLabel.Text = "1"
         '
         'waitingProgress
         '
+        Me.waitingProgress.AccessibleDescription = Nothing
+        Me.waitingProgress.AccessibleName = Nothing
+        resources.ApplyResources(Me.waitingProgress, "waitingProgress")
         Me.waitingProgress.Name = "waitingProgress"
-        Me.waitingProgress.Size = New System.Drawing.Size(100, 36)
         Me.waitingProgress.Style = System.Windows.Forms.ProgressBarStyle.Marquee
         '
         'ProgressStatus
         '
+        Me.ProgressStatus.AccessibleDescription = Nothing
+        Me.ProgressStatus.AccessibleName = Nothing
+        resources.ApplyResources(Me.ProgressStatus, "ProgressStatus")
+        Me.ProgressStatus.BackgroundImage = Nothing
         Me.ProgressStatus.Name = "ProgressStatus"
-        Me.ProgressStatus.Size = New System.Drawing.Size(0, 36)
         '
         'DataGridView1
         '
+        Me.DataGridView1.AccessibleDescription = Nothing
+        Me.DataGridView1.AccessibleName = Nothing
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.AllowUserToDeleteRows = False
+        resources.ApplyResources(Me.DataGridView1, "DataGridView1")
         Me.DataGridView1.AutoGenerateColumns = False
+        Me.DataGridView1.BackgroundImage = Nothing
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientIDDataGridViewTextBoxColumn, Me.GenderText, Me.Age, Me.CreatedateDataGridViewTextBoxColumn, Me.UpdatedateDataGridViewTextBoxColumn, Me.NumVisit})
         Me.DataGridView1.DataSource = Me.PatientBindingSource
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.NullValue = Nothing
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle2
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 52)
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.NullValue = Nothing
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle3
+        Me.DataGridView1.Font = Nothing
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(926, 379)
-        Me.DataGridView1.TabIndex = 2
         '
         'PatientIDDataGridViewTextBoxColumn
         '
         Me.PatientIDDataGridViewTextBoxColumn.DataPropertyName = "PatientID"
-        Me.PatientIDDataGridViewTextBoxColumn.HeaderText = "MasterID"
+        resources.ApplyResources(Me.PatientIDDataGridViewTextBoxColumn, "PatientIDDataGridViewTextBoxColumn")
         Me.PatientIDDataGridViewTextBoxColumn.Name = "PatientIDDataGridViewTextBoxColumn"
         Me.PatientIDDataGridViewTextBoxColumn.ReadOnly = True
         '
         'GenderText
         '
         Me.GenderText.DataPropertyName = "GenderText"
-        Me.GenderText.HeaderText = "Gender"
+        resources.ApplyResources(Me.GenderText, "GenderText")
         Me.GenderText.Name = "GenderText"
         Me.GenderText.ReadOnly = True
         '
         'Age
         '
         Me.Age.DataPropertyName = "Age"
-        Me.Age.HeaderText = "Age"
+        resources.ApplyResources(Me.Age, "Age")
         Me.Age.Name = "Age"
         Me.Age.ReadOnly = True
         '
         'CreatedateDataGridViewTextBoxColumn
         '
         Me.CreatedateDataGridViewTextBoxColumn.DataPropertyName = "Createdate"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.CreatedateDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
-        Me.CreatedateDataGridViewTextBoxColumn.HeaderText = "Createdate"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.CreatedateDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
+        resources.ApplyResources(Me.CreatedateDataGridViewTextBoxColumn, "CreatedateDataGridViewTextBoxColumn")
         Me.CreatedateDataGridViewTextBoxColumn.Name = "CreatedateDataGridViewTextBoxColumn"
         Me.CreatedateDataGridViewTextBoxColumn.ReadOnly = True
         '
         'UpdatedateDataGridViewTextBoxColumn
         '
         Me.UpdatedateDataGridViewTextBoxColumn.DataPropertyName = "Updatedate"
-        Me.UpdatedateDataGridViewTextBoxColumn.HeaderText = "Updatedate"
+        resources.ApplyResources(Me.UpdatedateDataGridViewTextBoxColumn, "UpdatedateDataGridViewTextBoxColumn")
         Me.UpdatedateDataGridViewTextBoxColumn.Name = "UpdatedateDataGridViewTextBoxColumn"
         Me.UpdatedateDataGridViewTextBoxColumn.ReadOnly = True
         '
         'NumVisit
         '
         Me.NumVisit.DataPropertyName = "NumVisit"
-        Me.NumVisit.HeaderText = "Visit History"
+        resources.ApplyResources(Me.NumVisit, "NumVisit")
         Me.NumVisit.Name = "NumVisit"
         Me.NumVisit.ReadOnly = True
         '
@@ -185,48 +205,59 @@ Partial Class SearchResult2
         '
         'StatusStrip1
         '
+        Me.StatusStrip1.AccessibleDescription = Nothing
+        Me.StatusStrip1.AccessibleName = Nothing
+        resources.ApplyResources(Me.StatusStrip1, "StatusStrip1")
+        Me.StatusStrip1.BackgroundImage = Nothing
+        Me.StatusStrip1.Font = Nothing
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.infoLabel, Me.ToolStripStatusLabel2, Me.patientFoundLabel})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 454)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(950, 22)
-        Me.StatusStrip1.TabIndex = 3
-        Me.StatusStrip1.Text = "StatusStrip1"
         '
         'ToolStripStatusLabel1
         '
+        Me.ToolStripStatusLabel1.AccessibleDescription = Nothing
+        Me.ToolStripStatusLabel1.AccessibleName = Nothing
+        resources.ApplyResources(Me.ToolStripStatusLabel1, "ToolStripStatusLabel1")
+        Me.ToolStripStatusLabel1.BackgroundImage = Nothing
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(42, 17)
-        Me.ToolStripStatusLabel1.Text = "Status:"
         '
         'infoLabel
         '
+        Me.infoLabel.AccessibleDescription = Nothing
+        Me.infoLabel.AccessibleName = Nothing
+        resources.ApplyResources(Me.infoLabel, "infoLabel")
+        Me.infoLabel.BackgroundImage = Nothing
         Me.infoLabel.Name = "infoLabel"
-        Me.infoLabel.Size = New System.Drawing.Size(55, 17)
-        Me.infoLabel.Text = "................"
         '
         'ToolStripStatusLabel2
         '
+        Me.ToolStripStatusLabel2.AccessibleDescription = Nothing
+        Me.ToolStripStatusLabel2.AccessibleName = Nothing
+        resources.ApplyResources(Me.ToolStripStatusLabel2, "ToolStripStatusLabel2")
+        Me.ToolStripStatusLabel2.BackgroundImage = Nothing
         Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(108, 17)
-        Me.ToolStripStatusLabel2.Text = "Number of Patient:"
         '
         'patientFoundLabel
         '
+        Me.patientFoundLabel.AccessibleDescription = Nothing
+        Me.patientFoundLabel.AccessibleName = Nothing
+        resources.ApplyResources(Me.patientFoundLabel, "patientFoundLabel")
+        Me.patientFoundLabel.BackgroundImage = Nothing
         Me.patientFoundLabel.Name = "patientFoundLabel"
-        Me.patientFoundLabel.Size = New System.Drawing.Size(55, 17)
-        Me.patientFoundLabel.Text = "................"
         '
         'SearchResult2
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AccessibleDescription = Nothing
+        Me.AccessibleName = Nothing
+        resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(950, 476)
+        Me.BackgroundImage = Nothing
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.ActionToolStrip)
+        Me.Font = Nothing
+        Me.Icon = Nothing
         Me.Name = "SearchResult2"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Search Result"
         Me.ActionToolStrip.ResumeLayout(False)
         Me.ActionToolStrip.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -250,12 +281,12 @@ Partial Class SearchResult2
     Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
     Friend WithEvents ToolStripStatusLabel1 As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents infoLabel As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel2 As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents patientFoundLabel As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents PatientIDDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents GenderText As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Age As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CreatedateDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents UpdatedateDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents NumVisit As System.Windows.Forms.DataGridViewLinkColumn
-    Friend WithEvents ToolStripStatusLabel2 As System.Windows.Forms.ToolStripStatusLabel
-    Friend WithEvents patientFoundLabel As System.Windows.Forms.ToolStripStatusLabel
 End Class

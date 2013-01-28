@@ -23,10 +23,19 @@ Partial Class VisitHistory
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(VisitHistory))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
         Me.visitDataGrid = New System.Windows.Forms.DataGridView
+        Me.VisitBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.patientIDLabel = New System.Windows.Forms.Label
+        Me.dateOfBirthLabel = New System.Windows.Forms.Label
+        Me.genderLabel = New System.Windows.Forms.Label
+        Me.ActionToolStrip = New System.Windows.Forms.ToolStrip
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton
+        Me.ProgressStatus = New System.Windows.Forms.ToolStripLabel
         Me.ServiceNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.SiteCodeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.SiteName = New System.Windows.Forms.DataGridViewTextBoxColumn
@@ -34,168 +43,183 @@ Partial Class VisitHistory
         Me.ExternalCodeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.ExternalCode2 = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.InfoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.VisitBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.closeButton = New System.Windows.Forms.Button
-        Me.patientIDLabel = New System.Windows.Forms.Label
-        Me.dateOfBirthLabel = New System.Windows.Forms.Label
-        Me.genderLabel = New System.Windows.Forms.Label
         CType(Me.visitDataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VisitBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ActionToolStrip.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 9)
+        Me.Label1.AccessibleDescription = Nothing
+        Me.Label1.AccessibleName = Nothing
+        resources.ApplyResources(Me.Label1, "Label1")
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(56, 13)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Master ID:"
         '
         'Label2
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(12, 34)
+        Me.Label2.AccessibleDescription = Nothing
+        Me.Label2.AccessibleName = Nothing
+        resources.ApplyResources(Me.Label2, "Label2")
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(69, 13)
-        Me.Label2.TabIndex = 0
-        Me.Label2.Text = "Date of Birth:"
         '
         'Label3
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(12, 59)
+        Me.Label3.AccessibleDescription = Nothing
+        Me.Label3.AccessibleName = Nothing
+        resources.ApplyResources(Me.Label3, "Label3")
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(45, 13)
-        Me.Label3.TabIndex = 0
-        Me.Label3.Text = "Gender:"
         '
         'visitDataGrid
         '
+        Me.visitDataGrid.AccessibleDescription = Nothing
+        Me.visitDataGrid.AccessibleName = Nothing
         Me.visitDataGrid.AllowUserToAddRows = False
         Me.visitDataGrid.AllowUserToDeleteRows = False
         Me.visitDataGrid.AllowUserToOrderColumns = True
-        Me.visitDataGrid.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.visitDataGrid, "visitDataGrid")
         Me.visitDataGrid.AutoGenerateColumns = False
+        Me.visitDataGrid.BackgroundImage = Nothing
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.visitDataGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.visitDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.visitDataGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ServiceNameDataGridViewTextBoxColumn, Me.SiteCodeDataGridViewTextBoxColumn, Me.SiteName, Me.VisitDateDataGridViewTextBoxColumn, Me.ExternalCodeDataGridViewTextBoxColumn, Me.ExternalCode2, Me.InfoDataGridViewTextBoxColumn})
         Me.visitDataGrid.DataSource = Me.VisitBindingSource
-        Me.visitDataGrid.Location = New System.Drawing.Point(15, 95)
+        Me.visitDataGrid.Font = Nothing
         Me.visitDataGrid.Name = "visitDataGrid"
         Me.visitDataGrid.ReadOnly = True
-        Me.visitDataGrid.Size = New System.Drawing.Size(825, 180)
-        Me.visitDataGrid.TabIndex = 1
+        '
+        'VisitBindingSource
+        '
+        Me.VisitBindingSource.DataSource = GetType(MPIClient.DataAccess.Model.Visit)
+        '
+        'patientIDLabel
+        '
+        Me.patientIDLabel.AccessibleDescription = Nothing
+        Me.patientIDLabel.AccessibleName = Nothing
+        resources.ApplyResources(Me.patientIDLabel, "patientIDLabel")
+        Me.patientIDLabel.Font = Nothing
+        Me.patientIDLabel.Name = "patientIDLabel"
+        '
+        'dateOfBirthLabel
+        '
+        Me.dateOfBirthLabel.AccessibleDescription = Nothing
+        Me.dateOfBirthLabel.AccessibleName = Nothing
+        resources.ApplyResources(Me.dateOfBirthLabel, "dateOfBirthLabel")
+        Me.dateOfBirthLabel.Font = Nothing
+        Me.dateOfBirthLabel.Name = "dateOfBirthLabel"
+        '
+        'genderLabel
+        '
+        Me.genderLabel.AccessibleDescription = Nothing
+        Me.genderLabel.AccessibleName = Nothing
+        resources.ApplyResources(Me.genderLabel, "genderLabel")
+        Me.genderLabel.Font = Nothing
+        Me.genderLabel.Name = "genderLabel"
+        '
+        'ActionToolStrip
+        '
+        Me.ActionToolStrip.AccessibleDescription = Nothing
+        Me.ActionToolStrip.AccessibleName = Nothing
+        resources.ApplyResources(Me.ActionToolStrip, "ActionToolStrip")
+        Me.ActionToolStrip.BackgroundImage = Nothing
+        Me.ActionToolStrip.Font = Nothing
+        Me.ActionToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ProgressStatus})
+        Me.ActionToolStrip.Name = "ActionToolStrip"
+        '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.AccessibleDescription = Nothing
+        Me.ToolStripButton1.AccessibleName = Nothing
+        resources.ApplyResources(Me.ToolStripButton1, "ToolStripButton1")
+        Me.ToolStripButton1.BackgroundImage = Nothing
+        Me.ToolStripButton1.Image = Global.MPIClient.My.Resources.Resources.Log_Out_icon__1_
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        '
+        'ProgressStatus
+        '
+        Me.ProgressStatus.AccessibleDescription = Nothing
+        Me.ProgressStatus.AccessibleName = Nothing
+        resources.ApplyResources(Me.ProgressStatus, "ProgressStatus")
+        Me.ProgressStatus.BackgroundImage = Nothing
+        Me.ProgressStatus.Name = "ProgressStatus"
         '
         'ServiceNameDataGridViewTextBoxColumn
         '
         Me.ServiceNameDataGridViewTextBoxColumn.DataPropertyName = "ServiceName"
-        Me.ServiceNameDataGridViewTextBoxColumn.HeaderText = "ServiceName"
+        resources.ApplyResources(Me.ServiceNameDataGridViewTextBoxColumn, "ServiceNameDataGridViewTextBoxColumn")
         Me.ServiceNameDataGridViewTextBoxColumn.Name = "ServiceNameDataGridViewTextBoxColumn"
         Me.ServiceNameDataGridViewTextBoxColumn.ReadOnly = True
         '
         'SiteCodeDataGridViewTextBoxColumn
         '
         Me.SiteCodeDataGridViewTextBoxColumn.DataPropertyName = "SiteCode"
-        Me.SiteCodeDataGridViewTextBoxColumn.HeaderText = "SiteCode"
+        resources.ApplyResources(Me.SiteCodeDataGridViewTextBoxColumn, "SiteCodeDataGridViewTextBoxColumn")
         Me.SiteCodeDataGridViewTextBoxColumn.Name = "SiteCodeDataGridViewTextBoxColumn"
         Me.SiteCodeDataGridViewTextBoxColumn.ReadOnly = True
         '
         'SiteName
         '
         Me.SiteName.DataPropertyName = "SiteName"
-        Me.SiteName.HeaderText = "SiteName"
+        resources.ApplyResources(Me.SiteName, "SiteName")
         Me.SiteName.Name = "SiteName"
         Me.SiteName.ReadOnly = True
         '
         'VisitDateDataGridViewTextBoxColumn
         '
         Me.VisitDateDataGridViewTextBoxColumn.DataPropertyName = "VisitDate"
-        Me.VisitDateDataGridViewTextBoxColumn.HeaderText = "VisitDate"
+        resources.ApplyResources(Me.VisitDateDataGridViewTextBoxColumn, "VisitDateDataGridViewTextBoxColumn")
         Me.VisitDateDataGridViewTextBoxColumn.Name = "VisitDateDataGridViewTextBoxColumn"
         Me.VisitDateDataGridViewTextBoxColumn.ReadOnly = True
         '
         'ExternalCodeDataGridViewTextBoxColumn
         '
         Me.ExternalCodeDataGridViewTextBoxColumn.DataPropertyName = "ExternalCode"
-        Me.ExternalCodeDataGridViewTextBoxColumn.HeaderText = "ExternalCode"
+        resources.ApplyResources(Me.ExternalCodeDataGridViewTextBoxColumn, "ExternalCodeDataGridViewTextBoxColumn")
         Me.ExternalCodeDataGridViewTextBoxColumn.Name = "ExternalCodeDataGridViewTextBoxColumn"
         Me.ExternalCodeDataGridViewTextBoxColumn.ReadOnly = True
         '
         'ExternalCode2
         '
         Me.ExternalCode2.DataPropertyName = "ExternalCode2"
-        Me.ExternalCode2.HeaderText = "ExternalCode2"
+        resources.ApplyResources(Me.ExternalCode2, "ExternalCode2")
         Me.ExternalCode2.Name = "ExternalCode2"
         Me.ExternalCode2.ReadOnly = True
         '
         'InfoDataGridViewTextBoxColumn
         '
         Me.InfoDataGridViewTextBoxColumn.DataPropertyName = "Info"
-        Me.InfoDataGridViewTextBoxColumn.HeaderText = "Info"
+        resources.ApplyResources(Me.InfoDataGridViewTextBoxColumn, "InfoDataGridViewTextBoxColumn")
         Me.InfoDataGridViewTextBoxColumn.Name = "InfoDataGridViewTextBoxColumn"
         Me.InfoDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'VisitBindingSource
-        '
-        Me.VisitBindingSource.DataSource = GetType(MPIClient.DataAccess.Model.Visit)
-        '
-        'closeButton
-        '
-        Me.closeButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.closeButton.Location = New System.Drawing.Point(765, 9)
-        Me.closeButton.Name = "closeButton"
-        Me.closeButton.Size = New System.Drawing.Size(75, 23)
-        Me.closeButton.TabIndex = 2
-        Me.closeButton.Text = "Close"
-        Me.closeButton.UseVisualStyleBackColor = True
-        '
-        'patientIDLabel
-        '
-        Me.patientIDLabel.AutoSize = True
-        Me.patientIDLabel.Location = New System.Drawing.Point(100, 9)
-        Me.patientIDLabel.Name = "patientIDLabel"
-        Me.patientIDLabel.Size = New System.Drawing.Size(39, 13)
-        Me.patientIDLabel.TabIndex = 3
-        Me.patientIDLabel.Text = "Label4"
-        '
-        'dateOfBirthLabel
-        '
-        Me.dateOfBirthLabel.AutoSize = True
-        Me.dateOfBirthLabel.Location = New System.Drawing.Point(100, 34)
-        Me.dateOfBirthLabel.Name = "dateOfBirthLabel"
-        Me.dateOfBirthLabel.Size = New System.Drawing.Size(39, 13)
-        Me.dateOfBirthLabel.TabIndex = 3
-        Me.dateOfBirthLabel.Text = "Label4"
-        '
-        'genderLabel
-        '
-        Me.genderLabel.AutoSize = True
-        Me.genderLabel.Location = New System.Drawing.Point(100, 59)
-        Me.genderLabel.Name = "genderLabel"
-        Me.genderLabel.Size = New System.Drawing.Size(39, 13)
-        Me.genderLabel.TabIndex = 3
-        Me.genderLabel.Text = "Label4"
-        '
         'VisitHistory
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AccessibleDescription = Nothing
+        Me.AccessibleName = Nothing
+        resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(852, 291)
+        Me.BackgroundImage = Nothing
+        Me.Controls.Add(Me.ActionToolStrip)
         Me.Controls.Add(Me.genderLabel)
         Me.Controls.Add(Me.dateOfBirthLabel)
         Me.Controls.Add(Me.patientIDLabel)
-        Me.Controls.Add(Me.closeButton)
         Me.Controls.Add(Me.visitDataGrid)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
+        Me.Font = Nothing
+        Me.Icon = Nothing
         Me.Name = "VisitHistory"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "VisitHistory"
         CType(Me.visitDataGrid, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VisitBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ActionToolStrip.ResumeLayout(False)
+        Me.ActionToolStrip.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -204,12 +228,14 @@ Partial Class VisitHistory
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents visitDataGrid As System.Windows.Forms.DataGridView
-    Friend WithEvents closeButton As System.Windows.Forms.Button
     Friend WithEvents patientIDLabel As System.Windows.Forms.Label
     Friend WithEvents dateOfBirthLabel As System.Windows.Forms.Label
     Friend WithEvents genderLabel As System.Windows.Forms.Label
     Friend WithEvents ExternalIDDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents VisitBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents ActionToolStrip As System.Windows.Forms.ToolStrip
+    Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ProgressStatus As System.Windows.Forms.ToolStripLabel
     Friend WithEvents ServiceNameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents SiteCodeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents SiteName As System.Windows.Forms.DataGridViewTextBoxColumn

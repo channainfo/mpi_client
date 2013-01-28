@@ -118,6 +118,22 @@
     <Compile Include="FingerPrintUtil.vb" />
     <Compile Include="GenderComboboxItem.vb" />
     <Compile Include="GeneralUtil.vb" />
+    <Compile Include="CustomMessageBox.Designer.vb">
+      <DependentUpon>CustomMessageBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CustomMessageBox.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LocalizedText.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LocalizedText.resx</DependentUpon>
+    </Compile>
+    <Compile Include="LocalizedText.km-KH.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LocalizedText.km-KH.resx</DependentUpon>
+    </Compile>
     <Compile Include="ManualSyn.Designer.vb">
       <DependentUpon>ManualSyn.vb</DependentUpon>
     </Compile>
@@ -172,11 +188,32 @@
     <Compile Include="WebRequestClass.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CustomMessageBox.km-KH.resx">
+      <DependentUpon>CustomMessageBox.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Figerprint.resx">
       <DependentUpon>Figerprint.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Fingerprint2.km-KH.resx">
+      <DependentUpon>Fingerprint2.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Fingerprint2.resx">
       <DependentUpon>Fingerprint2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomMessageBox.resx">
+      <DependentUpon>CustomMessageBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocalizedText.km-KH.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LocalizedText.km-KH.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocalizedText.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LocalizedText.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManualSyn.km-KH.resx">
+      <DependentUpon>ManualSyn.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManualSyn.resx">
       <DependentUpon>ManualSyn.vb</DependentUpon>
@@ -193,11 +230,20 @@
     <EmbeddedResource Include="SearchResult.resx">
       <DependentUpon>SearchResult.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SearchResult2.km-KH.resx">
+      <DependentUpon>SearchResult2.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SearchResult2.resx">
       <DependentUpon>SearchResult2.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Synchronization.km-KH.resx">
+      <DependentUpon>Synchronization.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Synchronization.resx">
       <DependentUpon>Synchronization.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisitHistory.km-KH.resx">
+      <DependentUpon>VisitHistory.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VisitHistory.resx">
       <DependentUpon>VisitHistory.vb</DependentUpon>

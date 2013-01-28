@@ -50,4 +50,28 @@ Public Class GeneralUtil
 
     End Sub
 
+    Public Shared Function getLocalizedText(ByVal control As Form) As String
+        Dim result As String = ""
+
+
+        For index As Integer = 0 To control.Controls.Count - 1
+            Dim ctl As Control = control.Controls(index)
+
+            If TypeOf (ctl) Is DataGridView Then
+                Dim dg As DataGridView = CType(ctl, DataGridView)
+                For index1 As Integer = 0 To dg.Columns.Count - 1
+                    result = result + dg.Columns(index1).Name + vbCrLf
+                Next
+
+            End If
+
+            If Not ctl.Text Is Nothing Then
+                If Not ctl.Text.Trim().Equals("") Then
+                    result = result + ctl.Text + vbCrLf
+                End If
+            End If
+        Next
+
+        Return result
+    End Function
 End Class

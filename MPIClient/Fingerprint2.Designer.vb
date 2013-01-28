@@ -1,4 +1,7 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿Imports System.Threading
+Imports System.Globalization
+
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class Fingerprint2
     Inherits System.Windows.Forms.Form
 
@@ -80,365 +83,370 @@ Partial Class Fingerprint2
         '
         'ActionToolStrip
         '
+        Me.ActionToolStrip.AccessibleDescription = Nothing
+        Me.ActionToolStrip.AccessibleName = Nothing
+        resources.ApplyResources(Me.ActionToolStrip, "ActionToolStrip")
+        Me.ActionToolStrip.BackgroundImage = Nothing
+        Me.ActionToolStrip.Font = Nothing
         Me.ActionToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SearchButton, Me.SynchronizationButton, Me.initializeButton, Me.CloseButton})
-        Me.ActionToolStrip.Location = New System.Drawing.Point(0, 0)
         Me.ActionToolStrip.Name = "ActionToolStrip"
-        Me.ActionToolStrip.Size = New System.Drawing.Size(950, 39)
-        Me.ActionToolStrip.TabIndex = 0
-        Me.ActionToolStrip.Text = "ToolStrip1"
         '
         'SearchButton
         '
-        Me.SearchButton.Enabled = False
+        Me.SearchButton.AccessibleDescription = Nothing
+        Me.SearchButton.AccessibleName = Nothing
+        resources.ApplyResources(Me.SearchButton, "SearchButton")
+        Me.SearchButton.BackgroundImage = Nothing
         Me.SearchButton.Image = Global.MPIClient.My.Resources.Resources.search_green_neon_icon__1_
-        Me.SearchButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.SearchButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.SearchButton.Name = "SearchButton"
-        Me.SearchButton.Size = New System.Drawing.Size(78, 36)
-        Me.SearchButton.Text = "Search"
         '
         'SynchronizationButton
         '
+        Me.SynchronizationButton.AccessibleDescription = Nothing
+        Me.SynchronizationButton.AccessibleName = Nothing
+        resources.ApplyResources(Me.SynchronizationButton, "SynchronizationButton")
+        Me.SynchronizationButton.BackgroundImage = Nothing
         Me.SynchronizationButton.Image = Global.MPIClient.My.Resources.Resources.Synchronize_icon__1_
-        Me.SynchronizationButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.SynchronizationButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.SynchronizationButton.Name = "SynchronizationButton"
-        Me.SynchronizationButton.Size = New System.Drawing.Size(128, 36)
-        Me.SynchronizationButton.Text = "Synchronization"
         '
         'initializeButton
         '
+        Me.initializeButton.AccessibleDescription = Nothing
+        Me.initializeButton.AccessibleName = Nothing
+        resources.ApplyResources(Me.initializeButton, "initializeButton")
+        Me.initializeButton.BackgroundImage = Nothing
         Me.initializeButton.Image = Global.MPIClient.My.Resources.Resources.Other_Power_Restart_Metro_icon
-        Me.initializeButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.initializeButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.initializeButton.Name = "initializeButton"
-        Me.initializeButton.Size = New System.Drawing.Size(198, 36)
-        Me.initializeButton.Text = "Reinitialize Fingerprint Device"
         '
         'CloseButton
         '
+        Me.CloseButton.AccessibleDescription = Nothing
+        Me.CloseButton.AccessibleName = Nothing
+        resources.ApplyResources(Me.CloseButton, "CloseButton")
+        Me.CloseButton.BackgroundImage = Nothing
         Me.CloseButton.Image = Global.MPIClient.My.Resources.Resources.Log_Out_icon__1_
-        Me.CloseButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.CloseButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.CloseButton.Name = "CloseButton"
-        Me.CloseButton.Size = New System.Drawing.Size(61, 36)
-        Me.CloseButton.Text = "Exit"
         '
         'quality1Left
         '
-        Me.quality1Left.Location = New System.Drawing.Point(304, 218)
+        Me.quality1Left.AccessibleDescription = Nothing
+        Me.quality1Left.AccessibleName = Nothing
+        resources.ApplyResources(Me.quality1Left, "quality1Left")
         Me.quality1Left.Name = "quality1Left"
-        Me.quality1Left.Size = New System.Drawing.Size(52, 13)
-        Me.quality1Left.TabIndex = 9
-        Me.quality1Left.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'quality2left
         '
-        Me.quality2left.Location = New System.Drawing.Point(234, 63)
+        Me.quality2left.AccessibleDescription = Nothing
+        Me.quality2left.AccessibleName = Nothing
+        resources.ApplyResources(Me.quality2left, "quality2left")
         Me.quality2left.Name = "quality2left"
-        Me.quality2left.Size = New System.Drawing.Size(52, 13)
-        Me.quality2left.TabIndex = 9
-        Me.quality2left.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'quality3left
         '
-        Me.quality3left.Location = New System.Drawing.Point(149, 47)
+        Me.quality3left.AccessibleDescription = Nothing
+        Me.quality3left.AccessibleName = Nothing
+        resources.ApplyResources(Me.quality3left, "quality3left")
         Me.quality3left.Name = "quality3left"
-        Me.quality3left.Size = New System.Drawing.Size(52, 13)
-        Me.quality3left.TabIndex = 9
-        Me.quality3left.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'quality4left
         '
-        Me.quality4left.Location = New System.Drawing.Point(69, 63)
+        Me.quality4left.AccessibleDescription = Nothing
+        Me.quality4left.AccessibleName = Nothing
+        resources.ApplyResources(Me.quality4left, "quality4left")
         Me.quality4left.Name = "quality4left"
-        Me.quality4left.Size = New System.Drawing.Size(52, 13)
-        Me.quality4left.TabIndex = 9
-        Me.quality4left.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'quality5left
         '
-        Me.quality5left.Location = New System.Drawing.Point(6, 123)
+        Me.quality5left.AccessibleDescription = Nothing
+        Me.quality5left.AccessibleName = Nothing
+        resources.ApplyResources(Me.quality5left, "quality5left")
         Me.quality5left.Name = "quality5left"
-        Me.quality5left.Size = New System.Drawing.Size(52, 13)
-        Me.quality5left.TabIndex = 9
-        Me.quality5left.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'quality1right
         '
-        Me.quality1right.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.quality1right.Location = New System.Drawing.Point(596, 218)
+        Me.quality1right.AccessibleDescription = Nothing
+        Me.quality1right.AccessibleName = Nothing
+        resources.ApplyResources(Me.quality1right, "quality1right")
         Me.quality1right.Name = "quality1right"
-        Me.quality1right.Size = New System.Drawing.Size(52, 13)
-        Me.quality1right.TabIndex = 9
-        Me.quality1right.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'quality2right
         '
-        Me.quality2right.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.quality2right.Location = New System.Drawing.Point(665, 63)
+        Me.quality2right.AccessibleDescription = Nothing
+        Me.quality2right.AccessibleName = Nothing
+        resources.ApplyResources(Me.quality2right, "quality2right")
         Me.quality2right.Name = "quality2right"
-        Me.quality2right.Size = New System.Drawing.Size(52, 13)
-        Me.quality2right.TabIndex = 9
-        Me.quality2right.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'quality3right
         '
-        Me.quality3right.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.quality3right.Location = New System.Drawing.Point(752, 47)
+        Me.quality3right.AccessibleDescription = Nothing
+        Me.quality3right.AccessibleName = Nothing
+        resources.ApplyResources(Me.quality3right, "quality3right")
         Me.quality3right.Name = "quality3right"
-        Me.quality3right.Size = New System.Drawing.Size(52, 13)
-        Me.quality3right.TabIndex = 9
-        Me.quality3right.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'quality4right
         '
-        Me.quality4right.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.quality4right.Location = New System.Drawing.Point(836, 63)
+        Me.quality4right.AccessibleDescription = Nothing
+        Me.quality4right.AccessibleName = Nothing
+        resources.ApplyResources(Me.quality4right, "quality4right")
         Me.quality4right.Name = "quality4right"
-        Me.quality4right.Size = New System.Drawing.Size(52, 13)
-        Me.quality4right.TabIndex = 9
-        Me.quality4right.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'quality5right
         '
-        Me.quality5right.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.quality5right.Location = New System.Drawing.Point(892, 123)
+        Me.quality5right.AccessibleDescription = Nothing
+        Me.quality5right.AccessibleName = Nothing
+        resources.ApplyResources(Me.quality5right, "quality5right")
         Me.quality5right.Name = "quality5right"
-        Me.quality5right.Size = New System.Drawing.Size(52, 13)
-        Me.quality5right.TabIndex = 9
-        Me.quality5right.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'labelStatus
         '
-        Me.labelStatus.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.labelStatus.AutoSize = True
-        Me.labelStatus.Location = New System.Drawing.Point(434, 332)
+        Me.labelStatus.AccessibleDescription = Nothing
+        Me.labelStatus.AccessibleName = Nothing
+        resources.ApplyResources(Me.labelStatus, "labelStatus")
         Me.labelStatus.Name = "labelStatus"
-        Me.labelStatus.Size = New System.Drawing.Size(40, 13)
-        Me.labelStatus.TabIndex = 18
-        Me.labelStatus.Text = "Status:"
         '
         'grFingerXCtrl
         '
-        Me.grFingerXCtrl.Enabled = True
-        Me.grFingerXCtrl.Location = New System.Drawing.Point(459, 222)
+        Me.grFingerXCtrl.AccessibleDescription = Nothing
+        Me.grFingerXCtrl.AccessibleName = Nothing
+        resources.ApplyResources(Me.grFingerXCtrl, "grFingerXCtrl")
+        Me.grFingerXCtrl.Font = Nothing
         Me.grFingerXCtrl.Name = "grFingerXCtrl"
         Me.grFingerXCtrl.OcxState = CType(resources.GetObject("grFingerXCtrl.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.grFingerXCtrl.Size = New System.Drawing.Size(32, 32)
-        Me.grFingerXCtrl.TabIndex = 19
         '
         'genderCombobox
         '
-        Me.genderCombobox.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.genderCombobox.AccessibleDescription = Nothing
+        Me.genderCombobox.AccessibleName = Nothing
+        resources.ApplyResources(Me.genderCombobox, "genderCombobox")
+        Me.genderCombobox.BackgroundImage = Nothing
         Me.genderCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.genderCombobox.Font = Nothing
         Me.genderCombobox.FormattingEnabled = True
-        Me.genderCombobox.Location = New System.Drawing.Point(424, 432)
         Me.genderCombobox.Name = "genderCombobox"
-        Me.genderCombobox.Size = New System.Drawing.Size(109, 21)
-        Me.genderCombobox.TabIndex = 20
         Me.genderCombobox.TabStop = False
         '
         'Label1
         '
-        Me.Label1.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(421, 416)
+        Me.Label1.AccessibleDescription = Nothing
+        Me.Label1.AccessibleName = Nothing
+        resources.ApplyResources(Me.Label1, "Label1")
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(45, 13)
-        Me.Label1.TabIndex = 21
-        Me.Label1.Text = "Gender:"
         '
         'clearAllButton
         '
-        Me.clearAllButton.Location = New System.Drawing.Point(389, 357)
+        Me.clearAllButton.AccessibleDescription = Nothing
+        Me.clearAllButton.AccessibleName = Nothing
+        resources.ApplyResources(Me.clearAllButton, "clearAllButton")
+        Me.clearAllButton.BackgroundImage = Nothing
         Me.clearAllButton.Name = "clearAllButton"
-        Me.clearAllButton.Size = New System.Drawing.Size(75, 23)
-        Me.clearAllButton.TabIndex = 23
-        Me.clearAllButton.Text = "Clear All"
         Me.clearAllButton.UseVisualStyleBackColor = True
         '
         'removeButton
         '
-        Me.removeButton.Location = New System.Drawing.Point(487, 357)
+        Me.removeButton.AccessibleDescription = Nothing
+        Me.removeButton.AccessibleName = Nothing
+        resources.ApplyResources(Me.removeButton, "removeButton")
+        Me.removeButton.BackgroundImage = Nothing
         Me.removeButton.Name = "removeButton"
-        Me.removeButton.Size = New System.Drawing.Size(75, 23)
-        Me.removeButton.TabIndex = 23
-        Me.removeButton.Text = "Remove"
         Me.removeButton.UseVisualStyleBackColor = True
         '
         'PictureBox4
         '
-        Me.PictureBox4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox4.AccessibleDescription = Nothing
+        Me.PictureBox4.AccessibleName = Nothing
+        resources.ApplyResources(Me.PictureBox4, "PictureBox4")
+        Me.PictureBox4.BackgroundImage = Nothing
+        Me.PictureBox4.Font = Nothing
         Me.PictureBox4.Image = Global.MPIClient.My.Resources.Resources.Right2
-        Me.PictureBox4.Location = New System.Drawing.Point(742, 296)
+        Me.PictureBox4.ImageLocation = Nothing
         Me.PictureBox4.Name = "PictureBox4"
-        Me.PictureBox4.Size = New System.Drawing.Size(100, 63)
-        Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox4.TabIndex = 22
         Me.PictureBox4.TabStop = False
         '
         'PictureBox3
         '
+        Me.PictureBox3.AccessibleDescription = Nothing
+        Me.PictureBox3.AccessibleName = Nothing
+        resources.ApplyResources(Me.PictureBox3, "PictureBox3")
+        Me.PictureBox3.BackgroundImage = Nothing
+        Me.PictureBox3.Font = Nothing
         Me.PictureBox3.Image = Global.MPIClient.My.Resources.Resources.Left1
-        Me.PictureBox3.Location = New System.Drawing.Point(114, 296)
+        Me.PictureBox3.ImageLocation = Nothing
         Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(100, 63)
-        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox3.TabIndex = 22
         Me.PictureBox3.TabStop = False
         '
         'finger5left
         '
+        Me.finger5left.AccessibleDescription = Nothing
+        Me.finger5left.AccessibleName = Nothing
+        resources.ApplyResources(Me.finger5left, "finger5left")
         Me.finger5left.BackColor = System.Drawing.SystemColors.Control
+        Me.finger5left.BackgroundImage = Nothing
         Me.finger5left.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.finger5left.Location = New System.Drawing.Point(12, 139)
+        Me.finger5left.Font = Nothing
+        Me.finger5left.ImageLocation = Nothing
         Me.finger5left.Name = "finger5left"
-        Me.finger5left.Size = New System.Drawing.Size(40, 48)
-        Me.finger5left.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.finger5left.TabIndex = 17
         Me.finger5left.TabStop = False
         '
         'finger4left
         '
+        Me.finger4left.AccessibleDescription = Nothing
+        Me.finger4left.AccessibleName = Nothing
+        resources.ApplyResources(Me.finger4left, "finger4left")
         Me.finger4left.BackColor = System.Drawing.SystemColors.Control
+        Me.finger4left.BackgroundImage = Nothing
         Me.finger4left.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.finger4left.Location = New System.Drawing.Point(75, 79)
+        Me.finger4left.Font = Nothing
+        Me.finger4left.ImageLocation = Nothing
         Me.finger4left.Name = "finger4left"
-        Me.finger4left.Size = New System.Drawing.Size(40, 48)
-        Me.finger4left.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.finger4left.TabIndex = 17
         Me.finger4left.TabStop = False
         '
         'finger3left
         '
+        Me.finger3left.AccessibleDescription = Nothing
+        Me.finger3left.AccessibleName = Nothing
+        resources.ApplyResources(Me.finger3left, "finger3left")
         Me.finger3left.BackColor = System.Drawing.SystemColors.Control
+        Me.finger3left.BackgroundImage = Nothing
         Me.finger3left.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.finger3left.Location = New System.Drawing.Point(155, 63)
+        Me.finger3left.Font = Nothing
+        Me.finger3left.ImageLocation = Nothing
         Me.finger3left.Name = "finger3left"
-        Me.finger3left.Size = New System.Drawing.Size(40, 48)
-        Me.finger3left.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.finger3left.TabIndex = 17
         Me.finger3left.TabStop = False
         '
         'finger2left
         '
+        Me.finger2left.AccessibleDescription = Nothing
+        Me.finger2left.AccessibleName = Nothing
+        resources.ApplyResources(Me.finger2left, "finger2left")
         Me.finger2left.BackColor = System.Drawing.SystemColors.Control
+        Me.finger2left.BackgroundImage = Nothing
         Me.finger2left.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.finger2left.Location = New System.Drawing.Point(240, 79)
+        Me.finger2left.Font = Nothing
+        Me.finger2left.ImageLocation = Nothing
         Me.finger2left.Name = "finger2left"
-        Me.finger2left.Size = New System.Drawing.Size(40, 48)
-        Me.finger2left.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.finger2left.TabIndex = 17
         Me.finger2left.TabStop = False
         '
         'finger5right
         '
-        Me.finger5right.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.finger5right.AccessibleDescription = Nothing
+        Me.finger5right.AccessibleName = Nothing
+        resources.ApplyResources(Me.finger5right, "finger5right")
         Me.finger5right.BackColor = System.Drawing.SystemColors.Control
+        Me.finger5right.BackgroundImage = Nothing
         Me.finger5right.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.finger5right.Location = New System.Drawing.Point(898, 139)
+        Me.finger5right.Font = Nothing
+        Me.finger5right.ImageLocation = Nothing
         Me.finger5right.Name = "finger5right"
-        Me.finger5right.Size = New System.Drawing.Size(40, 48)
-        Me.finger5right.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.finger5right.TabIndex = 17
         Me.finger5right.TabStop = False
         '
         'finger4right
         '
-        Me.finger4right.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.finger4right.AccessibleDescription = Nothing
+        Me.finger4right.AccessibleName = Nothing
+        resources.ApplyResources(Me.finger4right, "finger4right")
         Me.finger4right.BackColor = System.Drawing.SystemColors.Control
+        Me.finger4right.BackgroundImage = Nothing
         Me.finger4right.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.finger4right.Location = New System.Drawing.Point(842, 79)
+        Me.finger4right.Font = Nothing
+        Me.finger4right.ImageLocation = Nothing
         Me.finger4right.Name = "finger4right"
-        Me.finger4right.Size = New System.Drawing.Size(40, 48)
-        Me.finger4right.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.finger4right.TabIndex = 17
         Me.finger4right.TabStop = False
         '
         'finger3right
         '
-        Me.finger3right.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.finger3right.AccessibleDescription = Nothing
+        Me.finger3right.AccessibleName = Nothing
+        resources.ApplyResources(Me.finger3right, "finger3right")
         Me.finger3right.BackColor = System.Drawing.SystemColors.Control
+        Me.finger3right.BackgroundImage = Nothing
         Me.finger3right.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.finger3right.Location = New System.Drawing.Point(758, 63)
+        Me.finger3right.Font = Nothing
+        Me.finger3right.ImageLocation = Nothing
         Me.finger3right.Name = "finger3right"
-        Me.finger3right.Size = New System.Drawing.Size(40, 48)
-        Me.finger3right.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.finger3right.TabIndex = 17
         Me.finger3right.TabStop = False
         '
         'finger2right
         '
-        Me.finger2right.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.finger2right.AccessibleDescription = Nothing
+        Me.finger2right.AccessibleName = Nothing
+        resources.ApplyResources(Me.finger2right, "finger2right")
         Me.finger2right.BackColor = System.Drawing.SystemColors.Control
+        Me.finger2right.BackgroundImage = Nothing
         Me.finger2right.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.finger2right.Location = New System.Drawing.Point(671, 79)
+        Me.finger2right.Font = Nothing
+        Me.finger2right.ImageLocation = Nothing
         Me.finger2right.Name = "finger2right"
-        Me.finger2right.Size = New System.Drawing.Size(40, 48)
-        Me.finger2right.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.finger2right.TabIndex = 17
         Me.finger2right.TabStop = False
         '
         'finger1right
         '
-        Me.finger1right.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.finger1right.AccessibleDescription = Nothing
+        Me.finger1right.AccessibleName = Nothing
+        resources.ApplyResources(Me.finger1right, "finger1right")
         Me.finger1right.BackColor = System.Drawing.SystemColors.Control
+        Me.finger1right.BackgroundImage = Nothing
         Me.finger1right.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.finger1right.Location = New System.Drawing.Point(602, 234)
+        Me.finger1right.Font = Nothing
+        Me.finger1right.ImageLocation = Nothing
         Me.finger1right.Name = "finger1right"
-        Me.finger1right.Size = New System.Drawing.Size(40, 48)
-        Me.finger1right.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.finger1right.TabIndex = 17
         Me.finger1right.TabStop = False
         '
         'finger1Left
         '
+        Me.finger1Left.AccessibleDescription = Nothing
+        Me.finger1Left.AccessibleName = Nothing
+        resources.ApplyResources(Me.finger1Left, "finger1Left")
         Me.finger1Left.BackColor = System.Drawing.SystemColors.Control
+        Me.finger1Left.BackgroundImage = Nothing
         Me.finger1Left.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.finger1Left.Location = New System.Drawing.Point(310, 234)
+        Me.finger1Left.Font = Nothing
+        Me.finger1Left.ImageLocation = Nothing
         Me.finger1Left.Name = "finger1Left"
-        Me.finger1Left.Size = New System.Drawing.Size(40, 48)
-        Me.finger1Left.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.finger1Left.TabIndex = 17
         Me.finger1Left.TabStop = False
         '
         'pictureFingerprint
         '
-        Me.pictureFingerprint.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.pictureFingerprint.Location = New System.Drawing.Point(368, 90)
+        Me.pictureFingerprint.AccessibleDescription = Nothing
+        Me.pictureFingerprint.AccessibleName = Nothing
+        resources.ApplyResources(Me.pictureFingerprint, "pictureFingerprint")
+        Me.pictureFingerprint.BackgroundImage = Nothing
+        Me.pictureFingerprint.Font = Nothing
+        Me.pictureFingerprint.ImageLocation = Nothing
         Me.pictureFingerprint.Name = "pictureFingerprint"
-        Me.pictureFingerprint.Size = New System.Drawing.Size(216, 239)
-        Me.pictureFingerprint.TabIndex = 16
         Me.pictureFingerprint.TabStop = False
         '
         'PictureBox2
         '
-        Me.PictureBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox2.AccessibleDescription = Nothing
+        Me.PictureBox2.AccessibleName = Nothing
+        resources.ApplyResources(Me.PictureBox2, "PictureBox2")
+        Me.PictureBox2.BackgroundImage = Nothing
+        Me.PictureBox2.Font = Nothing
         Me.PictureBox2.Image = Global.MPIClient.My.Resources.Resources.right
-        Me.PictureBox2.Location = New System.Drawing.Point(590, 112)
+        Me.PictureBox2.ImageLocation = Nothing
         Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(335, 341)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox2.TabIndex = 10
         Me.PictureBox2.TabStop = False
         '
         'PictureBox1
         '
+        Me.PictureBox1.AccessibleDescription = Nothing
+        Me.PictureBox1.AccessibleName = Nothing
+        resources.ApplyResources(Me.PictureBox1, "PictureBox1")
+        Me.PictureBox1.BackgroundImage = Nothing
+        Me.PictureBox1.Font = Nothing
         Me.PictureBox1.Image = Global.MPIClient.My.Resources.Resources.left
-        Me.PictureBox1.Location = New System.Drawing.Point(27, 112)
+        Me.PictureBox1.ImageLocation = Nothing
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(335, 341)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
         '
         'Fingerprint2
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AccessibleDescription = Nothing
+        Me.AccessibleName = Nothing
+        resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.ClientSize = New System.Drawing.Size(950, 476)
+        Me.BackgroundImage = Nothing
         Me.Controls.Add(Me.removeButton)
         Me.Controls.Add(Me.clearAllButton)
         Me.Controls.Add(Me.PictureBox4)
@@ -471,9 +479,9 @@ Partial Class Fingerprint2
         Me.Controls.Add(Me.quality1Left)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.ActionToolStrip)
+        Me.Font = Nothing
+        Me.Icon = Nothing
         Me.Name = "Fingerprint2"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Fingerprint"
         Me.ActionToolStrip.ResumeLayout(False)
         Me.ActionToolStrip.PerformLayout()
         CType(Me.grFingerXCtrl, System.ComponentModel.ISupportInitialize).EndInit()
@@ -532,4 +540,15 @@ Partial Class Fingerprint2
     Friend WithEvents clearAllButton As System.Windows.Forms.Button
     Friend WithEvents removeButton As System.Windows.Forms.Button
     Friend WithEvents initializeButton As System.Windows.Forms.ToolStripButton
+
+    Public Sub New()
+
+        Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("km-KH")
+
+        ' This call is required by the Windows Form Designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+
+    End Sub
 End Class

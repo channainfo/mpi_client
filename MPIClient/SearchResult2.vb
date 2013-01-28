@@ -3,6 +3,17 @@ Imports MPIClient.DataAccess.DAO
 Imports System.Threading
 Imports System.Web.Script.Serialization
 Public Class SearchResult2
+    Private STR_PatientsFound As String
+    Private STR_Warning As String
+    Private STR_Confirmation As String
+    Private STR_Information As String
+    Private STR_Offline As String
+    Private STR_Online As String
+    Private STR_TheWebServerEncounterProblemStatusServerError As String
+    Private STR_AtLeastTwoFingerprintsAreRequiredForTheEnrollment As String
+    Private STR_AreYouSureYouWantToEnrollNewPatient As String
+    Private STR_SuccessfullySaveWithPatientID As String
+    Private STR_ErrorWhileSaving As String
     Dim patientDAO As New PatientDAO
     Dim patient As Patient
     Dim fingerprintUtil As FingerprintUtil
@@ -10,6 +21,7 @@ Public Class SearchResult2
     Dim filterredPatients As New List(Of Patient)()
     Dim webRequest As New WebRequestClass
     Dim grFingerX As AxGrFingerXLib.AxGrFingerXCtrl
+    Dim resourceManager As Resources.ResourceManager
     Enum Status
         Online
         Offline
@@ -17,10 +29,27 @@ Public Class SearchResult2
     End Enum
     Private Sub SearchResult2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Control.CheckForIllegalCrossThreadCalls = False
+        setResourcesText()
+
         If patient Is Nothing Then
             Return
         End If
         refreshLoadingPatient()
+
+    End Sub
+    Private Sub setResourcesText()
+        resourceManager = New Resources.ResourceManager("MPIClient.LocalizedText", GetType(SearchResult2).Assembly)
+        STR_PatientsFound = resourceManager.GetString("STR_PatientsFound")
+        STR_Warning = resourceManager.GetString("STR_Warning")
+        STR_Confirmation = resourceManager.GetString("STR_Confirmation")
+        STR_Information = resourceManager.GetString("STR_Information")
+        STR_Offline = resourceManager.GetString("STR_Offline")
+        STR_Online = resourceManager.GetString("STR_Online")
+        STR_TheWebServerEncounterProblemStatusServerError = resourceManager.GetString("STR_TheWebServerEncounterProblemStatusServerError")
+        STR_AtLeastTwoFingerprintsAreRequiredForTheEnrollment = resourceManager.GetString("STR_AtLeastTwoFingerprintsAreRequiredForTheEnrollment")
+        STR_AreYouSureYouWantToEnrollNewPatient = resourceManager.GetString("STR_AreYouSureYouWantToEnrollNewPatient")
+        STR_SuccessfullySaveWithPatientID = resourceManager.GetString("STR_SuccessfullySaveWithPatientID")
+        STR_ErrorWhileSaving = resourceManager.GetString("STR_ErrorWhileSaving")
     End Sub
     Private Sub refreshLoadingPatient()
         waitingProgress.Visible = True
@@ -49,7 +78,7 @@ Public Class SearchResult2
 
     End Sub
     Private Sub updatePatientFoundLabel()
-        patientFoundLabel.Text = filterredPatients.Count.ToString() + " patients found."
+        patientFoundLabel.Text = filterredPatients.Count.ToString() + STR_PatientsFound
     End Sub
     Private Sub clearDataSourceGrid()
         DataGridView1.Visible = False
@@ -88,32 +117,39 @@ Public Class SearchResult2
     Private Sub updateConnectionStatus(ByVal status As Status, Optional ByVal errorMessage As String = "")
         If status = status.Offline Then
             'Error connecting to WebServer. 
-            infoLabel.Text = errorMessage + "Offline"
+            infoLabel.Text = errorMessage + STR_Offline
         ElseIf status = SearchResult.Status.Online Then
-            infoLabel.Text = "Online"
+            infoLabel.Text = STR_Online
         ElseIf status = SearchResult.Status.OnlineButServerError Then
-            infoLabel.Text = String.Format("The WebServer encounter problem: {0} Status: Server Error", errorMessage)
+            infoLabel.Text = String.Format(STR_TheWebServerEncounterProblemStatusServerError, errorMessage)
         End If
     End Sub
     Private Sub buttonNewPatient_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles newPatientButton.Click
+        Dim customMsgBox As New CustomMessageBox()
+
         If patient Is Nothing Then
             Return
         End If
         If patient.getFingerprintsInPriority().Count < 2 Then
-            MessageBox.Show("At least two fingerprints are required for the enrollment.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+
+            customMsgBox.display(STR_AtLeastTwoFingerprintsAreRequiredForTheEnrollment, STR_Warning, MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            'MessageBox.Show(STR_AtLeastTwoFingerprintsAreRequiredForTheEnrollment, STR_Warning, MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Me.Close()
             Owner.Show()
             Return
         End If
-        If (MessageBox.Show("Are you sure you want to enroll new patient?", "Enrollment Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = Windows.Forms.DialogResult.OK) Then
+        'If (MessageBox.Show(STR_AreYouSureYouWantToEnrollNewPatient, STR_Confirmation, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = Windows.Forms.DialogResult.OK) Then
+        If (customMsgBox.display(STR_AreYouSureYouWantToEnrollNewPatient, STR_Confirmation, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = Windows.Forms.DialogResult.OK) Then
             Dim patientID As String = Nothing
             If patientDAO.Add(patient, patientID) > 0 Then
                 updatePatientIDFromWebServiceCall(patientID)
                 addNewPatientToGrid(patientID)
-                MessageBox.Show("Successfully save with PatientID = " + patientID, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                customMsgBox.display(STR_SuccessfullySaveWithPatientID + patientID, STR_Information, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                'MessageBox.Show(STR_SuccessfullySaveWithPatientID + patientID, STR_Information, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 'refreshLoadingPatient()
             Else
-                MessageBox.Show("Error while saving!!!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                customMsgBox.display(STR_ErrorWhileSaving, STR_Information, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                'MessageBox.Show(STR_ErrorWhileSaving, STR_Information, MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
 
         End If

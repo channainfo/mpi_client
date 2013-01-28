@@ -6,9 +6,17 @@ Imports System.Text
 Imports System.Web.Script.Serialization
 
 Public Class Synchronization
-    Private Const STATUS_COMPLETED As String = "Completed."
-    Private Const STATUS_Error As String = "Error."
-    Private Const STATUS_Synchronizing As String = "Synchronizing."
+    Private STR_Error As String
+    Private STATUS_COMPLETED As String
+    Private STATUS_Error As String
+    Private STATUS_Synchronizing As String
+    Private STR_PatientsFound As String
+    Private STR_CantConnectToTheServerYoureOffline As String
+    Private STR_WebserverInternalServerError As String
+    Private STR_ErrorWhileSerializingJSONObject As String
+    Private STR_FailInSynchronizingDataInLocalDatabase As String
+    Private STR_TheRequestWasAbortedTheRequestWasCanceled As String
+    Private STR_RecordsFound As String
     Private isCancel As Boolean
     Dim numberOfSyn As Integer
     Dim numberOfSynLeft As Integer
@@ -27,8 +35,9 @@ Public Class Synchronization
     Dim grFingerX As AxGrFingerXLib.AxGrFingerXCtrl
     Public Const PATIENT_ID_COL_IDEX As Integer = 0
     Public Const STATUS_COL_IDEX As Integer = 5
-    Public Const CANCEL As String = "Cancel"
+    Public STR_CANCEL As String
     Dim synButtonCaption As String
+    Dim resourceManager As Resources.ResourceManager
     Enum ProgressStatus
         Starting
         ContainError
@@ -38,6 +47,10 @@ Public Class Synchronization
     End Enum
 
     Private Sub Synchronization_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        resourceManager = New Resources.ResourceManager("MPIClient.LocalizedText", GetType(Synchronization).Assembly)
+
+        setResourcesText()
+
         Control.CheckForIllegalCrossThreadCalls = False
         synButtonCaption = synchronizationButton.Text
         numberOfSyn = Convert.ToInt32(ConfigManager.GetConfiguarationValue("NumberOfSyn"))
@@ -48,6 +61,21 @@ Public Class Synchronization
             synchronizationButton.Enabled = False
         End If
         updatePatientFoundLabel()
+
+    End Sub
+    Private Sub setResourcesText()
+        STR_CANCEL = resourceManager.GetString("STR_CANCEL")
+        STR_Error = resourceManager.GetString("STR_Error")
+        STATUS_COMPLETED = resourceManager.GetString("STATUS_COMPLETED")
+        STATUS_Error = resourceManager.GetString("STATUS_Error")
+        STATUS_Synchronizing = resourceManager.GetString("STATUS_Synchronizing")
+        STR_PatientsFound = resourceManager.GetString("STR_PatientsFound")
+        STR_CantConnectToTheServerYoureOffline = resourceManager.GetString("STR_CantConnectToTheServerYoureOffline")
+        STR_WebserverInternalServerError = resourceManager.GetString("STR_WebserverInternalServerError")
+        STR_ErrorWhileSerializingJSONObject = resourceManager.GetString("STR_ErrorWhileSerializingJSONObject")
+        STR_FailInSynchronizingDataInLocalDatabase = resourceManager.GetString("STR_FailInSynchronizingDataInLocalDatabase")
+        STR_TheRequestWasAbortedTheRequestWasCanceled = resourceManager.GetString("STR_TheRequestWasAbortedTheRequestWasCanceled")
+        STR_RecordsFound = resourceManager.GetString("STR_RecordsFound")
     End Sub
     Public Sub setFilgerprintUtil(ByVal fingerprintUtilObject As FingerprintUtil)
         fingerprintUtil = fingerprintUtilObject
@@ -56,7 +84,7 @@ Public Class Synchronization
         Me.grFingerX = grFingerX
     End Sub
     Private Sub updatePatientFoundLabel()
-        patientFoundLabel.Text = nonSynPatients.Count.ToString() + " patients found."
+        patientFoundLabel.Text = nonSynPatients.Count.ToString() + STR_PatientsFound
     End Sub
     Private Sub fillPatientListWithNonSynData()
         nonSynPatients.AddRange(patientDAO.getAll(DataAccess.DAO.PatientDAO.Synchronization.NonSyn))
@@ -74,8 +102,8 @@ Public Class Synchronization
         numberOfSynLeft = numberOfSyn
     End Sub
     Private Sub updateSynCaptionButtonToWait()
-        synchronizationButton.Text = CANCEL
-        synchronizationButton.Tag = CANCEL
+        synchronizationButton.Text = STR_CANCEL
+        synchronizationButton.Tag = STR_CANCEL
     End Sub
     Private Sub synchronizationButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles synchronizationButton.Click
 
@@ -153,8 +181,8 @@ Public Class Synchronization
 
         Dim patients As New List(Of Patient)
         If Not e.Error Is Nothing Then
-            If e.Error.Message.Contains("The request was aborted: The request was canceled") Then
-                errorMessage = "Can't connect to the server. You're offline."
+            If e.Error.Message.Contains(STR_TheRequestWasAbortedTheRequestWasCanceled) Then
+                errorMessage = STR_CantConnectToTheServerYoureOffline
                 updateProgressStatus(ProgressStatus.ContainError, itemIndex, errorMessage)
             Else
                 updateProgressStatus(ProgressStatus.ContainError, itemIndex, e.Error.Message)
@@ -166,7 +194,7 @@ Public Class Synchronization
 
         Dim jsonResult As Object = GeneralUtil.serializeToJSONObject(e.Result)
         If jsonResult Is Nothing Then
-            errorMessage = "Webserver: Internal server error."
+            errorMessage = STR_WebserverInternalServerError
             updateProgressStatus(ProgressStatus.ContainError, itemIndex, errorMessage)
             'Add patient to a list of error
             addPatientToListOfError(currentPatient, errorMessage)
@@ -175,7 +203,7 @@ Public Class Synchronization
         Try
             patients.AddRange(GeneralUtil.getPatientListFromJSONObject(jsonResult))
         Catch ex As Exception
-            errorMessage = "Error while serializing JSON object."
+            errorMessage = STR_ErrorWhileSerializingJSONObject
             updateProgressStatus(ProgressStatus.ContainError, itemIndex, errorMessage)
             'Add patient to a list of error
             addPatientToListOfError(currentPatient, errorMessage)
@@ -195,7 +223,7 @@ Public Class Synchronization
                 DataGridView1.Rows(itemIndex).Cells(PATIENT_ID_COL_IDEX).Value = patient.PatientID
                 DataGridView1.Visible = True
             Else
-                updateProgressStatus(ProgressStatus.ContainError, itemIndex, "Fail in synchronizing data in local database.")
+                updateProgressStatus(ProgressStatus.ContainError, itemIndex, STR_FailInSynchronizingDataInLocalDatabase)
             End If
         ElseIf patients.Count > 1 Then
 
@@ -275,9 +303,9 @@ Public Class Synchronization
         NumOfTotalSynLabel.Text = listOfSynPatients.Count
     End Sub
     Private Sub uploadProgressChange(ByVal sender As Object, ByVal e As System.Net.UploadProgressChangedEventArgs)
-        Dim itemIndex As Integer = e.UserState
+        'Dim itemIndex As Integer = e.UserState
 
-        updateProgressStatus(ProgressStatus.Processing, itemIndex)
+        'updateProgressStatus(ProgressStatus.Processing, itemIndex)
 
     End Sub
     Private Sub updateProgressStatus(ByVal status As ProgressStatus, ByVal index As Integer, Optional ByVal errorMessage As String = "", Optional ByVal numOfRecords As Int32 = 0)
@@ -300,7 +328,7 @@ Public Class Synchronization
             Dim cell As DataGridViewLinkCell = New DataGridViewLinkCell()
             Dim currentCell = DataGridView1.Rows(index).Cells(STATUS_COL_IDEX)
             cell.Tag = currentCell.Tag
-            cell.Value = numOfRecords.ToString() + " records found"
+            cell.Value = numOfRecords.ToString() + STR_RecordsFound
             DataGridView1.Rows(index).Cells(STATUS_COL_IDEX) = cell
         End If
     End Sub
@@ -318,7 +346,9 @@ Public Class Synchronization
         If cell.ErrorText.Equals("") Then
             showManualSynForm(currentPatient, cell.Tag)
         Else
-            MessageBox.Show(cell.ErrorText, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Dim customMsgBox As New CustomMessageBox()
+            customMsgBox.display(cell.ErrorText, STR_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            'MessageBox.Show(cell.ErrorText, STR_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
     Private Sub showManualSynForm(ByVal currentPatient As Patient, ByVal patients As List(Of Patient))
@@ -400,6 +430,8 @@ Public Class Synchronization
         resetLabelSummary()
         resetList()
         resetTag(nonSynPatients)
+        nonSynPatients.Clear()
+        fillPatientListWithNonSynData()
         updateGridView(nonSynPatients)
     End Sub
     Private Sub resetTag(ByVal patients As List(Of Patient))

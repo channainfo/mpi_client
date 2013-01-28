@@ -1,13 +1,24 @@
 ﻿Imports MPIClient.DataAccess.Model
 
 Public Class Fingerprint2
+    Private STR_Confirmation As String
 
-    Private Const STR_StatusFingerPlaced As String = "Status: scaning finger"
-    Private Const STR_StatusUnplugged As String = "Status: Unplugged"
-    Private Const STR_StatusReady As String = "Status: Ready"
-    Public Const STR_IMAGE_BAD_QUALITY = "Bad"
-    Public Const STR_IMAGE_MEDIUM_QUALITY = "Medium"
-    Public Const STR_IMAGE_HIGHT_QUALITY = "Hight"
+    Private STR_StatusFingerPlaced As String
+    Private STR_StatusUnplugged As String
+    Private STR_StatusReady As String
+    Private STR_FingerprintScannerIsUnplugged As String
+    Private STR_FingerprintScannerInitializedSuccessfull As String
+    Private STR_AreYouSureYouWantToExit As String
+    Private STR_SomeFingerprintsAreTheSame As String
+    Private STR_GenderMustBeSelected As String
+    Private STR_SomeFingerprintsAreInBadQualityMediumToHightQual As String
+    Private STR_OneFingerprintIsRequired As String
+    Private STR_Warning As String
+    Private STR_Information As String
+    Private STR_Error As String
+    Public STR_IMAGE_BAD_QUALITY As String
+    Public STR_IMAGE_MEDIUM_QUALITY As String
+    Public STR_IMAGE_HIGHT_QUALITY As String
     Public DEFAULT_FINGER As PictureBox
     Dim numberOfFingerScan As Integer = 0
     Dim numberOfBadQuality As Integer = 0
@@ -15,14 +26,39 @@ Public Class Fingerprint2
     Dim fingerprintUtil As FingerprintUtil
     Dim patient As Patient
     Dim idSensor As String = "File"
+    Dim resourceManager As Resources.ResourceManager
     Private Sub Fingerprint2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         fingerprintUtil = New FingerprintUtil(grFingerXCtrl)
         fingerprintUtil.initializeFigerprint()
+        resourceManager = New Resources.ResourceManager("MPIClient.LocalizedText", GetType(Fingerprint2).Assembly)
+
+        setResourcesText()
+
         patient = New Patient
 
         setDefaultSelectedFinger()
 
         fillGenderComboItems()
+
+    End Sub
+    Private Sub setResourcesText()
+        STR_StatusFingerPlaced = resourceManager.GetString("STR_StatusFingerPlaced")
+        STR_StatusUnplugged = resourceManager.GetString("STR_StatusUnplugged")
+        STR_StatusReady = resourceManager.GetString("STR_StatusReady")
+        STR_FingerprintScannerIsUnplugged = resourceManager.GetString("STR_FingerprintScannerIsUnplugged")
+        STR_FingerprintScannerInitializedSuccessfull = resourceManager.GetString("STR_FingerprintScannerInitializedSuccessfull")
+        STR_AreYouSureYouWantToExit = resourceManager.GetString("STR_AreYouSureYouWantToExit")
+        STR_SomeFingerprintsAreTheSame = resourceManager.GetString("STR_SomeFingerprintsAreTheSame")
+        STR_GenderMustBeSelected = resourceManager.GetString("STR_GenderMustBeSelected")
+        STR_SomeFingerprintsAreInBadQualityMediumToHightQual = resourceManager.GetString("STR_SomeFingerprintsAreInBadQualityMediumToHightQual")
+        STR_OneFingerprintIsRequired = resourceManager.GetString("STR_OneFingerprintIsRequired")
+        STR_Warning = resourceManager.GetString("STR_Warning")
+        STR_Information = resourceManager.GetString("STR_Information")
+        STR_Confirmation = resourceManager.GetString("STR_Confirmation")
+        STR_Error = resourceManager.GetString("STR_Error")
+        STR_IMAGE_BAD_QUALITY = resourceManager.GetString("STR_IMAGE_BAD_QUALITY")
+        STR_IMAGE_MEDIUM_QUALITY = resourceManager.GetString("STR_IMAGE_MEDIUM_QUALITY")
+        STR_IMAGE_HIGHT_QUALITY = resourceManager.GetString("STR_IMAGE_HIGHT_QUALITY")
     End Sub
     Private Sub setDefaultSelectedFinger()
         DEFAULT_FINGER = finger2right
@@ -236,48 +272,54 @@ Public Class Fingerprint2
 
         isValidated(validationErrMessage)
 
+        If isDuplicateFingerprints() Then
+            validationErrMessage = validationErrMessage + STR_SomeFingerprintsAreTheSame + vbCrLf
+        End If
+
         patient.Gender = genderCombobox.SelectedValue
         If validationErrMessage = "" Then
             Me.Hide()
             showSearchResultForm(patient)
         Else
-            MessageBox.Show(validationErrMessage, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Dim customMsgBox As New CustomMessageBox()
+            customMsgBox.display(validationErrMessage, STR_Warning, MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            'MessageBox.Show(validationErrMessage, STR_Warning, MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
 
     End Sub
     Private Function isValidated(Optional ByRef validationErrMessage As String = "")
         Dim result As Boolean = True
         If numberOfFingerScan < 1 Then
-            validationErrMessage = validationErrMessage + "- One fingerprint is required." + vbCrLf
+            validationErrMessage = validationErrMessage + STR_OneFingerprintIsRequired + vbCrLf
             result = False
         End If
 
         If numberOfBadQuality > 0 Then
-            validationErrMessage = validationErrMessage + "- Some fingerprints are in bad quality (Medium to hight quality is required)." + vbCrLf
+            validationErrMessage = validationErrMessage + STR_SomeFingerprintsAreInBadQualityMediumToHightQual + vbCrLf
             result = False
         End If
 
         If genderCombobox.SelectedValue = 0 Then
-            validationErrMessage = validationErrMessage + "- Gender must be selected." + vbCrLf
+            validationErrMessage = validationErrMessage + STR_GenderMustBeSelected + vbCrLf
             result = False
         End If
 
-        If isDuplicateFingerprints() Then
-            validationErrMessage = validationErrMessage + "- Some fingerprints are the same." + vbCrLf
-            result = False
-        End If
         Return result
     End Function
     Private Function isDuplicateFingerprints() As Boolean
         Dim fingerprintsInPriority As List(Of Array) = patient.getFingerprintsInPriority()
         If fingerprintsInPriority.Count > 1 Then
-            fingerprintUtil.setSourceFingerprint(fingerprintsInPriority(0))
 
-            For index As Integer = 1 To fingerprintsInPriority.Count - 1
-                If fingerprintUtil.indentifyFingerprint(fingerprintsInPriority(index), Nothing) Then
-                    Return True
-                End If
+            For index1 As Integer = 0 To fingerprintsInPriority.Count - 1
+                fingerprintUtil.setSourceFingerprint(fingerprintsInPriority(index1))
+                For index As Integer = index1 + 1 To fingerprintsInPriority.Count - 1
+                    If fingerprintUtil.indentifyFingerprint(fingerprintsInPriority(index), Nothing) Then
+                        Return True
+                    End If
+                Next
             Next
+
+            
 
         End If
         Return False
@@ -299,9 +341,7 @@ Public Class Fingerprint2
     End Sub
 
     Private Sub CloseButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CloseButton.Click
-        If (MessageBox.Show("Are you sure you want to exit?", "Action Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = Windows.Forms.DialogResult.OK) Then
-            Me.Close()
-        End If
+        Me.Close()
     End Sub
 
     Private Sub genderCombobox_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles genderCombobox.KeyDown
@@ -352,12 +392,18 @@ Public Class Fingerprint2
         Dim errorCode = fingerprintUtil.initializeFigerprint()
         If (Not idSensor.Equals("File")) Then
             If errorCode >= 0 Then
-                MessageBox.Show("Fingerprint scanner initialized Successfull.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Dim customMsgBox As New CustomMessageBox()
+                customMsgBox.display(STR_FingerprintScannerInitializedSuccessfull, STR_Information, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                'MessageBox.Show(STR_FingerprintScannerInitializedSuccessfull, STR_Information, MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
-                MessageBox.Show(fingerprintUtil.getErrorMessage(errorCode), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Dim customMsgBox As New CustomMessageBox()
+                CustomMessageBox.display(fingerprintUtil.getErrorMessage(errorCode), STR_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                'MessageBox.Show(fingerprintUtil.getErrorMessage(errorCode), STR_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         Else
-            MessageBox.Show("Fingerprint scanner is unplugged.")
+            Dim customMsgBox As New CustomMessageBox()
+            customMsgBox.display(STR_FingerprintScannerIsUnplugged)
+            'MessageBox.Show(STR_FingerprintScannerIsUnplugged)
             labelStatus.Text = STR_StatusUnplugged
         End If
         
@@ -377,5 +423,17 @@ Public Class Fingerprint2
 
     Private Sub Fingerprint2_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
         fingerprintUtil.disposeFingerprint()
+    End Sub
+
+    Private Sub Fingerprint2_FormClosing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
+        Dim customMsgBox = New CustomMessageBox()
+        Dim dialogResult As DialogResult = customMsgBox.display(resourceManager.GetString("STR_AreYouSureYouWantToExit"), STR_Confirmation)
+        If dialogResult = dialogResult.Cancel Then
+            e.Cancel = True
+        End If
+
+        'If (MessageBox.Show(resourceManager.GetString("STR_AreYouSureYouWantToExit"), "Action Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Cancel) Then
+        '    e.Cancel = True
+        'End If
     End Sub
 End Class

@@ -2,10 +2,14 @@
 Imports MPIClient.DataAccess.DAO
 
 Public Class NewVisit
+    Private STR_SuccessfullySaveWithVistiID As String
+    Private STR_Information As String
+    Private STR_ErrorWhileSaving As String
     Private patientID As String
     Private rowIndex As Integer
     Private visitDAO As VisitDAO
     Dim webRequest As New WebRequestClass
+    Dim resourceManager As Resources.ResourceManager
     Enum Status
         Online
         Offline
@@ -22,6 +26,12 @@ Public Class NewVisit
         End If
     End Sub
     Private Sub NewVisit_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        resourceManager = New Resources.ResourceManager("MPIClient.LocalizedText", GetType(NewVisit).Assembly)
+
+        STR_SuccessfullySaveWithVistiID = resourceManager.GetString("STR_SuccessfullySaveWithVistiID")
+        STR_Information = resourceManager.GetString("STR_Information")
+        STR_ErrorWhileSaving = resourceManager.GetString("STR_ErrorWhileSaving")
+
         patientIDLabel.Text = patientID
         visitDAO = New VisitDAO
     End Sub
@@ -38,9 +48,9 @@ Public Class NewVisit
             patientDAO.updatePatientAge(patientIDLabel.Text, visit.Age)
             updateVisIDFromWebServiceCall(visit)
             CType(Me.Owner, SearchResult2).updateVisit(rowIndex, visit)
-            MessageBox.Show("Successfully save with VistiID = " + visit.VisitID, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show(STR_SuccessfullySaveWithVistiID + visit.VisitID, STR_Information, MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
-            MessageBox.Show("Error while saving!!!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show(STR_ErrorWhileSaving, STR_Information, MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
 
     End Sub
