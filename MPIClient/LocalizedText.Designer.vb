@@ -191,6 +191,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to FEMALE.
+        '''</summary>
+        Friend Shared ReadOnly Property STR_FEMALE() As String
+            Get
+                Return ResourceManager.GetString("STR_FEMALE", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Fingerprint scanner initialized Successfull..
         '''</summary>
         Friend Shared ReadOnly Property STR_FingerprintScannerInitializedSuccessfull() As String
@@ -250,6 +259,15 @@ Namespace My.Resources
         Friend Shared ReadOnly Property STR_Information() As String
             Get
                 Return ResourceManager.GetString("STR_Information", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Male.
+        '''</summary>
+        Friend Shared ReadOnly Property STR_MALE() As String
+            Get
+                Return ResourceManager.GetString("STR_MALE", resourceCulture)
             End Get
         End Property
         

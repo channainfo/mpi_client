@@ -25,13 +25,21 @@ Partial Class Synchronization
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Synchronization))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
         Me.DataGridView1 = New System.Windows.Forms.DataGridView
+        Me.PatientIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.GenderDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.DateBirthDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.CreatedateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.UpdatedateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.Status = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.PatientBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.synchronizationWorker = New System.ComponentModel.BackgroundWorker
         Me.ActionToolStrip = New System.Windows.Forms.ToolStrip
         Me.synchronizationButton = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton
         Me.RefreshButton = New System.Windows.Forms.ToolStripButton
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel
         Me.patientFoundLabel = New System.Windows.Forms.ToolStripStatusLabel
@@ -43,17 +51,10 @@ Partial Class Synchronization
         Me.NumOfDuplicationLabel = New System.Windows.Forms.Label
         Me.NumOfErrorLabel = New System.Windows.Forms.Label
         Me.Label8 = New System.Windows.Forms.Label
-        Me.PatientBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.PatientIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.GenderDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DateBirthDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.CreatedateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.UpdatedateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Status = New System.Windows.Forms.DataGridViewTextBoxColumn
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PatientBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ActionToolStrip.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
-        CType(Me.PatientBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DataGridView1
@@ -67,7 +68,7 @@ Partial Class Synchronization
         Me.DataGridView1.BackgroundImage = Nothing
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Khmer OS System", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
@@ -80,7 +81,55 @@ Partial Class Synchronization
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Khmer OS System", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        '
+        'PatientIDDataGridViewTextBoxColumn
+        '
+        Me.PatientIDDataGridViewTextBoxColumn.DataPropertyName = "PatientID"
+        resources.ApplyResources(Me.PatientIDDataGridViewTextBoxColumn, "PatientIDDataGridViewTextBoxColumn")
+        Me.PatientIDDataGridViewTextBoxColumn.Name = "PatientIDDataGridViewTextBoxColumn"
+        Me.PatientIDDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'GenderDataGridViewTextBoxColumn
+        '
+        Me.GenderDataGridViewTextBoxColumn.DataPropertyName = "GenderText"
+        resources.ApplyResources(Me.GenderDataGridViewTextBoxColumn, "GenderDataGridViewTextBoxColumn")
+        Me.GenderDataGridViewTextBoxColumn.Name = "GenderDataGridViewTextBoxColumn"
+        Me.GenderDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'DateBirthDataGridViewTextBoxColumn
+        '
+        Me.DateBirthDataGridViewTextBoxColumn.DataPropertyName = "DateBirth"
+        resources.ApplyResources(Me.DateBirthDataGridViewTextBoxColumn, "DateBirthDataGridViewTextBoxColumn")
+        Me.DateBirthDataGridViewTextBoxColumn.Name = "DateBirthDataGridViewTextBoxColumn"
+        Me.DateBirthDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CreatedateDataGridViewTextBoxColumn
+        '
+        resources.ApplyResources(Me.CreatedateDataGridViewTextBoxColumn, "CreatedateDataGridViewTextBoxColumn")
+        Me.CreatedateDataGridViewTextBoxColumn.Name = "CreatedateDataGridViewTextBoxColumn"
+        Me.CreatedateDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'UpdatedateDataGridViewTextBoxColumn
+        '
+        resources.ApplyResources(Me.UpdatedateDataGridViewTextBoxColumn, "UpdatedateDataGridViewTextBoxColumn")
+        Me.UpdatedateDataGridViewTextBoxColumn.Name = "UpdatedateDataGridViewTextBoxColumn"
+        Me.UpdatedateDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'Status
+        '
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Status.DefaultCellStyle = DataGridViewCellStyle2
+        resources.ApplyResources(Me.Status, "Status")
+        Me.Status.Name = "Status"
+        Me.Status.ReadOnly = True
+        '
+        'PatientBindingSource
+        '
+        Me.PatientBindingSource.AllowNew = True
+        Me.PatientBindingSource.DataSource = GetType(MPIClient.DataAccess.Model.Patient)
         '
         'synchronizationWorker
         '
@@ -93,7 +142,7 @@ Partial Class Synchronization
         resources.ApplyResources(Me.ActionToolStrip, "ActionToolStrip")
         Me.ActionToolStrip.BackgroundImage = Nothing
         Me.ActionToolStrip.Font = Nothing
-        Me.ActionToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.synchronizationButton, Me.ToolStripButton1, Me.RefreshButton})
+        Me.ActionToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.synchronizationButton, Me.RefreshButton, Me.ToolStripButton1})
         Me.ActionToolStrip.Name = "ActionToolStrip"
         '
         'synchronizationButton
@@ -105,15 +154,6 @@ Partial Class Synchronization
         Me.synchronizationButton.Image = Global.MPIClient.My.Resources.Resources.Synchronize_icon__1_
         Me.synchronizationButton.Name = "synchronizationButton"
         '
-        'ToolStripButton1
-        '
-        Me.ToolStripButton1.AccessibleDescription = Nothing
-        Me.ToolStripButton1.AccessibleName = Nothing
-        resources.ApplyResources(Me.ToolStripButton1, "ToolStripButton1")
-        Me.ToolStripButton1.BackgroundImage = Nothing
-        Me.ToolStripButton1.Image = Global.MPIClient.My.Resources.Resources.Log_Out_icon__1_
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        '
         'RefreshButton
         '
         Me.RefreshButton.AccessibleDescription = Nothing
@@ -122,6 +162,15 @@ Partial Class Synchronization
         Me.RefreshButton.BackgroundImage = Nothing
         Me.RefreshButton.Image = Global.MPIClient.My.Resources.Resources.Other_Power_Restart_Metro_icon
         Me.RefreshButton.Name = "RefreshButton"
+        '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.AccessibleDescription = Nothing
+        Me.ToolStripButton1.AccessibleName = Nothing
+        resources.ApplyResources(Me.ToolStripButton1, "ToolStripButton1")
+        Me.ToolStripButton1.BackgroundImage = Nothing
+        Me.ToolStripButton1.Image = Global.MPIClient.My.Resources.Resources.Log_Out_icon__1_
+        Me.ToolStripButton1.Name = "ToolStripButton1"
         '
         'StatusStrip1
         '
@@ -217,52 +266,6 @@ Partial Class Synchronization
         resources.ApplyResources(Me.Label8, "Label8")
         Me.Label8.Name = "Label8"
         '
-        'PatientBindingSource
-        '
-        Me.PatientBindingSource.AllowNew = True
-        Me.PatientBindingSource.DataSource = GetType(MPIClient.DataAccess.Model.Patient)
-        '
-        'PatientIDDataGridViewTextBoxColumn
-        '
-        Me.PatientIDDataGridViewTextBoxColumn.DataPropertyName = "PatientID"
-        resources.ApplyResources(Me.PatientIDDataGridViewTextBoxColumn, "PatientIDDataGridViewTextBoxColumn")
-        Me.PatientIDDataGridViewTextBoxColumn.Name = "PatientIDDataGridViewTextBoxColumn"
-        Me.PatientIDDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'GenderDataGridViewTextBoxColumn
-        '
-        Me.GenderDataGridViewTextBoxColumn.DataPropertyName = "GenderText"
-        resources.ApplyResources(Me.GenderDataGridViewTextBoxColumn, "GenderDataGridViewTextBoxColumn")
-        Me.GenderDataGridViewTextBoxColumn.Name = "GenderDataGridViewTextBoxColumn"
-        Me.GenderDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'DateBirthDataGridViewTextBoxColumn
-        '
-        Me.DateBirthDataGridViewTextBoxColumn.DataPropertyName = "DateBirth"
-        resources.ApplyResources(Me.DateBirthDataGridViewTextBoxColumn, "DateBirthDataGridViewTextBoxColumn")
-        Me.DateBirthDataGridViewTextBoxColumn.Name = "DateBirthDataGridViewTextBoxColumn"
-        Me.DateBirthDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CreatedateDataGridViewTextBoxColumn
-        '
-        resources.ApplyResources(Me.CreatedateDataGridViewTextBoxColumn, "CreatedateDataGridViewTextBoxColumn")
-        Me.CreatedateDataGridViewTextBoxColumn.Name = "CreatedateDataGridViewTextBoxColumn"
-        Me.CreatedateDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'UpdatedateDataGridViewTextBoxColumn
-        '
-        resources.ApplyResources(Me.UpdatedateDataGridViewTextBoxColumn, "UpdatedateDataGridViewTextBoxColumn")
-        Me.UpdatedateDataGridViewTextBoxColumn.Name = "UpdatedateDataGridViewTextBoxColumn"
-        Me.UpdatedateDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'Status
-        '
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Status.DefaultCellStyle = DataGridViewCellStyle2
-        resources.ApplyResources(Me.Status, "Status")
-        Me.Status.Name = "Status"
-        Me.Status.ReadOnly = True
-        '
         'Synchronization
         '
         Me.AccessibleDescription = Nothing
@@ -285,11 +288,11 @@ Partial Class Synchronization
         Me.Icon = Nothing
         Me.Name = "Synchronization"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PatientBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ActionToolStrip.ResumeLayout(False)
         Me.ActionToolStrip.PerformLayout()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
-        CType(Me.PatientBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

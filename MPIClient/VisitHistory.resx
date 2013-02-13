@@ -131,9 +131,6 @@
   <data name="&gt;&gt;ToolStripButton1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="ServiceNameDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>ServiceName</value>
-  </data>
   <data name="SiteName.HeaderText" xml:space="preserve">
     <value>SiteName</value>
   </data>
@@ -142,12 +139,6 @@
   </data>
   <data name="&gt;&gt;visitDataGrid.Parent" xml:space="preserve">
     <value>$this</value>
-  </data>
-  <data name="&gt;&gt;patientIDLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;Label2.ZOrder" xml:space="preserve">
-    <value>6</value>
   </data>
   <data name="visitDataGrid.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 134</value>
@@ -166,9 +157,6 @@
   </data>
   <data name="patientIDLabel.Text" xml:space="preserve">
     <value>Label4</value>
-  </data>
-  <data name="&gt;&gt;ServiceNameDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>ServiceNameDataGridViewTextBoxColumn</value>
   </data>
   <data name="&gt;&gt;Label1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -203,6 +191,9 @@
   </data>
   <data name="SiteCodeDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>SiteCode</value>
+  </data>
+  <data name="ExternalCodeDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>130</value>
   </data>
   <data name="Label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 13</value>
@@ -252,6 +243,9 @@
   <data name="dateOfBirthLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>100, 73</value>
   </data>
+  <data name="&gt;&gt;patientIDLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
   <data name="&gt;&gt;dateOfBirthLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -272,6 +266,9 @@
   </data>
   <data name="Label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="&gt;&gt;dateOfBirthLabel.Name" xml:space="preserve">
+    <value>dateOfBirthLabel</value>
   </data>
   <data name="patientIDLabel.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -315,6 +312,9 @@
   <data name="&gt;&gt;Label2.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
+  <data name="ToolStripButton1.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
   <data name="ToolStripButton1.Text" xml:space="preserve">
     <value>Close</value>
   </data>
@@ -324,11 +324,11 @@
   <data name="&gt;&gt;ToolStripButton1.Name" xml:space="preserve">
     <value>ToolStripButton1</value>
   </data>
+  <data name="patientIDLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 13</value>
+  </data>
   <data name="genderLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>100, 98</value>
-  </data>
-  <data name="&gt;&gt;SiteName.Name" xml:space="preserve">
-    <value>SiteName</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -345,6 +345,9 @@
   <data name="&gt;&gt;Label2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;visitDataGrid.Name" xml:space="preserve">
+    <value>visitDataGrid</value>
+  </data>
   <data name="&gt;&gt;VisitDateDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -357,6 +360,9 @@
   <data name="&gt;&gt;ActionToolStrip.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="ExternalCode2.Width" type="System.Int32, mscorlib">
+    <value>140</value>
+  </data>
   <data name="ActionToolStrip.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
@@ -366,8 +372,8 @@
   <data name="&gt;&gt;Label2.Name" xml:space="preserve">
     <value>Label2</value>
   </data>
-  <data name="&gt;&gt;dateOfBirthLabel.Name" xml:space="preserve">
-    <value>dateOfBirthLabel</value>
+  <data name="&gt;&gt;ServiceNameDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>ServiceNameDataGridViewTextBoxColumn</value>
   </data>
   <data name="genderLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 13</value>
@@ -393,8 +399,8 @@
   <data name="&gt;&gt;ProgressStatus.Name" xml:space="preserve">
     <value>ProgressStatus</value>
   </data>
-  <data name="patientIDLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 13</value>
+  <data name="&gt;&gt;patientIDLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="ActionToolStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -405,8 +411,8 @@
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
-  <data name="&gt;&gt;patientIDLabel.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;Label2.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="&gt;&gt;SiteCodeDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>SiteCodeDataGridViewTextBoxColumn</value>
@@ -426,8 +432,8 @@
   <data name="visitDataGrid.Size" type="System.Drawing.Size, System.Drawing">
     <value>825, 254</value>
   </data>
-  <data name="&gt;&gt;visitDataGrid.Name" xml:space="preserve">
-    <value>visitDataGrid</value>
+  <data name="&gt;&gt;SiteName.Name" xml:space="preserve">
+    <value>SiteName</value>
   </data>
   <data name="&gt;&gt;Label3.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -441,8 +447,8 @@
   <data name="&gt;&gt;Label1.Name" xml:space="preserve">
     <value>Label1</value>
   </data>
-  <data name="ToolStripButton1.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
-    <value>None</value>
+  <data name="ServiceNameDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>ServiceName</value>
   </data>
   <metadata name="SiteName.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

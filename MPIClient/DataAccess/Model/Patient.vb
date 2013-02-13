@@ -153,7 +153,14 @@ Namespace DataAccess.Model
                     Return ""
                 End If
                 genderEnum = _gender
-                Return genderEnum.ToString()
+                Dim resourceManager As Resources.ResourceManager
+                resourceManager = New Resources.ResourceManager("MPIClient.LocalizedText", GetType(Patient).Assembly)
+
+                If genderEnum = Patient.GenderEnum.Male Then
+                    Return resourceManager.GetString("STR_MALE")
+                Else
+                    Return resourceManager.GetString("STR_FEMALE")
+                End If
             End Get
         End Property
         Public Property SiteCode() As String

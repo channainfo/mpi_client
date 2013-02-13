@@ -311,6 +311,26 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="fingerprint-hi.ico" />
+    <None Include="Resources\RightF5.png" />
+    <None Include="Resources\RightF4.png" />
+    <None Include="Resources\RightF3.png" />
+    <None Include="Resources\RightF2.png" />
+    <None Include="Resources\RightF1.png" />
+    <None Include="Resources\LeftF5.png" />
+    <None Include="Resources\LeftF4.png" />
+    <None Include="Resources\LeftF3.png" />
+    <None Include="Resources\LeftF2.png" />
+    <None Include="Resources\LeftF1.png" />
+    <None Include="Resources\Right5.png" />
+    <None Include="Resources\Right4.png" />
+    <None Include="Resources\Right3.png" />
+    <None Include="Resources\Right2.png" />
+    <None Include="Resources\Right1.png" />
+    <None Include="Resources\Left5.png" />
+    <None Include="Resources\Left4.png" />
+    <None Include="Resources\Left3.png" />
+    <None Include="Resources\Left2.png" />
+    <None Include="Resources\Left1.png" />
     <None Include="Resources\Other-Power-Restart-Metro-icon.png" />
     <None Include="Resources\Right.png" />
     <None Include="Resources\Left.png" />

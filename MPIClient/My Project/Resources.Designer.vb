@@ -95,6 +95,41 @@ Namespace My.Resources
             End Get
         End Property
         
+        Friend ReadOnly Property LeftF1() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("LeftF1", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property LeftF2() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("LeftF2", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property LeftF3() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("LeftF3", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property LeftF4() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("LeftF4", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property LeftF5() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("LeftF5", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
         Friend ReadOnly Property Log_Out_icon__1_() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Log-Out-icon (1)", resourceCulture)
@@ -126,6 +161,41 @@ Namespace My.Resources
         Friend ReadOnly Property Right2() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Right2", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property RightF1() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("RightF1", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property RightF2() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("RightF2", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property RightF3() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("RightF3", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property RightF4() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("RightF4", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property RightF5() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("RightF5", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

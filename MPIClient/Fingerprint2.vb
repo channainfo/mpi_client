@@ -64,12 +64,50 @@ Public Class Fingerprint2
         DEFAULT_FINGER = finger2right
         DEFAULT_FINGER.BorderStyle = BorderStyle.FixedSingle
         lastSelectedFinger = DEFAULT_FINGER
+        hightLightFinger(DEFAULT_FINGER)
+    End Sub
+    Private Sub hightLightFinger(ByVal finger As PictureBox)
+
+        Select Case finger.Name
+            Case finger1right.Name
+                RightPalmPic.Image = My.Resources.RightF1
+                LeftPalmPic.Image = My.Resources.left
+            Case finger2right.Name
+                RightPalmPic.Image = My.Resources.RightF2
+                LeftPalmPic.Image = My.Resources.left
+            Case finger3right.Name
+                RightPalmPic.Image = My.Resources.RightF3
+                LeftPalmPic.Image = My.Resources.left
+            Case finger4right.Name
+                RightPalmPic.Image = My.Resources.RightF4
+                LeftPalmPic.Image = My.Resources.left
+            Case finger5right.Name
+                RightPalmPic.Image = My.Resources.RightF5
+                LeftPalmPic.Image = My.Resources.left
+            Case finger1Left.Name
+                LeftPalmPic.Image = My.Resources.LeftF1
+                RightPalmPic.Image = My.Resources.right
+            Case finger2left.Name
+                LeftPalmPic.Image = My.Resources.LeftF2
+                RightPalmPic.Image = My.Resources.right
+            Case finger3left.Name
+                LeftPalmPic.Image = My.Resources.LeftF3
+                RightPalmPic.Image = My.Resources.right
+            Case finger4left.Name
+                LeftPalmPic.Image = My.Resources.LeftF4
+                RightPalmPic.Image = My.Resources.right
+            Case finger5left.Name
+                LeftPalmPic.Image = My.Resources.LeftF5
+                RightPalmPic.Image = My.Resources.right
+            Case Else
+
+        End Select
     End Sub
     Private Sub fillGenderComboItems()
         Dim genderComboItems As New List(Of GenderComboboxItem)
         genderComboItems.Add(New GenderComboboxItem(0, ""))
-        genderComboItems.Add(New GenderComboboxItem(Patient.GenderEnum.Male, Patient.GenderEnum.Male.ToString()))
-        genderComboItems.Add(New GenderComboboxItem(Patient.GenderEnum.Female, Patient.GenderEnum.Female.ToString()))
+        genderComboItems.Add(New GenderComboboxItem(patient.GenderEnum.Male, resourceManager.GetString("STR_MALE")))
+        genderComboItems.Add(New GenderComboboxItem(patient.GenderEnum.Female, resourceManager.GetString("STR_FEMALE")))
 
         genderCombobox.DisplayMember = "genderText"
         genderCombobox.ValueMember = "gender"
@@ -82,12 +120,14 @@ Public Class Fingerprint2
 
     Private Sub grFingerXCtrl_FingerUp(ByVal sender As Object, ByVal e As AxGrFingerXLib._IGrFingerXCtrlEvents_FingerUpEvent) Handles grFingerXCtrl.FingerUp
         labelStatus.Text = STR_StatusReady
+        labelStatus.ForeColor = Color.Green
     End Sub
 
     Private Sub grFingerXCtrl_SensorPlug(ByVal sender As System.Object, ByVal e As AxGrFingerXLib._IGrFingerXCtrlEvents_SensorPlugEvent) Handles grFingerXCtrl.SensorPlug
         Dim status As Integer = grFingerXCtrl.CapStartCapture(e.idSensor)
         If Not e.idSensor.Equals("File") Then
             labelStatus.Text = STR_StatusReady
+            labelStatus.ForeColor = Color.Green
         End If
         idSensor = e.idSensor
     End Sub
@@ -95,6 +135,7 @@ Public Class Fingerprint2
     Private Sub grFingerXCtrl_SensorUnplug(ByVal sender As Object, ByVal e As AxGrFingerXLib._IGrFingerXCtrlEvents_SensorUnplugEvent) Handles grFingerXCtrl.SensorUnplug
         Dim status As Integer = grFingerXCtrl.CapStopCapture(e.idSensor)
         labelStatus.Text = STR_StatusUnplugged
+        labelStatus.ForeColor = Color.Red
         idSensor = "File"
     End Sub
 
@@ -172,73 +213,53 @@ Public Class Fingerprint2
             Case finger1right.Name
                 patient.Fingerprint_r1 = fingerPrint
                 previousQuality = quality1right.Text
-                'If quality1right.Text = STR_IMAGE_BAD_QUALITY And imageQuality = "" Then
-                '    numberOfBadQuality = numberOfBadQuality - 1
-                'End If
                 quality1right.Text = imageQuality
+                hightLightFinger(finger1Left)
             Case finger2right.Name
                 previousQuality = quality2right.Text
                 patient.Fingerprint_r2 = fingerPrint
-                'If quality2right.Text = STR_IMAGE_BAD_QUALITY And imageQuality = "" Then
-                '    numberOfBadQuality = numberOfBadQuality - 1
-                'End If
                 quality2right.Text = imageQuality
+                hightLightFinger(finger2left)
             Case finger3right.Name
                 previousQuality = quality3right.Text
                 patient.Fingerprint_r3 = fingerPrint
-                'If quality3right.Text = STR_IMAGE_BAD_QUALITY And imageQuality = "" Then
-                '    numberOfBadQuality = numberOfBadQuality - 1
-                'End If
                 quality3right.Text = imageQuality
+                hightLightFinger(finger3left)
             Case finger4right.Name
                 previousQuality = quality4right.Text
                 patient.Fingerprint_r4 = fingerPrint
-                'If quality4right.Text = STR_IMAGE_BAD_QUALITY And imageQuality = "" Then
-                '    numberOfBadQuality = numberOfBadQuality - 1
-                'End If
                 quality4right.Text = imageQuality
+                hightLightFinger(finger4left)
             Case finger5right.Name
                 previousQuality = quality5right.Text
                 patient.Fingerprint_r5 = fingerPrint
-                'If quality5right.Text = STR_IMAGE_BAD_QUALITY And imageQuality = "" Then
-                '    numberOfBadQuality = numberOfBadQuality - 1
-                'End If
                 quality5right.Text = imageQuality
+                hightLightFinger(finger5left)
             Case finger1Left.Name
                 previousQuality = quality1Left.Text
                 patient.Fingerprint_l1 = fingerPrint
-                'If quality1Left.Text = STR_IMAGE_BAD_QUALITY And imageQuality = "" Then
-                '    numberOfBadQuality = numberOfBadQuality - 1
-                'End If
                 quality1Left.Text = imageQuality
+                hightLightFinger(finger2right)
             Case finger2left.Name
                 previousQuality = quality2left.Text
                 patient.Fingerprint_l2 = fingerPrint
-                'If quality2left.Text = STR_IMAGE_BAD_QUALITY And imageQuality = "" Then
-                '    numberOfBadQuality = numberOfBadQuality - 1
-                'End If
                 quality2left.Text = imageQuality
+                hightLightFinger(finger3right)
             Case finger3left.Name
                 previousQuality = quality3left.Text
                 patient.Fingerprint_l3 = fingerPrint
-                'If quality3left.Text = STR_IMAGE_BAD_QUALITY And imageQuality = "" Then
-                '    numberOfBadQuality = numberOfBadQuality - 1
-                'End If
                 quality3left.Text = imageQuality
+                hightLightFinger(finger4right)
             Case finger4left.Name
                 previousQuality = quality4left.Text
                 patient.Fingerprint_l4 = fingerPrint
-                'If quality4left.Text = STR_IMAGE_BAD_QUALITY And imageQuality = "" Then
-                '    numberOfBadQuality = numberOfBadQuality - 1
-                'End If
                 quality4left.Text = imageQuality
+                hightLightFinger(finger5right)
             Case finger5left.Name
                 previousQuality = quality4left.Text
                 patient.Fingerprint_l5 = fingerPrint
-                'If quality5left.Text = STR_IMAGE_BAD_QUALITY And imageQuality = "" Then
-                '    numberOfBadQuality = numberOfBadQuality - 1
-                'End If
                 quality5left.Text = imageQuality
+                hightLightFinger(finger5left)
             Case Else
 
         End Select

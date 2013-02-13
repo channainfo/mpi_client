@@ -123,6 +123,10 @@
   <data name="GenderDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>ភេទ</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="GenderDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
   <data name="DateBirthDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>ថ្ងៃខែកំណើត</value>
   </data>
@@ -135,68 +139,91 @@
   <data name="Status.HeaderText" xml:space="preserve">
     <value>ស្ថានភាព</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Status.Width" type="System.Int32, mscorlib">
-    <value>120</value>
+    <value>140</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="DataGridView1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>668, 243</value>
+    <value>793, 243</value>
   </data>
   <data name="synchronizationButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Khmer OS System, 9.75pt</value>
   </data>
   <data name="synchronizationButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 36</value>
+    <value>121, 36</value>
   </data>
   <data name="synchronizationButton.Text" xml:space="preserve">
     <value>សមកាលកម្ម</value>
   </data>
-  <data name="ToolStripButton1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="ToolStripButton1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 36</value>
-  </data>
-  <data name="ToolStripButton1.Text" xml:space="preserve">
-    <value>បិទ</value>
-  </data>
   <data name="RefreshButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Khmer OS System, 9.75pt</value>
   </data>
   <data name="RefreshButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 36</value>
+    <value>121, 36</value>
   </data>
   <data name="RefreshButton.Text" xml:space="preserve">
     <value>បន្ទាន់សម័យ</value>
   </data>
+  <data name="ToolStripButton1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Khmer OS System, 9.75pt</value>
+  </data>
+  <data name="ToolStripButton1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 36</value>
+  </data>
+  <data name="ToolStripButton1.Text" xml:space="preserve">
+    <value>បិទ</value>
+  </data>
+  <data name="ActionToolStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1018, 39</value>
+  </data>
+  <data name="ToolStripStatusLabel1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Khmer OS System, 9pt</value>
+  </data>
   <data name="ToolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 17</value>
+    <value>76, 22</value>
   </data>
   <data name="ToolStripStatusLabel1.Text" xml:space="preserve">
     <value>ចំនួនអ្នកជំងឺ:</value>
   </data>
+  <data name="patientFoundLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Khmer OS System, 9pt</value>
+  </data>
+  <data name="patientFoundLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 22</value>
+  </data>
+  <data name="StatusStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 300</value>
+  </data>
+  <data name="StatusStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1018, 27</value>
+  </data>
   <data name="Label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt</value>
+    <value>Khmer OS System, 9pt</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>811, 133</value>
+  </data>
   <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 16</value>
+    <value>182, 22</value>
   </data>
   <data name="Label1.Text" xml:space="preserve">
     <value>ចំនួនសរុបដែលធ្វើសមកាលកម្ម៖</value>
   </data>
   <data name="Label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt</value>
+    <value>Khmer OS System, 9pt</value>
   </data>
   <data name="Label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="Label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>811, 48</value>
+  </data>
   <data name="Label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 16</value>
+    <value>94, 22</value>
   </data>
   <data name="Label2.Text" xml:space="preserve">
     <value>ចំនួនជោគជ័យ៖</value>
@@ -204,17 +231,26 @@
   <data name="NumOfTotalSynLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="NumOfTotalSynLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>995, 137</value>
+  </data>
   <data name="NumOfSuccessLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="NumOfSuccessLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>995, 52</value>
+  </data>
   <data name="Label5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt</value>
+    <value>Khmer OS System, 9pt</value>
   </data>
   <data name="Label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="Label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>811, 75</value>
+  </data>
   <data name="Label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 16</value>
+    <value>180, 22</value>
   </data>
   <data name="Label5.Text" xml:space="preserve">
     <value>ចំនួនព័ត៌មានអ្នកជំងឺដែលដូចគ្នា៖</value>
@@ -222,19 +258,31 @@
   <data name="NumOfDuplicationLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="NumOfDuplicationLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>995, 79</value>
+  </data>
   <data name="NumOfErrorLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="NumOfErrorLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>995, 108</value>
+  </data>
   <data name="Label8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt</value>
+    <value>Khmer OS System, 9pt</value>
   </data>
   <data name="Label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="Label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>811, 104</value>
+  </data>
   <data name="Label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 16</value>
+    <value>103, 22</value>
   </data>
   <data name="Label8.Text" xml:space="preserve">
     <value>ចំនួនមានកំហុស៖</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1018, 327</value>
   </data>
 </root>

@@ -120,8 +120,9 @@
   <data name="&gt;&gt;synchronizationWorker.Type" xml:space="preserve">
     <value>System.ComponentModel.BackgroundWorker, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;NumOfTotalSynLabel.Parent" xml:space="preserve">
-    <value>$this</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="NumOfDuplicationLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="Label2.Location" type="System.Drawing.Point, System.Drawing">
@@ -129,6 +130,9 @@
   </data>
   <data name="&gt;&gt;NumOfDuplicationLabel.Parent" xml:space="preserve">
     <value>$this</value>
+  </data>
+  <data name="&gt;&gt;NumOfTotalSynLabel.Name" xml:space="preserve">
+    <value>NumOfTotalSynLabel</value>
   </data>
   <data name="synchronizationButton.Text" xml:space="preserve">
     <value>Synchronize</value>
@@ -139,9 +143,6 @@
   </data>
   <data name="&gt;&gt;PatientIDDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="RefreshButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>82, 36</value>
@@ -155,7 +156,6 @@
   <data name="&gt;&gt;GenderDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>GenderDataGridViewTextBoxColumn</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Label2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -182,6 +182,9 @@
   </data>
   <data name="synchronizationButton.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
     <value>None</value>
+  </data>
+  <data name="&gt;&gt;NumOfTotalSynLabel.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;Label2.Name" xml:space="preserve">
     <value>Label2</value>
@@ -225,6 +228,9 @@
   <data name="Label1.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
+  <data name="Label5.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
   <data name="&gt;&gt;Label5.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -252,14 +258,14 @@
   <data name="DataGridView1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;StatusStrip1.ZOrder" xml:space="preserve">
-    <value>8</value>
+  <data name="&gt;&gt;UpdatedateDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>UpdatedateDataGridViewTextBoxColumn</value>
   </data>
   <data name="NumOfErrorLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="&gt;&gt;ActionToolStrip.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
   </data>
   <data name="Label1.Text" xml:space="preserve">
     <value>Total of Synchronization:</value>
@@ -291,8 +297,8 @@
   <data name="Label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>115, 13</value>
   </data>
-  <data name="CreatedateDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Createdate</value>
+  <data name="&gt;&gt;StatusStrip1.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
   <data name="&gt;&gt;NumOfErrorLabel.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -303,8 +309,8 @@
   <data name="&gt;&gt;ActionToolStrip.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;NumOfTotalSynLabel.Name" xml:space="preserve">
-    <value>NumOfTotalSynLabel</value>
+  <data name="CreatedateDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Createdate</value>
   </data>
   <data name="NumOfDuplicationLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -317,6 +323,9 @@
   </data>
   <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
     <value>7</value>
+  </data>
+  <data name="RefreshButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
   </data>
   <data name="NumOfTotalSynLabel.Text" xml:space="preserve">
     <value>0</value>
@@ -339,17 +348,17 @@
   <data name="ToolStripButton1.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 36</value>
   </data>
-  <data name="NumOfTotalSynLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="ToolStripButton1.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
   </data>
   <data name="Label5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="ToolStripButton1.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
+  <data name="&gt;&gt;Label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+  <data name="Status.Width" type="System.Int32, mscorlib">
+    <value>120</value>
   </data>
   <data name="patientFoundLabel.Text" xml:space="preserve">
     <value>................</value>
@@ -363,8 +372,8 @@
   <data name="&gt;&gt;DataGridView1.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Synchronization</value>
+  <data name="&gt;&gt;DateBirthDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>DateBirthDataGridViewTextBoxColumn</value>
   </data>
   <data name="&gt;&gt;ToolStripStatusLabel1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -402,8 +411,8 @@
   <data name="Label8.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="&gt;&gt;Label2.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="CreatedateDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>140</value>
   </data>
   <data name="ToolStripButton1.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
     <value>None</value>
@@ -435,14 +444,17 @@
   <data name="&gt;&gt;PatientBindingSource.Name" xml:space="preserve">
     <value>PatientBindingSource</value>
   </data>
+  <data name="&gt;&gt;ActionToolStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
   <data name="&gt;&gt;Label5.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="RefreshButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
+  <data name="NumOfTotalSynLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
   </data>
-  <data name="Label5.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+  <data name="UpdatedateDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>140</value>
   </data>
   <data name="synchronizationButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -456,20 +468,20 @@
   <data name="&gt;&gt;ToolStripStatusLabel1.Name" xml:space="preserve">
     <value>ToolStripStatusLabel1</value>
   </data>
-  <data name="Status.Width" type="System.Int32, mscorlib">
-    <value>120</value>
-  </data>
   <data name="&gt;&gt;GenderDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="NumOfErrorLabel.Text" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="PatientIDDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>120</value>
+  </data>
   <data name="Label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;UpdatedateDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>UpdatedateDataGridViewTextBoxColumn</value>
+  <data name="DateBirthDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>140</value>
   </data>
   <data name="&gt;&gt;NumOfErrorLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -489,8 +501,8 @@
   <data name="NumOfSuccessLabel.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="&gt;&gt;DateBirthDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>DateBirthDataGridViewTextBoxColumn</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Synchronization</value>
   </data>
   <data name="UpdatedateDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>Updatedate</value>
@@ -585,11 +597,14 @@
   <data name="DateBirthDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>DateBirth</value>
   </data>
+  <data name="&gt;&gt;Label2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
   <data name="&gt;&gt;Label2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="NumOfDuplicationLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="GenderDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>70</value>
   </data>
   <data name="&gt;&gt;StatusStrip1.Type" xml:space="preserve">
     <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

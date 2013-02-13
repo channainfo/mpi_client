@@ -136,7 +136,7 @@
     <value>យ៉ាងហោចណាស់ត្រូវតែមានស្នាមម្រាមដៃយ៉ាងតិច២ដើម្បីធ្វើការចុះឈ្មោះ</value>
   </data>
   <data name="STR_CANCEL" xml:space="preserve">
-    <value>លះបង់</value>
+    <value>បោះបង់</value>
   </data>
   <data name="STR_CantConnectToTheServerYoureOffline" xml:space="preserve">
     <value>មិនអាចភ្ជាប់ទៅម៉ាស៊ីន Server បានទេ។ អ្នកមិនភ្ជាប់ជាមួយម៉ាស៊ីន sever</value>
@@ -230,5 +230,11 @@
   </data>
   <data name="STR_WebserverInternalServerError" xml:space="preserve">
     <value>WebServer៖​ ម៉ាស៊ីនមេមានកំហុស។</value>
+  </data>
+  <data name="STR_FEMALE" xml:space="preserve">
+    <value>ស្រី</value>
+  </data>
+  <data name="STR_MALE" xml:space="preserve">
+    <value>ប្រុស</value>
   </data>
 </root>

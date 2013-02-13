@@ -120,8 +120,8 @@
   <data name="&gt;&gt;ActionToolStrip.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;labelStatus.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <data name="&gt;&gt;quality2left.Name" xml:space="preserve">
+    <value>quality2left</value>
   </data>
   <data name="&gt;&gt;finger4left.Name" xml:space="preserve">
     <value>finger4left</value>
@@ -140,17 +140,20 @@
   <data name="&gt;&gt;clearAllButton.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;ActionToolStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;PictureBox3.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
-  <data name="removeButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+  <data name="RightPalmPic.Location" type="System.Drawing.Point, System.Drawing">
+    <value>590, 112</value>
   </data>
   <data name="&gt;&gt;labelStatus.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="PictureBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>335, 341</value>
+  </data>
+  <data name="&gt;&gt;finger2left.Name" xml:space="preserve">
+    <value>finger2left</value>
   </data>
   <data name="finger2left.Location" type="System.Drawing.Point, System.Drawing">
     <value>240, 79</value>
@@ -162,17 +165,14 @@
   <data name="SynchronizationButton.Text" xml:space="preserve">
     <value>Synchronization</value>
   </data>
-  <data name="&gt;&gt;clearAllButton.Parent" xml:space="preserve">
+  <data name="&gt;&gt;RightPalmPic.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="initializeButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 36</value>
+  <data name="&gt;&gt;ActionToolStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;quality2right.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="finger1right.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
   </data>
   <data name="grFingerXCtrl.Enabled" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -186,8 +186,11 @@
   <data name="&gt;&gt;finger3right.Name" xml:space="preserve">
     <value>finger3right</value>
   </data>
-  <data name="&gt;&gt;quality2left.ZOrder" xml:space="preserve">
-    <value>26</value>
+  <data name="&gt;&gt;quality5right.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;clearAllButton.Name" xml:space="preserve">
+    <value>clearAllButton</value>
   </data>
   <data name="&gt;&gt;quality4left.Parent" xml:space="preserve">
     <value>$this</value>
@@ -197,9 +200,6 @@
   </data>
   <data name="&gt;&gt;quality3left.Name" xml:space="preserve">
     <value>quality3left</value>
-  </data>
-  <data name="PictureBox4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
   </data>
   <data name="&gt;&gt;finger3right.ZOrder" xml:space="preserve">
     <value>16</value>
@@ -230,11 +230,23 @@
   <data name="&gt;&gt;quality1Left.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;RightPalmPic.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="PictureBox3.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 63</value>
   </data>
+  <data name="&gt;&gt;finger3left.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="CloseButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 36</value>
+  </data>
   <data name="quality1Left.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
+  </data>
+  <data name="CloseButton.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
   </data>
   <data name="quality1right.Location" type="System.Drawing.Point, System.Drawing">
     <value>596, 218</value>
@@ -248,9 +260,6 @@
   <data name="finger3left.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
   </data>
-  <data name="&gt;&gt;quality5right.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
   <data name="PictureBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>27, 112</value>
   </data>
@@ -263,17 +272,14 @@
   <data name="&gt;&gt;quality2left.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="initializeButton.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
-    <value>None</value>
-  </data>
   <data name="quality3right.Location" type="System.Drawing.Point, System.Drawing">
     <value>752, 47</value>
   </data>
   <data name="pictureFingerprint.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
   </data>
-  <data name="SearchButton.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;LeftPalmPic.Name" xml:space="preserve">
+    <value>LeftPalmPic</value>
   </data>
   <data name="finger3left.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>StretchImage</value>
@@ -284,8 +290,8 @@
   <data name="&gt;&gt;quality4left.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="removeButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
+  <data name="PictureBox4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
   </data>
   <data name="&gt;&gt;finger1right.ZOrder" xml:space="preserve">
     <value>18</value>
@@ -302,20 +308,20 @@
   <data name="&gt;&gt;finger1right.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;quality4right.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
   <data name="finger2left.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>StretchImage</value>
   </data>
   <data name="finger1right.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 48</value>
   </data>
-  <data name="&gt;&gt;quality4right.ZOrder" xml:space="preserve">
-    <value>21</value>
+  <data name="grFingerXCtrl.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
   </data>
   <data name="finger2right.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 48</value>
-  </data>
-  <data name="PictureBox4.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>StretchImage</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Fingerprint2</value>
@@ -338,20 +344,11 @@
   <data name="&gt;&gt;quality3left.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="finger5left.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 48</value>
-  </data>
   <data name="&gt;&gt;PictureBox3.Name" xml:space="preserve">
     <value>PictureBox3</value>
   </data>
-  <data name="&gt;&gt;genderCombobox.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="&gt;&gt;quality2left.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CloseButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;finger5left.ZOrder" xml:space="preserve">
     <value>8</value>
@@ -365,6 +362,9 @@
   <data name="CloseButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
+  <data name="&gt;&gt;finger5left.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
   <data name="quality2right.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -373,6 +373,9 @@
   </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
+  </data>
+  <data name="quality2left.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 13</value>
   </data>
   <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 13</value>
@@ -401,12 +404,6 @@
   <data name="pictureFingerprint.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="&gt;&gt;quality3left.ZOrder" xml:space="preserve">
-    <value>22</value>
-  </data>
-  <data name="&gt;&gt;finger2right.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;finger4left.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -416,9 +413,6 @@
   <data name="quality1Left.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
-  <data name="&gt;&gt;removeButton.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="Label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
   </data>
@@ -427,9 +421,6 @@
   </data>
   <data name="&gt;&gt;finger2right.Name" xml:space="preserve">
     <value>finger2right</value>
-  </data>
-  <data name="&gt;&gt;PictureBox2.Name" xml:space="preserve">
-    <value>PictureBox2</value>
   </data>
   <data name="genderCombobox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -446,8 +437,8 @@
   <data name="finger4right.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 48</value>
   </data>
-  <data name="&gt;&gt;PictureBox3.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="quality3right.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;CloseButton.Name" xml:space="preserve">
     <value>CloseButton</value>
@@ -473,9 +464,6 @@
   <data name="&gt;&gt;finger3right.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="genderCombobox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>424, 432</value>
-  </data>
   <data name="quality2right.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
@@ -491,8 +479,8 @@
   <data name="&gt;&gt;pictureFingerprint.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;SynchronizationButton.Name" xml:space="preserve">
-    <value>SynchronizationButton</value>
+  <data name="quality4left.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;quality4right.Name" xml:space="preserve">
     <value>quality4right</value>
@@ -506,8 +494,8 @@
   <data name="&gt;&gt;finger4right.Name" xml:space="preserve">
     <value>finger4right</value>
   </data>
-  <data name="pictureFingerprint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 239</value>
+  <data name="&gt;&gt;labelStatus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="PictureBox3.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -524,8 +512,8 @@
   <data name="quality4left.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 13</value>
   </data>
-  <data name="&gt;&gt;clearAllButton.Name" xml:space="preserve">
-    <value>clearAllButton</value>
+  <data name="&gt;&gt;genderCombobox.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="finger3right.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -533,11 +521,14 @@
   <data name="&gt;&gt;PictureBox3.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
+  <data name="quality4right.Location" type="System.Drawing.Point, System.Drawing">
+    <value>836, 63</value>
+  </data>
   <data name="&gt;&gt;finger1Left.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;finger5left.Name" xml:space="preserve">
-    <value>finger5left</value>
+  <data name="labelStatus.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;Label1.Name" xml:space="preserve">
     <value>Label1</value>
@@ -547,9 +538,6 @@
   </data>
   <data name="&gt;&gt;quality2right.Parent" xml:space="preserve">
     <value>$this</value>
-  </data>
-  <data name="&gt;&gt;genderCombobox.Name" xml:space="preserve">
-    <value>genderCombobox</value>
   </data>
   <data name="&gt;&gt;quality1right.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -590,14 +578,23 @@
   <data name="labelStatus.Text" xml:space="preserve">
     <value>Status:</value>
   </data>
+  <data name="&gt;&gt;quality5left.Name" xml:space="preserve">
+    <value>quality5left</value>
+  </data>
   <data name="quality4right.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
   <data name="quality5right.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="quality3left.Location" type="System.Drawing.Point, System.Drawing">
-    <value>149, 47</value>
+  <data name="quality1right.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="grFingerXCtrl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="finger1Left.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
   </data>
   <data name="finger4right.Location" type="System.Drawing.Point, System.Drawing">
     <value>842, 79</value>
@@ -614,6 +611,9 @@
   <data name="SynchronizationButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
+  <data name="quality2left.Location" type="System.Drawing.Point, System.Drawing">
+    <value>234, 63</value>
+  </data>
   <data name="pictureFingerprint.Location" type="System.Drawing.Point, System.Drawing">
     <value>368, 90</value>
   </data>
@@ -623,8 +623,8 @@
   <data name="&gt;&gt;finger4right.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
-  <data name="quality2left.Location" type="System.Drawing.Point, System.Drawing">
-    <value>234, 63</value>
+  <data name="removeButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="initializeButton.Text" xml:space="preserve">
     <value>Reinitialize Fingerprint Device</value>
@@ -671,20 +671,32 @@
   <data name="&gt;&gt;clearAllButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="RightPalmPic.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;LeftPalmPic.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
   <data name="&gt;&gt;quality3right.Name" xml:space="preserve">
     <value>quality3right</value>
   </data>
   <data name="PictureBox4.Location" type="System.Drawing.Point, System.Drawing">
     <value>742, 296</value>
   </data>
+  <data name="&gt;&gt;RightPalmPic.Name" xml:space="preserve">
+    <value>RightPalmPic</value>
+  </data>
   <data name="&gt;&gt;quality2right.ZOrder" xml:space="preserve">
     <value>25</value>
   </data>
-  <data name="labelStatus.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;finger5right.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="finger2right.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
+  </data>
+  <data name="&gt;&gt;LeftPalmPic.ZOrder" xml:space="preserve">
+    <value>30</value>
   </data>
   <data name="&gt;&gt;genderCombobox.Parent" xml:space="preserve">
     <value>$this</value>
@@ -692,14 +704,14 @@
   <data name="&gt;&gt;ActionToolStrip.ZOrder" xml:space="preserve">
     <value>31</value>
   </data>
+  <data name="removeButton.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
   <data name="&gt;&gt;PictureBox4.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="finger3right.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
-  </data>
-  <data name="finger5right.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 48</value>
   </data>
   <data name="quality5right.Location" type="System.Drawing.Point, System.Drawing">
     <value>892, 123</value>
@@ -710,8 +722,11 @@
   <data name="&gt;&gt;pictureFingerprint.ZOrder" xml:space="preserve">
     <value>24</value>
   </data>
-  <data name="quality1Left.Location" type="System.Drawing.Point, System.Drawing">
-    <value>304, 218</value>
+  <data name="&gt;&gt;quality4right.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="quality3right.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 13</value>
   </data>
   <data name="&gt;&gt;quality4left.ZOrder" xml:space="preserve">
     <value>13</value>
@@ -728,8 +743,8 @@
   <data name="quality5right.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 13</value>
   </data>
-  <data name="&gt;&gt;finger5right.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;finger5right.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="PictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>StretchImage</value>
@@ -746,23 +761,26 @@
   <data name="&gt;&gt;finger2left.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="quality3right.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 13</value>
+  <data name="removeButton.Text" xml:space="preserve">
+    <value>Remove</value>
   </data>
-  <data name="quality2left.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 13</value>
+  <data name="finger1right.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="&gt;&gt;quality5right.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="quality4left.Location" type="System.Drawing.Point, System.Drawing">
     <value>69, 63</value>
   </data>
-  <data name="removeButton.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
+  <data name="&gt;&gt;genderCombobox.Name" xml:space="preserve">
+    <value>genderCombobox</value>
   </data>
-  <data name="&gt;&gt;quality2left.Name" xml:space="preserve">
-    <value>quality2left</value>
+  <data name="quality1Left.Location" type="System.Drawing.Point, System.Drawing">
+    <value>304, 218</value>
   </data>
-  <data name="&gt;&gt;quality5right.ZOrder" xml:space="preserve">
-    <value>19</value>
+  <data name="&gt;&gt;quality3left.ZOrder" xml:space="preserve">
+    <value>22</value>
   </data>
   <data name="&gt;&gt;finger4right.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -770,14 +788,14 @@
   <data name="&gt;&gt;quality5left.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;finger5left.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="finger1right.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>StretchImage</value>
   </data>
   <data name="&gt;&gt;ActionToolStrip.Name" xml:space="preserve">
     <value>ActionToolStrip</value>
   </data>
-  <data name="labelStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 13</value>
+  <data name="LeftPalmPic.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 112</value>
   </data>
   <data name="quality1right.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 13</value>
@@ -785,17 +803,20 @@
   <data name="CloseButton.Text" xml:space="preserve">
     <value>Exit</value>
   </data>
-  <data name="&gt;&gt;quality5left.Name" xml:space="preserve">
-    <value>quality5left</value>
+  <data name="finger5right.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 48</value>
   </data>
   <data name="quality5right.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
-  <data name="grFingerXCtrl.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
+  <data name="&gt;&gt;quality2left.ZOrder" xml:space="preserve">
+    <value>26</value>
   </data>
-  <data name="CloseButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 36</value>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>950, 476</value>
+  </data>
+  <data name="&gt;&gt;finger4left.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;SynchronizationButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -803,20 +824,23 @@
   <data name="PictureBox3.Location" type="System.Drawing.Point, System.Drawing">
     <value>114, 296</value>
   </data>
-  <data name="&gt;&gt;PictureBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
   <data name="quality2left.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
+  </data>
+  <data name="&gt;&gt;RightPalmPic.ZOrder" xml:space="preserve">
+    <value>28</value>
   </data>
   <data name="finger1Left.Location" type="System.Drawing.Point, System.Drawing">
     <value>310, 234</value>
   </data>
-  <data name="&gt;&gt;finger4left.Parent" xml:space="preserve">
+  <data name="quality3left.Location" type="System.Drawing.Point, System.Drawing">
+    <value>149, 47</value>
+  </data>
+  <data name="&gt;&gt;PictureBox4.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;PictureBox2.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;quality1Left.Name" xml:space="preserve">
+    <value>quality1Left</value>
   </data>
   <data name="&gt;&gt;finger1right.Parent" xml:space="preserve">
     <value>$this</value>
@@ -824,8 +848,8 @@
   <data name="&gt;&gt;PictureBox1.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>421, 416</value>
+  <data name="&gt;&gt;labelStatus.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="&gt;&gt;quality1Left.ZOrder" xml:space="preserve">
     <value>29</value>
@@ -836,8 +860,8 @@
   <data name="quality3right.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="&gt;&gt;grFingerXCtrl.Name" xml:space="preserve">
-    <value>grFingerXCtrl</value>
+  <data name="&gt;&gt;clearAllButton.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="finger5right.Location" type="System.Drawing.Point, System.Drawing">
     <value>898, 139</value>
@@ -851,6 +875,9 @@
   <data name="&gt;&gt;grFingerXCtrl.Type" xml:space="preserve">
     <value>AxGrFingerXLib.AxGrFingerXCtrl, AxInterop.GrFingerXLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="quality3left.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 13</value>
+  </data>
   <data name="labelStatus.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
   </data>
@@ -863,11 +890,11 @@
   <data name="finger2left.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 48</value>
   </data>
-  <data name="quality3left.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 13</value>
+  <data name="removeButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
   </data>
-  <data name="grFingerXCtrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 32</value>
+  <data name="finger5left.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 48</value>
   </data>
   <data name="&gt;&gt;finger4right.Parent" xml:space="preserve">
     <value>$this</value>
@@ -878,8 +905,8 @@
   <data name="&gt;&gt;PictureBox1.ZOrder" xml:space="preserve">
     <value>30</value>
   </data>
-  <data name="CloseButton.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
-    <value>None</value>
+  <data name="&gt;&gt;PictureBox2.Name" xml:space="preserve">
+    <value>PictureBox2</value>
   </data>
   <data name="&gt;&gt;quality5right.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -890,14 +917,11 @@
   <data name="PictureBox1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;finger5right.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="genderCombobox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>424, 432</value>
   </data>
   <data name="clearAllButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
-  </data>
-  <data name="&gt;&gt;removeButton.Parent" xml:space="preserve">
-    <value>$this</value>
   </data>
   <data name="&gt;&gt;PictureBox2.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -908,8 +932,8 @@
   <data name="&gt;&gt;quality1right.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="finger1right.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>StretchImage</value>
+  <data name="&gt;&gt;finger2right.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="ActionToolStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>950, 39</value>
@@ -929,8 +953,11 @@
   <data name="&gt;&gt;initializeButton.Name" xml:space="preserve">
     <value>initializeButton</value>
   </data>
-  <data name="quality4left.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+  <data name="SearchButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;grFingerXCtrl.Name" xml:space="preserve">
+    <value>grFingerXCtrl</value>
   </data>
   <data name="finger5left.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>StretchImage</value>
@@ -941,11 +968,11 @@
   <data name="finger5left.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 139</value>
   </data>
-  <data name="removeButton.Text" xml:space="preserve">
-    <value>Remove</value>
+  <data name="&gt;&gt;removeButton.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="finger1Left.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
+  <data name="PictureBox4.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>StretchImage</value>
   </data>
   <data name="SearchButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -953,14 +980,20 @@
   <data name="&gt;&gt;finger1Left.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>950, 476</value>
+  <data name="&gt;&gt;SynchronizationButton.Name" xml:space="preserve">
+    <value>SynchronizationButton</value>
   </data>
   <data name="&gt;&gt;PictureBox2.ZOrder" xml:space="preserve">
     <value>28</value>
   </data>
+  <data name="&gt;&gt;LeftPalmPic.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="quality5left.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
+  </data>
+  <data name="initializeButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 36</value>
   </data>
   <data name="finger3left.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 48</value>
@@ -968,17 +1001,17 @@
   <data name="&gt;&gt;PictureBox1.Name" xml:space="preserve">
     <value>PictureBox1</value>
   </data>
-  <data name="&gt;&gt;labelStatus.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="pictureFingerprint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 239</value>
   </data>
   <data name="finger5right.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>StretchImage</value>
   </data>
-  <data name="&gt;&gt;finger3left.Parent" xml:space="preserve">
+  <data name="&gt;&gt;PictureBox2.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;PictureBox4.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>421, 416</value>
   </data>
   <data name="finger2left.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -986,8 +1019,8 @@
   <data name="finger1Left.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>StretchImage</value>
   </data>
-  <data name="&gt;&gt;finger2left.Name" xml:space="preserve">
-    <value>finger2left</value>
+  <data name="&gt;&gt;CloseButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;SearchButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -995,11 +1028,14 @@
   <data name="&gt;&gt;quality4right.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="quality4right.Location" type="System.Drawing.Point, System.Drawing">
-    <value>836, 63</value>
+  <data name="finger2right.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
   </data>
   <data name="&gt;&gt;finger1right.Name" xml:space="preserve">
     <value>finger1right</value>
+  </data>
+  <data name="LeftPalmPic.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="genderCombobox.Size" type="System.Drawing.Size, System.Drawing">
     <value>109, 21</value>
@@ -1007,26 +1043,26 @@
   <data name="labelStatus.Location" type="System.Drawing.Point, System.Drawing">
     <value>434, 332</value>
   </data>
-  <data name="finger2right.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
+  <data name="quality4right.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
   </data>
   <data name="quality2right.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="quality1right.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="&gt;&gt;removeButton.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="finger4right.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>StretchImage</value>
   </data>
-  <data name="&gt;&gt;quality1Left.Name" xml:space="preserve">
-    <value>quality1Left</value>
+  <data name="initializeButton.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
   </data>
-  <data name="quality3right.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+  <data name="&gt;&gt;finger5left.Name" xml:space="preserve">
+    <value>finger5left</value>
   </data>
-  <data name="&gt;&gt;quality4right.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="labelStatus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 13</value>
   </data>
   <data name="removeButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>487, 357</value>
@@ -1037,8 +1073,8 @@
   <data name="quality5left.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 13</value>
   </data>
-  <data name="quality4right.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
+  <data name="&gt;&gt;PictureBox1.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;finger3left.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

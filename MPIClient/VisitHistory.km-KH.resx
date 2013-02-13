@@ -119,28 +119,28 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="Label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt</value>
+    <value>Khmer OS System, 9pt</value>
   </data>
   <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 16</value>
+    <value>95, 22</value>
   </data>
   <data name="Label1.Text" xml:space="preserve">
     <value>លេខកូដអ្នកជំងឺ:</value>
   </data>
   <data name="Label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt</value>
+    <value>Khmer OS System, 9pt</value>
   </data>
   <data name="Label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 16</value>
+    <value>96, 22</value>
   </data>
   <data name="Label2.Text" xml:space="preserve">
     <value>ថ្ងៃខែឆ្នាំកំណើត:</value>
   </data>
   <data name="Label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt</value>
+    <value>Khmer OS System, 9pt</value>
   </data>
   <data name="Label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 16</value>
+    <value>36, 22</value>
   </data>
   <data name="Label3.Text" xml:space="preserve">
     <value>ភេទ:</value>
@@ -167,18 +167,30 @@
     <value>ព័ត៌មាន</value>
   </data>
   <data name="visitDataGrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>825, 267</value>
+    <value>835, 267</value>
+  </data>
+  <data name="patientIDLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>114, 52</value>
+  </data>
+  <data name="dateOfBirthLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>114, 77</value>
+  </data>
+  <data name="genderLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>114, 102</value>
   </data>
   <data name="ToolStripButton1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Khmer OS System, 9.75pt</value>
   </data>
   <data name="ToolStripButton1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 36</value>
+    <value>66, 36</value>
   </data>
   <data name="ToolStripButton1.Text" xml:space="preserve">
     <value>បិទ</value>
   </data>
+  <data name="ActionToolStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>862, 39</value>
+  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>852, 413</value>
+    <value>862, 413</value>
   </data>
 </root>

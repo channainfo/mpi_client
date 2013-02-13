@@ -60,8 +60,8 @@ Partial Class Fingerprint2
         Me.finger1right = New System.Windows.Forms.PictureBox
         Me.finger1Left = New System.Windows.Forms.PictureBox
         Me.pictureFingerprint = New System.Windows.Forms.PictureBox
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
+        Me.RightPalmPic = New System.Windows.Forms.PictureBox
+        Me.LeftPalmPic = New System.Windows.Forms.PictureBox
         Me.ActionToolStrip.SuspendLayout()
         CType(Me.grFingerXCtrl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -77,8 +77,8 @@ Partial Class Fingerprint2
         CType(Me.finger1right, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.finger1Left, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pictureFingerprint, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RightPalmPic, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LeftPalmPic, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ActionToolStrip
@@ -220,7 +220,6 @@ Partial Class Fingerprint2
         resources.ApplyResources(Me.genderCombobox, "genderCombobox")
         Me.genderCombobox.BackgroundImage = Nothing
         Me.genderCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.genderCombobox.Font = Nothing
         Me.genderCombobox.FormattingEnabled = True
         Me.genderCombobox.Name = "genderCombobox"
         Me.genderCombobox.TabStop = False
@@ -415,29 +414,29 @@ Partial Class Fingerprint2
         Me.pictureFingerprint.Name = "pictureFingerprint"
         Me.pictureFingerprint.TabStop = False
         '
-        'PictureBox2
+        'RightPalmPic
         '
-        Me.PictureBox2.AccessibleDescription = Nothing
-        Me.PictureBox2.AccessibleName = Nothing
-        resources.ApplyResources(Me.PictureBox2, "PictureBox2")
-        Me.PictureBox2.BackgroundImage = Nothing
-        Me.PictureBox2.Font = Nothing
-        Me.PictureBox2.Image = Global.MPIClient.My.Resources.Resources.right
-        Me.PictureBox2.ImageLocation = Nothing
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.TabStop = False
+        Me.RightPalmPic.AccessibleDescription = Nothing
+        Me.RightPalmPic.AccessibleName = Nothing
+        resources.ApplyResources(Me.RightPalmPic, "RightPalmPic")
+        Me.RightPalmPic.BackgroundImage = Nothing
+        Me.RightPalmPic.Font = Nothing
+        Me.RightPalmPic.Image = Global.MPIClient.My.Resources.Resources.right
+        Me.RightPalmPic.ImageLocation = Nothing
+        Me.RightPalmPic.Name = "RightPalmPic"
+        Me.RightPalmPic.TabStop = False
         '
-        'PictureBox1
+        'LeftPalmPic
         '
-        Me.PictureBox1.AccessibleDescription = Nothing
-        Me.PictureBox1.AccessibleName = Nothing
-        resources.ApplyResources(Me.PictureBox1, "PictureBox1")
-        Me.PictureBox1.BackgroundImage = Nothing
-        Me.PictureBox1.Font = Nothing
-        Me.PictureBox1.Image = Global.MPIClient.My.Resources.Resources.left
-        Me.PictureBox1.ImageLocation = Nothing
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.TabStop = False
+        Me.LeftPalmPic.AccessibleDescription = Nothing
+        Me.LeftPalmPic.AccessibleName = Nothing
+        resources.ApplyResources(Me.LeftPalmPic, "LeftPalmPic")
+        Me.LeftPalmPic.BackgroundImage = Nothing
+        Me.LeftPalmPic.Font = Nothing
+        Me.LeftPalmPic.Image = Global.MPIClient.My.Resources.Resources.left
+        Me.LeftPalmPic.ImageLocation = Nothing
+        Me.LeftPalmPic.Name = "LeftPalmPic"
+        Me.LeftPalmPic.TabStop = False
         '
         'Fingerprint2
         '
@@ -475,9 +474,9 @@ Partial Class Fingerprint2
         Me.Controls.Add(Me.quality2right)
         Me.Controls.Add(Me.quality2left)
         Me.Controls.Add(Me.quality1right)
-        Me.Controls.Add(Me.PictureBox2)
+        Me.Controls.Add(Me.RightPalmPic)
         Me.Controls.Add(Me.quality1Left)
-        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.LeftPalmPic)
         Me.Controls.Add(Me.ActionToolStrip)
         Me.Font = Nothing
         Me.Icon = Nothing
@@ -498,8 +497,8 @@ Partial Class Fingerprint2
         CType(Me.finger1right, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.finger1Left, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pictureFingerprint, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RightPalmPic, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LeftPalmPic, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -508,9 +507,9 @@ Partial Class Fingerprint2
     Friend WithEvents SearchButton As System.Windows.Forms.ToolStripButton
     Friend WithEvents SynchronizationButton As System.Windows.Forms.ToolStripButton
     Friend WithEvents CloseButton As System.Windows.Forms.ToolStripButton
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents LeftPalmPic As System.Windows.Forms.PictureBox
     Friend WithEvents quality1Left As System.Windows.Forms.Label
-    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
+    Friend WithEvents RightPalmPic As System.Windows.Forms.PictureBox
     Friend WithEvents pictureFingerprint As System.Windows.Forms.PictureBox
     Friend WithEvents finger1Left As System.Windows.Forms.PictureBox
     Friend WithEvents quality2left As System.Windows.Forms.Label

@@ -231,4 +231,10 @@
   <data name="STR_WebserverInternalServerError" xml:space="preserve">
     <value>Webserver: Internal server error.</value>
   </data>
+  <data name="STR_FEMALE" xml:space="preserve">
+    <value>FEMALE</value>
+  </data>
+  <data name="STR_MALE" xml:space="preserve">
+    <value>Male</value>
+  </data>
 </root>

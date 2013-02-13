@@ -36,7 +36,6 @@ Partial Class CustomMessageBox
         Me.okButton.AccessibleName = Nothing
         resources.ApplyResources(Me.okButton, "okButton")
         Me.okButton.BackgroundImage = Nothing
-        Me.okButton.Font = Nothing
         Me.okButton.Name = "okButton"
         '
         'messageBoxIcon
@@ -65,7 +64,6 @@ Partial Class CustomMessageBox
         resources.ApplyResources(Me.cancelButton, "cancelButton")
         Me.cancelButton.BackgroundImage = Nothing
         Me.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cancelButton.Font = Nothing
         Me.cancelButton.Name = "cancelButton"
         '
         'CustomMessageBox

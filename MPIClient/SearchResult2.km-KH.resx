@@ -118,20 +118,29 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="newPatientButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Khmer OS System, 9.75pt</value>
+  </data>
   <data name="newPatientButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 36</value>
+    <value>96, 36</value>
   </data>
   <data name="newPatientButton.Text" xml:space="preserve">
     <value>អ្នកជំងឺថ្មី</value>
   </data>
+  <data name="newVisitButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Khmer OS System, 9.75pt</value>
+  </data>
   <data name="newVisitButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 36</value>
+    <value>151, 36</value>
   </data>
   <data name="newVisitButton.Text" xml:space="preserve">
     <value>ពេលមកពិនិត្យថ្មីៗ</value>
   </data>
+  <data name="closeButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Khmer OS System, 9.75pt</value>
+  </data>
   <data name="closeButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 36</value>
+    <value>66, 36</value>
   </data>
   <data name="closeButton.Text" xml:space="preserve">
     <value>បិទ</value>
@@ -154,16 +163,40 @@
   <data name="NumVisit.HeaderText" xml:space="preserve">
     <value>ប្រវត្តិការពិនិត្យ</value>
   </data>
+  <data name="ToolStripStatusLabel1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Khmer OS System, 9pt</value>
+  </data>
   <data name="ToolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 17</value>
+    <value>63, 22</value>
   </data>
   <data name="ToolStripStatusLabel1.Text" xml:space="preserve">
     <value>ស្ថានភាព:</value>
   </data>
+  <data name="infoLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Khmer OS System, 9pt</value>
+  </data>
+  <data name="infoLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 22</value>
+  </data>
+  <data name="ToolStripStatusLabel2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Khmer OS System, 9pt</value>
+  </data>
   <data name="ToolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 17</value>
+    <value>76, 22</value>
   </data>
   <data name="ToolStripStatusLabel2.Text" xml:space="preserve">
     <value>ចំនួនអ្នកជំងឺ:</value>
+  </data>
+  <data name="patientFoundLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Khmer OS System, 9pt</value>
+  </data>
+  <data name="patientFoundLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 22</value>
+  </data>
+  <data name="StatusStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 449</value>
+  </data>
+  <data name="StatusStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>950, 27</value>
   </data>
 </root>
