@@ -47,6 +47,9 @@ Public Class Synchronization
     End Enum
 
     Private Sub Synchronization_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+        GeneralUtil.setTopMostBaseOnAppConfig(Me)
+
         resourceManager = New Resources.ResourceManager("MPIClient.LocalizedText", GetType(Synchronization).Assembly)
 
         setResourcesText()

@@ -28,6 +28,7 @@ Public Class SearchResult2
         OnlineButServerError
     End Enum
     Private Sub SearchResult2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        GeneralUtil.setTopMostBaseOnAppConfig(Me)
         Control.CheckForIllegalCrossThreadCalls = False
         setResourcesText()
 

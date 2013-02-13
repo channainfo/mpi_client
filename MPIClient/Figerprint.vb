@@ -18,6 +18,7 @@ Public Class Figerprint
     End Sub
 
     Private Sub Figerprint_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        GeneralUtil.setTopMostBaseOnAppConfig(Me)
         fingerprintUtil = New FingerprintUtil(grFingerXCtrl)
         fingerprintUtil.initializeFigerprint()
 

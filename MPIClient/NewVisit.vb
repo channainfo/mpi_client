@@ -26,6 +26,7 @@ Public Class NewVisit
         End If
     End Sub
     Private Sub NewVisit_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        GeneralUtil.setTopMostBaseOnAppConfig(Me)
         resourceManager = New Resources.ResourceManager("MPIClient.LocalizedText", GetType(NewVisit).Assembly)
 
         STR_SuccessfullySaveWithVistiID = resourceManager.GetString("STR_SuccessfullySaveWithVistiID")

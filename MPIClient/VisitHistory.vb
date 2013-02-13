@@ -9,6 +9,7 @@ Public Class VisitHistory
 
 
     Private Sub VisitHistory_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        GeneralUtil.setTopMostBaseOnAppConfig(Me)
         If patient Is Nothing Then
             Return
         End If

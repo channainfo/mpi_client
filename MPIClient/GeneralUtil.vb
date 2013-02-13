@@ -1,8 +1,10 @@
 ﻿Imports System.Web.Script.Serialization
 Imports MPIClient.DataAccess.Model
 Imports System.Text
+Imports MPIClient.DataAccess
 
 Public Class GeneralUtil
+    Private Const STR_Topmost As String = "topmost"
 
     Public Shared Function getPatientListFromJSONObject(ByVal jsonObject As Object) As List(Of Patient)
         Dim patients As New List(Of Patient)
@@ -74,4 +76,9 @@ Public Class GeneralUtil
 
         Return result
     End Function
+
+    Public Shared Sub setTopMostBaseOnAppConfig(ByVal winForm As Form)
+        winForm.TopMost = ConfigManager.GetConfiguarationValue(STR_Topmost)
+    End Sub
+
 End Class

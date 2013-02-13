@@ -28,6 +28,8 @@ Public Class Fingerprint2
     Dim idSensor As String = "File"
     Dim resourceManager As Resources.ResourceManager
     Private Sub Fingerprint2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+        GeneralUtil.setTopMostBaseOnAppConfig(Me)
         fingerprintUtil = New FingerprintUtil(grFingerXCtrl)
         fingerprintUtil.initializeFigerprint()
         resourceManager = New Resources.ResourceManager("MPIClient.LocalizedText", GetType(Fingerprint2).Assembly)

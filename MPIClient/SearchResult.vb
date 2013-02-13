@@ -107,6 +107,7 @@ Public Class SearchResult
     End Function
 
     Private Sub SearchResult_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        GeneralUtil.setTopMostBaseOnAppConfig(Me)
         Control.CheckForIllegalCrossThreadCalls = False
         If patient Is Nothing Then
             Return

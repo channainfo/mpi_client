@@ -15,6 +15,7 @@ Public Class CustomMessageBox
     End Sub
 
     Private Sub InfoMessageBox_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        GeneralUtil.setTopMostBaseOnAppConfig(Me)
         khfont = New Font("Khmer OS System", 10)
         If Thread.CurrentThread.CurrentUICulture.Name = "km-KH" Then
             okButton.Font = khfont

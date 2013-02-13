@@ -19,6 +19,7 @@ Public Class ManualSyn
         Me.matchedPatients = matchedPatients
     End Sub
     Private Sub ManualSyn_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        GeneralUtil.setTopMostBaseOnAppConfig(Me)
         resourceManager = New Resources.ResourceManager("MPIClient.LocalizedText", GetType(ManualSyn).Assembly)
 
         setResourcesText()
