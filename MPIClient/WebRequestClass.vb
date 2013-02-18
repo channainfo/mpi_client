@@ -10,6 +10,26 @@ Imports System.Web
 
 Public Class WebRequestClass
 
+    Function getSiteCode() As String
+        Return ""
+    End Function
+
+    Function getMemberFPName() As String
+        Return ""
+    End Function
+
+    Function getMemberFBValue() As String
+        Return ""
+    End Function
+
+    Private Sub addFormDataAuthokenRequest(ByVal formData As NameValueCollection)
+        formData.Add("sitecode", getSiteCode())
+        formData.Add("member_fp_name", getMemberFPName())
+        formData.Add("member_fp_value", getMemberFBValue())
+    End Sub
+    Private Function getAuthRequestQueryString() As String
+        Return "&sitecode=" + getSiteCode() + "&member_fp_name=" + getMemberFPName() + "&member_fp_value=" + getMemberFBValue()
+    End Function
     Sub synPatient(ByVal patient As PatientSyn, ByVal uploadProgressChange As UploadProgressChangedEventHandler, ByVal uploadValuesCompleted As UploadValuesCompletedEventHandler, ByVal index As Integer)
 
         Using webClient As New WebClient()
@@ -22,6 +42,9 @@ Public Class WebRequestClass
             Try
                 Dim formData As New NameValueCollection()
                 formData.Add("patient", jsSerializer.Serialize(patient))
+
+                addFormDataAuthokenRequest(formData)
+
                 Dim url As String = ConfigManager.GetConfiguarationValue("Server") + ConfigManager.GetConfiguarationValue("SynURL")
                 webClient.UploadValuesAsync(New Uri(url), "post", formData, index)
             Catch ex As Exception
@@ -42,6 +65,7 @@ Public Class WebRequestClass
                 Dim formData As New NameValueCollection()
                 formData.Add("patient", jsSerializer.Serialize(patient))
                 formData.Add("patientid", patientID)
+                addFormDataAuthokenRequest(formData)
                 Dim url As String = ConfigManager.GetConfiguarationValue("Server") + ConfigManager.GetConfiguarationValue("SynUpdateURL")
                 webClient.UploadValuesAsync(New Uri(url), "post", formData)
             Catch ex As Exception
@@ -64,6 +88,7 @@ Public Class WebRequestClass
             formData.Add("externalcode", visit.ExternalCode)
             formData.Add("externalcode2", visit.ExternalCode2)
             formData.Add("info", visit.Info)
+            addFormDataAuthokenRequest(formData)
             Dim url As String = ConfigManager.GetConfiguarationValue("Server") + ConfigManager.GetConfiguarationValue("EnrollServiceURL")
             Dim jsonString As String = Encoding.UTF8.GetString(webClient.UploadValues(url, "post", formData))
 
@@ -99,7 +124,8 @@ Public Class WebRequestClass
 
             Dim queryString As String = "fingerprint=" + HttpUtility.UrlEncode(jsonFingerprint("tpt")) _
             + "&fingerprint2=" + HttpUtility.UrlEncode(jsonFingerprint2("tpt")) _
-            + "&gender=" + patient.Gender.ToString
+            + "&gender=" + patient.Gender.ToString _
+            + getAuthRequestQueryString()
 
             Dim queryData As Byte() = UTF8Encoding.UTF8.GetBytes(queryString)
             Dim url As String = ConfigManager.GetConfiguarationValue("Server") + ConfigManager.GetConfiguarationValue("IdentifyURL")
@@ -142,7 +168,8 @@ Public Class WebRequestClass
             + "&fingerprint_l3=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_l3)) _
             + "&fingerprint_l4=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_l4)) _
             + "&fingerprint_l5=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_l5)) _
-            + "&gender=" + patient.Gender.ToString()
+            + "&gender=" + patient.Gender.ToString() _
+            + getAuthRequestQueryString()
 
             Dim queryData As Byte() = UTF8Encoding.UTF8.GetBytes(queryString)
             Dim url As String = ConfigManager.GetConfiguarationValue("Server") + ConfigManager.GetConfiguarationValue("IdentifyURL")
@@ -176,7 +203,8 @@ Public Class WebRequestClass
         Try
             Dim queryString As String = "fingerprint=" + HttpUtility.UrlEncode(jsonFingerprint("tpt")) _
             + "&fingerprint2=" + HttpUtility.UrlEncode(jsonFingerprint2("tpt")) _
-            + "&gender=" + patient.Gender.ToString
+            + "&gender=" + patient.Gender.ToString _
+            + getAuthRequestQueryString()
 
             Dim queryData As Byte() = UTF8Encoding.UTF8.GetBytes(queryString)
             Dim url As String = ConfigManager.GetConfiguarationValue("Server") + ConfigManager.GetConfiguarationValue("EnrollURL")
@@ -218,7 +246,8 @@ Public Class WebRequestClass
             + "&fingerprint_l4=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_l4)) _
             + "&fingerprint_l5=" + HttpUtility.UrlEncode(fingerprintUtil.getTemplateBase64(patient.Fingerprint_l5)) _
             + "&gender=" + patient.Gender.ToString() _
-            + "&sitecode=" + patient.SiteCode
+            + "&sitecode=" + patient.SiteCode _
+            + getAuthRequestQueryString()
 
             Dim queryData As Byte() = UTF8Encoding.UTF8.GetBytes(queryString)
             Dim url As String = ConfigManager.GetConfiguarationValue("Server") + ConfigManager.GetConfiguarationValue("EnrollURL")
