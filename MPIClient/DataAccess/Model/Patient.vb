@@ -217,7 +217,11 @@ Namespace DataAccess.Model
             End Get
             Set(ByVal value As List(Of Visit))
                 _visits = value
-                NumVisit = value.Count
+                If value Is Nothing Then
+                    NumVisit = 0
+                Else
+                    NumVisit = value.Count
+                End If
             End Set
         End Property
         Public Function getFingerprintsInPriority() As List(Of Array)
