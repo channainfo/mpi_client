@@ -5,6 +5,7 @@
         Public Const SP_GET_PATIENT_BY_ID As String = "dbo.sp_get_patient_by_id"
         Public Const SP_GET_ALL_PATIENTS_BY_GENDER As String = "dbo.sp_get_all_patients_by_gender"
         Public Const SP_GET_ALL_NONSYN_PATIENTS As String = "dbo.sp_get_all_nonsyn_patients"
+        Public Const SP_GET_ALL_NONSYN_PATIENTS_AND_VISITS As String = "dbo.sp_get_all_nonsyn_patients_and_visits"
         Public Const SP_GET_ALL_NONSYN_PATIENTS_BY_GENDER As String = "dbo.sp_get_all_nonsyn_patients_by_gender"
         Public Const SP_UPDATE_PATIENT_ID As String = "dbo.sp_update_patient_id"
         Public Const SP_UPDATE_PATIENT As String = "dbo.sp_update_patient"

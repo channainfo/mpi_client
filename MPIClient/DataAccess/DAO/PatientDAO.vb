@@ -350,7 +350,7 @@ Namespace DataAccess.DAO
             If synOption = Synchronization.All Then
                 reader = getDataReaderOfAllPatients()
             ElseIf synOption = Synchronization.NonSyn Then
-                reader = getDataReaderOfAllNonSynPatients()
+                reader = getDataReaderOfAllNonSynPatientsAndVisits()
             End If
             Dim patients As List(Of Patient) = BuildPatients(reader)
 
@@ -486,6 +486,15 @@ Namespace DataAccess.DAO
         Private Function getDataReaderOfAllNonSynPatients() As DbDataReader
             Dim command As DbCommand
             command = Database.CreateCommand(Constant.GeneralConstants.SP_GET_ALL_NONSYN_PATIENTS)
+            command.CommandType = CommandType.StoredProcedure
+
+            Dim reader As DbDataReader = Database.ExecuteReader(command)
+            Return reader
+        End Function
+
+        Private Function getDataReaderOfAllNonSynPatientsAndVisits() As DbDataReader
+            Dim command As DbCommand
+            command = Database.CreateCommand(Constant.GeneralConstants.SP_GET_ALL_NONSYN_PATIENTS_AND_VISITS)
             command.CommandType = CommandType.StoredProcedure
 
             Dim reader As DbDataReader = Database.ExecuteReader(command)
