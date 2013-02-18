@@ -30,7 +30,88 @@ Namespace DataAccess.DAO
         Public Sub New()
             MyBase.New()
         End Sub
+        Public Function AddWithVisitDataAndSynStatus(ByVal patient As Patient, ByRef patientID As String) As Integer
+            Dim result As Integer = 0
+            Dim visitDAO As New VisitDAO()
 
+            Dim transaction As DbTransaction = Database.OpenConnection().BeginTransaction()
+            Dim command As DbCommand
+            Try
+
+                command = Database.CreateCommand(Constant.GeneralConstants.SP_INSERT_NEW_PATIENT_WITH_GIVEN_ID)
+                Command.CommandType = CommandType.StoredProcedure
+
+                Dim parameter As DbParameter
+
+                parameter = Database.CreateParameter(Database.CreateParameterName(PATIENT_ID), DbType.String)
+                parameter.Value = patient.PatientID
+                command.Parameters.Add(parameter)
+
+                parameter = Database.CreateParameter(Database.CreateParameterName(FINGERPRINT_R1), DbType.Binary)
+                parameter.Value = patient.Fingerprint_r1
+                Command.Parameters.Add(parameter)
+
+                parameter = Database.CreateParameter(Database.CreateParameterName(FINGERPRINT_R2), DbType.Binary)
+                parameter.Value = patient.Fingerprint_r2
+                Command.Parameters.Add(parameter)
+
+                parameter = Database.CreateParameter(Database.CreateParameterName(FINGERPRINT_R3), DbType.Binary)
+                parameter.Value = patient.Fingerprint_r3
+                Command.Parameters.Add(parameter)
+
+                parameter = Database.CreateParameter(Database.CreateParameterName(FINGERPRINT_R4), DbType.Binary)
+                parameter.Value = patient.Fingerprint_r4
+                Command.Parameters.Add(parameter)
+                parameter = Database.CreateParameter(Database.CreateParameterName(FINGERPRINT_R5), DbType.Binary)
+                parameter.Value = patient.Fingerprint_r5
+                Command.Parameters.Add(parameter)
+
+                parameter = Database.CreateParameter(Database.CreateParameterName(FINGERPRINT_L1), DbType.Binary)
+                parameter.Value = patient.Fingerprint_l1
+                Command.Parameters.Add(parameter)
+                parameter = Database.CreateParameter(Database.CreateParameterName(FINGERPRINT_L2), DbType.Binary)
+                parameter.Value = patient.Fingerprint_l2
+                Command.Parameters.Add(parameter)
+
+                parameter = Database.CreateParameter(Database.CreateParameterName(FINGERPRINT_L3), DbType.Binary)
+                parameter.Value = patient.Fingerprint_l3
+                Command.Parameters.Add(parameter)
+                parameter = Database.CreateParameter(Database.CreateParameterName(FINGERPRINT_L4), DbType.Binary)
+                parameter.Value = patient.Fingerprint_l4
+                Command.Parameters.Add(parameter)
+
+                parameter = Database.CreateParameter(Database.CreateParameterName(FINGERPRINT_L5), DbType.Binary)
+                parameter.Value = patient.Fingerprint_l5
+                Command.Parameters.Add(parameter)
+
+                parameter = Database.CreateParameter(Database.CreateParameterName(GENDER_COL), DbType.Int32)
+                parameter.Value = patient.Gender
+                Command.Parameters.Add(parameter)
+
+                parameter = Database.CreateParameter(Database.CreateParameterName(SITE_CODE), DbType.String)
+                parameter.Value = patient.SiteCode
+                Command.Parameters.Add(parameter)
+
+                parameter = Database.CreateParameter(Database.CreateParameterName(AGE_COL), DbType.Int32)
+                parameter.Value = patient.Age
+                command.Parameters.Add(parameter)
+
+                patientID = Database.ExecuteScalar(Command)
+                result = 1
+
+                If Not patient.Visits Is Nothing Then
+                    result = result + visitDAO.Add(patient.Visits, transaction)
+                End If
+                If result < 0 Then
+                    transaction.Rollback()
+                End If
+                transaction.Commit()
+            Catch ex As Exception
+                transaction.Rollback()
+                result = -1
+            End Try
+            Return result
+        End Function
         Public Function Add(ByVal patient As Patient, ByRef patientID As String) As Integer
             Dim result As Integer = 0
 

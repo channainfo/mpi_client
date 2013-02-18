@@ -16,5 +16,6 @@
         Public Const SP_UPDATE_PATIENT_STATUS_TO_SYN As String = "dbo.sp_update_patient_status_to_syn"
         Public Const SP_DELETE_PATIENT_VISITS As String = "dbo.sp_delete_patient_visits"
         Public Const SP_UPDATE_PATIENT_AGE As String = "dbo.sp_update_patient_age"
+        Public Const SP_INSERT_NEW_PATIENT_WITH_GIVEN_ID As String = "sp_insert_new_patient_with_given_ID"
     End Class
 End Namespace

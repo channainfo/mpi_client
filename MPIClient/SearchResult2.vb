@@ -2,6 +2,9 @@
 Imports MPIClient.DataAccess.DAO
 Imports System.Threading
 Imports System.Web.Script.Serialization
+Imports System.Data.Common
+Imports MPIClient.DataAccess
+
 Public Class SearchResult2
     Private STR_PatientsFound As String
     Private STR_Warning As String
@@ -119,9 +122,9 @@ Public Class SearchResult2
         If status = status.Offline Then
             'Error connecting to WebServer. 
             infoLabel.Text = errorMessage + STR_Offline
-        ElseIf status = SearchResult.Status.Online Then
+        ElseIf status = SearchResult2.Status.Online Then
             infoLabel.Text = STR_Online
-        ElseIf status = SearchResult.Status.OnlineButServerError Then
+        ElseIf status = SearchResult2.Status.OnlineButServerError Then
             infoLabel.Text = String.Format(STR_TheWebServerEncounterProblemStatusServerError, errorMessage)
         End If
     End Sub
@@ -245,9 +248,39 @@ Public Class SearchResult2
         If e.RowIndex < 0 Then
             Return
         End If
-        showNewVisitForm(e.RowIndex)
+        'showNewVisitForm(e.RowIndex)
+
+        Dim selectedPatient As Patient = filterredPatients(e.RowIndex)
+        Dim patientID As String = ""
+
+        Dim newPatient As New Patient
+        prepareNewPatient(selectedPatient, newPatient)
+
+        If patientDAO.getPatient(newPatient.PatientID) Is Nothing Then
+            patientDAO.AddWithVisitDataAndSynStatus(newPatient, patientID)
+        End If
+        Me.Close()
     End Sub
 
+    Private Sub prepareNewPatient(ByVal selectedPatient As Patient, ByVal newPatient As Patient)
+        newPatient.PatientID = selectedPatient.PatientID
+        newPatient.Gender = selectedPatient.Gender
+        newPatient.Age = selectedPatient.Age
+        newPatient.Visits = selectedPatient.Visits
+
+        newPatient.SiteCode = patient.SiteCode
+        newPatient.Fingerprint_l1 = patient.Fingerprint_l1
+        newPatient.Fingerprint_l2 = patient.Fingerprint_l2
+        newPatient.Fingerprint_l3 = patient.Fingerprint_l3
+        newPatient.Fingerprint_l4 = patient.Fingerprint_l4
+        newPatient.Fingerprint_l5 = patient.Fingerprint_l5
+
+        newPatient.Fingerprint_r1 = patient.Fingerprint_r1
+        newPatient.Fingerprint_r2 = patient.Fingerprint_r2
+        newPatient.Fingerprint_r3 = patient.Fingerprint_r3
+        newPatient.Fingerprint_r4 = patient.Fingerprint_r4
+        newPatient.Fingerprint_r5 = patient.Fingerprint_r5
+    End Sub
     Private Sub newVisitButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles newVisitButton.Click
         Dim selectedRows As DataGridViewSelectedRowCollection = DataGridView1.SelectedRows
         If (selectedRows.Count > 0) Then

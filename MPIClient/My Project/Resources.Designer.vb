@@ -151,16 +151,9 @@ Namespace My.Resources
             End Get
         End Property
         
-        Friend ReadOnly Property right1() As System.Drawing.Bitmap
+        Friend ReadOnly Property Right1() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("right1", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        Friend ReadOnly Property Right2() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("Right2", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("Right1", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

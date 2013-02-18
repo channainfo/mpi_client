@@ -121,9 +121,6 @@
   <data name="Synchronize-icon (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Synchronize-icon (1).png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="right1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\right1.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="search-green-neon-icon (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\search-green-neon-icon (1).png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -139,7 +136,7 @@
   <data name="euro-10_37122_lg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\euro-10_37122_lg.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Right2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="Right1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Right.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Log-Out-icon (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">

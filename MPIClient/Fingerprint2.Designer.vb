@@ -256,7 +256,7 @@ Partial Class Fingerprint2
         resources.ApplyResources(Me.PictureBox4, "PictureBox4")
         Me.PictureBox4.BackgroundImage = Nothing
         Me.PictureBox4.Font = Nothing
-        Me.PictureBox4.Image = Global.MPIClient.My.Resources.Resources.Right2
+        Me.PictureBox4.Image = Global.MPIClient.My.Resources.Resources.Right1
         Me.PictureBox4.ImageLocation = Nothing
         Me.PictureBox4.Name = "PictureBox4"
         Me.PictureBox4.TabStop = False
