@@ -139,7 +139,7 @@
     <value>បោះបង់</value>
   </data>
   <data name="STR_CantConnectToTheServerYoureOffline" xml:space="preserve">
-    <value>មិនអាចភ្ជាប់ទៅម៉ាស៊ីន Server បានទេ។ អ្នកមិនភ្ជាប់ជាមួយម៉ាស៊ីន sever</value>
+    <value>មិនអាចភ្ជាប់ទៅម៉ាស៊ីន Server បានទេ។ អ្នកមិនភ្ជាប់ជាមួយម៉ាស៊ីន server</value>
   </data>
   <data name="STR_Confirmation" xml:space="preserve">
     <value>ផ្ទៀងផ្ទាត់</value>
