@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{966F7679-5B77-4562-B341-3FCB2743DDC3}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -190,33 +190,42 @@
   <ItemGroup>
     <EmbeddedResource Include="CustomMessageBox.km-KH.resx">
       <DependentUpon>CustomMessageBox.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Figerprint.resx">
       <DependentUpon>Figerprint.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Fingerprint2.km-KH.resx">
       <DependentUpon>Fingerprint2.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Fingerprint2.resx">
       <DependentUpon>Fingerprint2.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomMessageBox.resx">
       <DependentUpon>CustomMessageBox.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="LocalizedText.km-KH.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LocalizedText.km-KH.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="LocalizedText.resx">
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LocalizedText.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ManualSyn.km-KH.resx">
       <DependentUpon>ManualSyn.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ManualSyn.resx">
       <DependentUpon>ManualSyn.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -226,27 +235,35 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewVisit.resx">
       <DependentUpon>NewVisit.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SearchResult.resx">
       <DependentUpon>SearchResult.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SearchResult2.km-KH.resx">
       <DependentUpon>SearchResult2.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SearchResult2.resx">
       <DependentUpon>SearchResult2.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Synchronization.km-KH.resx">
       <DependentUpon>Synchronization.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Synchronization.resx">
       <DependentUpon>Synchronization.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="VisitHistory.km-KH.resx">
       <DependentUpon>VisitHistory.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="VisitHistory.resx">
       <DependentUpon>VisitHistory.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

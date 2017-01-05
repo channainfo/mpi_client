@@ -292,4 +292,9 @@ Public Class SearchResult2
     Private Sub SearchResult2_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
         Me.Owner.Show()
     End Sub
+
+    Private Sub ToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
+    End Sub
+
 End Class

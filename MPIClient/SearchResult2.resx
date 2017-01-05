@@ -142,12 +142,18 @@
   <data name="patientFoundLabel.Text" xml:space="preserve">
     <value>................</value>
   </data>
+  <data name="&gt;&gt;ToolStripButton1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="waitingProgress.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 36</value>
   </data>
   <data name="&gt;&gt;ProgressStatus.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ToolStripLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 36</value>
   </data>
   <data name="&gt;&gt;StatusStrip1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -207,6 +213,9 @@
   <data name="&gt;&gt;waitingProgress.Name" xml:space="preserve">
     <value>waitingProgress</value>
   </data>
+  <data name="ToolStripButton1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 36</value>
+  </data>
   <data name="infoLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 17</value>
   </data>
@@ -230,6 +239,9 @@
   </data>
   <data name="CreatedateDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>Createdate</value>
+  </data>
+  <data name="&gt;&gt;ToolStripLabel1.Name" xml:space="preserve">
+    <value>ToolStripLabel1</value>
   </data>
   <data name="&gt;&gt;ActionToolStrip.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -261,9 +273,6 @@
   <data name="&gt;&gt;infoLabel.Name" xml:space="preserve">
     <value>infoLabel</value>
   </data>
-  <data name="&gt;&gt;CreatedateDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>CreatedateDataGridViewTextBoxColumn</value>
-  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>SearchResult2</value>
   </data>
@@ -288,11 +297,17 @@
   <data name="StatusStrip1.Text" xml:space="preserve">
     <value>StatusStrip1</value>
   </data>
+  <data name="ActionToolStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
   <data name="&gt;&gt;StatusStrip1.Name" xml:space="preserve">
     <value>StatusStrip1</value>
   </data>
   <data name="&gt;&gt;ToolStripStatusLabel1.Name" xml:space="preserve">
     <value>ToolStripStatusLabel1</value>
+  </data>
+  <data name="&gt;&gt;ToolStripButton1.Name" xml:space="preserve">
+    <value>ToolStripButton1</value>
   </data>
   <data name="&gt;&gt;UpdatedateDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -360,8 +375,8 @@
   <data name="ToolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 17</value>
   </data>
-  <data name="ActionToolStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="&gt;&gt;CreatedateDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>CreatedateDataGridViewTextBoxColumn</value>
   </data>
   <data name="DataGridView1.Size" type="System.Drawing.Size, System.Drawing">
     <value>926, 379</value>
@@ -383,6 +398,9 @@
   </data>
   <data name="ToolStripStatusLabel2.Text" xml:space="preserve">
     <value>Number of Patient:</value>
+  </data>
+  <data name="&gt;&gt;ToolStripLabel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;PatientIDDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>PatientIDDataGridViewTextBoxColumn</value>
@@ -433,7 +451,7 @@
     <value>467, 17</value>
   </metadata>
   <metadata name="StatusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>0, 454</value>
+    <value>0, 449</value>
   </metadata>
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>ខ្មែរ (កម្ពុជា)</value>

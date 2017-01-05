@@ -30,6 +30,67 @@ Public Class WebRequestClass
     Private Function getAuthRequestQueryString() As String
         Return "&sitecode=" + getSiteCode() + "&member_fp_name=" + getMemberFPName() + "&member_fp_value=" + getMemberFBValue()
     End Function
+
+
+    Public Function getToken() As String
+        Dim mydocpath As String = "c:\\" 'Directory.GetCurrentDirectory()
+        Dim accessTokenFileName As String = mydocpath & "access_token.txt"
+
+        If File.Exists(accessTokenFileName) = True Then
+            Dim accessToken = loadTokenFromFile(accessTokenFileName)
+            Console.WriteLine("Read from cached file: " & accessToken("token"))
+            Return accessToken("token")
+        Else
+            Dim jsonStr As String = loadTokenFromServer()
+            Dim jsSerializer As New JavaScriptSerializer()
+            writeTokentToFile(accessTokenFileName, jsonStr)
+            Dim accessToken = jsSerializer.DeserializeObject(jsonStr)
+            Console.WriteLine("Requested from server: " & accessToken("token"))
+
+            Return accessToken("token")
+        End If
+    End Function
+    Public Function loadTokenFromServer() As String
+        Using webClient As New WebClient()
+            Dim formData As New NameValueCollection()
+            formData.Add("client_id", "nk474e4c2d25e491c1f4e153e7c4ec56d8")
+            formData.Add("client_secret", "nsa6721f17ca46e9961e5247daad25bc3e")
+            formData.Add("grant_type", "client_credentials")
+
+            Dim url As String = ConfigManager.GetConfiguarationValue("Server") + ConfigManager.GetConfiguarationValue("access_token_url")
+            Dim response = webClient.UploadValues(url, "POST", formData)
+            Dim responseBody = (New System.Text.UTF8Encoding).GetString(response)
+            Console.WriteLine(responseBody)
+
+            Return responseBody
+
+
+        End Using
+    End Function
+
+    Public Function loadTokenFromFile(ByVal accessTokenFileName) As Object
+        Dim jsonAccessTokenStr As String = File.ReadAllText(accessTokenFileName)
+        Dim jsSerializer As New JavaScriptSerializer()
+        Dim jsonResult = jsSerializer.DeserializeObject(jsonAccessTokenStr)
+        Return jsonResult
+
+    End Function
+
+    Private Sub writeTokentToFile(ByVal accessTokenFileName As String, ByVal jsonString As String)
+        Dim FileWriter As StreamWriter
+
+        'Dim mydocpath As String = Directory.GetCurrentDirectory()
+        'If (Not System.IO.Directory.Exists("acess_token")) Then
+        '  System.IO.Directory.CreateDirectory("acess_token")
+        'End If
+
+        IO.File.CreateText(accessTokenFileName).Close()
+
+        FileWriter = New StreamWriter(accessTokenFileName, False)
+        FileWriter.WriteLine(jsonString)
+        FileWriter.Close()
+    End Sub
+
     Sub synPatient(ByVal patient As PatientSyn, ByVal uploadProgressChange As UploadProgressChangedEventHandler, ByVal uploadValuesCompleted As UploadValuesCompletedEventHandler, ByVal index As Integer)
 
         Using webClient As New WebClient()
@@ -53,6 +114,9 @@ Public Class WebRequestClass
         End Using
 
     End Sub
+
+
+
     Sub synPatientWithPatientID(ByVal patient As PatientSyn, ByVal patientID As String, ByVal uploadValuesCompleted As UploadValuesCompletedEventHandler)
         Using webClient As New WebClient()
             'Dim enrollService As UploadValuesCompletedEventHandler = Nothing
@@ -91,25 +155,6 @@ Public Class WebRequestClass
             addFormDataAuthokenRequest(formData)
             Dim url As String = ConfigManager.GetConfiguarationValue("Server") + ConfigManager.GetConfiguarationValue("EnrollServiceURL")
             Dim jsonString As String = Encoding.UTF8.GetString(webClient.UploadValues(url, "post", formData))
-
-            'Dim queryData As Byte() = UTF8Encoding.UTF8.GetBytes(queryString)
-            'Dim url As String = ConfigManager.GetConfiguarationValue("Server") + ConfigManager.GetConfiguarationValue("EnrollServiceURL")
-            'Dim httpRequest = WebRequest.Create(url)
-
-            'httpRequest.Method = "POST"
-            'httpRequest.ContentType = "application/x-www-form-urlencoded"
-            'httpRequest.ContentLength = queryData.Length
-            'httpRequest.Timeout = 5000
-            'httpRequest.Headers.Add()
-
-            'Dim requestStream = httpRequest.GetRequestStream()
-
-            'requestStream.Write(queryData, 0, queryDta.Length)
-
-            'Dim response = httpRequest.GetResponse()
-            'Dim reader = New StreamReader(response.GetResponseStream())
-            'Dim jsonString As String = reader.ReadToEnd()
-            'response.Close()
 
             Dim jsSerializer As New JavaScriptSerializer()
             jsonResult = jsSerializer.DeserializeObject(jsonString)

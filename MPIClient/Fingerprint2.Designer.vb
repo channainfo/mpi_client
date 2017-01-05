@@ -62,6 +62,7 @@ Partial Class Fingerprint2
         Me.pictureFingerprint = New System.Windows.Forms.PictureBox
         Me.RightPalmPic = New System.Windows.Forms.PictureBox
         Me.LeftPalmPic = New System.Windows.Forms.PictureBox
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton
         Me.ActionToolStrip.SuspendLayout()
         CType(Me.grFingerXCtrl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -88,7 +89,7 @@ Partial Class Fingerprint2
         resources.ApplyResources(Me.ActionToolStrip, "ActionToolStrip")
         Me.ActionToolStrip.BackgroundImage = Nothing
         Me.ActionToolStrip.Font = Nothing
-        Me.ActionToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SearchButton, Me.SynchronizationButton, Me.initializeButton, Me.CloseButton})
+        Me.ActionToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SearchButton, Me.SynchronizationButton, Me.initializeButton, Me.CloseButton, Me.ToolStripButton1})
         Me.ActionToolStrip.Name = "ActionToolStrip"
         '
         'SearchButton
@@ -438,6 +439,15 @@ Partial Class Fingerprint2
         Me.LeftPalmPic.Name = "LeftPalmPic"
         Me.LeftPalmPic.TabStop = False
         '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.AccessibleDescription = Nothing
+        Me.ToolStripButton1.AccessibleName = Nothing
+        resources.ApplyResources(Me.ToolStripButton1, "ToolStripButton1")
+        Me.ToolStripButton1.BackgroundImage = Nothing
+        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        '
         'Fingerprint2
         '
         Me.AccessibleDescription = Nothing
@@ -550,4 +560,5 @@ Partial Class Fingerprint2
         ' Add any initialization after the InitializeComponent() call.
 
     End Sub
+    Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
 End Class

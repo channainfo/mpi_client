@@ -1,4 +1,5 @@
 ﻿Imports MPIClient.DataAccess.Model
+Imports System.IO
 
 Public Class Fingerprint2
     Private STR_Confirmation As String
@@ -28,7 +29,6 @@ Public Class Fingerprint2
     Dim idSensor As String = "File"
     Dim resourceManager As Resources.ResourceManager
     Private Sub Fingerprint2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
         GeneralUtil.setTopMostBaseOnAppConfig(Me)
         fingerprintUtil = New FingerprintUtil(grFingerXCtrl)
         fingerprintUtil.initializeFigerprint()
@@ -41,8 +41,19 @@ Public Class Fingerprint2
         setDefaultSelectedFinger()
 
         fillGenderComboItems()
+        setApplicationToken()
+
+
 
     End Sub
+    Private Sub setApplicationToken()
+
+        'No token
+        Dim webclient = New WebRequestClass()
+        Dim token = webclient.getToken()
+    End Sub
+    
+
     Private Sub setResourcesText()
         STR_StatusFingerPlaced = resourceManager.GetString("STR_StatusFingerPlaced")
         STR_StatusUnplugged = resourceManager.GetString("STR_StatusUnplugged")
@@ -189,7 +200,7 @@ Public Class Fingerprint2
         Dim imageQuality As String = getImageQaulity(status)
         setPatientFingerPrint(fingerPrint, imageQuality, fingerImage.img)
 
-        checkToEnableSearchButton()
+        checkToEnablesearchbutton()
 
     End Sub
 
@@ -342,14 +353,14 @@ Public Class Fingerprint2
                 Next
             Next
 
-            
+
 
         End If
         Return False
     End Function
     Private Sub showSearchResultForm(ByVal patient As Patient)
         Dim searchResultForm As New SearchResult2
-        searchResultForm.setPatient(Patient)
+        searchResultForm.setPatient(patient)
         searchResultForm.setFilgerprintUtil(fingerprintUtil)
         searchResultForm.SetGrFingerX(grFingerXCtrl)
         searchResultForm.ShowDialog(Me)
@@ -429,12 +440,12 @@ Public Class Fingerprint2
             'MessageBox.Show(STR_FingerprintScannerIsUnplugged)
             labelStatus.Text = STR_StatusUnplugged
         End If
-        
+
 
     End Sub
 
     Private Sub genderCombobox_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles genderCombobox.SelectedIndexChanged
-        checkToEnableSearchButton()
+        checkToEnablesearchbutton()
     End Sub
     Private Sub checkToEnablesearchbutton()
         If isValidated() Then
@@ -458,5 +469,10 @@ Public Class Fingerprint2
         'If (MessageBox.Show(resourceManager.GetString("STR_AreYouSureYouWantToExit"), "Action Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Cancel) Then
         '    e.Cancel = True
         'End If
+    End Sub
+
+    Private Sub ToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton1.Click
+
+
     End Sub
 End Class
