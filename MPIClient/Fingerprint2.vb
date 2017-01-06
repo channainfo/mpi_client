@@ -28,6 +28,8 @@ Public Class Fingerprint2
     Dim patient As Patient
     Dim idSensor As String = "File"
     Dim resourceManager As Resources.ResourceManager
+
+
     Private Sub Fingerprint2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         GeneralUtil.setTopMostBaseOnAppConfig(Me)
         fingerprintUtil = New FingerprintUtil(grFingerXCtrl)
@@ -41,18 +43,14 @@ Public Class Fingerprint2
         setDefaultSelectedFinger()
 
         fillGenderComboItems()
-        setApplicationToken()
-
-
+        requestApplicationToken()
 
     End Sub
-    Private Sub setApplicationToken()
-
-        'No token
-        Dim webclient = New WebRequestClass()
-        Dim token = webclient.getToken()
+  Private Sub requestApplicationToken()
+        Dim token = MpiAccessToken.getToken()
+        Console.WriteLine("Access Token http:" + token)
     End Sub
-    
+
 
     Private Sub setResourcesText()
         STR_StatusFingerPlaced = resourceManager.GetString("STR_StatusFingerPlaced")
@@ -472,7 +470,6 @@ Public Class Fingerprint2
     End Sub
 
     Private Sub ToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton1.Click
-
-
+        MessageBox.Show(MpiAccessToken.getToken())
     End Sub
 End Class
