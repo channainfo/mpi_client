@@ -23,7 +23,7 @@ Public Class WebRequestClass
     End Function
 
     Private Sub addFormDataAuthokenRequest(ByVal formData As NameValueCollection)
-        formData.Add("sitecode", getSiteCode())
+        formData.Add("site_code", getSiteCode())
         formData.Add("member_fp_name", getMemberFPName())
         formData.Add("member_fp_value", getMemberFBValue())
     End Sub

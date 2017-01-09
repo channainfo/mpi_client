@@ -65,9 +65,13 @@ Public Class SearchResult2
     End Sub
     Private Sub bindSearchPatientResult()
         clearDataSourceGrid()
-        Dim jsonObject As Object = webRequest.indentify(patient, grFingerX)
+        'Dim jsonObject As Object = webRequest.indentify(patient, grFingerX)
+        Dim patientObject As New MpiPatient()
+        Dim responseBody = patientObject.search(patient, grFingerX)
+        Dim jsSerializer As New JavaScriptSerializer()
+        Dim jsonObject = jsSerializer.DeserializeObject(responseBody)
 
-        If (jsonObject Is Nothing) Then
+        If (jsonObject("records").Length = 0) Then
             updateConnectionStatus(Status.Offline)
             fillPatientListWithAllLocalDBData()
         ElseIf jsonObject("error") = "" Then

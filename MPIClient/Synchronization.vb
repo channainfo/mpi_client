@@ -152,8 +152,10 @@ Public Class Synchronization
 
                     'Add patient to a synchronization list
                     addPatientToSynchronizationList(currentPatient)
+                    Dim mpiPat As New MpiPatient()
+                    mpiPat.sync(preparePatientSynObject(currentPatient))
 
-                    webRequestClass.synPatient(preparePatientSynObject(currentPatient), AddressOf uploadProgressChange, AddressOf uploadLoadValuesCompleted, index)
+                    'webRequestClass.synPatient(preparePatientSynObject(currentPatient), AddressOf uploadProgressChange, AddressOf uploadLoadValuesCompleted, index)
 
                 End If
 
@@ -285,7 +287,6 @@ Public Class Synchronization
         Else
             patientSyn.datebirth = DateTime.Parse(currentPatient.DateBirth).ToString("yyyy-MM-dd HH:mm:ss")
         End If
-
 
 
         patientSyn.createdate = DateTime.Parse(currentPatient.Createdate).ToString("yyyy-MM-dd HH:mm:ss")
